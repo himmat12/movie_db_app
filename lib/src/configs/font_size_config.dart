@@ -1,3 +1,3 @@
-const double maxSize = 24;
-const double midSize = 20;
-const double normalSize = 16;
+const double l = 24;
+const double m = 20;
+const double n = 16;

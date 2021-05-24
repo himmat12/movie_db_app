@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/bindings/init_bindings.dart';
+import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/views/dashboard/dashboard.dart';
 
 void main() {
@@ -16,8 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Poppins',
-        canvasColor: Colors.white,
-        primaryColor: Colors.white,
+        canvasColor: primaryWhite,
+        primaryColor: primaryWhite,
       ),
       home: DashboardPage(),
     );
