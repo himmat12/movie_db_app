@@ -45,9 +45,10 @@ Widget switchBtnBuilder({
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                text1 ?? 'On TV',
+                text1 ?? 'text1',
                 style: TextStyle(
                   color: textColor ?? primaryWhite,
+                  fontSize: n - 4,
                 ),
               ),
             ),
@@ -67,9 +68,10 @@ Widget switchBtnBuilder({
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                text2 ?? 'On Theatures',
+                text2 ?? 'text2',
                 style: TextStyle(
                   color: textColor ?? primaryWhite,
+                  fontSize: n - 4,
                 ),
               ),
             ),

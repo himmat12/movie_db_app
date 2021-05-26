@@ -11,8 +11,8 @@ Widget appBarBuilder({
 }) {
   return Container(
     padding: padding ?? const EdgeInsets.fromLTRB(12, 0, 12, 0),
-    color: primaryDarkBlue,
-    height: height ?? 60,
+    // color: primaryDarkBlue,
+    height: height ?? 66,
     child: Row(
       children: [
         Container(
@@ -35,7 +35,8 @@ Widget appBarBuilder({
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: l,
-              color: primaryWhite,
+              // color: primaryWhite,
+              color: primaryDarkBlue,
             ),
           ),
         ),
@@ -44,7 +45,8 @@ Widget appBarBuilder({
             icon: const Icon(
               Icons.search,
               size: 26,
-              color: primaryWhite,
+              color: primaryDarkBlue,
+              // color: primaryWhite,
             )),
       ],
     ),
