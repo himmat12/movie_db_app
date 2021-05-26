@@ -1,8 +1,10 @@
 import 'package:get_it/get_it.dart';
-import 'package:movie_app/src/services/popular_movies_service.dart';
+import 'package:movie_app/src/services/configuration_service.dart';
+import 'package:movie_app/src/services/results_service.dart';
 
 final sl = GetIt.instance;
 
 void setUp() {
-  sl.registerLazySingleton<PopularMoviesService>(() => PopularMoviesService());
+  sl.registerLazySingleton<ResultsService>(() => ResultsService());
+  sl.registerLazySingleton<ConfigurationService>(() => ConfigurationService());
 }

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:movie_app/src/controllers/popular_movies_controller.dart';
+import 'package:movie_app/src/controllers/configuration_controller.dart';
+import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 
 class InitBindings extends Bindings {
@@ -9,6 +10,7 @@ class InitBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(UtilityController());
-    Get.put(PopularMoviesController());
+    Get.put(ResultsController());
+    Get.put(ConfigurationController());
   }
 }

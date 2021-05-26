@@ -1,0 +1,13 @@
+const String MOVIE_STRING = "movie";
+const String TV_STRING = "tv";
+const String ALL_STRING = "all";
+const String PEOPLE_STRING = "people";
+const String DAY_STRING = "day";
+const String WEEK_STRING = "week";
+const String POPULAR_STRING = "popular";
+const String TOP_RATED_STRING = "top_rated";
+const String ON_THE_AIR_STRING = "on_the_air";
+const String AIRING_TODAY_STRING = "airing_today";
+const String LATEST_STRING = "latest";
+const String NOW_PLAYING_STRING = "now_playing";
+const String UPCOMING_STRING = "upcoming";
