@@ -1,5 +1,5 @@
-class ConfigurationModel {
-  ConfigurationModel({
+class ApiConfigurationModel {
+  ApiConfigurationModel({
     this.images,
     this.changeKeys,
   });
@@ -7,8 +7,8 @@ class ConfigurationModel {
   Images? images;
   List<String>? changeKeys;
 
-  factory ConfigurationModel.fromJson(Map<String, dynamic> json) =>
-      ConfigurationModel(
+  factory ApiConfigurationModel.fromJson(Map<String, dynamic> json) =>
+      ApiConfigurationModel(
         images: Images.fromJson(json["images"]),
         changeKeys: List<String>.from(json["change_keys"].map((x) => x)),
       );

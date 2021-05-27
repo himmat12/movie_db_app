@@ -6,6 +6,7 @@ import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/services/results_service.dart';
+import 'package:movie_app/src/views/home/components/img_pageview_slider.dart';
 import 'package:movie_app/src/views/home/components/widgets_block_builder.dart';
 import 'components/app_bar.dart';
 import 'components/img_slider.dart';
@@ -24,7 +25,8 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              imgSliderBuilder(),
+              // imgSliderBuilder(),
+              imgPageViewSliderBuilder(),
               const SizedBox(height: 22),
               widgetsBlockBuilder(),
               TextButton(
