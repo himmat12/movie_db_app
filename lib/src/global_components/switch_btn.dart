@@ -48,7 +48,7 @@ Widget switchBtnBuilder({
                 text1 ?? 'text1',
                 style: TextStyle(
                   color: textColor ?? primaryWhite,
-                  fontSize: n - 5,
+                  fontSize: n - 4,
                 ),
               ),
             ),
@@ -71,7 +71,7 @@ Widget switchBtnBuilder({
                 text2 ?? 'text2',
                 style: TextStyle(
                   color: textColor ?? primaryWhite,
-                  fontSize: n - 5,
+                  fontSize: n - 4,
                 ),
               ),
             ),

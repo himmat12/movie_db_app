@@ -13,27 +13,13 @@ String authority = "api.themoviedb.org";
 class BaseService {
   final client = http.Client();
   late http.Response response;
-  // late Map<String, String> queryParma;
   int _timeOutDuration = 30;
-
-  // String api = "1a5ebef58b08ad825f24591860b26990";
-  // String authorization =
-  //     "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTVlYmVmNThiMDhhZDgyNWYyNDU5MTg2MGIyNjk5MCIsInN1YiI6IjYwYTM1OTI2NzMxNGExMDA3OGZjZTRkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VJG0GMDEpcYQBtm5VZlCHEmqTY5jH4kfIkYhosKqOA0";
 
 // headers
   Map<String, String> headers() => {
         HttpHeaders.contentTypeHeader: 'application/json;charset=utf-8',
         HttpHeaders.acceptHeader: 'application/json'
       };
-
-// query parameter
-  // setQueryParameters({Map<String, String>? query}) {
-  //   queryParma = {"api_key": api};
-  //   queryParma.addAll(query ?? {});
-  //   if (Auth.isLoggedIn == true) {
-  //     queryParma["session_id"] = Auth.sessionId;
-  //   }
-  // }
 
   Future<http.Response> request({
     required Requests method,

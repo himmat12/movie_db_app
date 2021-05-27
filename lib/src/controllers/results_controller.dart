@@ -15,10 +15,10 @@ class ResultsController extends BaseController {
 
   // movie results controller
 
-  getMovieResults({String? page, required String resultType}) async {
+  getMovieResults({required String page, required String resultType}) async {
     movieViewState.value = ViewState.busy;
     await _service
-        .getMovieResults(resultType: resultType, page: page!)
+        .getMovieResults(resultType: resultType, page: page)
         .then((value) {
       if (value != null) {
         movies = RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
@@ -33,10 +33,10 @@ class ResultsController extends BaseController {
 
   // tv results controller
 
-  getTvResults({String? page, required String resultType}) async {
+  getTvResults({required String page, required String resultType}) async {
     tvViewState.value = ViewState.busy;
     await _service
-        .getTvResults(resultType: resultType, page: page!)
+        .getTvResults(resultType: resultType, page: page)
         .then((value) {
       if (value != null) {
         tv = RxList.from(value.map((e) => TvResultModel.fromJson(e)));

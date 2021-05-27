@@ -11,3 +11,4 @@ const String AIRING_TODAY_STRING = "airing_today";
 const String LATEST_STRING = "latest";
 const String NOW_PLAYING_STRING = "now_playing";
 const String UPCOMING_STRING = "upcoming";
+const String TRENDING_STRING = "trending";

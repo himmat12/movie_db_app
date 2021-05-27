@@ -1,13 +1,13 @@
 class LanguageConfigurationModel {
   LanguageConfigurationModel({
-    this.iso6391,
-    this.englishName,
-    this.name,
+    required this.iso6391,
+    required this.englishName,
+    required this.name,
   });
 
-  String? iso6391;
-  String? englishName;
-  String? name;
+  String iso6391;
+  String englishName;
+  String name;
 
   factory LanguageConfigurationModel.fromJson(Map<String, dynamic> json) =>
       LanguageConfigurationModel(

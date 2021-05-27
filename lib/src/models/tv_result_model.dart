@@ -1,33 +1,33 @@
 class TvResultModel {
   TvResultModel({
-    this.backdropPath,
-    this.firstAirDate,
-    this.genreIds,
-    this.id,
-    this.name,
-    this.originCountry,
-    this.originalLanguage,
-    this.originalName,
-    this.overview,
-    this.popularity,
-    this.posterPath,
-    this.voteAverage,
-    this.voteCount,
+    required this.backdropPath,
+    required this.firstAirDate,
+    required this.genreIds,
+    required this.id,
+    required this.name,
+    required this.originCountry,
+    required this.originalLanguage,
+    required this.originalName,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.voteAverage,
+    required this.voteCount,
   });
 
-  String? backdropPath;
-  DateTime? firstAirDate;
-  List<int>? genreIds;
-  int? id;
-  String? name;
-  List<String>? originCountry;
-  String? originalLanguage;
-  String? originalName;
-  String? overview;
-  double? popularity;
-  String? posterPath;
-  double? voteAverage;
-  int? voteCount;
+  String backdropPath;
+  DateTime firstAirDate;
+  List<int> genreIds;
+  int id;
+  String name;
+  List<String> originCountry;
+  String originalLanguage;
+  String originalName;
+  String overview;
+  double popularity;
+  String posterPath;
+  double voteAverage;
+  int voteCount;
 
   factory TvResultModel.fromJson(Map<String, dynamic> json) => TvResultModel(
         backdropPath: json["backdrop_path"],
@@ -48,11 +48,11 @@ class TvResultModel {
   Map<String, dynamic> toJson() => {
         "backdrop_path": backdropPath,
         "first_air_date":
-            "${firstAirDate!.year.toString().padLeft(4, '0')}-${firstAirDate!.month.toString().padLeft(2, '0')}-${firstAirDate!.day.toString().padLeft(2, '0')}",
-        "genre_ids": List<dynamic>.from(genreIds!.map((x) => x)),
+            "${firstAirDate.year.toString().padLeft(4, '0')}-${firstAirDate.month.toString().padLeft(2, '0')}-${firstAirDate.day.toString().padLeft(2, '0')}",
+        "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
         "id": id,
         "name": name,
-        "origin_country": List<dynamic>.from(originCountry!.map((x) => x)),
+        "origin_country": List<dynamic>.from(originCountry.map((x) => x)),
         "original_language": originalLanguage,
         "original_name": originalName,
         "overview": overview,

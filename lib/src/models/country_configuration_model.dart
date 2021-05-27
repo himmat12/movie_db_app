@@ -1,13 +1,13 @@
 class CountryConfigurationModel {
   CountryConfigurationModel({
-    this.iso31661,
-    this.englishName,
-    this.nativeName,
+    required this.iso31661,
+    required this.englishName,
+    required this.nativeName,
   });
 
-  String? iso31661;
-  String? englishName;
-  String? nativeName;
+  String iso31661;
+  String englishName;
+  String nativeName;
 
   factory CountryConfigurationModel.fromJson(Map<String, dynamic> json) =>
       CountryConfigurationModel(

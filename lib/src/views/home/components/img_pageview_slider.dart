@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
+import 'package:movie_app/src/global_components/more_btn.dart';
 import 'package:movie_app/src/global_components/switch_btn.dart';
-
-import 'img_slider.dart';
 
 Widget imgPageViewSliderBuilder({
   String? object,
@@ -28,17 +27,17 @@ Widget imgPageViewSliderBuilder({
             Row(
               children: [
                 const Text(
-                  'Trending',
+                  'Movies',
                   style: TextStyle(fontSize: m),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 6),
                 switchBtnBuilder(
                   text1: "Today",
-                  text2: "Week",
+                  text2: "This Week",
                 ),
               ],
             ),
-            const Text('More'),
+            moreBtn(onTap: () {}),
           ],
         ),
         const SizedBox(height: 8),
@@ -114,3 +113,10 @@ Widget navBtn({
         color: color ?? primaryWhite,
       ),
     );
+
+List<String> imgUrl = [
+  "https://www.fiveaa.com.au/wp-content/uploads/2020/03/age-of-ultron-10-things-that-will-make-you-cry-in-avengers-age-of-ultron.jpeg",
+  "https://i.pinimg.com/736x/cc/8e/ab/cc8eab463420d48b51f271bf886a14a8.jpg",
+  "https://cdn.europosters.eu/image/750/posters/the-avengers-age-of-ultron-battle-i24581.jpg",
+  "https://visualartideas.com/wp-content/uploads/2019/01/Avengers-Endgame-Wallpaper-Superhero.jpg",
+];
