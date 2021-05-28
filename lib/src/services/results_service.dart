@@ -4,7 +4,7 @@ import 'package:movie_app/src/services/base_service.dart';
 class ResultsService extends BaseService with QueryParameterMixin {
   // movie results service
   Future<dynamic> getMovieResults({
-    required String page,
+    String page = "",
     String region = "",
     required String resultType,
   }) async {
@@ -19,6 +19,8 @@ class ResultsService extends BaseService with QueryParameterMixin {
       if (response.statusCode == 200) {
         // ignore: avoid_print
         // print('PAGE => ${decodeResponse(response)['page']}');
+        // ignore: avoid_print
+        // print(decodeResponse(response)['results']);
         return decodeResponse(response)['results'];
       } else {
         return null;
@@ -30,7 +32,7 @@ class ResultsService extends BaseService with QueryParameterMixin {
 
   // tv results service
   Future<dynamic> getTvResults({
-    required String page,
+    String page = "",
     required String resultType,
   }) async {
     try {

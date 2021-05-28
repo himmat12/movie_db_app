@@ -8,35 +8,63 @@ import 'package:movie_app/src/services/results_service.dart';
 
 class ResultsController extends BaseController {
   final _service = sl<ResultsService>();
+
   var tv = <TvResultModel>[].obs;
   var movies = <MovieResultModel>[].obs;
+
   var tvViewState = ViewState.idle.obs;
-  var movieViewState = ViewState.idle.obs;
+  var _movieViewState = ViewState.idle.obs;
+
+  int moviesPage = 1;
+  int tvPage = 1;
+
+  ViewState get movieViewState => _movieViewState.value;
 
   // movie results controller
 
-  getMovieResults({required String page, required String resultType}) async {
-    movieViewState.value = ViewState.busy;
+  getMovieResults({required String resultType}) async {
+    _movieViewState.value = ViewState.busy;
     await _service
-        .getMovieResults(resultType: resultType, page: page)
+        .getMovieResults(resultType: resultType, page: '$moviesPage')
         .then((value) {
       if (value != null) {
         movies = RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
+        // update(['movies']);
         // for (var i in movies) {
-        //   // ignore: avoid_print
-        //   print(i.title);
+        // ignore: avoid_print
+        print(movies.length);
+
         // }
       }
     });
-    movieViewState.value = ViewState.retrived;
+    _movieViewState.value = ViewState.retrived;
+  }
+
+  loadMoreMoviesResults({required String resultType}) async {
+    _movieViewState.value = ViewState.busy;
+    moviesPage = moviesPage + 1;
+    await _service
+        .getMovieResults(resultType: resultType, page: '$moviesPage')
+        .then((value) {
+      if (value != null) {
+        movies.addAll(
+            RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
+        // update(['movies']);
+        // for (var i in movies) {
+        // ignore: avoid_print
+        // print(movies);
+        // }
+      }
+    });
+    _movieViewState.value = ViewState.retrived;
   }
 
   // tv results controller
 
-  getTvResults({required String page, required String resultType}) async {
+  getTvResults({required String resultType}) async {
     tvViewState.value = ViewState.busy;
     await _service
-        .getTvResults(resultType: resultType, page: page)
+        .getTvResults(resultType: resultType, page: '$tvPage')
         .then((value) {
       if (value != null) {
         tv = RxList.from(value.map((e) => TvResultModel.fromJson(e)));

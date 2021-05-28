@@ -4,15 +4,18 @@ import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
+import 'package:movie_app/src/global_components/page_skeleton.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/api_configuration_model.dart';
 import 'package:movie_app/src/views/home/home_page.dart';
 
 class DashboardPage extends StatelessWidget {
-  final _resultsController = Get.find<ResultsController>();
-  final _utilityController = Get.find<UtilityController>();
   final _configurationController = Get.find<ConfigurationController>();
+  final _utilityController = Get.find<UtilityController>();
+  final _resultsController = Get.find<ResultsController>();
+  final _trendingResultsController = Get.find<TrendingResultsController>();
 
   List<Widget> pages = [
     HomePage(),
@@ -27,9 +30,10 @@ class DashboardPage extends StatelessWidget {
       init: _resultsController,
       initState: (_) {
         _configurationController.getConfigurations();
-        _resultsController.getTvResults(resultType: POPULAR_STRING, page: "1");
-        _resultsController.getMovieResults(
-            resultType: NOW_PLAYING_STRING, page: "1");
+        _trendingResultsController.getTrendingMovieResults(
+            timeWindow: WEEK_STRING);
+        _resultsController.getTvResults(resultType: POPULAR_STRING);
+        _resultsController.getMovieResults(resultType: NOW_PLAYING_STRING);
       },
       builder: (_) {
         return Scaffold(
@@ -59,9 +63,7 @@ class DashboardPage extends StatelessWidget {
             body: Obx(
               () => WidgetBuilderHelper(
                 state: _configurationController.configState.value,
-                onLoadingBuilder: const Center(
-                  child: Text('initializing configurations'),
-                ),
+                onLoadingBuilder: pageSkeleton(),
                 onErrorBuilder: const Center(
                   child: Text('error while initializing configurations'),
                 ),
