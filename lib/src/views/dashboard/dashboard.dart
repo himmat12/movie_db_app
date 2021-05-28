@@ -28,12 +28,30 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder(
       init: _resultsController,
+      dispose: (state) {},
       initState: (_) {
         _configurationController.getConfigurations();
-        _trendingResultsController.getTrendingMovieResults(
-            timeWindow: WEEK_STRING);
-        _resultsController.getTvResults(resultType: POPULAR_STRING);
-        _resultsController.getMovieResults(resultType: NOW_PLAYING_STRING);
+
+        // trending movies
+        if (_utilityController.isMovieToday == true) {
+          _trendingResultsController.getTrendingMovieResults(
+              timeWindow: DAY_STRING);
+        } else {
+          _trendingResultsController.getTrendingMovieResults(
+              timeWindow: WEEK_STRING);
+        }
+
+        // trending tv
+        if (_utilityController.isTvToday == true) {
+          _trendingResultsController.getTrendingTvResults(
+              timeWindow: DAY_STRING);
+        } else {
+          _trendingResultsController.getTrendingTvResults(
+              timeWindow: WEEK_STRING);
+        }
+
+        // _resultsController.getTvResults(resultType: POPULAR_STRING);
+        // _resultsController.getMovieResults(resultType: NOW_PLAYING_STRING);
       },
       builder: (_) {
         return Scaffold(

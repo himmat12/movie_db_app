@@ -25,18 +25,18 @@ Widget imgPageViewSliderBuilder({
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              children: [
-                const Text(
-                  'Movies',
-                  style: TextStyle(fontSize: m),
+                // children: [
+                //   // const Text(
+                //   //   'Movies',
+                //   //   style: TextStyle(fontSize: m),
+                //   // ),
+                //   // const SizedBox(width: 6),
+                //   // switchBtnBuilder(
+                //   //   text1: "Today",
+                //   //   text2: "This Week",
+                //   // ),
+                // ],
                 ),
-                const SizedBox(width: 6),
-                switchBtnBuilder(
-                  text1: "Today",
-                  text2: "This Week",
-                ),
-              ],
-            ),
             moreBtn(onTap: () {}),
           ],
         ),

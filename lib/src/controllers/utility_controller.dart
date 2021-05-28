@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:get/get.dart';
-
-enum SwitchBtnState { option1, option2 } //switch btn state
+import 'package:movie_app/src/utils/preferences.dart';
 
 class UtilityController extends BaseController {
 // bottom navigation state
@@ -15,13 +15,23 @@ class UtilityController extends BaseController {
   }
 
   // switch btn state
-  var _switchBtnState = SwitchBtnState.option1.obs;
+  var _isMovieToday = Prefs.movieIsTodayState.obs;
+  var _isTvToday = Prefs.tvIsTodayState.obs;
 
-  SwitchBtnState get switchBtnState => _switchBtnState.value;
+  bool get isMovieToday => _isMovieToday.value;
+  bool get isTvToday => _isTvToday.value;
 
-  toggleSwitchBtnState(SwitchBtnState newSatate) {
-    _switchBtnState.value = newSatate;
+  void toggleMovieSwitch() {
+    _isMovieToday.value = !_isMovieToday.value;
+    Prefs.setMoveiIstodayState(_isMovieToday.value);
   }
+
+  void toggleTvSwitch() {
+    _isTvToday.value = !_isTvToday.value;
+    Prefs.setTvIstodayState(_isTvToday.value);
+  }
+
+  ///
 
   /// [ img slider pageview state ]
   var _imgSliderIndex = 0.obs;

@@ -5,6 +5,8 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/trending_results_controller.dart';
+import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global_components/more_btn.dart';
 import 'package:movie_app/src/global_components/switch_btn.dart';
 import 'package:movie_app/src/models/movie_result_model.dart';
@@ -12,10 +14,11 @@ import 'package:movie_app/src/models/movie_result_model.dart';
 Widget moviesBlockBuilder({
   String? title,
   required String posterUrl,
-  required List<MovieResultModel> movies,
   void Function()? onMoreTap,
 }) {
   final _resultsController = Get.find<ResultsController>();
+  final _utilityController = Get.find<UtilityController>();
+  final _trendingResultsController = Get.find<TrendingResultsController>();
 
   var items = <Widget>[];
 
@@ -122,11 +125,13 @@ Widget moviesBlockBuilder({
           ),
         )));
 
-    // load more
+    // load more option
     items.add(GestureDetector(
       onTap: () {
-        _resultsController.loadMoreMoviesResults(
-            resultType: NOW_PLAYING_STRING);
+        _trendingResultsController.loadMoreTrendingMoviesResults(
+            timeWindow: _utilityController.isMovieToday == true
+                ? DAY_STRING
+                : WEEK_STRING);
         // ignore: avoid_print
         // print('add more pages');
       },
@@ -146,7 +151,8 @@ Widget moviesBlockBuilder({
                 ),
               ),
               Center(
-                child: _resultsController.movieViewState == ViewState.busy
+                child: _trendingResultsController.movieViewState ==
+                        ViewState.busy
                     ? const CircularProgressIndicator(color: secondaryDarkBlue)
                     : const Icon(
                         Icons.add,
@@ -180,7 +186,7 @@ Widget moviesBlockBuilder({
                     style: const TextStyle(fontSize: m),
                   ),
                   const SizedBox(width: 6),
-                  switchBtnBuilder(
+                  movieSwitchBtnBuilder(
                     text1: "Today",
                     text2: "This Week",
                   ),
@@ -199,7 +205,9 @@ Widget moviesBlockBuilder({
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(
-              () => Row(children: moviesList(movies)),
+              () => Row(
+                  children:
+                      moviesList(_trendingResultsController.trendingMovies)),
             ),
           ),
         ),

@@ -9,6 +9,7 @@ import 'package:movie_app/src/views/dashboard/dashboard.dart';
 void main() async {
   // get storage initialization
   await GetStorage.init('box');
+  await GetStorage.init('prefs');
 
   // service locator initialization
   setUp();

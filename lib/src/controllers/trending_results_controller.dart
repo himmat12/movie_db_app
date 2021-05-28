@@ -13,16 +13,26 @@ class TrendingResultsController extends BaseController {
   var trendingTVs = <TvResultModel>[].obs;
   var trendingMovies = <MovieResultModel>[].obs;
 
-  var tvViewState = ViewState.idle.obs;
-  var movieViewState = ViewState.idle.obs;
+  var _tvViewState = ViewState.idle.obs;
+  var _movieViewState = ViewState.idle.obs;
 
   int moviesPage = 1;
   int tvPage = 1;
 
-  // movie results controller
+  ViewState get movieViewState => _movieViewState.value;
+  ViewState get tvViewState => _tvViewState.value;
 
+  resetMoviePage() {
+    moviesPage = 1;
+  }
+
+  resetTvPage() {
+    tvPage = 1;
+  }
+
+  // trending movie results controller
   getTrendingMovieResults({required String timeWindow}) async {
-    movieViewState.value = ViewState.busy;
+    _movieViewState.value = ViewState.busy;
     await _service
         .getTrendingResults(
       mediaType: MOVIE_STRING,
@@ -33,18 +43,17 @@ class TrendingResultsController extends BaseController {
       if (value != null) {
         trendingMovies =
             RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
-        // update(['trendingMovies']);
-        for (var i in trendingMovies) {
-          // ignore: avoid_print
-          print(i.title);
-        }
+        // for (var i in trendingMovies) {
+        // // ignore: avoid_print
+        //   print(i.title);
+        // }
       }
     });
-    movieViewState.value = ViewState.retrived;
+    _movieViewState.value = ViewState.retrived;
   }
 
-  loadMoreMoviesResults({required String timeWindow}) async {
-    movieViewState.value = ViewState.busy;
+  loadMoreTrendingMoviesResults({required String timeWindow}) async {
+    _movieViewState.value = ViewState.busy;
     moviesPage = moviesPage + 1;
 
     await _service
@@ -64,13 +73,13 @@ class TrendingResultsController extends BaseController {
         // }
       }
     });
-    movieViewState.value = ViewState.retrived;
+    _movieViewState.value = ViewState.retrived;
   }
 
-  // trendingTVs results controller
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  getTvResults({required String timeWindow}) async {
-    tvViewState.value = ViewState.busy;
+  getTrendingTvResults({required String timeWindow}) async {
+    _tvViewState.value = ViewState.busy;
     await _service
         .getTrendingResults(
       mediaType: TV_STRING,
@@ -80,12 +89,36 @@ class TrendingResultsController extends BaseController {
         .then((value) {
       if (value != null) {
         trendingTVs = RxList.from(value.map((e) => TvResultModel.fromJson(e)));
-        // for (var i in trendingTVs) {
-        //   // ignore: avoid_print
-        //   print(i.name);
+        // for (var i in trendingMovies) {
+        // // ignore: avoid_print
+        //   print(i.title);
         // }
       }
     });
-    tvViewState.value = ViewState.retrived;
+    _tvViewState.value = ViewState.retrived;
+  }
+
+  loadMoreTrendingTvResults({required String timeWindow}) async {
+    _tvViewState.value = ViewState.busy;
+    tvPage = tvPage + 1;
+
+    await _service
+        .getTrendingResults(
+      mediaType: TV_STRING,
+      timeWindow: timeWindow,
+      page: '$tvPage',
+    )
+        .then((value) {
+      if (value != null) {
+        trendingTVs
+            .addAll(RxList.from(value.map((e) => TvResultModel.fromJson(e))));
+        // update(['trendingMovies']);
+        // for (var i in trendingMovies) {
+        // ignore: avoid_print
+        // print(trendingMovies);
+        // }
+      }
+    });
+    _tvViewState.value = ViewState.retrived;
   }
 }
