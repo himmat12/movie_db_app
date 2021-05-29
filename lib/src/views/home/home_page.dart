@@ -23,32 +23,53 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         appBarBuilder(),
-        Column(
-          children: [
-            moviesBlockBuilder(
-              onMoreTap: () {},
-              posterUrl: _configurationController.posterUrl,
-              title: 'Movies',
-            ),
-            const SizedBox(height: 22),
-            tvBlockBuilder(
-                onMoreTap: () {},
-                posterUrl: _configurationController.posterUrl,
-                title: 'TV Series'),
-            TextButton(
-              onPressed: () {
-                _trendingResultsController.getTrendingMovieResults(
-                    timeWindow: WEEK_STRING);
-                // _resultsController.getMovieResults(
-                //     resultType: NOW_PLAYING_STRING);
-                // _resultsController.getTvResults(
-                //     resultType: ON_THE_AIR_STRING);
-              },
-              child: const Text('get service results'),
-            ),
-          ],
+        const SizedBox(height: 16),
+        moviesBlockBuilder(
+          onMoreTap: () {},
+          posterUrl: _configurationController.posterUrl,
+          title: 'Trending',
+          subtitle: 'Movies',
+        ),
+        const SizedBox(height: 22),
+        tvBlockBuilder(
+          onMoreTap: () {},
+          posterUrl: _configurationController.posterUrl,
+          title: 'Trending',
+          subtitle: 'TV',
+        ),
+        TextButton(
+          onPressed: () {
+            Map<String, dynamic> json = {"a": null, "b": 1, "c": true};
+
+            Model obj = Model.fromJson(json);
+
+            // ignore: avoid_print
+            print(obj.a);
+
+            // _trendingResultsController.getTrendingMovieResults(
+            //     timeWindow: WEEK_STRING);
+            // _resultsController.getMovieResults(
+            //     resultType: NOW_PLAYING_STRING);
+            // _resultsController.getTvResults(
+            //     resultType: ON_THE_AIR_STRING);
+          },
+          child: const Text('get service results'),
         ),
       ],
     );
   }
+}
+
+class Model {
+  String? a;
+  int? b;
+  bool? c;
+  Model({
+    this.a,
+    this.b,
+    this.c,
+  });
+
+  factory Model.fromJson(Map<String, dynamic> json) =>
+      Model(a: json['a'] ?? "no data", b: json['b'], c: json['c']);
 }

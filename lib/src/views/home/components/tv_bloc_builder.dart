@@ -7,6 +7,7 @@ import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
+import 'package:movie_app/src/global_components/loading_spinner.dart';
 import 'package:movie_app/src/global_components/more_btn.dart';
 import 'package:movie_app/src/global_components/switch_btn.dart';
 import 'package:movie_app/src/models/movie_result_model.dart';
@@ -14,6 +15,7 @@ import 'package:movie_app/src/models/tv_result_model.dart';
 
 Widget tvBlockBuilder({
   String? title,
+  String? subtitle,
   required String posterUrl,
   void Function()? onMoreTap,
 }) {
@@ -153,7 +155,7 @@ Widget tvBlockBuilder({
               ),
               Center(
                 child: _trendingResultsController.tvViewState == ViewState.busy
-                    ? const CircularProgressIndicator(color: secondaryDarkBlue)
+                    ? LoadingSpinner.fadingCircleSpinner
                     : const Icon(
                         Icons.add,
                         size: 34,
@@ -183,7 +185,15 @@ Widget tvBlockBuilder({
                 children: [
                   Text(
                     title ?? 'title',
-                    style: const TextStyle(fontSize: m),
+                    style: const TextStyle(fontSize: m - 2),
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    subtitle ?? 'subtitle',
+                    style: const TextStyle(
+                      fontSize: m - 4,
+                      color: primaryblue,
+                    ),
                   ),
                   const SizedBox(width: 6),
                   tvSwitchBtnBuilder(
