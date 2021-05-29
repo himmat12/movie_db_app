@@ -28,14 +28,25 @@ Widget horizontalBlocSkeleton() {
           child: Row(
             children: List.generate(
               5,
-              (index) => Container(
-                margin: const EdgeInsets.fromLTRB(0, 0, 6, 0),
-                decoration: BoxDecoration(
-                  color: Colors.black26,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                height: 120,
-                width: 86,
+              (index) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 0, 6, 0),
+                    decoration: BoxDecoration(
+                      color: Colors.black26,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    width: 88,
+                    height: 140,
+                  ),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: 20,
+                    width: 66,
+                    color: Colors.black26,
+                  ),
+                ],
               ),
             ),
           ),

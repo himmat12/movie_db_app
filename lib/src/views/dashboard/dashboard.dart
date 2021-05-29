@@ -6,9 +6,10 @@ import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global_components/page_skeleton.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/api_configuration_model.dart';
+import 'package:movie_app/src/skeletons/bottom_nav_skeleton.dart';
+import 'package:movie_app/src/skeletons/page_skeleton.dart';
 import 'package:movie_app/src/views/home/home_page.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -57,22 +58,29 @@ class DashboardPage extends StatelessWidget {
         return Scaffold(
             // appBar: AppBar(),
             bottomNavigationBar: Obx(
-              () => BottomNavigationBar(
-                elevation: 0,
-                currentIndex: _utilityController.navCurrentIndex,
-                onTap: (newIndex) {
-                  _utilityController.setBottomNavIndex(newIndex);
-                },
-                type: BottomNavigationBarType.fixed,
-                unselectedFontSize: 0,
-                selectedFontSize: 0,
-                selectedIconTheme: const IconThemeData(color: Colors.blue),
-                selectedItemColor: Colors.blue,
-                items: List.from(
-                  menus.map(
-                    (e) => BottomNavigationBarItem(
-                      icon: Text(e),
-                      label: "",
+              () => WidgetBuilderHelper(
+                state: _configurationController.configState.value,
+                onLoadingBuilder: bottomNavSkeleton(),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data...'),
+                ),
+                onSuccessBuilder: BottomNavigationBar(
+                  elevation: 0,
+                  currentIndex: _utilityController.navCurrentIndex,
+                  onTap: (newIndex) {
+                    _utilityController.setBottomNavIndex(newIndex);
+                  },
+                  type: BottomNavigationBarType.fixed,
+                  unselectedFontSize: 0,
+                  selectedFontSize: 0,
+                  selectedIconTheme: const IconThemeData(color: Colors.blue),
+                  selectedItemColor: Colors.blue,
+                  items: List.from(
+                    menus.map(
+                      (e) => BottomNavigationBarItem(
+                        icon: Text(e),
+                        label: "",
+                      ),
                     ),
                   ),
                 ),
@@ -83,7 +91,7 @@ class DashboardPage extends StatelessWidget {
                 state: _configurationController.configState.value,
                 onLoadingBuilder: pageSkeleton(),
                 onErrorBuilder: const Center(
-                  child: Text('error while initializing configurations'),
+                  child: Text('error while initializing data ...'),
                 ),
                 onSuccessBuilder: SafeArea(
                     child: SingleChildScrollView(

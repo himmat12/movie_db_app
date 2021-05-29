@@ -5,7 +5,6 @@ import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global_components/horizontal_bloc_skeleton.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/api_configuration_model.dart';
 import 'package:movie_app/src/views/home/components/movies_bloc_builder.dart';
