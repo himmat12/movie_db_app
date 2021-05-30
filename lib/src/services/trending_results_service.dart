@@ -26,33 +26,8 @@ class TrendingResultsService extends BaseService with QueryParameterMixin {
         return null;
       }
     } catch (e) {
-      rethrow;
+      // ignore: avoid_print
+      print(e);
     }
   }
-
-//   // tv results service
-//   Future<dynamic> getTrendingTvResults({
-//     String page = "",
-//     required String resultType,
-//   }) async {
-//     try {
-//       final response = await request(
-//         method: Requests.get,
-//         // path: "/3/tv/$resultType",
-//         path: "/3/trending/tv/$resultType",
-//         queryParameter: setQueryParameters(query: {"page": page}),
-//       );
-//       // ignore: avoid_print
-//       print('TRENDING TV RESULTS STATUS => ${response.statusCode}');
-//       if (response.statusCode == 200) {
-//         // ignore: avoid_print
-//         // print('PAGE => ${decodeResponse(response)['page']}');
-//         return decodeResponse(response)['results'];
-//       } else {
-//         return null;
-//       }
-//     } catch (e) {
-//       rethrow;
-//     }
-//   }
 }

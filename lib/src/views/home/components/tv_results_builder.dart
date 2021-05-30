@@ -11,23 +11,41 @@ import 'package:movie_app/src/global_components/loading_spinner.dart';
 import 'package:movie_app/src/global_components/more_btn.dart';
 import 'package:movie_app/src/global_components/switch_btn.dart';
 import 'package:movie_app/src/models/movie_result_model.dart';
+import 'package:movie_app/src/models/test_model.dart';
 import 'package:movie_app/src/models/tv_result_model.dart';
 
-Widget tvBlockBuilder({
+Widget tvResultBuilder({
   String? title,
   String? subtitle,
+  required Rx<ViewState> state,
+  required String resultType,
   required String posterUrl,
+  required RxList<TvResultsModel> tvResults,
   void Function()? onMoreTap,
 }) {
   final _resultsController = Get.find<ResultsController>();
-  final _trendingResultsController = Get.find<TrendingResultsController>();
   final _utilityController = Get.find<UtilityController>();
 
   var items = <Widget>[];
 
+  RxList<TvResultsModel>? getItem(String resultType) {
+    switch (resultType) {
+      case POPULAR_STRING:
+        return _resultsController.popularTvList;
+      case TOP_RATED_STRING:
+        return _resultsController.topRatedTvList;
+      case AIRING_TODAY_STRING:
+        return _resultsController.airingTodayTvList;
+      case ON_THE_AIR_STRING:
+        return _resultsController.onTheAirTvList;
+      default:
+        break;
+    }
+  }
+
 // returns listview items
-  List<Widget> tvsList(List<TvResultModel> tvs) {
-    items = List.from(tvs.map((e) => GestureDetector(
+  List<Widget> tvList(List<TvResultsModel> tv) {
+    items = List.from(tv.map((e) => GestureDetector(
           onTap: () {
             // ignore: avoid_print
             print('navigating to movie details page ...');
@@ -131,10 +149,7 @@ Widget tvBlockBuilder({
     // load more option
     items.add(GestureDetector(
       onTap: () {
-        _trendingResultsController.loadMoreTrendingTvResults(
-            timeWindow: _utilityController.isTvToday == true
-                ? DAY_STRING
-                : WEEK_STRING);
+        _resultsController.loadMoreTvResults(resultType: resultType);
         // ignore: avoid_print
         // print('add more pages');
       },
@@ -154,7 +169,7 @@ Widget tvBlockBuilder({
                 ),
               ),
               Center(
-                child: _trendingResultsController.tvViewState == ViewState.busy
+                child: state.value == ViewState.busy
                     ? LoadingSpinner.fadingCircleSpinner
                     : const Icon(
                         Icons.add,
@@ -195,11 +210,11 @@ Widget tvBlockBuilder({
                       color: primaryblue,
                     ),
                   ),
-                  const SizedBox(width: 6),
-                  tvSwitchBtnBuilder(
-                    text1: "Today",
-                    text2: "This Week",
-                  ),
+                  // const SizedBox(width: 6),
+                  // movieSwitchBtnBuilder(
+                  //   text1: "Today",
+                  //   text2: "This Week",
+                  // ),
                 ],
               ),
               moreBtn(onTap: onMoreTap ?? () {}),
@@ -215,8 +230,7 @@ Widget tvBlockBuilder({
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(
-              () => Row(
-                  children: tvsList(_trendingResultsController.trendingTVs)),
+              () => Row(children: tvList(getItem(resultType) ?? [])),
             ),
           ),
         ),

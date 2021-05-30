@@ -31,9 +31,10 @@ class DashboardPage extends StatelessWidget {
       init: _resultsController,
       dispose: (state) {},
       initState: (_) {
+        // initializing api config service
         _configurationController.getConfigurations();
 
-        // trending movies
+        // initializing trending MOVIES services
         if (_utilityController.isMovieToday == true) {
           _trendingResultsController.getTrendingMovieResults(
               timeWindow: DAY_STRING);
@@ -42,7 +43,7 @@ class DashboardPage extends StatelessWidget {
               timeWindow: WEEK_STRING);
         }
 
-        // trending tv
+        // initializing trending TV services
         if (_utilityController.isTvToday == true) {
           _trendingResultsController.getTrendingTvResults(
               timeWindow: DAY_STRING);
@@ -51,8 +52,17 @@ class DashboardPage extends StatelessWidget {
               timeWindow: WEEK_STRING);
         }
 
-        // _resultsController.getTvResults(resultType: POPULAR_STRING);
-        // _resultsController.getMovieResults(resultType: NOW_PLAYING_STRING);
+        // initializing popular/top rated/upcomming/now playing MOVIES services
+        _resultsController.getMovieResults(resultType: POPULAR_STRING);
+        _resultsController.getMovieResults(resultType: TOP_RATED_STRING);
+        _resultsController.getMovieResults(resultType: UPCOMING_STRING);
+        _resultsController.getMovieResults(resultType: NOW_PLAYING_STRING);
+
+        // initializing popular/top rated/airing today/on the air TV services
+        _resultsController.getTvResults(resultType: POPULAR_STRING);
+        _resultsController.getTvResults(resultType: TOP_RATED_STRING); //bug*
+        _resultsController.getTvResults(resultType: AIRING_TODAY_STRING);
+        _resultsController.getTvResults(resultType: ON_THE_AIR_STRING);
       },
       builder: (_) {
         return Scaffold(

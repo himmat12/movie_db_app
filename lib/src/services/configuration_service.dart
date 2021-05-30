@@ -17,7 +17,8 @@ class ConfigurationService extends BaseService with QueryParameterMixin {
         return null;
       }
     } catch (e) {
-      rethrow;
+      // ignore: avoid_print
+      print(e);
     }
   }
 }

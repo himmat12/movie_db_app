@@ -12,7 +12,7 @@ import 'package:movie_app/src/global_components/more_btn.dart';
 import 'package:movie_app/src/global_components/switch_btn.dart';
 import 'package:movie_app/src/models/movie_result_model.dart';
 
-Widget moviesBlockBuilder({
+Widget trendingMoviesBuilder({
   String? title,
   String? subtitle,
   required String posterUrl,
@@ -196,10 +196,7 @@ Widget moviesBlockBuilder({
                     ),
                   ),
                   const SizedBox(width: 6),
-                  movieSwitchBtnBuilder(
-                    text1: "Today",
-                    text2: "This Week",
-                  ),
+                  trendingMovieSwitchBtnBuilder(),
                 ],
               ),
               moreBtn(onTap: onMoreTap ?? () {}),

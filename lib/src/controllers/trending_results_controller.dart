@@ -10,7 +10,7 @@ import 'package:movie_app/src/services/trending_results_service.dart';
 class TrendingResultsController extends BaseController {
   final _service = sl<TrendingResultsService>();
 
-  var trendingTVs = <TvResultModel>[].obs;
+  var trendingTVs = <TvResultsModel>[].obs;
   var trendingMovies = <MovieResultModel>[].obs;
 
   var _tvViewState = ViewState.idle.obs;
@@ -88,7 +88,7 @@ class TrendingResultsController extends BaseController {
     )
         .then((value) {
       if (value != null) {
-        trendingTVs = RxList.from(value.map((e) => TvResultModel.fromJson(e)));
+        trendingTVs = RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
         // for (var i in trendingMovies) {
         // // ignore: avoid_print
         //   print(i.title);
@@ -111,7 +111,7 @@ class TrendingResultsController extends BaseController {
         .then((value) {
       if (value != null) {
         trendingTVs
-            .addAll(RxList.from(value.map((e) => TvResultModel.fromJson(e))));
+            .addAll(RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
         // update(['trendingMovies']);
         // for (var i in trendingMovies) {
         // ignore: avoid_print

@@ -1,5 +1,5 @@
-class TvResultModel {
-  TvResultModel({
+class TvResultsModel {
+  TvResultsModel({
     this.backdropPath,
     this.firstAirDate,
     this.genreIds,
@@ -29,7 +29,7 @@ class TvResultModel {
   double? voteAverage;
   int? voteCount;
 
-  factory TvResultModel.fromJson(Map<String, dynamic> json) => TvResultModel(
+  factory TvResultsModel.fromJson(Map<String, dynamic> json) => TvResultsModel(
         backdropPath: json['backdrop_path'] as String?,
         firstAirDate: json['first_air_date'] == null
             ? null

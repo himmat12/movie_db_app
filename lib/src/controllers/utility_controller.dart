@@ -18,15 +18,31 @@ class UtilityController extends BaseController {
   var _isMovieToday = Prefs.movieIsTodayState.obs;
   var _isTvToday = Prefs.tvIsTodayState.obs;
 
+  var _isMovieNowPlaying = Prefs.isMovieNowPlayingState.obs;
+  var _isTvAiringToday = Prefs.isTvAiringTodayState.obs;
+
+  bool get isMovieNowPlaying => _isMovieNowPlaying.value;
+  bool get isTvAiringToday => _isTvAiringToday.value;
+
   bool get isMovieToday => _isMovieToday.value;
   bool get isTvToday => _isTvToday.value;
 
-  void toggleMovieSwitch() {
+  void toggleIsMovieNowPlayingSwitch() {
+    _isMovieNowPlaying.value = !_isMovieNowPlaying.value;
+    Prefs.setMovieNowPlayingState(_isMovieNowPlaying.value);
+  }
+
+  void toggleIsTvAiringTodaySwitch() {
+    _isTvAiringToday.value = !_isTvAiringToday.value;
+    Prefs.setTvAiringTodayState(_isTvAiringToday.value);
+  }
+
+  void toggleTrendingMovieSwitch() {
     _isMovieToday.value = !_isMovieToday.value;
     Prefs.setMoveiIstodayState(_isMovieToday.value);
   }
 
-  void toggleTvSwitch() {
+  void toggleTrendingTvSwitch() {
     _isTvToday.value = !_isTvToday.value;
     Prefs.setTvIstodayState(_isTvToday.value);
   }

@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'test_model.g.dart';
+// part 'test_model.g.dart';
 
 @JsonSerializable()
-class TvResultModel {
-  TvResultModel({
+class ResultsModel {
+  ResultsModel({
     this.backdropPath,
     this.firstAirDate,
     this.genreIds,
