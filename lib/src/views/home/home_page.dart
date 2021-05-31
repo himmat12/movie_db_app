@@ -45,12 +45,33 @@ class HomePage extends StatelessWidget {
         ),
         const SizedBox(height: 22),
 
+        // upcoming movies *
+        movieResultBuilder(
+          onMoreTap: () {},
+          resultType: UPCOMING_STRING,
+          state: _resultsController.upcommingMoviesState,
+          posterUrl: _configurationController.posterUrl,
+          title: "Upcoming",
+          subtitle: "Movies",
+        ),
+        const SizedBox(height: 22),
+
+        // on the air tv shows
+        tvResultBuilder(
+          onMoreTap: () {},
+          resultType: ON_THE_AIR_STRING,
+          state: _resultsController.onTheAirTvState,
+          posterUrl: _configurationController.posterUrl,
+          title: "On The Air",
+          subtitle: "TV Series",
+        ),
+        const SizedBox(height: 22),
+
         // popular movies *
         movieResultBuilder(
           onMoreTap: () {},
           resultType: POPULAR_STRING,
           state: _resultsController.popularMoviesState,
-          moviesResult: _resultsController.popularMovies,
           posterUrl: _configurationController.posterUrl,
           title: "Popular",
           subtitle: "Movies",
@@ -62,7 +83,6 @@ class HomePage extends StatelessWidget {
           onMoreTap: () {},
           resultType: POPULAR_STRING,
           state: _resultsController.popularTvState,
-          tvResults: _resultsController.popularTvList,
           posterUrl: _configurationController.posterUrl,
           title: "Popular",
           subtitle: "TV Series",
@@ -74,7 +94,6 @@ class HomePage extends StatelessWidget {
           onMoreTap: () {},
           resultType: TOP_RATED_STRING,
           state: _resultsController.topRatedMoviesState,
-          moviesResult: _resultsController.topRatedMovies,
           posterUrl: _configurationController.posterUrl,
           title: "Top Rated",
           subtitle: "Movies",
@@ -86,7 +105,6 @@ class HomePage extends StatelessWidget {
           onMoreTap: () {},
           resultType: TOP_RATED_STRING,
           state: _resultsController.topRatedTvState,
-          tvResults: _resultsController.topRatedTvList,
           posterUrl: _configurationController.posterUrl,
           title: "Top Rated",
           subtitle: "TV Series",
@@ -98,48 +116,24 @@ class HomePage extends StatelessWidget {
           onMoreTap: () {},
           resultType: NOW_PLAYING_STRING,
           state: _resultsController.nowPlayingMoviesState,
-          moviesResult: _resultsController.nowPlayingMovies,
           posterUrl: _configurationController.posterUrl,
-          title: "Movies",
-          subtitle: "",
-          trailingBtn: upcommingMovieSwitchBtnBuilder(),
+          title: "Now Playing",
+          subtitle: "Movies",
         ),
         const SizedBox(height: 22),
 
-        //
-        TextButton(
-          onPressed: () {
-            Map<String, dynamic> json = {"a": null, "b": 1, "c": true};
-
-            Model obj = Model.fromJson(json);
-
-            // ignore: avoid_print
-            print(obj.a);
-
-            // _trendingResultsController.getTrendingMovieResults(
-            //     timeWindow: WEEK_STRING);
-            // _resultsController.getMovieResults(
-            //     resultType: NOW_PLAYING_STRING);
-            // _resultsController.getTvResults(
-            //     resultType: ON_THE_AIR_STRING);
-          },
-          child: const Text('get service results'),
+        // airing today tv shows
+        tvResultBuilder(
+          onMoreTap: () {},
+          resultType: AIRING_TODAY_STRING,
+          state: _resultsController.airingTodayTvState,
+          posterUrl: _configurationController.posterUrl,
+          title: "Airing Today",
+          subtitle: "TV Series",
         ),
+        const SizedBox(height: 22),
+        const SizedBox(height: 22),
       ],
     );
   }
-}
-
-class Model {
-  String? a;
-  int? b;
-  bool? c;
-  Model({
-    this.a,
-    this.b,
-    this.c,
-  });
-
-  factory Model.fromJson(Map<String, dynamic> json) =>
-      Model(a: json['a'] ?? "no data", b: json['b'], c: json['c']);
 }

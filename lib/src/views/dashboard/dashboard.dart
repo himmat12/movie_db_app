@@ -10,7 +10,10 @@ import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/api_configuration_model.dart';
 import 'package:movie_app/src/skeletons/bottom_nav_skeleton.dart';
 import 'package:movie_app/src/skeletons/page_skeleton.dart';
+import 'package:movie_app/src/views/discover/discover_page.dart';
 import 'package:movie_app/src/views/home/home_page.dart';
+import 'package:movie_app/src/views/mylist/mylist_page.dart';
+import 'package:movie_app/src/views/profile/profile_page.dart';
 
 class DashboardPage extends StatelessWidget {
   final _configurationController = Get.find<ConfigurationController>();
@@ -20,9 +23,9 @@ class DashboardPage extends StatelessWidget {
 
   List<Widget> pages = [
     HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
+    DiscoverPage(),
+    MyListPage(),
+    ProfilePage(),
   ];
 
   @override

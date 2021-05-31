@@ -160,77 +160,78 @@ Widget trendingTvSwitchBtnBuilder({
 
 // upcomming/now playing movie switch
 
-Widget upcommingMovieSwitchBtnBuilder({
-  Color? color,
-  Color? selectedColor,
-  Color? textColor,
-  BorderRadiusGeometry? borderRadius,
-  EdgeInsetsGeometry? padding,
-  BoxBorder? border,
-}) {
-  final _controller = Get.find<UtilityController>();
-  final _resultsController = Get.find<ResultsController>();
+// Widget upcommingMovieSwitchBtnBuilder({
+//   Color? color,
+//   Color? selectedColor,
+//   Color? textColor,
+//   BorderRadiusGeometry? borderRadius,
+//   EdgeInsetsGeometry? padding,
+//   BoxBorder? border,
+// }) {
+//   final _controller = Get.find<UtilityController>();
+//   final _resultsController = Get.find<ResultsController>();
 
-  return Obx(
-    () => Container(
-      decoration: BoxDecoration(
-        borderRadius: borderRadius ?? BorderRadius.circular(8),
-        color: color ?? secondaryDarkBlue,
-        border: border ??
-            const Border(
-              bottom: BorderSide.none,
-              top: BorderSide.none,
-              left: BorderSide.none,
-              right: BorderSide.none,
-            ),
-      ),
-      child: Row(
-        children: [
-          _resultsController.nowPlayingMoviesState.value == ViewState.busy
-              ? Padding(
-                  padding: padding ??
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  child: LoadingSpinner.horizontalLoading,
-                )
-              : GestureDetector(
-                  onTap: () {
-                    _controller.toggleIsMovieNowPlayingSwitch();
-                    _resultsController.nowPlayingMoviesPage = 1;
+//   return Obx(
+//     () => Container(
+//       decoration: BoxDecoration(
+//         borderRadius: borderRadius ?? BorderRadius.circular(8),
+//         color: color ?? secondaryDarkBlue,
+//         border: border ??
+//             const Border(
+//               bottom: BorderSide.none,
+//               top: BorderSide.none,
+//               left: BorderSide.none,
+//               right: BorderSide.none,
+//             ),
+//       ),
+//       child: Row(
+//         children: [
+//           _resultsController.nowPlayingMoviesState.value == ViewState.busy
+//               ? Padding(
+//                   padding: padding ??
+//                       const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+//                   child: LoadingSpinner.horizontalLoading,
+//                 )
+//               : GestureDetector(
+//                   onTap: () {
+//                     _controller.toggleIsMovieNowPlayingSwitch();
 
-                    if (_controller.isMovieNowPlaying == true) {
-                      _resultsController.getMovieResults(
-                          resultType: NOW_PLAYING_STRING);
-                    } else if (_controller.isMovieNowPlaying != true) {
-                      _resultsController.getMovieResults(
-                          resultType: UPCOMING_STRING);
-                    }
-                  },
-                  child: Container(
-                    padding: padding ??
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: secondaryDarkBlue,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      _controller.isMovieNowPlaying == true
-                          ? 'Now Playing'
-                          : 'Upcoming',
-                      style: TextStyle(
-                        color: textColor ?? primaryWhite,
-                        fontSize: n - 6,
-                      ),
-                    ),
-                  ),
-                ),
-          const Icon(
-            Icons.import_export,
-            size: 16,
-            color: primaryWhite,
-          ),
-        ],
-      ),
-    ),
-  );
-}
+//                     if (_controller.isMovieNowPlaying == true) {
+//                       _resultsController.nowPlayingMoviesPage = 1;
+//                       _resultsController.getMovieResults(
+//                           resultType: NOW_PLAYING_STRING);
+//                     } else if (_controller.isMovieNowPlaying != true) {
+//                       _resultsController.upcommingMoviesPage = 1;
+//                       _resultsController.getMovieResults(
+//                           resultType: UPCOMING_STRING);
+//                     }
+//                   },
+//                   child: Container(
+//                     padding: padding ??
+//                         const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+//                     alignment: Alignment.center,
+//                     decoration: BoxDecoration(
+//                       color: secondaryDarkBlue,
+//                       borderRadius: BorderRadius.circular(8),
+//                     ),
+//                     child: Text(
+//                       _controller.isMovieNowPlaying == true
+//                           ? 'Now Playing'
+//                           : 'Upcoming',
+//                       style: TextStyle(
+//                         color: textColor ?? primaryWhite,
+//                         fontSize: n - 6,
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//           const Icon(
+//             Icons.import_export,
+//             size: 16,
+//             color: primaryWhite,
+//           ),
+//         ],
+//       ),
+//     ),
+//   );
+// }

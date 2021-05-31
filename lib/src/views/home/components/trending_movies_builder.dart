@@ -18,6 +18,9 @@ Widget trendingMoviesBuilder({
   required String posterUrl,
   void Function()? onMoreTap,
 }) {
+  // ignore: avoid_print
+  print("trending movie builder builded");
+
   final _resultsController = Get.find<ResultsController>();
   final _utilityController = Get.find<UtilityController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
@@ -33,7 +36,7 @@ Widget trendingMoviesBuilder({
           },
           child: SizedBox(
             width: 100,
-            height: 184,
+            height: 186,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -212,9 +215,12 @@ Widget trendingMoviesBuilder({
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(
-              () => Row(
-                  children:
-                      moviesList(_trendingResultsController.trendingMovies)),
+              () => Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                child: Row(
+                    children:
+                        moviesList(_trendingResultsController.trendingMovies)),
+              ),
             ),
           ),
         ),

@@ -44,7 +44,7 @@ class MovieResultModel {
         overview: json['overview'] as String?,
         popularity: (json['popularity'] as num?)?.toDouble(),
         posterPath: json['poster_path'] as String?,
-        releaseDate: json['release_date'] == null
+        releaseDate: json['release_date'] == null || json['release_date'] == ""
             ? null
             : DateTime.parse(json['release_date'] as String),
         title: json['title'] as String?,

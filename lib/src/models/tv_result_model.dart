@@ -31,9 +31,10 @@ class TvResultsModel {
 
   factory TvResultsModel.fromJson(Map<String, dynamic> json) => TvResultsModel(
         backdropPath: json['backdrop_path'] as String?,
-        firstAirDate: json['first_air_date'] == null
-            ? null
-            : DateTime.parse(json['first_air_date'] as String),
+        firstAirDate:
+            json['first_air_date'] == "" || json['first_air_date'] == ""
+                ? null
+                : DateTime.parse(json['first_air_date'] as String),
         genreIds: (json['genre_ids'] as List<dynamic>?)
             ?.map((e) => e as int)
             .toList(),

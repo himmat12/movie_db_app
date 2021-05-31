@@ -19,6 +19,9 @@ Widget trendingTvBuilder({
   required String posterUrl,
   void Function()? onMoreTap,
 }) {
+  // ignore: avoid_print
+  print("trending tv builder builded");
+
   final _resultsController = Get.find<ResultsController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
   final _utilityController = Get.find<UtilityController>();
@@ -34,7 +37,7 @@ Widget trendingTvBuilder({
           },
           child: SizedBox(
             width: 100,
-            height: 184,
+            height: 186,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -139,9 +142,10 @@ Widget trendingTvBuilder({
         // print('add more pages');
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
-            alignment: AlignmentDirectional.center,
+            // alignment: AlignmentDirectional.center,
             children: [
               Container(
                 width: 88,
@@ -212,8 +216,11 @@ Widget trendingTvBuilder({
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(
-              () => Row(
-                  children: tvsList(_trendingResultsController.trendingTVs)),
+              () => Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                child: Row(
+                    children: tvsList(_trendingResultsController.trendingTVs)),
+              ),
             ),
           ),
         ),

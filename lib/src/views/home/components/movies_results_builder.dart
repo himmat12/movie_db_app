@@ -5,11 +5,8 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/trending_results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global_components/loading_spinner.dart';
 import 'package:movie_app/src/global_components/more_btn.dart';
-import 'package:movie_app/src/global_components/switch_btn.dart';
 import 'package:movie_app/src/models/movie_result_model.dart';
 
 Widget movieResultBuilder({
@@ -19,14 +16,16 @@ Widget movieResultBuilder({
   required String resultType,
   required String posterUrl,
   required Rx<ViewState> state,
-  required RxList<MovieResultModel> moviesResult,
   void Function()? onMoreTap,
 }) {
+  // ignore: avoid_print
+  print("$resultType movie builder builded");
+
   final _resultsController = Get.find<ResultsController>();
-  final _utilityController = Get.find<UtilityController>();
 
   var items = <Widget>[];
 
+// returns respected movies list according to the given resultType parameter
   RxList<MovieResultModel>? getItem(String resultType) {
     switch (resultType) {
       case POPULAR_STRING:
@@ -51,7 +50,7 @@ Widget movieResultBuilder({
           },
           child: SizedBox(
             width: 100,
-            height: 184,
+            height: 186,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -226,7 +225,10 @@ Widget movieResultBuilder({
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(
-              () => Row(children: moviesList(getItem(resultType) ?? [])),
+              () => Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                child: Row(children: moviesList(getItem(resultType) ?? [])),
+              ),
             ),
           ),
         ),
