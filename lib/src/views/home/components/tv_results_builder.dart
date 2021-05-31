@@ -7,7 +7,7 @@ import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global_components/loading_spinner.dart';
 import 'package:movie_app/src/global_components/more_btn.dart';
-import 'package:movie_app/src/models/tv_result_model.dart';
+import 'package:movie_app/src/models/results/tv_result_model.dart';
 
 Widget tvResultBuilder({
   String? title,

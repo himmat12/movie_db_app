@@ -10,7 +10,7 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global_components/loading_spinner.dart';
 import 'package:movie_app/src/global_components/more_btn.dart';
 import 'package:movie_app/src/global_components/switch_btn.dart';
-import 'package:movie_app/src/models/movie_result_model.dart';
+import 'package:movie_app/src/models/results/movie_result_model.dart';
 
 Widget trendingMoviesBuilder({
   String? title,

@@ -7,7 +7,6 @@ import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/models/api_configuration_model.dart';
 import 'package:movie_app/src/skeletons/bottom_nav_skeleton.dart';
 import 'package:movie_app/src/skeletons/page_skeleton.dart';
 import 'package:movie_app/src/views/discover/discover_page.dart';
