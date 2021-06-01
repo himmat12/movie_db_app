@@ -129,7 +129,7 @@ class ExternalIds {
   String? freebaseMid;
   String? freebaseId;
   int? tvdbId;
-  dynamic? tvrageId; //bug*
+  int? tvrageId; //bug fixed*
   String? facebookId;
   String? instagramId;
   String? twitterId;
@@ -161,7 +161,7 @@ class EpisodeToAir {
   String? productionCode;
   int? seasonNumber;
   String? stillPath;
-  int? voteAverage;
+  double? voteAverage;
   int? voteCount;
 
   factory EpisodeToAir.fromJson(Map<String, dynamic> json) =>
@@ -358,7 +358,7 @@ EpisodeToAir episodeToAirFromJson(Map<String, dynamic> json) {
     productionCode: json['production_code'] as String?,
     seasonNumber: json['season_number'] as int?,
     stillPath: json['still_path'] as String?,
-    voteAverage: json['vote_average'] as int?,
+    voteAverage: (json['vote_average'] as num?)?.toDouble(),
     voteCount: json['vote_count'] as int?,
   );
 }
@@ -379,7 +379,7 @@ ExternalIds externalIdsFromJson(Map<String, dynamic> json) {
     freebaseMid: json['freebase_mid'] as String?,
     freebaseId: json['freebase_id'] as String?,
     tvdbId: json['tvdb_id'] as int?,
-    tvrageId: json['tvrage_id'] as String?,
+    tvrageId: json['tvrage_id'] as int?,
     facebookId: json['facebook_id'] as String?,
     instagramId: json['instagram_id'] as String?,
     twitterId: json['twitter_id'] as String?,

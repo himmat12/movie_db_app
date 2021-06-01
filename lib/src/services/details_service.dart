@@ -8,7 +8,7 @@ class DetailsService extends BaseService with QueryParameterMixin {
     try {
       final response = await request(
           method: Requests.get,
-          path: "/3/movie/$id",
+          path: "/3/$resultType/$id",
           queryParameter: setQueryParameters(query: {
             "append_to_response":
                 "images,videos,credits,account_states,similar,recommendations,reviews,external_ids"
