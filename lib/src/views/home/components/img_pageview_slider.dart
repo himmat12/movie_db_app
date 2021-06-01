@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global_components/more_btn.dart';
-import 'package:movie_app/src/global_components/switch_btn.dart';
+import 'package:movie_app/src/global/more_btn.dart';
+import 'package:movie_app/src/global/switch_btn.dart';
 
 Widget imgPageViewSliderBuilder({
   String? object,

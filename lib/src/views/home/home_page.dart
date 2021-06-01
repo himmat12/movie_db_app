@@ -43,21 +43,11 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 16),
 
         /// [trending movies]
-        trendingMoviesBuilder(
-          onMoreTap: () {},
-          posterUrl: _configurationController.posterUrl,
-          title: 'Trending',
-          subtitle: 'Movies',
-        ),
+        trendingMoviesBuilder(posterUrl: _configurationController.posterUrl),
         const SizedBox(height: 22),
 
         /// [trending tv shows]
-        trendingTvBuilder(
-          onMoreTap: () {},
-          posterUrl: _configurationController.posterUrl,
-          title: 'Trending',
-          subtitle: 'TV Series',
-        ),
+        trendingTvBuilder(posterUrl: _configurationController.posterUrl),
         const SizedBox(height: 22),
 
         // upcoming movies *
