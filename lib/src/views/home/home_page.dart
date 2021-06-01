@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
+import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
@@ -16,12 +17,29 @@ class HomePage extends StatelessWidget {
   final _utilityController = Get.find<UtilityController>();
   final _resultsController = Get.find<ResultsController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
+  final _detailsController = Get.find<DetailsController>();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         appBarBuilder(),
+        const SizedBox(height: 16),
+
+        TextButton(
+          onPressed: () {
+            _detailsController.getDetails(resultType: MOVIE_STRING, id: 337404);
+          },
+          child: const Text('getDetails movie'),
+        ),
+
+        TextButton(
+          onPressed: () {
+            _detailsController.getDetails(resultType: TV_STRING, id: 63174);
+          },
+          child: const Text('getDetails tv'),
+        ),
+
         const SizedBox(height: 16),
 
         /// [trending movies]

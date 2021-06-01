@@ -13,6 +13,9 @@ mixin QueryParameterMixin {
     if (Auth.isLoggedIn == true) {
       queryParma["session_id"] = Auth.sessionId;
     }
+    if (Auth.isGuestLoggedIn == true) {
+      queryParma["guest_session_id"] = Auth.guestSessionId;
+    }
     return queryParma;
   }
 }

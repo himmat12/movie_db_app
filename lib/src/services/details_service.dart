@@ -5,20 +5,25 @@ import 'package:movie_app/src/services/base_service.dart';
 class DetailsService extends BaseService with QueryParameterMixin {
   Future<dynamic> getDetails(
       {required String resultType, required int id}) async {
-    switch (resultType) {
-      case MOVIE_STRING:
-        await request(
-            method: Requests.get,
-            path: "/3/movie/$id",
-            queryParameter: setQueryParameters(query: {
-              "append_to_response":
-                  "images,videos,credits,account_states,similar,recommendations,reviews,external_ids"
-            }));
-        break;
-      case TV_STRING:
-        break;
-      default:
-        break;
+    try {
+      final response = await request(
+          method: Requests.get,
+          path: "/3/movie/$id",
+          queryParameter: setQueryParameters(query: {
+            "append_to_response":
+                "images,videos,credits,account_states,similar,recommendations,reviews,external_ids"
+          }));
+
+      // ignore: avoid_print
+      print('$resultType DETAILS STATUS => ${response.statusCode}');
+      if (response.statusCode == 200) {
+        return decodeResponse(response);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
     }
   }
 }

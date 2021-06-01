@@ -1,6 +1,6 @@
 import 'package:movie_app/src/models/results/movie_result_model.dart';
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Genre {
   Genre({
     this.id,
@@ -12,7 +12,7 @@ class Genre {
   factory Genre.fromJson(Map<String, dynamic> json) => genreFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Images {
   Images({
     this.backdrops,
@@ -24,7 +24,7 @@ class Images {
   factory Images.fromJson(Map<String, dynamic> json) => imagesFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class ImageModel {
   ImageModel({
     this.aspectRatio,
@@ -48,7 +48,7 @@ class ImageModel {
       imageModelFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class ProductionCompany {
   ProductionCompany({
     this.id,
@@ -66,7 +66,7 @@ class ProductionCompany {
       productionCompanyFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class ProductionCountry {
   ProductionCountry({
     this.iso31661,
@@ -80,7 +80,7 @@ class ProductionCountry {
       productionCountryFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class SpokenLanguage {
   SpokenLanguage({
     this.englishName,
@@ -96,7 +96,7 @@ class SpokenLanguage {
       spokenLanguageFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Videos {
   Videos({
     this.results,
@@ -107,7 +107,7 @@ class Videos {
   factory Videos.fromJson(Map<String, dynamic> json) => videosFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class VideoModel {
   VideoModel({
     this.id,
@@ -133,7 +133,7 @@ class VideoModel {
       videoModelFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Credits {
   Credits({
     this.cast,
@@ -146,7 +146,7 @@ class Credits {
   factory Credits.fromJson(Map<String, dynamic> json) => creditsFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Cast {
   Cast({
     this.adult,
@@ -179,7 +179,7 @@ class Cast {
   factory Cast.fromJson(Map<String, dynamic> json) => castFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Crew {
   Crew({
     this.adult,
@@ -210,7 +210,7 @@ class Crew {
   factory Crew.fromJson(Map<String, dynamic> json) => crewFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class AccountStates {
   AccountStates({
     this.favorite,
@@ -226,7 +226,7 @@ class AccountStates {
       accountStatesFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Rated {
   Rated({
     this.value,
@@ -236,7 +236,7 @@ class Rated {
   factory Rated.fromJson(Map<String, dynamic> json) => ratedFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class Reviews {
   Reviews({
     this.page,
@@ -253,7 +253,7 @@ class Reviews {
   factory Reviews.fromJson(Map<String, dynamic> json) => reviewsFromJson(json);
 }
 
-// @JsonSerializable()
+// @JsonSerializable()*
 class ReviewsResult {
   ReviewsResult({
     this.author,
@@ -289,7 +289,7 @@ class AuthorDetails {
   String? name;
   String? username;
   String? avatarPath;
-  int? rating;
+  double? rating;
 
   factory AuthorDetails.fromJson(Map<String, dynamic> json) =>
       authorDetailsFromJson(json);
@@ -480,6 +480,6 @@ AuthorDetails authorDetailsFromJson(Map<String, dynamic> json) {
     name: json['name'] as String?,
     username: json['username'] as String?,
     avatarPath: json['avatar_path'] as String?,
-    rating: json['rating'] as int?,
+    rating: (json['rating'] as num?)?.toDouble(),
   );
 }
