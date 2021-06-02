@@ -19,7 +19,7 @@ Widget trendingTvBuilder({
   required String posterUrl,
 }) {
   // ignore: avoid_print
-  print("trending tv builder builded");
+  // print("trending tv builder builded");
 
   final _resultsController = Get.find<ResultsController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
@@ -51,6 +51,7 @@ Widget trendingTvBuilder({
 
   return SizedBox(
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // title & more option
         headerTile(

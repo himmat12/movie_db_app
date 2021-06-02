@@ -23,7 +23,7 @@ Widget movieResultBuilder({
   void Function()? onMoreTap,
 }) {
   // ignore: avoid_print
-  print("$resultType movie builder builded");
+  // print("$resultType movie builder builded");
 
   final _resultsController = Get.find<ResultsController>();
 
@@ -66,6 +66,7 @@ Widget movieResultBuilder({
 
   return SizedBox(
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // title & more option
         headerTile(

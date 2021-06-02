@@ -52,6 +52,7 @@ Widget trendingMoviesBuilder({
 
   return SizedBox(
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // title & more option
         headerTile(
@@ -60,6 +61,7 @@ Widget trendingMoviesBuilder({
           },
           title: "Trending",
           subtitle: "Movies",
+          toggleOption: trendingMovieSwitchBtnBuilder(),
         ),
 
         const SizedBox(height: 12),

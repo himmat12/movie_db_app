@@ -41,7 +41,7 @@ class ConfigurationController extends BaseController {
         _posterUrl =
             '${configuration.value.images.secureBaseUrl}${configuration.value.images.posterSizes[3]}';
         _backDropUrl =
-            '${configuration.value.images.secureBaseUrl}${configuration.value.images.backdropSizes[3]}';
+            '${configuration.value.images.secureBaseUrl}${configuration.value.images.backdropSizes[1]}';
         _profileUrl =
             '${configuration.value.images.secureBaseUrl}${configuration.value.images.profileSizes[3]}';
         _logoUrl =

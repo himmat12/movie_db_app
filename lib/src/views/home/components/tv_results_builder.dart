@@ -22,7 +22,7 @@ Widget tvResultBuilder({
   void Function()? onMoreTap,
 }) {
   // ignore: avoid_print
-  print("$resultType tv builder builded");
+  // print("$resultType tv builder builded");
 
   final _resultsController = Get.find<ResultsController>();
 
@@ -66,6 +66,7 @@ Widget tvResultBuilder({
 
   return SizedBox(
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // title & more option
         headerTile(

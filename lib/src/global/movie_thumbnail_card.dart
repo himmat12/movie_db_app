@@ -9,7 +9,11 @@ Widget movieThumbnailCard(
     {required MovieResultModel movie, required String imageUrl}) {
   return GestureDetector(
     onTap: () {
-      Get.to(() => MoviesDetails());
+      Get.to(() => MoviesDetails(
+            movie: movie,
+            // id: '${movie.id}',
+            key: const Key('movie_detail'),
+          ));
     },
     child: SizedBox(
       width: 100,
