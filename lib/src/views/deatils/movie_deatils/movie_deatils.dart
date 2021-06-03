@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
@@ -17,6 +18,7 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
   final MovieResultModel movie;
 
   final _detailsController = Get.find<DetailsController>();
+  final _utilityController = Get.find<UtilityController>();
 
   MoviesDetails({Key? key, required this.movie}) : super(key: key);
 
@@ -32,6 +34,7 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
             initState: (_) {
               _detailsController.getDetails(
                   resultType: MOVIE_STRING, id: movie.id!);
+              _utilityController.resetImgSliderIndex();
             },
             builder: (_) {
               return Obx(

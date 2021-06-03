@@ -1,8 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carousel_slider/carousel_slider.dart';
-import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
@@ -52,11 +49,14 @@ Widget movieFlexibleSpacebarComponent({
             ),
             child: SizedBox(
               height: height ?? 190,
-              child: CarouselSlider.builder(
-                keepPage: true,
-                scrollPhysics: const AlwaysScrollableScrollPhysics(),
+              child: PageView.builder(
+                onPageChanged: (value) {
+                  _utilityController.setSliderIndex(value);
+                },
                 itemCount: images!.backdrops!.length,
-                slideBuilder: (index) {
+                controller: PageController(),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
                   return CachedNetworkImage(
                       fit: BoxFit.cover,
                       imageUrl:
@@ -67,18 +67,18 @@ Widget movieFlexibleSpacebarComponent({
           ),
         ),
       ),
-      // Obx(
-      //   () => AnimatedSmoothIndicator(
-      //     activeIndex: _utilityController.imgSliderIndex,
-      //     effect: const ScrollingDotsEffect(
-      //       activeDotColor: primaryDarkBlue,
-      //       dotColor: primaryblue,
-      //       dotHeight: 6,
-      //       dotWidth: 6,
-      //     ),
-      //     count: images.backdrops!.length,
-      //   ),
-      // ),
+      Obx(
+        () => AnimatedSmoothIndicator(
+          activeIndex: _utilityController.imgSliderIndex,
+          effect: const ScrollingDotsEffect(
+            activeDotColor: primaryDarkBlue,
+            dotColor: primaryblue,
+            dotHeight: 6,
+            dotWidth: 6,
+          ),
+          count: images.backdrops!.length,
+        ),
+      ),
       Container(),
     ],
   );

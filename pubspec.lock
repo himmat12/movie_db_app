@@ -230,13 +230,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-  flutter_carousel_slider:
-    dependency: "direct main"
-    description:
-      name: flutter_carousel_slider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.8"
   flutter_lints:
     dependency: "direct dev"
     description:

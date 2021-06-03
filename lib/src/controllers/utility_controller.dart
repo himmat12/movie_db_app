@@ -14,7 +14,7 @@ class UtilityController extends BaseController {
     _navCurrentIndex.value = newIndex;
   }
 
-  // switch btn state
+  // trednong movies/tv switch btn state
   var _isMovieToday = Prefs.movieIsTodayState.obs;
   var _isTvToday = Prefs.tvIsTodayState.obs;
 
@@ -58,6 +58,10 @@ class UtilityController extends BaseController {
 
   void setSliderIndex(int index) {
     _imgSliderIndex.value = index;
+  }
+
+  void resetImgSliderIndex() {
+    _imgSliderIndex.value = 0;
   }
 
   void forward(int currentIndex, int length) {
