@@ -8,7 +8,10 @@ import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
 Widget tvThumbnailCard({required TvResultsModel tv, required String imageUrl}) {
   return GestureDetector(
     onTap: () {
-      Get.to(() => TvDetails());
+      Get.to(() => TvDetails(
+            tv: tv,
+            key: UniqueKey(),
+          ));
     },
     child: SizedBox(
       width: 100,

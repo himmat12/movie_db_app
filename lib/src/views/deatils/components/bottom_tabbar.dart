@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 
-PreferredSizeWidget? bottomTabbarComponent() {
+PreferredSizeWidget? bottomTabbarComponent(
+    {required List<String> tabMenuItems}) {
   final _scrollController = ScrollController();
 
   return PreferredSize(
@@ -57,12 +58,3 @@ Widget tabbarItem({
     ),
   );
 }
-
-var tabMenuItems = <String>[
-  "About",
-  "Cast",
-  "Comments",
-  "Reviews",
-  "Recommended",
-  "Similar",
-];

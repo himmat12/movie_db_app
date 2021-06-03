@@ -3,7 +3,7 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-Widget movieFlexibleSpacebarOptions({required DetailsController controller}) {
+Widget tvFlexibleSpacebarOptions({required DetailsController controller}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 14),
     child: Row(
@@ -12,17 +12,17 @@ Widget movieFlexibleSpacebarOptions({required DetailsController controller}) {
         // user score circle percent indicator
         Row(
           children: [
-            controller.movieDetail.value.voteAverage == null
+            controller.tvDetail.value.voteAverage == null
                 ? const SizedBox.shrink()
                 : CircularPercentIndicator(
                     radius: 56,
-                    percent: (controller.movieDetail.value.voteAverage! / 10),
+                    percent: (controller.tvDetail.value.voteAverage! / 10),
                     curve: Curves.ease,
                     animation: true,
                     animationDuration: 800,
                     progressColor: primaryblue,
                     center: Text(
-                      '${(controller.movieDetail.value.voteAverage! * 10).toInt()}%',
+                      '${(controller.tvDetail.value.voteAverage! * 10).toInt()}%',
                       style: const TextStyle(
                         color: primaryDarkBlue,
                         fontWeight: FontWeight.w700,

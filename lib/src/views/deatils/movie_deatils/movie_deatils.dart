@@ -12,14 +12,14 @@ import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/components/bottom_tabbar.dart';
+import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about_tab.dart';
+import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie_about_tab.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'components/movie_flexible_spacebar.dart';
-import 'components/sliver_appbar_title.dart';
+import '../components/sliver_appbar_title.dart';
 
 class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
   final MovieResultModel movie;
@@ -88,11 +88,13 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
                               const SizedBox(height: 18),
 
                               // ratings / lists / bookmark options
-                              movieFlexibleSpacebarOptions(),
+                              movieFlexibleSpacebarOptions(
+                                  controller: _detailsController),
                             ],
                           ),
                         ),
-                        bottom: bottomTabbarComponent(),
+                        bottom:
+                            bottomTabbarComponent(tabMenuItems: tabMenuItems),
                       ),
 
                       // body
@@ -118,11 +120,20 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
   }
 }
 
+var tabMenuItems = <String>[
+  "About",
+  "Cast",
+  "Comments",
+  "Reviews",
+  "Recommended",
+  "Similar",
+];
+
 var tabs = <Widget>[
-  const AboutTab(index: 0),
-  const AboutTab(index: 1),
-  const AboutTab(index: 2),
-  const AboutTab(index: 3),
-  const AboutTab(index: 4),
-  const AboutTab(index: 5),
+  const MovieAboutTab(index: 0),
+  const MovieAboutTab(index: 1),
+  const MovieAboutTab(index: 2),
+  const MovieAboutTab(index: 3),
+  const MovieAboutTab(index: 4),
+  const MovieAboutTab(index: 5),
 ];
