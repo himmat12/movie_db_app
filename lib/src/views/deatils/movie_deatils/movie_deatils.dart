@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
+import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -10,6 +12,11 @@ import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/components/bottom_tabbar.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about_tab.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'components/movie_flexible_spacebar.dart';
 import 'components/sliver_appbar_title.dart';
@@ -35,6 +42,7 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
               _detailsController.getDetails(
                   resultType: MOVIE_STRING, id: movie.id!);
               _utilityController.resetImgSliderIndex();
+              _utilityController.resetTabbarState();
             },
             builder: (_) {
               return Obx(
@@ -50,18 +58,25 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
                     slivers: [
                       SliverAppBar(
                         pinned: true,
-                        elevation: 0,
-                        title: const SABT(
+                        elevation: 0.5,
+                        forceElevated: true,
+                        leading: const SABTN(),
+                        title: SABT(
                             child: Text(
-                          'Title',
-                          style: TextStyle(
+                          movie.title ?? 'Title',
+                          style: const TextStyle(
                             color: primaryDark,
                           ),
                         )),
-                        expandedHeight: 400,
+                        expandedHeight:
+                            _utilityController.titlevisiblity == false
+                                ? 446
+                                : 440,
                         flexibleSpace: FlexibleSpaceBar(
+                          collapseMode: CollapseMode.pin,
                           background: Column(
                             children: [
+                              // slider img/poster/title
                               Obx(
                                 () => movieFlexibleSpacebarComponent(
                                   movie: movie,
@@ -70,38 +85,27 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
                                   height: 200,
                                 ),
                               ),
+                              const SizedBox(height: 18),
+
+                              // ratings / lists / bookmark options
+                              movieFlexibleSpacebarOptions(),
                             ],
                           ),
                         ),
-                        bottom: PreferredSize(
-                          preferredSize: Size(MediaQuery.of(context).size.width,
-                              kToolbarHeight),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: SizedBox(
-                              height: kToolbarHeight,
-                              child: Row(
-                                children: List.generate(
-                                    6,
-                                    (index) => Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              12, 0, 12, 0),
-                                          child: Text('Tab Index $index'),
-                                        )),
-                              ),
-                            ),
+                        bottom: bottomTabbarComponent(),
+                      ),
+
+                      // body
+                      Obx(
+                        () => SliverList(
+                          delegate: SliverChildListDelegate.fixed(
+                            [
+                              tabs[_utilityController.tabbarCurrentIndex],
+                              const SizedBox(height: 400),
+                            ],
                           ),
                         ),
                       ),
-                      SliverFixedExtentList(
-                          itemExtent: 50.0,
-                          delegate: SliverChildBuilderDelegate(
-                              (BuildContext context, int index) {
-                            return Container(
-                              alignment: Alignment.center,
-                              child: Text('List item $index'),
-                            );
-                          }, childCount: 100)),
                     ],
                   ),
                 ),
@@ -113,3 +117,12 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
     );
   }
 }
+
+var tabs = <Widget>[
+  const AboutTab(index: 0),
+  const AboutTab(index: 1),
+  const AboutTab(index: 2),
+  const AboutTab(index: 3),
+  const AboutTab(index: 4),
+  const AboutTab(index: 5),
+];

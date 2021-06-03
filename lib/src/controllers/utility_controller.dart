@@ -14,7 +14,27 @@ class UtilityController extends BaseController {
     _navCurrentIndex.value = newIndex;
   }
 
-  // trednong movies/tv switch btn state
+// details tabbar navigation state
+  var _tabbarCurrentIndex = 0.obs;
+
+  int get tabbarCurrentIndex => _tabbarCurrentIndex.value;
+
+  void setTabbarIndex(int newIndex) {
+    _tabbarCurrentIndex.value = newIndex;
+  }
+
+  void resetTabbarState() => _tabbarCurrentIndex.value = 0;
+
+  // toggle movie/tv details title to show / hide title
+  var _titlevisiblity = false.obs;
+
+  bool get titlevisiblity => _titlevisiblity.value;
+
+  void toggleTitleVisibility() {
+    _titlevisiblity.value = !_titlevisiblity.value;
+  }
+
+  // trending movies/tv switch btn state
   var _isMovieToday = Prefs.movieIsTodayState.obs;
   var _isTvToday = Prefs.tvIsTodayState.obs;
 
