@@ -14,6 +14,17 @@ class UtilityController extends BaseController {
     _navCurrentIndex.value = newIndex;
   }
 
+// hide/show (tv/movie) details btn state
+  var _showText = false.obs;
+
+  bool get showText => _showText.value;
+
+  void toggleHideShowBtn() {
+    _showText.value = !_showText.value;
+  }
+
+  void resetHideShowState() => _showText.value = false;
+
 // details tabbar navigation state
   var _tabbarCurrentIndex = 0.obs;
 

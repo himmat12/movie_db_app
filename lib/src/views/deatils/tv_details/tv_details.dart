@@ -16,7 +16,7 @@ import 'components/tv_flexible_spacebar.dart';
 import '../components/sliver_appbar_title.dart';
 import 'components/tv_flexible_spacebar.dart';
 import 'components/tv_flexible_spacebar_options.dart';
-import 'tabs/tv_about_tab.dart';
+import 'tabs/about/tv_about_tab.dart';
 
 class TvDetails extends StatelessWidget {
   final TvResultsModel tv;
@@ -100,8 +100,8 @@ class TvDetails extends StatelessWidget {
                         () => SliverList(
                           delegate: SliverChildListDelegate.fixed(
                             [
-                              tabs[_utilityController.tabbarCurrentIndex],
-                              const SizedBox(height: 400),
+                              tvTabs[_utilityController.tabbarCurrentIndex],
+                              const SizedBox(height: 120),
                             ],
                           ),
                         ),
@@ -128,12 +128,12 @@ var tabMenuItems = <String>[
   "Similar",
 ];
 
-var tabs = <Widget>[
-  const TvAboutTab(index: 0),
-  const TvAboutTab(index: 1),
-  const TvAboutTab(index: 2),
-  const TvAboutTab(index: 3),
-  const TvAboutTab(index: 4),
-  const TvAboutTab(index: 5),
-  const TvAboutTab(index: 6),
+var tvTabs = <Widget>[
+  TvAboutTab(),
+  TvAboutTab(),
+  TvAboutTab(),
+  TvAboutTab(),
+  TvAboutTab(),
+  TvAboutTab(),
+  TvAboutTab(),
 ];

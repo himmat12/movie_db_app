@@ -15,7 +15,7 @@ import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie_about_tab.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/movie_about_tab.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'components/movie_flexible_spacebar.dart';
@@ -43,6 +43,7 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
                   resultType: MOVIE_STRING, id: movie.id!);
               _utilityController.resetImgSliderIndex();
               _utilityController.resetTabbarState();
+              _utilityController.resetHideShowState();
             },
             builder: (_) {
               return Obx(
@@ -64,8 +65,8 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
                         title: SABT(
                             child: Text(
                           movie.title ?? 'Title',
-                          style: const TextStyle(
-                            color: primaryDark,
+                          style: TextStyle(
+                            color: primaryDarkBlue.withOpacity(0.9),
                           ),
                         )),
                         expandedHeight:
@@ -102,8 +103,8 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
                         () => SliverList(
                           delegate: SliverChildListDelegate.fixed(
                             [
-                              tabs[_utilityController.tabbarCurrentIndex],
-                              const SizedBox(height: 400),
+                              movieTabs[_utilityController.tabbarCurrentIndex],
+                              const SizedBox(height: 120),
                             ],
                           ),
                         ),
@@ -129,11 +130,11 @@ var tabMenuItems = <String>[
   "Similar",
 ];
 
-var tabs = <Widget>[
-  const MovieAboutTab(index: 0),
-  const MovieAboutTab(index: 1),
-  const MovieAboutTab(index: 2),
-  const MovieAboutTab(index: 3),
-  const MovieAboutTab(index: 4),
-  const MovieAboutTab(index: 5),
+var movieTabs = <Widget>[
+  MovieAboutTab(),
+  MovieAboutTab(),
+  MovieAboutTab(),
+  MovieAboutTab(),
+  MovieAboutTab(),
+  MovieAboutTab(),
 ];
