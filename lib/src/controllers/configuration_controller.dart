@@ -50,8 +50,8 @@ class ConfigurationController extends BaseController {
             '${configuration.value.images.secureBaseUrl}${configuration.value.images.stillSizes[3]}';
         // ignore: avoid_print
         // print(configuration.value.changeKeys);
+        configState.value = ViewState.retrived;
       }
     });
-    configState.value = ViewState.retrived;
   }
 }

@@ -28,16 +28,16 @@ Widget movieInfoBuilder({required MovieDetailsModel movieDetails}) {
                   ? const SizedBox.shrink()
                   : Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 0),
+                          horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryblue.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(6),
+                        color: primaryDarkBlue.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        e.name ?? "-",
-                        style: TextStyle(
-                          fontSize: n - 2,
-                          color: primaryDarkBlue.withOpacity(0.7),
+                        e.name ?? "",
+                        style: const TextStyle(
+                          fontSize: n - 4,
+                          color: primaryWhite,
                         ),
                       ),
                     ),
@@ -57,16 +57,16 @@ Widget movieInfoBuilder({required MovieDetailsModel movieDetails}) {
                   ? const SizedBox.shrink()
                   : Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 0),
+                          horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryblue.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(6),
+                        color: primaryDarkBlue.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        e.name ?? "-",
-                        style: TextStyle(
-                          fontSize: n - 2,
-                          color: primaryDarkBlue.withOpacity(0.7),
+                        e.name ?? "",
+                        style: const TextStyle(
+                          fontSize: n - 4,
+                          color: primaryWhite,
                         ),
                       ),
                     ),

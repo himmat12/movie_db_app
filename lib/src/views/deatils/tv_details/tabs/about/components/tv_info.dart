@@ -7,10 +7,13 @@ import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/views/deatils/components/header_text.dart';
 
 Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
-  final String? lastAirDate =
-      DateFormat.yMMMMd().format(tvDetails.lastAirDate!);
-  final String? firstAirDate =
-      DateFormat.yMMMMd().format(tvDetails.firstAirDate!);
+  final String? lastAirDate = tvDetails.lastAirDate == null
+      ? "-"
+      : DateFormat.yMMMMd().format(tvDetails.lastAirDate!);
+
+  final String? firstAirDate = tvDetails.firstAirDate == null
+      ? "-"
+      : DateFormat.yMMMMd().format(tvDetails.firstAirDate!);
 
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +27,9 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
       rowBuilder(
           title: "Aired Episodes", text: '${tvDetails.numberOfEpisodes}'),
       rowBuilder(
-          title: "Runtime", text: '${tvDetails.episodeRunTime![0]} mins'),
+          title: "Runtime",
+          text:
+              '${tvDetails.episodeRunTime!.isEmpty ? "-" : tvDetails.episodeRunTime![0]} mins'),
       rowBuilder(title: "Show Type", text: tvDetails.type),
       rowBuilder(title: "Original Language", text: tvDetails.originalLanguage),
       rowBuilder(
@@ -39,16 +44,16 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
                   ? const SizedBox.shrink()
                   : Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 0),
+                          horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryblue.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(6),
+                        color: primaryDarkBlue.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        e.name ?? "-",
-                        style: TextStyle(
-                          fontSize: n - 2,
-                          color: primaryDarkBlue.withOpacity(0.7),
+                        e.name ?? "",
+                        style: const TextStyle(
+                          fontSize: n - 4,
+                          color: primaryWhite,
                         ),
                       ),
                     ),
@@ -68,16 +73,16 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
                   ? const SizedBox.shrink()
                   : Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 0),
+                          horizontal: 10, vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryblue.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(6),
+                        color: primaryDarkBlue.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        e.name ?? "-",
-                        style: TextStyle(
-                          fontSize: n - 2,
-                          color: primaryDarkBlue.withOpacity(0.7),
+                        e.name ?? "",
+                        style: const TextStyle(
+                          fontSize: n - 4,
+                          color: primaryWhite,
                         ),
                       ),
                     ),

@@ -24,9 +24,9 @@ class DetailsController extends BaseController {
             movieDetail.value = MovieDetailsModel.fromJson(value);
             // ignore: avoid_print
             print('${movieDetail.value.title} MOVIE DETAILS');
+            movieDetailState.value = ViewState.retrived;
           }
         });
-        movieDetailState.value = ViewState.retrived;
         break;
 
       case TV_STRING:
@@ -36,9 +36,9 @@ class DetailsController extends BaseController {
             tvDetail.value = TvDetailsModel.fromJson(value);
             // ignore: avoid_print
             print('${tvDetail.value.name} TV DETAILS');
+            tvDetailState.value = ViewState.retrived;
           }
         });
-        tvDetailState.value = ViewState.retrived;
         break;
       default:
         break;

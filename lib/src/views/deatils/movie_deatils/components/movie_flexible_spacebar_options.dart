@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-Widget movieFlexibleSpacebarOptions({required DetailsController controller}) {
+Widget movieFlexibleSpacebarOptions() {
+  final _detailsController = Get.find<DetailsController>();
+
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 14),
     child: Row(
@@ -12,17 +15,19 @@ Widget movieFlexibleSpacebarOptions({required DetailsController controller}) {
         // user score circle percent indicator
         Row(
           children: [
-            controller.movieDetail.value.voteAverage == null
+            _detailsController.movieDetail.value.voteAverage == null
                 ? const SizedBox.shrink()
                 : CircularPercentIndicator(
                     radius: 56,
-                    percent: (controller.movieDetail.value.voteAverage! / 10),
+                    percent:
+                        (_detailsController.movieDetail.value.voteAverage! /
+                            10),
                     curve: Curves.ease,
                     animation: true,
                     animationDuration: 800,
                     progressColor: primaryblue,
                     center: Text(
-                      '${(controller.movieDetail.value.voteAverage! * 10).toInt()}%',
+                      '${(_detailsController.movieDetail.value.voteAverage! * 10).toInt()}%',
                       style: const TextStyle(
                         color: primaryDarkBlue,
                         fontWeight: FontWeight.w700,
@@ -49,17 +54,27 @@ Widget movieFlexibleSpacebarOptions({required DetailsController controller}) {
         ),
         optionBtn(
           onTap: () {},
-          color: const Color(0xfffc19e2).withOpacity(0.9),
+          // color: _detailsController.movieDetail.value.accountStates!.favorite ==
+          //         false
+          //     ? primaryWhite
+          //     : const Color(0xfffc19e2).withOpacity(0.9),
           icon: Icons.favorite,
         ),
         optionBtn(
           onTap: () {},
-          color: primaryblue,
+          // color:
+          //     _detailsController.movieDetail.value.accountStates!.watchlist ==
+          //             false
+          //         ? primaryWhite
+          //         : primaryblue,
           icon: Icons.bookmark,
         ),
         optionBtn(
           onTap: () {},
-          color: Colors.amber.shade600,
+          // color:
+          //     _detailsController.movieDetail.value.accountStates!.rated == false
+          //         ? primaryWhite
+          //         : Colors.amber.shade600,
           icon: Icons.star,
         ),
       ],

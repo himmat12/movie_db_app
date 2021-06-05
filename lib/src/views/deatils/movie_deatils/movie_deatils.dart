@@ -89,8 +89,7 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
                               const SizedBox(height: 18),
 
                               // ratings / lists / bookmark options
-                              movieFlexibleSpacebarOptions(
-                                  controller: _detailsController),
+                              movieFlexibleSpacebarOptions(),
                             ],
                           ),
                         ),

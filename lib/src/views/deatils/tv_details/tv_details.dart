@@ -41,6 +41,7 @@ class TvDetails extends StatelessWidget {
               _detailsController.getDetails(resultType: TV_STRING, id: tv.id!);
               _utilityController.resetImgSliderIndex();
               _utilityController.resetTabbarState();
+              _utilityController.resetHideShowState();
             },
             builder: (_) {
               return Obx(

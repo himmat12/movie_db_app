@@ -73,7 +73,9 @@ Widget movieFlexibleSpacebarComponent({
                         onPageChanged: (value) {
                           _utilityController.setSliderIndex(value);
                         },
-                        itemCount: images!.backdrops!.length,
+                        itemCount: images!.backdrops!.isEmpty
+                            ? 0
+                            : images.backdrops!.length,
                         controller: PageController(),
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
@@ -87,21 +89,23 @@ Widget movieFlexibleSpacebarComponent({
                   ),
                 ),
               ),
-              Obx(
-                () => Positioned(
-                  bottom: 16,
-                  child: AnimatedSmoothIndicator(
-                    activeIndex: _utilityController.imgSliderIndex,
-                    effect: const ScrollingDotsEffect(
-                      activeDotColor: primaryDarkBlue,
-                      dotColor: primaryblue,
-                      dotHeight: 6,
-                      dotWidth: 6,
+              images.backdrops!.isEmpty
+                  ? const SizedBox.shrink()
+                  : Obx(
+                      () => Positioned(
+                        bottom: 16,
+                        child: AnimatedSmoothIndicator(
+                          activeIndex: _utilityController.imgSliderIndex,
+                          effect: const ScrollingDotsEffect(
+                            activeDotColor: primaryDarkBlue,
+                            dotColor: primaryblue,
+                            dotHeight: 6,
+                            dotWidth: 6,
+                          ),
+                          count: images.backdrops!.length,
+                        ),
+                      ),
                     ),
-                    count: images.backdrops!.length,
-                  ),
-                ),
-              ),
             ],
           ),
         ),

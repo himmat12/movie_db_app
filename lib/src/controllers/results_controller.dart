@@ -67,9 +67,9 @@ class ResultsController extends BaseController {
             popularMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
             popularMovies.refresh();
+            popularMoviesState.value = ViewState.retrived;
           }
         });
-        popularMoviesState.value = ViewState.retrived;
         break;
       case TOP_RATED_STRING:
         topRatedMoviesState.value = ViewState.busy;
@@ -80,9 +80,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             topRatedMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
+            topRatedMoviesState.value = ViewState.retrived;
           }
         });
-        topRatedMoviesState.value = ViewState.retrived;
         break;
       case UPCOMING_STRING:
         upcommingMoviesState.value = ViewState.busy;
@@ -93,9 +93,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             upcommingMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
+            upcommingMoviesState.value = ViewState.retrived;
           }
         });
-        upcommingMoviesState.value = ViewState.retrived;
         break;
       case NOW_PLAYING_STRING:
         nowPlayingMoviesState.value = ViewState.busy;
@@ -106,9 +106,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             nowPlayingMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
+            nowPlayingMoviesState.value = ViewState.retrived;
           }
         });
-        nowPlayingMoviesState.value = ViewState.retrived;
         break;
 
       default:
@@ -127,9 +127,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             popularMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
+            popularMoviesState.value = ViewState.retrived;
           }
         });
-        popularMoviesState.value = ViewState.retrived;
         break;
       case TOP_RATED_STRING:
         topRatedMoviesPage = topRatedMoviesPage + 1;
@@ -141,9 +141,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             topRatedMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
+            topRatedMoviesState.value = ViewState.retrived;
           }
         });
-        topRatedMoviesState.value = ViewState.retrived;
         break;
       case UPCOMING_STRING:
         upcommingMoviesPage = upcommingMoviesPage + 1;
@@ -155,9 +155,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             upcommingMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
+            upcommingMoviesState.value = ViewState.retrived;
           }
         });
-        upcommingMoviesState.value = ViewState.retrived;
         break;
       case NOW_PLAYING_STRING:
         nowPlayingMoviesPage = nowPlayingMoviesPage + 1;
@@ -169,9 +169,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             nowPlayingMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
+            nowPlayingMoviesState.value = ViewState.retrived;
           }
         });
-        nowPlayingMoviesState.value = ViewState.retrived;
         break;
 
       default:
@@ -191,9 +191,9 @@ class ResultsController extends BaseController {
             popularTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
             popularTvList.refresh();
+            popularTvState.value = ViewState.retrived;
           }
         });
-        popularTvState.value = ViewState.retrived;
         break;
       case TOP_RATED_STRING:
         topRatedTvState.value = ViewState.busy;
@@ -203,9 +203,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             topRatedTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
+            topRatedTvState.value = ViewState.retrived;
           }
         });
-        topRatedTvState.value = ViewState.retrived;
         break;
       case ON_THE_AIR_STRING:
         onTheAirTvState.value = ViewState.busy;
@@ -215,9 +215,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             onTheAirTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
+            onTheAirTvState.value = ViewState.retrived;
           }
         });
-        onTheAirTvState.value = ViewState.retrived;
         break;
       case AIRING_TODAY_STRING:
         airingTodayTvState.value = ViewState.busy;
@@ -227,9 +227,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             airingTodayTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
+            airingTodayTvState.value = ViewState.retrived;
           }
         });
-        airingTodayTvState.value = ViewState.retrived;
         break;
 
       default:
@@ -248,9 +248,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             popularTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
+            popularTvState.value = ViewState.retrived;
           }
         });
-        popularTvState.value = ViewState.retrived;
         break;
       case TOP_RATED_STRING:
         topRatedTvPage = topRatedTvPage + 1;
@@ -261,9 +261,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             topRatedTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
+            topRatedTvState.value = ViewState.retrived;
           }
         });
-        topRatedTvState.value = ViewState.retrived;
         break;
       case ON_THE_AIR_STRING:
         onTheAirTvPage = onTheAirTvPage + 1;
@@ -274,9 +274,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             onTheAirTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
+            onTheAirTvState.value = ViewState.retrived;
           }
         });
-        onTheAirTvState.value = ViewState.retrived;
         break;
       case AIRING_TODAY_STRING:
         airingTodayTvPage = airingTodayTvPage + 1;
@@ -287,9 +287,9 @@ class ResultsController extends BaseController {
           if (value != null) {
             airingTodayTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
+            airingTodayTvState.value = ViewState.retrived;
           }
         });
-        airingTodayTvState.value = ViewState.retrived;
         break;
 
       default:

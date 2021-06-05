@@ -7,7 +7,7 @@ import 'package:movie_app/src/views/deatils/components/crew_component.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 
-import 'package:movie_app/src/views/deatils/movie_deatils/components/storyline_text.dart';
+import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
 
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/networks.dart';
 

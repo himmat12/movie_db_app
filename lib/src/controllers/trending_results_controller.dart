@@ -47,9 +47,9 @@ class TrendingResultsController extends BaseController {
         // // ignore: avoid_print
         //   print(i.title);
         // }
+        _movieViewState.value = ViewState.retrived;
       }
     });
-    _movieViewState.value = ViewState.retrived;
   }
 
   loadMoreTrendingMoviesResults({required String timeWindow}) async {
@@ -71,9 +71,9 @@ class TrendingResultsController extends BaseController {
         // ignore: avoid_print
         // print(trendingMovies);
         // }
+        _movieViewState.value = ViewState.retrived;
       }
     });
-    _movieViewState.value = ViewState.retrived;
   }
 
 // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -93,9 +93,9 @@ class TrendingResultsController extends BaseController {
         // // ignore: avoid_print
         //   print(i.title);
         // }
+        _tvViewState.value = ViewState.retrived;
       }
     });
-    _tvViewState.value = ViewState.retrived;
   }
 
   loadMoreTrendingTvResults({required String timeWindow}) async {
@@ -117,8 +117,8 @@ class TrendingResultsController extends BaseController {
         // ignore: avoid_print
         // print(trendingMovies);
         // }
+        _tvViewState.value = ViewState.retrived;
       }
     });
-    _tvViewState.value = ViewState.retrived;
   }
 }

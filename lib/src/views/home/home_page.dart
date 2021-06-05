@@ -27,21 +27,21 @@ class HomePage extends StatelessWidget {
         appBarBuilder(),
         const SizedBox(height: 16),
 
-        TextButton(
-          onPressed: () {
-            _detailsController.getDetails(resultType: MOVIE_STRING, id: 337404);
-          },
-          child: const Text('getDetails movie'),
-        ),
+        // TextButton(
+        //   onPressed: () {
+        //     _detailsController.getDetails(resultType: MOVIE_STRING, id: 337404);
+        //   },
+        //   child: const Text('getDetails movie'),
+        // ),
 
-        TextButton(
-          onPressed: () {
-            _detailsController.getDetails(resultType: TV_STRING, id: 63174);
-          },
-          child: const Text('getDetails tv'),
-        ),
+        // TextButton(
+        //   onPressed: () {
+        //     _detailsController.getDetails(resultType: TV_STRING, id: 63174);
+        //   },
+        //   child: const Text('getDetails tv'),
+        // ),
 
-        const SizedBox(height: 16),
+        // const SizedBox(height: 16),
 
         /// [trending movies]
         trendingMoviesBuilder(posterUrl: _configurationController.posterUrl),
