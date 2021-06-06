@@ -191,7 +191,9 @@ MovieDetailsModel movieDetailsModelFromJson(Map<String, dynamic> json) {
             .map((e) => productionCountryFromJson(e as Map<String, dynamic>))),
     releaseDate: json['release_date'] == null
         ? null
-        : DateTime.parse(json['release_date'] as String),
+        : json['release_date'] == ""
+            ? null
+            : DateTime.parse(json['release_date'] as String),
     revenue: json['revenue'] as int?,
     runtime: json['runtime'] as int?,
     spokenLanguages: json['spoken_languages'] == null

@@ -3,6 +3,7 @@ import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/utils/preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UtilityController extends BaseController {
 // bottom navigation state
@@ -12,6 +13,15 @@ class UtilityController extends BaseController {
 
   setBottomNavIndex(int newIndex) {
     _navCurrentIndex.value = newIndex;
+  }
+
+  // launch url
+  void loadUrl({required String url}) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
 // hide/show (tv/movie) details btn state

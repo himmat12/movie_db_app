@@ -18,9 +18,9 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      headerBuilder(headerText: "Movie Info"),
+      headerBuilder(headerText: "TV Show Info"),
       const SizedBox(height: 12),
-      rowBuilder(title: "ENglish Title", text: tvDetails.name),
+      rowBuilder(title: "English Title", text: tvDetails.name),
       rowBuilder(title: "Original Title", text: tvDetails.originalName),
       rowBuilder(title: "First Air Date", text: firstAirDate),
       rowBuilder(title: "Last Air Date", text: lastAirDate),

@@ -16,6 +16,8 @@ import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/movie_about_tab.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/casts/casts_tab.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/reviews/reviews_tab.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'components/movie_flexible_spacebar.dart';
@@ -123,7 +125,6 @@ class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
 var tabMenuItems = <String>[
   "About",
   "Cast",
-  "Comments",
   "Reviews",
   "Recommended",
   "Similar",
@@ -131,9 +132,8 @@ var tabMenuItems = <String>[
 
 var movieTabs = <Widget>[
   MovieAboutTab(),
-  MovieAboutTab(),
-  MovieAboutTab(),
-  MovieAboutTab(),
+  MovieCastsTab(),
+  MovieReviewTab(),
   MovieAboutTab(),
   MovieAboutTab(),
 ];

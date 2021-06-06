@@ -48,7 +48,7 @@ Widget crewBuilder({required List<Crew> crews}) {
                       children: [
                         Text(
                           crews[index].name ?? "",
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: n - 2,

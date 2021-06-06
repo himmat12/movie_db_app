@@ -12,6 +12,7 @@ Widget networkBuilder({required List<Network> networks}) {
       headerBuilder(headerText: "Networks"),
       const SizedBox(height: 8),
       Wrap(
+        spacing: 4,
         runSpacing: 6,
         runAlignment: WrapAlignment.start,
         children: List.from(

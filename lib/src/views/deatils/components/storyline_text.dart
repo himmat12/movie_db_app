@@ -4,7 +4,7 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/views/deatils/components/header_text.dart';
 
-Widget storylineTextBuilder({required String text}) {
+Widget storylineTextBuilder({required String text, int? maxLines}) {
   final _utilityController = Get.find<UtilityController>();
 
   return Column(
@@ -15,7 +15,7 @@ Widget storylineTextBuilder({required String text}) {
       _utilityController.showText != true
           ? Text(
               text,
-              maxLines: 4,
+              maxLines: maxLines ?? 4,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: primaryDarkBlue.withOpacity(0.6),

@@ -23,7 +23,8 @@ Widget movieFlexibleSpacebarComponent({
   final _detailsController = Get.find<DetailsController>();
 
   final String? releaseDate = '${movie.releaseDate}';
-  final String? formatedDate = DateFormat.yMMMMd().format(movie.releaseDate!);
+  final String? formatedDate =
+      DateFormat.yMMMMd().format(movie.releaseDate ?? DateTime(0000));
   final String movieDate = releaseDate!.substring(0, 4);
 
   return SizedBox(

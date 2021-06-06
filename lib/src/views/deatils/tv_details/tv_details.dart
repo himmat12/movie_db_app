@@ -123,14 +123,12 @@ var tabMenuItems = <String>[
   "About",
   "Cast",
   "Seasons",
-  "Comments",
   "Reviews",
   "Recommended",
   "Similar",
 ];
 
 var tvTabs = <Widget>[
-  TvAboutTab(),
   TvAboutTab(),
   TvAboutTab(),
   TvAboutTab(),
