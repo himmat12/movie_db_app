@@ -17,6 +17,7 @@ import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexi
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/movie_about_tab.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/casts/casts_tab.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/related%20_list/movie_list.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/reviews/reviews_tab.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -134,6 +135,6 @@ var movieTabs = <Widget>[
   MovieAboutTab(),
   MovieCastsTab(),
   MovieReviewTab(),
-  MovieAboutTab(),
+  MovieList(),
   MovieAboutTab(),
 ];

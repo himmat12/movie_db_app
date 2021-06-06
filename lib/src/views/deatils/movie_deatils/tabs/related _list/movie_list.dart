@@ -10,13 +10,13 @@ import 'package:movie_app/src/mixins/avatar.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 
-class RelatedMovieList extends StatelessWidget with AvatarBuilderMixin {
+class MovieList extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();
   final _configurationController = Get.find<ConfigurationController>();
 
   final _utilityController = Get.find<UtilityController>();
 
-  RelatedMovieList({Key? key}) : super(key: key);
+  MovieList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
