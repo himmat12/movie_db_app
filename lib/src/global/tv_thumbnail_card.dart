@@ -5,7 +5,11 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
 
-Widget tvThumbnailCard({required TvResultsModel tv, required String imageUrl}) {
+Widget tvThumbnailCard({
+  required TvResultsModel tv,
+  required String imageUrl,
+  EdgeInsetsGeometry? padding,
+}) {
   return GestureDetector(
     onTap: () {
       Get.to(() => TvDetails(
@@ -17,10 +21,9 @@ Widget tvThumbnailCard({required TvResultsModel tv, required String imageUrl}) {
       width: 100,
       height: 186,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+            padding: padding ?? const EdgeInsets.fromLTRB(0, 0, 8, 0),
             child: Stack(
               alignment: AlignmentDirectional.topEnd,
               children: [
@@ -52,7 +55,7 @@ Widget tvThumbnailCard({required TvResultsModel tv, required String imageUrl}) {
                   right: 4,
                   top: 4,
                   child: Container(
-                    padding: const EdgeInsets.fromLTRB(6, 0, 6, 0),
+                    padding: padding ?? const EdgeInsets.fromLTRB(6, 0, 6, 0),
                     decoration: BoxDecoration(
                       color: primaryDark.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(6),

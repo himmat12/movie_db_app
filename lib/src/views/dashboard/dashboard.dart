@@ -33,9 +33,6 @@ class DashboardPage extends StatelessWidget {
       init: _resultsController,
       dispose: (state) {},
       initState: (_) {
-        // initializing api config service
-        _configurationController.getConfigurations();
-
         // initializing trending MOVIES services
         if (_utilityController.isMovieToday == true) {
           _trendingResultsController.getTrendingMovieResults(

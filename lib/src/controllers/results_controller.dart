@@ -9,6 +9,14 @@ import 'package:movie_app/src/services/results_service.dart';
 class ResultsController extends BaseController {
   final _service = sl<ResultsService>();
 
+  var _movie = MovieResultModel().obs;
+
+  MovieResultModel get movie => _movie.value;
+
+  void setMovie(MovieResultModel movie) {
+    _movie.value = movie;
+  }
+
 // tv observable lists
   var popularTvList = <TvResultsModel>[].obs;
   var topRatedTvList = <TvResultsModel>[].obs;

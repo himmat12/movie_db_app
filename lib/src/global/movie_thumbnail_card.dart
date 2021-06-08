@@ -1,28 +1,34 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 
-Widget movieThumbnailCard(
-    {required MovieResultModel movie, required String imageUrl}) {
+Widget movieThumbnailCard({
+  required MovieResultModel movie,
+  required String imageUrl,
+  EdgeInsetsGeometry? padding,
+}) {
   return GestureDetector(
     onTap: () {
-      Get.to(() => MoviesDetails(
-            movie: movie,
-            // id: '${movie.id}',
-            key: const Key('movie_detail'),
+      Navigator.push(
+          Get.context!,
+          MaterialPageRoute(
+            builder: (context) => MoviesDetails(
+              movie: movie,
+              key: const Key('movie_detail'),
+            ),
           ));
     },
     child: SizedBox(
       width: 100,
       height: 186,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+            padding: padding ?? const EdgeInsets.fromLTRB(0, 0, 8, 0),
             child: Stack(
               alignment: AlignmentDirectional.topEnd,
               children: [
@@ -54,7 +60,7 @@ Widget movieThumbnailCard(
                   right: 4,
                   top: 4,
                   child: Container(
-                    padding: const EdgeInsets.fromLTRB(6, 0, 6, 0),
+                    padding: padding ?? const EdgeInsets.fromLTRB(6, 0, 6, 0),
                     decoration: BoxDecoration(
                       color: primaryDark.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(6),

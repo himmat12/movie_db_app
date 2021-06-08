@@ -6,6 +6,12 @@ import 'package:movie_app/src/services/configuration_service.dart';
 import 'package:movie_app/src/services/results_service.dart';
 
 class ConfigurationController extends BaseController {
+  @override
+  void onInit() {
+    super.onInit();
+    getConfigurations();
+  }
+
   final _service = sl<ConfigurationService>();
   var configuration = ApiConfigurationModel(
       changeKeys: [],

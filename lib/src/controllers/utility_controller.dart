@@ -6,6 +6,14 @@ import 'package:movie_app/src/utils/preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UtilityController extends BaseController {
+  @override
+  void onInit() {
+    resetHideShowState();
+    resetImgSliderIndex();
+    resetTabbarState();
+    super.onInit();
+  }
+
 // bottom navigation state
   var _navCurrentIndex = 0.obs;
 
@@ -42,6 +50,7 @@ class UtilityController extends BaseController {
 
   void setTabbarIndex(int newIndex) {
     _tabbarCurrentIndex.value = newIndex;
+    update();
   }
 
   void resetTabbarState() => _tabbarCurrentIndex.value = 0;
