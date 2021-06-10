@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
+import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/results_controller.dart';
 
 // title widget
 class SABTN extends StatefulWidget {
@@ -51,6 +54,9 @@ class _SABTNState extends State<SABTN> {
     }
   }
 
+  final _detailsController = Get.find<DetailsController>();
+  final _resultsController = Get.find<ResultsController>();
+
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
@@ -58,7 +64,11 @@ class _SABTNState extends State<SABTN> {
       opacity: 1,
       curve: Curves.easeIn,
       child: IconButton(
-        onPressed: Get.back,
+        onPressed: () {
+          // _detailsController.getDetails(
+          //     resultType: MOVIE_STRING, id: _resultsController.movie.id!);
+          Get.back();
+        },
         icon: Icon(
           Icons.arrow_back,
           color: _visible == false ? primaryWhite : primaryDarkBlue,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 
@@ -11,13 +12,17 @@ Widget movieThumbnailCard({
   required String imageUrl,
   EdgeInsetsGeometry? padding,
 }) {
+  final _resultController = Get.find<ResultsController>();
+
   return GestureDetector(
     onTap: () {
+      _resultController.setMovie(movie);
+
       Navigator.push(
           Get.context!,
           MaterialPageRoute(
             builder: (context) => MoviesDetails(
-              movie: movie,
+              // movie: movie,
               key: const Key('movie_detail'),
             ),
           ));

@@ -15,6 +15,7 @@ class ResultsController extends BaseController {
 
   void setMovie(MovieResultModel movie) {
     _movie.value = movie;
+    update();
   }
 
 // tv observable lists

@@ -45,16 +45,25 @@ Widget tabbarItem({
     },
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      child: Obx(() => Text(
-            title,
-            style: TextStyle(
-              fontSize: m - 6,
-              color: _utilityController.tabbarCurrentIndex == index
-                  ? primaryDarkBlue.withOpacity(0.8)
-                  : primaryDarkBlue.withOpacity(0.5),
-              fontWeight: FontWeight.w700,
-            ),
-          )),
+      child:
+          //
+          //Obx(() =>
+          GetBuilder(
+        id: 'bottomTabBar',
+        init: _utilityController,
+        builder: (controller) => Text(
+          title,
+          style: TextStyle(
+            fontSize: m - 6,
+            color: _utilityController.tabbarCurrentIndex == index
+                ? primaryDarkBlue.withOpacity(0.8)
+                : primaryDarkBlue.withOpacity(0.5),
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+
+      // ),
     ),
   );
 }

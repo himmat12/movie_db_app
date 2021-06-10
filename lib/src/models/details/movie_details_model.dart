@@ -34,14 +34,14 @@ class MovieDetailsModel {
     this.video,
     this.voteAverage,
     this.voteCount,
-    this.images,
-    this.videos,
-    this.credits,
-    this.accountStates,
-    this.externalIds,
-    this.recommendations,
-    this.similar,
-    this.reviews,
+    // this.images,
+    // this.videos,
+    // this.credits,
+    // this.accountStates,
+    // this.externalIds,
+    // this.recommendations,
+    // this.similar,
+    // this.reviews,
   });
 
   bool? adult;
@@ -69,14 +69,14 @@ class MovieDetailsModel {
   bool? video;
   double? voteAverage;
   int? voteCount;
-  Images? images;
-  Videos? videos;
-  Credits? credits;
-  AccountStates? accountStates;
-  Similar? similar;
-  Recommendations? recommendations;
-  Reviews? reviews;
-  ExternalIds? externalIds;
+  // Images? images;
+  // Videos? videos;
+  // Credits? credits;
+  // AccountStates? accountStates;
+  // SimilarMovie? similar;
+  // MovieRecommendations? recommendations;
+  // Reviews? reviews;
+  // MovieExternalIds? externalIds;
 
   factory MovieDetailsModel.fromJson(Map<String, dynamic> json) =>
       movieDetailsModelFromJson(json);
@@ -101,8 +101,8 @@ class BelongsToCollection {
 }
 
 // @JsonSerializable()
-class ExternalIds {
-  ExternalIds({
+class MovieExternalIds {
+  MovieExternalIds({
     this.imdbId,
     this.facebookId,
     this.instagramId,
@@ -114,13 +114,13 @@ class ExternalIds {
   String? instagramId;
   String? twitterId;
 
-  factory ExternalIds.fromJson(Map<String, dynamic> json) =>
+  factory MovieExternalIds.fromJson(Map<String, dynamic> json) =>
       externalIdsFromJson(json);
 }
 
 // @JsonSerializable()
-class Similar {
-  Similar({
+class SimilarMovie {
+  SimilarMovie({
     this.page,
     this.results,
     this.totalPages,
@@ -132,12 +132,13 @@ class Similar {
   int? totalPages;
   int? totalResults;
 
-  factory Similar.fromJson(Map<String, dynamic> json) => similarFromJson(json);
+  factory SimilarMovie.fromJson(Map<String, dynamic> json) =>
+      similarFromJson(json);
 }
 
 // @JsonSerializable()
-class Recommendations {
-  Recommendations({
+class MovieRecommendations {
+  MovieRecommendations({
     this.page,
     this.results,
     this.totalPages,
@@ -148,6 +149,9 @@ class Recommendations {
   List<MovieResultModel>? results;
   int? totalPages;
   int? totalResults;
+
+  factory MovieRecommendations.fromJson(Map<String, dynamic> json) =>
+      recommendationsFromJson(json);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -206,31 +210,31 @@ MovieDetailsModel movieDetailsModelFromJson(Map<String, dynamic> json) {
     video: json['video'] as bool?,
     voteAverage: (json['vote_average'] as num?)?.toDouble(),
     voteCount: json['vote_count'] as int?,
-    images: json['images'] == null
-        ? null
-        : imagesFromJson(json['images'] as Map<String, dynamic>),
-    videos: json['videos'] == null
-        ? null
-        : videosFromJson(json['videos'] as Map<String, dynamic>),
-    credits: json['credits'] == null
-        ? null
-        : creditsFromJson(json['credits'] as Map<String, dynamic>),
-    accountStates: json['account_states'] == null
-        ? null
-        : accountStatesFromJson(json['account_states'] as Map<String, dynamic>),
-    externalIds: json['external_ids'] == null
-        ? null
-        : externalIdsFromJson(json['external_ids'] as Map<String, dynamic>),
-    recommendations: json['recommendations'] == null
-        ? null
-        : recommendationsFromJson(
-            json['recommendations'] as Map<String, dynamic>),
-    reviews: json['reviews'] == null
-        ? null
-        : reviewsFromJson(json['reviews'] as Map<String, dynamic>),
-    similar: json['similar'] == null
-        ? null
-        : similarFromJson(json['similar'] as Map<String, dynamic>),
+    // images: json['images'] == null
+    //     ? null
+    //     : imagesFromJson(json['images'] as Map<String, dynamic>),
+    // videos: json['videos'] == null
+    //     ? null
+    //     : videosFromJson(json['videos'] as Map<String, dynamic>),
+    // credits: json['credits'] == null
+    //     ? null
+    //     : creditsFromJson(json['credits'] as Map<String, dynamic>),
+    // accountStates: json['account_states'] == null
+    //     ? null
+    //     : accountStatesFromJson(json['account_states'] as Map<String, dynamic>),
+    // externalIds: json['external_ids'] == null
+    //     ? null
+    //     : externalIdsFromJson(json['external_ids'] as Map<String, dynamic>),
+    // recommendations: json['recommendations'] == null
+    //     ? null
+    //     : recommendationsFromJson(
+    //         json['recommendations'] as Map<String, dynamic>),
+    // reviews: json['reviews'] == null
+    //     ? null
+    //     : reviewsFromJson(json['reviews'] as Map<String, dynamic>),
+    // similar: json['similar'] == null
+    //     ? null
+    //     : similarFromJson(json['similar'] as Map<String, dynamic>),
   );
 }
 
@@ -243,8 +247,8 @@ BelongsToCollection belongsToCollectionFromJson(Map<String, dynamic> json) {
   );
 }
 
-ExternalIds externalIdsFromJson(Map<String, dynamic> json) {
-  return ExternalIds(
+MovieExternalIds externalIdsFromJson(Map<String, dynamic> json) {
+  return MovieExternalIds(
     imdbId: json['imdb_id'] as String?,
     facebookId: json['facebook_id'] as String?,
     instagramId: json['instagram_id'] as String?,
@@ -252,8 +256,8 @@ ExternalIds externalIdsFromJson(Map<String, dynamic> json) {
   );
 }
 
-Similar similarFromJson(Map<String, dynamic> json) {
-  return Similar(
+SimilarMovie similarFromJson(Map<String, dynamic> json) {
+  return SimilarMovie(
     page: json['page'] as int?,
     results: json['results'] == null
         ? null
@@ -264,8 +268,8 @@ Similar similarFromJson(Map<String, dynamic> json) {
   );
 }
 
-Recommendations recommendationsFromJson(Map<String, dynamic> json) {
-  return Recommendations(
+MovieRecommendations recommendationsFromJson(Map<String, dynamic> json) {
+  return MovieRecommendations(
     page: json['page'] as int?,
     results: json['results'] == null
         ? null

@@ -12,3 +12,12 @@ const String LATEST_STRING = "latest";
 const String NOW_PLAYING_STRING = "now_playing";
 const String UPCOMING_STRING = "upcoming";
 const String TRENDING_STRING = "trending";
+
+const String IMAGES_STRING = "images";
+const String VIDEOS_STRING = "videos";
+const String SIMILAR_STRING = "similar";
+const String RECOMMENDED_STRING = "recommendations";
+const String ACCOUNT_STATE_STRING = "account_states";
+const String REVIEWS_STRING = "reviews";
+const String CREDITS_STRING = "credits";
+const String EXTERNL_IDS_STRING = "external_ids";

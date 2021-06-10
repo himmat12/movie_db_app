@@ -83,10 +83,10 @@ class TvDetailsModel {
   Videos? videos;
   Credits? credits;
   AccountStates? accountStates;
-  Similar? similar;
-  Recommendations? recommendations;
+  SimilarTv? similar;
+  TvRecommendations? recommendations;
   Reviews? reviews;
-  ExternalIds? externalIds;
+  TvExternalIds? externalIds;
 
   factory TvDetailsModel.fromJson(Map<String, dynamic> json) =>
       tvDetailsModelFromJson(json);
@@ -113,8 +113,8 @@ class CreatedBy {
 }
 
 // @JsonSerializable()
-class ExternalIds {
-  ExternalIds({
+class TvExternalIds {
+  TvExternalIds({
     this.imdbId,
     this.freebaseMid,
     this.freebaseId,
@@ -134,7 +134,7 @@ class ExternalIds {
   String? instagramId;
   String? twitterId;
 
-  factory ExternalIds.fromJson(Map<String, dynamic> json) =>
+  factory TvExternalIds.fromJson(Map<String, dynamic> json) =>
       externalIdsFromJson(json);
 }
 
@@ -209,8 +209,8 @@ class Season {
 }
 
 // @JsonSerializable()
-class Similar {
-  Similar({
+class SimilarTv {
+  SimilarTv({
     this.page,
     this.results,
     this.totalPages,
@@ -222,12 +222,13 @@ class Similar {
   int? totalPages;
   int? totalResults;
 
-  factory Similar.fromJson(Map<String, dynamic> json) => similarFromJson(json);
+  factory SimilarTv.fromJson(Map<String, dynamic> json) =>
+      similarFromJson(json);
 }
 
 // @JsonSerializable()
-class Recommendations {
-  Recommendations({
+class TvRecommendations {
+  TvRecommendations({
     this.page,
     this.results,
     this.totalPages,
@@ -238,6 +239,9 @@ class Recommendations {
   List<TvResultsModel>? results;
   int? totalPages;
   int? totalResults;
+
+  factory TvRecommendations.fromJson(Map<String, dynamic> json) =>
+      recommendationsFromJson(json);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -373,8 +377,8 @@ CreatedBy createdByFromJson(Map<String, dynamic> json) {
   );
 }
 
-ExternalIds externalIdsFromJson(Map<String, dynamic> json) {
-  return ExternalIds(
+TvExternalIds externalIdsFromJson(Map<String, dynamic> json) {
+  return TvExternalIds(
     imdbId: json['imdb_id'] as String?,
     freebaseMid: json['freebase_mid'] as String?,
     freebaseId: json['freebase_id'] as String?,
@@ -409,8 +413,8 @@ Season seasonFromJson(Map<String, dynamic> json) {
   );
 }
 
-Similar similarFromJson(Map<String, dynamic> json) {
-  return Similar(
+SimilarTv similarFromJson(Map<String, dynamic> json) {
+  return SimilarTv(
     page: json['page'] as int?,
     results: json['results'] == null
         ? null
@@ -421,8 +425,8 @@ Similar similarFromJson(Map<String, dynamic> json) {
   );
 }
 
-Recommendations recommendationsFromJson(Map<String, dynamic> json) {
-  return Recommendations(
+TvRecommendations recommendationsFromJson(Map<String, dynamic> json) {
+  return TvRecommendations(
     page: json['page'] as int?,
     results: json['results'] == null
         ? null

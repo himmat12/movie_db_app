@@ -50,7 +50,7 @@ class UtilityController extends BaseController {
 
   void setTabbarIndex(int newIndex) {
     _tabbarCurrentIndex.value = newIndex;
-    update();
+    update(['bottomTabBar', 'tabs']);
   }
 
   void resetTabbarState() => _tabbarCurrentIndex.value = 0;
@@ -108,6 +108,7 @@ class UtilityController extends BaseController {
 
   void setSliderIndex(int index) {
     _imgSliderIndex.value = index;
+    update(['imageSlider']);
   }
 
   void resetImgSliderIndex() {
