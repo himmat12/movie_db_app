@@ -16,13 +16,13 @@ Widget toggleHideShowBtn() {
         child: Container(
           padding: const EdgeInsets.fromLTRB(4, 2, 4, 2),
           color: Colors.transparent,
-          child: Text(
-            _utilityController.showText != true ? 'More' : 'Less',
-            style: const TextStyle(
-              color: primaryblue,
-              fontSize: n - 2,
-            ),
-          ),
+          child: Obx(() => Text(
+                _utilityController.showText != true ? 'More' : 'Less',
+                style: const TextStyle(
+                  color: primaryblue,
+                  fontSize: n - 2,
+                ),
+              )),
         ),
       ),
     ],

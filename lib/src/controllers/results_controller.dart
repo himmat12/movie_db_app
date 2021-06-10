@@ -10,11 +10,18 @@ class ResultsController extends BaseController {
   final _service = sl<ResultsService>();
 
   var _movie = MovieResultModel().obs;
+  var _tv = TvResultsModel().obs;
 
   MovieResultModel get movie => _movie.value;
+  TvResultsModel get tv => _tv.value;
 
   void setMovie(MovieResultModel movie) {
     _movie.value = movie;
+    update();
+  }
+
+  void setTv(TvResultsModel tv) {
+    _tv.value = tv;
     update();
   }
 

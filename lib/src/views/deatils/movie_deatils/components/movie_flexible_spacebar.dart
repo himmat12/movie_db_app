@@ -54,8 +54,7 @@ Widget movieFlexibleSpacebarComponent({
                 },
                 builder: (controller) => WidgetBuilderHelper(
                   state: _detailsController.imagesState.value,
-                  onLoadingBuilder:
-                      Center(child: LoadingSpinner.horizontalLoading),
+                  onLoadingBuilder: const SizedBox(height: 200),
                   onErrorBuilder: const Center(
                     child: Text('error while initializing data...'),
                   ),
@@ -86,7 +85,10 @@ Widget movieFlexibleSpacebarComponent({
                             _utilityController.setSliderIndex(value);
                           },
                           itemCount:
-                              _detailsController.images.value.backdrops == null
+                              _detailsController.images.value.backdrops ==
+                                          null ||
+                                      _detailsController
+                                          .images.value.backdrops!.isEmpty
                                   ? 0
                                   : _detailsController
                                       .images.value.backdrops!.length,
@@ -105,7 +107,8 @@ Widget movieFlexibleSpacebarComponent({
                 ),
               ),
 
-              _detailsController.images.value.backdrops == null
+              _detailsController.images.value.backdrops == null ||
+                      _detailsController.images.value.backdrops!.isEmpty
                   ? const SizedBox.shrink()
                   :
                   // Obx(

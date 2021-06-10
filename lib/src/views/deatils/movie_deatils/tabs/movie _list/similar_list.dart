@@ -10,8 +10,8 @@ import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/movie_list.dart';
 
-class MovieRecommendedTab extends StatelessWidget {
-  MovieRecommendedTab({Key? key}) : super(key: key);
+class MovieSimilarTab extends StatelessWidget {
+  MovieSimilarTab({Key? key}) : super(key: key);
 
   final _detailsController = Get.find<DetailsController>();
   final _resultsController = Get.find<ResultsController>();
@@ -22,25 +22,24 @@ class MovieRecommendedTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      id: 'movie_recommended',
+      id: 'movie_similar',
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
             resultType: MOVIE_STRING,
             id: _resultsController.movie.id!,
-            appendTo: RECOMMENDED_STRING);
+            appendTo: SIMILAR_STRING);
       },
       builder: (controller) => WidgetBuilderHelper(
-        state: _detailsController.recommendedState.value,
+        state: _detailsController.similarState.value,
         onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),
-        onSuccessBuilder: _detailsController.recommendedMovie.value.results ==
-                null
+        onSuccessBuilder: _detailsController.similarMovie.value.results == null
             ? Center(
                 child: Text(
-                  'No Recommended Movies at the Moment',
+                  'No Similar Movies at the Moment',
                   style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
                 ),
               )
@@ -48,8 +47,7 @@ class MovieRecommendedTab extends StatelessWidget {
                 children: [
                   MovieList(
                       movies:
-                          _detailsController.recommendedMovie.value.results ??
-                              []),
+                          _detailsController.similarMovie.value.results ?? []),
                 ],
               ),
       ),

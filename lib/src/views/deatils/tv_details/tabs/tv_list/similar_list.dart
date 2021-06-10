@@ -9,9 +9,10 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/movie_list.dart';
+import 'package:movie_app/src/views/deatils/tv_details/tabs/tv_list/tv_list.dart';
 
-class MovieRecommendedTab extends StatelessWidget {
-  MovieRecommendedTab({Key? key}) : super(key: key);
+class TvSimilarTab extends StatelessWidget {
+  TvSimilarTab({Key? key}) : super(key: key);
 
   final _detailsController = Get.find<DetailsController>();
   final _resultsController = Get.find<ResultsController>();
@@ -22,34 +23,30 @@ class MovieRecommendedTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      id: 'movie_recommended',
+      id: 'tv_similar',
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
-            id: _resultsController.movie.id!,
-            appendTo: RECOMMENDED_STRING);
+            resultType: TV_STRING,
+            id: _resultsController.tv.id!,
+            appendTo: SIMILAR_STRING);
       },
       builder: (controller) => WidgetBuilderHelper(
-        state: _detailsController.recommendedState.value,
+        state: _detailsController.similarState.value,
         onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),
-        onSuccessBuilder: _detailsController.recommendedMovie.value.results ==
-                null
+        onSuccessBuilder: _detailsController.similarTv.value.results == null
             ? Center(
                 child: Text(
-                  'No Recommended Movies at the Moment',
+                  'No Similar Movies at the Moment',
                   style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
                 ),
               )
             : Column(
                 children: [
-                  MovieList(
-                      movies:
-                          _detailsController.recommendedMovie.value.results ??
-                              []),
+                  TvList(tv: _detailsController.similarTv.value.results ?? []),
                 ],
               ),
       ),

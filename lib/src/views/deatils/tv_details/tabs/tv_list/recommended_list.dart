@@ -10,8 +10,10 @@ import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/movie_list.dart';
 
-class MovieRecommendedTab extends StatelessWidget {
-  MovieRecommendedTab({Key? key}) : super(key: key);
+import 'tv_list.dart';
+
+class TvRecommendedTab extends StatelessWidget {
+  TvRecommendedTab({Key? key}) : super(key: key);
 
   final _detailsController = Get.find<DetailsController>();
   final _resultsController = Get.find<ResultsController>();
@@ -22,12 +24,12 @@ class MovieRecommendedTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      id: 'movie_recommended',
+      id: 'tv_recommended',
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
-            id: _resultsController.movie.id!,
+            resultType: TV_STRING,
+            id: _resultsController.tv.id!,
             appendTo: RECOMMENDED_STRING);
       },
       builder: (controller) => WidgetBuilderHelper(
@@ -36,20 +38,17 @@ class MovieRecommendedTab extends StatelessWidget {
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),
-        onSuccessBuilder: _detailsController.recommendedMovie.value.results ==
-                null
+        onSuccessBuilder: _detailsController.recommendedTv.value.results == null
             ? Center(
                 child: Text(
-                  'No Recommended Movies at the Moment',
+                  'No Recommended TV Series at the Moment',
                   style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
                 ),
               )
             : Column(
                 children: [
-                  MovieList(
-                      movies:
-                          _detailsController.recommendedMovie.value.results ??
-                              []),
+                  TvList(
+                      tv: _detailsController.recommendedTv.value.results ?? []),
                 ],
               ),
       ),

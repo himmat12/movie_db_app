@@ -49,17 +49,27 @@ Widget tvFlexibleSpacebarOptions({required DetailsController controller}) {
         ),
         optionBtn(
           onTap: () {},
-          color: const Color(0xfffc19e2).withOpacity(0.9),
+          // color: _detailsController.movieDetail.value.accountStates!.favorite ==
+          //         false
+          //     ? primaryWhite
+          //     : const Color(0xfffc19e2).withOpacity(0.9),
           icon: Icons.favorite,
         ),
         optionBtn(
           onTap: () {},
-          color: primaryblue,
+          // color:
+          //     _detailsController.movieDetail.value.accountStates!.watchlist ==
+          //             false
+          //         ? primaryWhite
+          //         : primaryblue,
           icon: Icons.bookmark,
         ),
         optionBtn(
           onTap: () {},
-          color: Colors.amber.shade600,
+          // color:
+          //     _detailsController.movieDetail.value.accountStates!.rated == false
+          //         ? primaryWhite
+          //         : Colors.amber.shade600,
           icon: Icons.star,
         ),
       ],

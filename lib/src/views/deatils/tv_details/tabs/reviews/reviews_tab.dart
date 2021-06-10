@@ -9,24 +9,23 @@ import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
+import 'package:movie_app/src/views/deatils/components/review_builder.dart';
 
-import '../../../components/review_builder.dart';
-
-class MovieReviewTab extends StatelessWidget with AvatarBuilderMixin {
+class TvReviewTab extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();
   final _resultsController = Get.find<ResultsController>();
 
-  MovieReviewTab({Key? key}) : super(key: key);
+  TvReviewTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      id: 'movie_reviews',
+      id: 'tv_reviews',
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
-            id: _resultsController.movie.id!,
+            resultType: TV_STRING,
+            id: _resultsController.tv.id!,
             appendTo: REVIEWS_STRING);
       },
       builder: (controller) => WidgetBuilderHelper(

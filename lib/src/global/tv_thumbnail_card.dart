@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
 
@@ -10,12 +11,19 @@ Widget tvThumbnailCard({
   required String imageUrl,
   EdgeInsetsGeometry? padding,
 }) {
+  final _resultController = Get.find<ResultsController>();
+
   return GestureDetector(
     onTap: () {
-      Get.to(() => TvDetails(
-            tv: tv,
-            key: UniqueKey(),
-          ));
+      _resultController.setTv(tv);
+
+      Get.to(
+        () => TvDetails(
+          // tv: tv,
+          key: UniqueKey(),
+        ),
+        preventDuplicates: false,
+      );
     },
     child: SizedBox(
       width: 100,

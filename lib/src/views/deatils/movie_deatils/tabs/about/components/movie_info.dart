@@ -74,8 +74,8 @@ Widget movieInfoBuilder({required MovieDetailsModel movieDetails}) {
           ),
         ),
       ),
-      rowBuilder(title: "Budget", text: '${movieDetails.budget}'),
-      rowBuilder(title: "Revenue", text: '${movieDetails.revenue}'),
+      rowBuilder(title: "Budget", text: '\$${movieDetails.budget}'),
+      rowBuilder(title: "Revenue", text: '\$${movieDetails.revenue}'),
     ],
   );
 }

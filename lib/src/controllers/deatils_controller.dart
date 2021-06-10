@@ -62,7 +62,7 @@ class DetailsController extends BaseController {
             // ignore: avoid_print
             print('${tvDetail.value.name} TV DETAILS');
             tvDetailState.value = ViewState.retrived;
-            update();
+            update(['tv_about', 'tv_details']);
           }
         });
         break;
@@ -226,7 +226,7 @@ class DetailsController extends BaseController {
               if (value != null) {
                 similarTv.value = SimilarTv.fromJson(value);
                 similarState.value = ViewState.retrived;
-                update();
+                update(['tv_similar']);
               }
             });
             break;
@@ -239,7 +239,7 @@ class DetailsController extends BaseController {
               if (value != null) {
                 recommendedTv.value = TvRecommendations.fromJson(value);
                 recommendedState.value = ViewState.retrived;
-                update();
+                update(['tv_recommended']);
               }
             });
             break;
@@ -265,7 +265,7 @@ class DetailsController extends BaseController {
               if (value != null) {
                 credits.value = Credits.fromJson(value);
                 creditsState.value = ViewState.retrived;
-                update();
+                update(['tv_credits']);
               }
             });
             break;
@@ -278,7 +278,7 @@ class DetailsController extends BaseController {
               if (value != null) {
                 reviews.value = Reviews.fromJson(value);
                 reviewsState.value = ViewState.retrived;
-                update();
+                update(['tv_reviews']);
               }
             });
             break;

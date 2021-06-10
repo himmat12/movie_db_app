@@ -23,6 +23,7 @@ import 'package:movie_app/src/views/deatils/movie_deatils/tabs/reviews/reviews_t
 import 'components/movie_flexible_spacebar.dart';
 import '../components/sliver_appbar_title.dart';
 import 'tabs/movie _list/movie_list.dart';
+import 'tabs/movie _list/similar_list.dart';
 
 class MoviesDetails extends StatelessWidget with LoadingSpinnerMixin {
   // final MovieResultModel movie;
@@ -170,6 +171,6 @@ var movieTabs = <Widget>[
   MovieAboutTab(),
   MovieCastsTab(),
   MovieReviewTab(),
-  RecommendedTab(),
-  MovieAboutTab(),
+  MovieRecommendedTab(),
+  MovieSimilarTab(),
 ];
