@@ -39,10 +39,13 @@ class TvSimilarTab extends StatelessWidget {
         ),
         onSuccessBuilder: _detailsController.similarTv.value.results == null ||
                 _detailsController.similarTv.value.results!.isEmpty
-            ? Center(
-                child: Text(
-                  'No Similar Movies at the Moment',
-                  style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
+            ? SizedBox(
+                height: 80,
+                child: Center(
+                  child: Text(
+                    'No Similar Movies at the Moment',
+                    style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
+                  ),
                 ),
               )
             : Column(

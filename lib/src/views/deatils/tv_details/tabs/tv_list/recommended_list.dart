@@ -41,10 +41,13 @@ class TvRecommendedTab extends StatelessWidget {
         onSuccessBuilder: _detailsController.recommendedTv.value.results ==
                     null ||
                 _detailsController.recommendedTv.value.results!.isEmpty
-            ? Center(
-                child: Text(
-                  'No Recommended TV Series at the Moment',
-                  style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
+            ? SizedBox(
+                height: 80,
+                child: Center(
+                  child: Text(
+                    'No Recommended TV Series at the Moment',
+                    style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
+                  ),
                 ),
               )
             : Column(
