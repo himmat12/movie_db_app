@@ -37,7 +37,8 @@ class MovieRecommendedTab extends StatelessWidget {
           child: Text('error while loading data ...'),
         ),
         onSuccessBuilder: _detailsController.recommendedMovie.value.results ==
-                null
+                    null ||
+                _detailsController.recommendedMovie.value.results!.isEmpty
             ? Center(
                 child: Text(
                   'No Recommended Movies at the Moment',

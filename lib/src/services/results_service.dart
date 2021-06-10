@@ -15,10 +15,10 @@ class ResultsService extends BaseService with QueryParameterMixin {
         queryParameter: setQueryParameters(query: {"page": page}),
       );
       // ignore: avoid_print
-      print('$resultType MOVIE RESULTS STATUS => ${response.statusCode}');
+      // print('$resultType MOVIE RESULTS STATUS => ${response.statusCode}');
       if (response.statusCode == 200) {
         // ignore: avoid_print
-        print('PAGE => $page');
+        // print('PAGE => $page');
         // ignore: avoid_print
         // print(decodeResponse(response)['results']);
         return decodeResponse(response)['results'];
@@ -43,7 +43,7 @@ class ResultsService extends BaseService with QueryParameterMixin {
         queryParameter: setQueryParameters(query: {"page": page}),
       );
       // ignore: avoid_print
-      print('$resultType TV RESULTS STATUS => ${response.statusCode}');
+      // print('$resultType TV RESULTS STATUS => ${response.statusCode}');
       if (response.statusCode == 200) {
         // ignore: avoid_print
         // print('PAGE => ${decodeResponse(response)['page']}');

@@ -7,6 +7,22 @@ import 'package:movie_app/src/models/results/tv_result_model.dart';
 import 'package:movie_app/src/services/results_service.dart';
 
 class ResultsController extends BaseController {
+  @override
+  void onInit() {
+    super.onInit();
+    // initializing popular/top rated/upcomming/now playing MOVIES services
+    getMovieResults(resultType: POPULAR_STRING);
+    getMovieResults(resultType: TOP_RATED_STRING);
+    getMovieResults(resultType: UPCOMING_STRING);
+    getMovieResults(resultType: NOW_PLAYING_STRING);
+
+    // initializing popular/top rated/airing today/on the air TV services
+    getTvResults(resultType: POPULAR_STRING);
+    getTvResults(resultType: TOP_RATED_STRING);
+    getTvResults(resultType: AIRING_TODAY_STRING);
+    getTvResults(resultType: ON_THE_AIR_STRING);
+  }
+
   final _service = sl<ResultsService>();
 
   var _movie = MovieResultModel().obs;

@@ -55,7 +55,7 @@ class _ReviewBuilderState extends State<ReviewBuilder> {
           _isHidden != false
               ? Text(
                   widget.review.content ?? "contents",
-                  maxLines: 4,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: primaryDarkBlue.withOpacity(0.6),

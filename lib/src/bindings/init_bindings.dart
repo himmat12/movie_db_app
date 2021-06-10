@@ -11,10 +11,10 @@ class InitBindings extends Bindings {
   }
   @override
   void dependencies() {
-    Get.put(ConfigurationController());
-    Get.put(UtilityController());
-    Get.put(ResultsController());
-    Get.put(TrendingResultsController());
-    Get.put(DetailsController());
+    Get.lazyPut(() => ConfigurationController());
+    Get.lazyPut(() => UtilityController());
+    Get.lazyPut(() => ResultsController());
+    Get.lazyPut(() => TrendingResultsController());
+    Get.lazyPut(() => DetailsController());
   }
 }

@@ -37,7 +37,8 @@ class TvSimilarTab extends StatelessWidget {
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),
-        onSuccessBuilder: _detailsController.similarTv.value.results == null
+        onSuccessBuilder: _detailsController.similarTv.value.results == null ||
+                _detailsController.similarTv.value.results!.isEmpty
             ? Center(
                 child: Text(
                   'No Similar Movies at the Moment',

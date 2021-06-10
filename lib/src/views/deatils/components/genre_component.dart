@@ -20,14 +20,14 @@ Widget genreBuilder({required List<Genre> genres}) {
             (e) => Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: primaryDarkBlue.withOpacity(0.6),
+                color: primaryDarkBlue.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
                 e.name ?? "",
-                style: const TextStyle(
-                  fontSize: n - 4,
-                  color: primaryWhite,
+                style: TextStyle(
+                  fontSize: n - 2,
+                  color: primaryDarkBlue.withOpacity(0.7),
                 ),
               ),
             ),

@@ -9,7 +9,7 @@ class ConfigurationService extends BaseService with QueryParameterMixin {
           path: "/3/configuration",
           queryParameter: setQueryParameters(query: {}));
       // ignore: avoid_print
-      print('CONFIGURATION STATUS => ${response.statusCode}');
+      // print('CONFIGURATION STATUS => ${response.statusCode}');
 
       if (response.statusCode == 200) {
         return decodeResponse(response);

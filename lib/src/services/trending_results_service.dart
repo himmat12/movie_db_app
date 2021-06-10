@@ -15,10 +15,10 @@ class TrendingResultsService extends BaseService with QueryParameterMixin {
         queryParameter: setQueryParameters(query: {"page": page}),
       );
       // ignore: avoid_print
-      print('TRENDING $mediaType RESULTS STATUS => ${response.statusCode}');
+      // print('TRENDING $mediaType RESULTS STATUS => ${response.statusCode}');
       if (response.statusCode == 200) {
         // ignore: avoid_print
-        print('PAGE => ${decodeResponse(response)['page']}');
+        // print('PAGE => ${decodeResponse(response)['page']}');
         // ignore: avoid_print
         // print(decodeResponse(response)['results']);
         return decodeResponse(response)['results'];

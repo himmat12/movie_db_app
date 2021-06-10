@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/crew_page.dart';
+import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/crew_page.dart';
 
 import 'header_text.dart';
 
-Widget crewBuilder({required List<Crew> crews}) {
+Widget crewBuilder({required List<Crew> crews, required String resultType}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -13,7 +17,18 @@ Widget crewBuilder({required List<Crew> crews}) {
         children: [
           headerBuilder(headerText: "Featured Crew"),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                switch (resultType) {
+                  case MOVIE_STRING:
+                    Get.to(() => MovieCrewPage());
+                    break;
+                  case TV_STRING:
+                    Get.to(() => TvCrewPage());
+                    break;
+                  default:
+                    break;
+                }
+              },
               icon: Icon(
                 Icons.arrow_forward,
                 color: primaryDarkBlue.withOpacity(0.8),

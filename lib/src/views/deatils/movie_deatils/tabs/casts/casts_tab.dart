@@ -22,7 +22,7 @@ class MovieCastsTab extends StatelessWidget with AvatarBuilderMixin {
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-      id: 'movie_credits',
+      id: 'movie_cast',
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(

@@ -38,7 +38,9 @@ class TvRecommendedTab extends StatelessWidget {
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),
-        onSuccessBuilder: _detailsController.recommendedTv.value.results == null
+        onSuccessBuilder: _detailsController.recommendedTv.value.results ==
+                    null ||
+                _detailsController.recommendedTv.value.results!.isEmpty
             ? Center(
                 child: Text(
                   'No Recommended TV Series at the Moment',

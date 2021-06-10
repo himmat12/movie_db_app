@@ -1,11 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/views/deatils/components/header_text.dart';
 
 Widget networkBuilder({required List<Network> networks}) {
+  final _configurationController = Get.find<ConfigurationController>();
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -18,18 +23,21 @@ Widget networkBuilder({required List<Network> networks}) {
         children: List.from(
           networks.map(
             (e) => Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              margin: const EdgeInsets.only(right: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
               decoration: BoxDecoration(
-                color: primaryDarkBlue.withOpacity(0.6),
+                color: primaryDarkBlue.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text(
-                e.name ?? "",
-                style: const TextStyle(
-                  fontSize: n - 4,
-                  color: primaryWhite,
-                ),
-              ),
+              child: _configurationController.logoUrl.isEmpty ||
+                      _configurationController.logoUrl == ""
+                  ? const SizedBox.shrink()
+                  : CachedNetworkImage(
+                      height: 40,
+                      width: 40,
+                      fit: BoxFit.scaleDown,
+                      imageUrl:
+                          '${_configurationController.logoUrl}${e.logoPath}'),
             ),
           ),
         ),

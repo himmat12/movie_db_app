@@ -14,6 +14,7 @@ import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.da
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/recommended_list.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/cast/cast_tab.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/reviews/reviews_tab.dart';
+import 'package:movie_app/src/views/deatils/tv_details/tabs/seasons/seasons_tab.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/tv_list/similar_list.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -163,7 +164,7 @@ var tabMenuItems = <String>[
 var tvTabs = <Widget>[
   TvAboutTab(),
   TvCastsTab(),
-  TvAboutTab(),
+  SeasonsTab(),
   TvReviewTab(),
   TvRecommendedTab(),
   TvSimilarTab(),

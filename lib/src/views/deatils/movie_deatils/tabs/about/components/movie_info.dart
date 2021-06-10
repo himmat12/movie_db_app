@@ -1,21 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/models/details/movie_details_model.dart';
 import 'package:movie_app/src/views/deatils/components/header_text.dart';
 
 Widget movieInfoBuilder({required MovieDetailsModel movieDetails}) {
+  final _configurationController = Get.find<ConfigurationController>();
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       headerBuilder(headerText: "Movie Info"),
       const SizedBox(height: 12),
-      rowBuilder(title: "English Title", text: movieDetails.title),
-      rowBuilder(title: "Original Title", text: movieDetails.originalTitle),
-      rowBuilder(title: "Status", text: movieDetails.status),
+      rowBuilder(title: "English Title", text: movieDetails.title ?? "-"),
+      rowBuilder(
+          title: "Original Title", text: movieDetails.originalTitle ?? "-"),
+      rowBuilder(title: "Status", text: movieDetails.status ?? "-"),
       rowBuilder(title: "Runtime", text: '${movieDetails.runtime} mins'),
       rowBuilder(
-          title: "Original Language", text: movieDetails.originalLanguage),
+          title: "Original Language",
+          text: movieDetails.originalLanguage ?? "-"),
       rowBuilder(
         title: "Production Countries",
         child: Wrap(
@@ -27,17 +34,16 @@ Widget movieInfoBuilder({required MovieDetailsModel movieDetails}) {
               (e) => e.name == null
                   ? const SizedBox.shrink()
                   : Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 6),
+                      padding: const EdgeInsets.symmetric(vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryDarkBlue.withOpacity(0.5),
+                        // color: primaryDarkBlue.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
                         e.name ?? "",
-                        style: const TextStyle(
-                          fontSize: n - 4,
-                          color: primaryWhite,
+                        style: TextStyle(
+                          fontSize: n - 2,
+                          color: primaryDarkBlue.withOpacity(0.7),
                         ),
                       ),
                     ),
@@ -49,26 +55,26 @@ Widget movieInfoBuilder({required MovieDetailsModel movieDetails}) {
         title: "Companies",
         child: Wrap(
           alignment: WrapAlignment.start,
-          spacing: 4,
+          // spacing: 4,
           runSpacing: 4,
           children: List.from(
             movieDetails.productionCompanies!.map(
-              (e) => e.name == null
+              (e) => e.logoPath == null || e.logoPath!.isEmpty
                   ? const SizedBox.shrink()
                   : Container(
+                      margin: const EdgeInsets.only(right: 4),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 6),
+                          horizontal: 6, vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryDarkBlue.withOpacity(0.5),
+                        color: primaryDarkBlue.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Text(
-                        e.name ?? "",
-                        style: const TextStyle(
-                          fontSize: n - 4,
-                          color: primaryWhite,
-                        ),
-                      ),
+                      child: CachedNetworkImage(
+                          height: 40,
+                          width: 40,
+                          fit: BoxFit.scaleDown,
+                          imageUrl:
+                              '${_configurationController.posterUrl}${e.logoPath}'),
                     ),
             ),
           ),

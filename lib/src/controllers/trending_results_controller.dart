@@ -2,12 +2,33 @@ import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
+import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
 import 'package:movie_app/src/services/results_service.dart';
 import 'package:movie_app/src/services/trending_results_service.dart';
 
 class TrendingResultsController extends BaseController {
+  @override
+  void onInit() {
+    super.onInit();
+    final _utilityController = Get.find<UtilityController>();
+
+    // initializing trending MOVIES services
+    if (_utilityController.isMovieToday == true) {
+      getTrendingMovieResults(timeWindow: DAY_STRING);
+    } else {
+      getTrendingMovieResults(timeWindow: WEEK_STRING);
+    }
+
+    // initializing trending TV services
+    if (_utilityController.isTvToday == true) {
+      getTrendingTvResults(timeWindow: DAY_STRING);
+    } else {
+      getTrendingTvResults(timeWindow: WEEK_STRING);
+    }
+  }
+
   final _service = sl<TrendingResultsService>();
 
   var trendingTVs = <TvResultsModel>[].obs;

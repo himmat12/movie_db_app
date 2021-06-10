@@ -32,6 +32,11 @@ class MovieAboutTab extends StatelessWidget {
             resultType: MOVIE_STRING,
             id: _resultsController.movie.id!,
             appendTo: IMAGES_STRING);
+
+        _detailsController.getOtherDetails(
+            resultType: MOVIE_STRING,
+            id: _resultsController.movie.id!,
+            appendTo: CREDITS_STRING);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.movieDetailState.value,
@@ -53,7 +58,17 @@ class MovieAboutTab extends StatelessWidget {
               genreBuilder(
                   genres: _detailsController.movieDetail.value.genres ?? []),
               const SizedBox(height: 18),
-              crewBuilder(crews: _detailsController.credits.value.crew ?? []),
+              Obx(() => WidgetBuilderHelper(
+                    state: _detailsController.creditsState.value,
+                    onLoadingBuilder: LoadingSpinner.horizontalLoading,
+                    onSuccessBuilder: crewBuilder(
+                      resultType: MOVIE_STRING,
+                      crews: _detailsController.credits.value.crew ?? [],
+                    ),
+                    onErrorBuilder: const Center(
+                      child: Text('error while loading data ...'),
+                    ),
+                  )),
               const SizedBox(height: 18),
               movieInfoBuilder(
                   movieDetails: _detailsController.movieDetail.value),

@@ -47,7 +47,7 @@ class DetailsController extends BaseController {
           if (value != null) {
             movieDetail.value = MovieDetailsModel.fromJson(value);
             // ignore: avoid_print
-            print('${movieDetail.value.title} MOVIE DETAILS');
+            // print('${movieDetail.value.title} MOVIE DETAILS');
             movieDetailState.value = ViewState.retrived;
             update(['movie_about', 'movie_details']);
           }
@@ -60,7 +60,7 @@ class DetailsController extends BaseController {
           if (value != null) {
             tvDetail.value = TvDetailsModel.fromJson(value);
             // ignore: avoid_print
-            print('${tvDetail.value.name} TV DETAILS');
+            // print('${tvDetail.value.name} TV DETAILS');
             tvDetailState.value = ViewState.retrived;
             update(['tv_about', 'tv_details']);
           }
@@ -154,7 +154,7 @@ class DetailsController extends BaseController {
               if (value != null) {
                 credits.value = Credits.fromJson(value);
                 creditsState.value = ViewState.retrived;
-                update(['movie_credits']);
+                update(['movie_cast', 'movie_crews']);
               }
             });
             break;
@@ -265,7 +265,7 @@ class DetailsController extends BaseController {
               if (value != null) {
                 credits.value = Credits.fromJson(value);
                 creditsState.value = ViewState.retrived;
-                update(['tv_credits']);
+                update(['tv_cast', 'tv_crews']);
               }
             });
             break;

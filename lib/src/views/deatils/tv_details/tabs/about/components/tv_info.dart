@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/models/details/movie_details_model.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/views/deatils/components/header_text.dart';
@@ -15,23 +18,27 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
       ? "-"
       : DateFormat.yMMMMd().format(tvDetails.firstAirDate!);
 
+  final _configurationController = Get.find<ConfigurationController>();
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       headerBuilder(headerText: "TV Show Info"),
       const SizedBox(height: 12),
-      rowBuilder(title: "English Title", text: tvDetails.name),
-      rowBuilder(title: "Original Title", text: tvDetails.originalName),
-      rowBuilder(title: "First Air Date", text: firstAirDate),
-      rowBuilder(title: "Last Air Date", text: lastAirDate),
+      rowBuilder(title: "English Title", text: tvDetails.name ?? "-"),
+      rowBuilder(title: "Original Title", text: tvDetails.originalName ?? "-"),
+      rowBuilder(title: "First Air Date", text: firstAirDate ?? "-"),
+      rowBuilder(title: "Last Air Date", text: lastAirDate ?? "-"),
       rowBuilder(
-          title: "Aired Episodes", text: '${tvDetails.numberOfEpisodes}'),
+          title: "Aired Episodes",
+          text: '${tvDetails.numberOfEpisodes ?? "-"} Episodes'),
       rowBuilder(
           title: "Runtime",
           text:
               '${tvDetails.episodeRunTime!.isEmpty ? "-" : tvDetails.episodeRunTime![0]} mins'),
-      rowBuilder(title: "Show Type", text: tvDetails.type),
-      rowBuilder(title: "Original Language", text: tvDetails.originalLanguage),
+      rowBuilder(title: "Show Type", text: tvDetails.type ?? "-"),
+      rowBuilder(
+          title: "Original Language", text: tvDetails.originalLanguage ?? "-"),
       rowBuilder(
         title: "Production Countries",
         child: Wrap(
@@ -43,17 +50,16 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
               (e) => e.name == null
                   ? const SizedBox.shrink()
                   : Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 6),
+                      padding: const EdgeInsets.symmetric(vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryDarkBlue.withOpacity(0.5),
+                        // color: primaryDarkBlue.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
                         e.name ?? "",
-                        style: const TextStyle(
-                          fontSize: n - 4,
-                          color: primaryWhite,
+                        style: TextStyle(
+                          fontSize: n - 2,
+                          color: primaryDarkBlue.withOpacity(0.7),
                         ),
                       ),
                     ),
@@ -65,26 +71,26 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
         title: "Companies",
         child: Wrap(
           alignment: WrapAlignment.start,
-          spacing: 4,
+          // spacing: 2,
           runSpacing: 4,
           children: List.from(
             tvDetails.productionCompanies!.map(
-              (e) => e.name == null
+              (e) => e.logoPath == null || e.logoPath!.isEmpty
                   ? const SizedBox.shrink()
                   : Container(
+                      margin: const EdgeInsets.only(right: 4),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 6),
+                          horizontal: 6, vertical: 6),
                       decoration: BoxDecoration(
-                        color: primaryDarkBlue.withOpacity(0.5),
+                        color: primaryDarkBlue.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Text(
-                        e.name ?? "",
-                        style: const TextStyle(
-                          fontSize: n - 4,
-                          color: primaryWhite,
-                        ),
-                      ),
+                      child: CachedNetworkImage(
+                          height: 40,
+                          width: 40,
+                          fit: BoxFit.scaleDown,
+                          imageUrl:
+                              '${_configurationController.posterUrl}${e.logoPath}'),
                     ),
             ),
           ),
