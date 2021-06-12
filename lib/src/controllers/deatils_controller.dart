@@ -41,7 +41,7 @@ class DetailsController extends BaseController {
 // movie/tv basic details
   getDetails({required String resultType, required int id}) async {
     switch (resultType) {
-      case MOVIE_STRING:
+      case movieString:
         movieDetailState.value = ViewState.busy;
         await _service.getDetails(resultType: resultType, id: id).then((value) {
           if (value != null) {
@@ -54,7 +54,7 @@ class DetailsController extends BaseController {
         });
         break;
 
-      case TV_STRING:
+      case tvString:
         tvDetailState.value = ViewState.busy;
         await _service.getDetails(resultType: resultType, id: id).then((value) {
           if (value != null) {
@@ -78,9 +78,9 @@ class DetailsController extends BaseController {
     required String appendTo,
   }) async {
     switch (resultType) {
-      case MOVIE_STRING:
+      case movieString:
         switch (appendTo) {
-          case IMAGES_STRING:
+          case imagesString:
             imagesState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -93,7 +93,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case VIDEOS_STRING:
+          case videosString:
             videosState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -106,7 +106,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case SIMILAR_STRING:
+          case similarString:
             similarState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -119,7 +119,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case RECOMMENDED_STRING:
+          case recommendedSTring:
             recommendedState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -132,7 +132,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case ACCOUNT_STATE_STRING:
+          case accountStateString:
             accountstateState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -145,7 +145,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case CREDITS_STRING:
+          case creditsString:
             creditsState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -158,7 +158,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case REVIEWS_STRING:
+          case reviewsString:
             reviewsState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -171,7 +171,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case EXTERNL_IDS_STRING:
+          case externalIdsString:
             externalIdsState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -189,9 +189,9 @@ class DetailsController extends BaseController {
         }
         break;
 
-      case TV_STRING:
+      case tvString:
         switch (appendTo) {
-          case IMAGES_STRING:
+          case imagesString:
             imagesState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -204,7 +204,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case VIDEOS_STRING:
+          case videosString:
             videosState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -217,7 +217,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case SIMILAR_STRING:
+          case similarString:
             similarState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -230,7 +230,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case RECOMMENDED_STRING:
+          case recommendedSTring:
             recommendedState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -243,7 +243,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case ACCOUNT_STATE_STRING:
+          case accountStateString:
             accountstateState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -256,7 +256,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case CREDITS_STRING:
+          case creditsString:
             creditsState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -269,7 +269,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case REVIEWS_STRING:
+          case reviewsString:
             reviewsState.value = ViewState.busy;
             await _service
                 .getOtherDetails(
@@ -282,7 +282,7 @@ class DetailsController extends BaseController {
               }
             });
             break;
-          case EXTERNL_IDS_STRING:
+          case externalIdsString:
             externalIdsState.value = ViewState.busy;
             await _service
                 .getOtherDetails(

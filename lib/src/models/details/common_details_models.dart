@@ -219,7 +219,7 @@ class AccountStates {
   });
 
   bool? favorite;
-  dynamic? rated; //bug*
+  dynamic rated; //bug*
   bool? watchlist;
 
   factory AccountStates.fromJson(Map<String, dynamic> json) =>

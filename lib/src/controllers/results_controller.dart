@@ -11,22 +11,22 @@ class ResultsController extends BaseController {
   void onInit() {
     super.onInit();
     // initializing popular/top rated/upcomming/now playing MOVIES services
-    getMovieResults(resultType: POPULAR_STRING);
-    getMovieResults(resultType: TOP_RATED_STRING);
-    getMovieResults(resultType: UPCOMING_STRING);
-    getMovieResults(resultType: NOW_PLAYING_STRING);
+    getMovieResults(resultType: popularString);
+    getMovieResults(resultType: topRatedString);
+    getMovieResults(resultType: upcomingString);
+    getMovieResults(resultType: nowPlayingString);
 
     // initializing popular/top rated/airing today/on the air TV services
-    getTvResults(resultType: POPULAR_STRING);
-    getTvResults(resultType: TOP_RATED_STRING);
-    getTvResults(resultType: AIRING_TODAY_STRING);
-    getTvResults(resultType: ON_THE_AIR_STRING);
+    getTvResults(resultType: popularString);
+    getTvResults(resultType: topRatedString);
+    getTvResults(resultType: airingTodayString);
+    getTvResults(resultType: onTheAirString);
   }
 
   final _service = sl<ResultsService>();
 
-  var _movie = MovieResultModel().obs;
-  var _tv = TvResultsModel().obs;
+  final _movie = MovieResultModel().obs;
+  final _tv = TvResultsModel().obs;
 
   MovieResultModel get movie => _movie.value;
   TvResultsModel get tv => _tv.value;
@@ -90,7 +90,7 @@ class ResultsController extends BaseController {
   /// [movie results controller]
   getMovieResults({required String resultType}) async {
     switch (resultType) {
-      case POPULAR_STRING:
+      case popularString:
         popularMoviesState.value = ViewState.busy;
         await _service
             .getMovieResults(resultType: resultType, page: '$popularMoviesPage')
@@ -103,7 +103,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case TOP_RATED_STRING:
+      case topRatedString:
         topRatedMoviesState.value = ViewState.busy;
         await _service
             .getMovieResults(
@@ -116,7 +116,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case UPCOMING_STRING:
+      case upcomingString:
         upcommingMoviesState.value = ViewState.busy;
         await _service
             .getMovieResults(
@@ -129,7 +129,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case NOW_PLAYING_STRING:
+      case nowPlayingString:
         nowPlayingMoviesState.value = ViewState.busy;
         await _service
             .getMovieResults(
@@ -150,7 +150,7 @@ class ResultsController extends BaseController {
 
   loadMoreMoviesResults({required String resultType}) async {
     switch (resultType) {
-      case POPULAR_STRING:
+      case popularString:
         popularMoviesPage = popularMoviesPage + 1;
         popularMoviesState.value = ViewState.busy;
         await _service
@@ -163,7 +163,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case TOP_RATED_STRING:
+      case topRatedString:
         topRatedMoviesPage = topRatedMoviesPage + 1;
         topRatedMoviesState.value = ViewState.busy;
         await _service
@@ -177,7 +177,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case UPCOMING_STRING:
+      case upcomingString:
         upcommingMoviesPage = upcommingMoviesPage + 1;
         upcommingMoviesState.value = ViewState.busy;
         await _service
@@ -191,7 +191,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case NOW_PLAYING_STRING:
+      case nowPlayingString:
         nowPlayingMoviesPage = nowPlayingMoviesPage + 1;
         nowPlayingMoviesState.value = ViewState.busy;
         await _service
@@ -214,7 +214,7 @@ class ResultsController extends BaseController {
   /// [tvList results controller]
   getTvResults({required String resultType}) async {
     switch (resultType) {
-      case POPULAR_STRING:
+      case popularString:
         popularTvState.value = ViewState.busy;
         await _service
             .getTvResults(resultType: resultType, page: '$popularTvPage')
@@ -227,7 +227,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case TOP_RATED_STRING:
+      case topRatedString:
         topRatedTvState.value = ViewState.busy;
         await _service
             .getTvResults(resultType: resultType, page: '$topRatedTvPage')
@@ -239,7 +239,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case ON_THE_AIR_STRING:
+      case onTheAirString:
         onTheAirTvState.value = ViewState.busy;
         await _service
             .getTvResults(resultType: resultType, page: '$onTheAirTvPage')
@@ -251,7 +251,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case AIRING_TODAY_STRING:
+      case airingTodayString:
         airingTodayTvState.value = ViewState.busy;
         await _service
             .getTvResults(resultType: resultType, page: '$airingTodayTvPage')
@@ -271,7 +271,7 @@ class ResultsController extends BaseController {
 
   loadMoreTvResults({required String resultType}) async {
     switch (resultType) {
-      case POPULAR_STRING:
+      case popularString:
         popularTvPage = popularTvPage + 1;
         popularTvState.value = ViewState.busy;
         await _service
@@ -284,7 +284,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case TOP_RATED_STRING:
+      case topRatedString:
         topRatedTvPage = topRatedTvPage + 1;
         topRatedTvState.value = ViewState.busy;
         await _service
@@ -297,7 +297,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case ON_THE_AIR_STRING:
+      case onTheAirString:
         onTheAirTvPage = onTheAirTvPage + 1;
         onTheAirTvState.value = ViewState.busy;
         await _service
@@ -310,7 +310,7 @@ class ResultsController extends BaseController {
           }
         });
         break;
-      case AIRING_TODAY_STRING:
+      case airingTodayString:
         airingTodayTvPage = airingTodayTvPage + 1;
         airingTodayTvState.value = ViewState.busy;
         await _service

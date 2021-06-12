@@ -26,9 +26,9 @@ class MovieSimilarTab extends StatelessWidget {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
+            resultType: movieString,
             id: _resultsController.movie.id!,
-            appendTo: SIMILAR_STRING);
+            appendTo: similarString);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.similarState.value,

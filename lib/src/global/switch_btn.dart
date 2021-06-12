@@ -50,10 +50,10 @@ Widget trendingMovieSwitchBtnBuilder({
 
                     if (_controller.isMovieToday == true) {
                       _trendingResultsController.getTrendingMovieResults(
-                          timeWindow: DAY_STRING);
+                          timeWindow: dayString);
                     } else if (_controller.isMovieToday != true) {
                       _trendingResultsController.getTrendingMovieResults(
-                          timeWindow: WEEK_STRING);
+                          timeWindow: weekString);
                     }
                   },
                   child: Container(
@@ -124,10 +124,10 @@ Widget trendingTvSwitchBtnBuilder({
 
                     if (_controller.isTvToday == true) {
                       _trendingResultsController.getTrendingTvResults(
-                          timeWindow: DAY_STRING);
+                          timeWindow: dayString);
                     } else if (_controller.isTvToday != true) {
                       _trendingResultsController.getTrendingTvResults(
-                          timeWindow: WEEK_STRING);
+                          timeWindow: weekString);
                     }
                   },
                   child: Container(
@@ -199,11 +199,11 @@ Widget trendingTvSwitchBtnBuilder({
 //                     if (_controller.isMovieNowPlaying == true) {
 //                       _resultsController.nowPlayingMoviesPage = 1;
 //                       _resultsController.getMovieResults(
-//                           resultType: NOW_PLAYING_STRING);
+//                           resultType: nowPlayingString);
 //                     } else if (_controller.isMovieNowPlaying != true) {
 //                       _resultsController.upcommingMoviesPage = 1;
 //                       _resultsController.getMovieResults(
-//                           resultType: UPCOMING_STRING);
+//                           resultType: upcomingString);
 //                     }
 //                   },
 //                   child: Container(

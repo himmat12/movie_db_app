@@ -20,7 +20,7 @@ Widget trendingMoviesBuilder({
   required String posterUrl,
 }) {
   // ignore: avoid_print
-  print("trending movie builder builded");
+  // print("trending movie builder builded");
 
   final _resultsController = Get.find<ResultsController>();
   final _utilityController = Get.find<UtilityController>();
@@ -41,8 +41,8 @@ Widget trendingMoviesBuilder({
           onTap: () {
             _trendingResultsController.loadMoreTrendingMoviesResults(
                 timeWindow: _utilityController.isMovieToday == true
-                    ? DAY_STRING
-                    : WEEK_STRING);
+                    ? dayString
+                    : weekString);
           },
           viewState: _trendingResultsController.movieViewState),
     );

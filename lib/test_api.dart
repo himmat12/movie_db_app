@@ -63,7 +63,7 @@ class ApiService {
 }
 
 class TestApiWidget extends StatefulWidget {
-  TestApiWidget({Key? key}) : super(key: key);
+  const TestApiWidget({Key? key}) : super(key: key);
 
   @override
   State<TestApiWidget> createState() => _TestApiWidgetState();

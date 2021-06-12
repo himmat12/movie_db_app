@@ -24,9 +24,9 @@ class TvReviewTab extends StatelessWidget with AvatarBuilderMixin {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: TV_STRING,
+            resultType: tvString,
             id: _resultsController.tv.id!,
-            appendTo: REVIEWS_STRING);
+            appendTo: reviewsString);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.reviewsState.value,

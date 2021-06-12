@@ -34,9 +34,9 @@ class TvAboutTab extends StatelessWidget {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: TV_STRING,
+            resultType: tvString,
             id: _resultsController.tv.id!,
-            appendTo: IMAGES_STRING);
+            appendTo: imagesString);
       },
       builder: (controller) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -60,15 +60,15 @@ class TvAboutTab extends StatelessWidget {
               init: _detailsController,
               initState: (_) {
                 _detailsController.getOtherDetails(
-                    resultType: TV_STRING,
+                    resultType: tvString,
                     id: _resultsController.tv.id!,
-                    appendTo: CREDITS_STRING);
+                    appendTo: creditsString);
               },
               builder: (controller) => WidgetBuilderHelper(
                 state: _detailsController.creditsState.value,
                 onLoadingBuilder: LoadingSpinner.horizontalLoading,
                 onSuccessBuilder: crewBuilder(
-                  resultType: TV_STRING,
+                  resultType: tvString,
                   crews: _detailsController.credits.value.crew ?? [],
                 ),
                 onErrorBuilder: const Center(

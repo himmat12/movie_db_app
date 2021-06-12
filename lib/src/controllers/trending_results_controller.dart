@@ -16,16 +16,16 @@ class TrendingResultsController extends BaseController {
 
     // initializing trending MOVIES services
     if (_utilityController.isMovieToday == true) {
-      getTrendingMovieResults(timeWindow: DAY_STRING);
+      getTrendingMovieResults(timeWindow: dayString);
     } else {
-      getTrendingMovieResults(timeWindow: WEEK_STRING);
+      getTrendingMovieResults(timeWindow: weekString);
     }
 
     // initializing trending TV services
     if (_utilityController.isTvToday == true) {
-      getTrendingTvResults(timeWindow: DAY_STRING);
+      getTrendingTvResults(timeWindow: dayString);
     } else {
-      getTrendingTvResults(timeWindow: WEEK_STRING);
+      getTrendingTvResults(timeWindow: weekString);
     }
   }
 
@@ -34,8 +34,8 @@ class TrendingResultsController extends BaseController {
   var trendingTVs = <TvResultsModel>[].obs;
   var trendingMovies = <MovieResultModel>[].obs;
 
-  var _tvViewState = ViewState.idle.obs;
-  var _movieViewState = ViewState.idle.obs;
+  final _tvViewState = ViewState.idle.obs;
+  final _movieViewState = ViewState.idle.obs;
 
   int moviesPage = 1;
   int tvPage = 1;
@@ -56,7 +56,7 @@ class TrendingResultsController extends BaseController {
     _movieViewState.value = ViewState.busy;
     await _service
         .getTrendingResults(
-      mediaType: MOVIE_STRING,
+      mediaType: movieString,
       timeWindow: timeWindow,
       page: '$moviesPage',
     )
@@ -79,7 +79,7 @@ class TrendingResultsController extends BaseController {
 
     await _service
         .getTrendingResults(
-      mediaType: MOVIE_STRING,
+      mediaType: movieString,
       timeWindow: timeWindow,
       page: '$moviesPage',
     )
@@ -103,7 +103,7 @@ class TrendingResultsController extends BaseController {
     _tvViewState.value = ViewState.busy;
     await _service
         .getTrendingResults(
-      mediaType: TV_STRING,
+      mediaType: tvString,
       timeWindow: timeWindow,
       page: '$tvPage',
     )
@@ -125,7 +125,7 @@ class TrendingResultsController extends BaseController {
 
     await _service
         .getTrendingResults(
-      mediaType: TV_STRING,
+      mediaType: tvString,
       timeWindow: timeWindow,
       page: '$tvPage',
     )

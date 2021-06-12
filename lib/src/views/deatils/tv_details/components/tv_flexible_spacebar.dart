@@ -47,9 +47,9 @@ Widget tvFlexibleSpacebarComponent({
                 init: _detailsController,
                 initState: (_) {
                   _detailsController.getOtherDetails(
-                      resultType: TV_STRING,
+                      resultType: tvString,
                       id: _resultController.tv.id!,
-                      appendTo: IMAGES_STRING);
+                      appendTo: imagesString);
                 },
                 builder: (controller) => WidgetBuilderHelper(
                   state: _detailsController.tvDetailState.value,

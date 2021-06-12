@@ -15,7 +15,7 @@ class UtilityController extends BaseController {
   }
 
 // bottom navigation state
-  var _navCurrentIndex = 0.obs;
+  final _navCurrentIndex = 0.obs;
 
   int get navCurrentIndex => _navCurrentIndex.value;
 
@@ -33,7 +33,7 @@ class UtilityController extends BaseController {
   }
 
 // hide/show (tv/movie) details btn state
-  var _showText = false.obs;
+  final _showText = false.obs;
 
   bool get showText => _showText.value;
 
@@ -44,7 +44,7 @@ class UtilityController extends BaseController {
   void resetHideShowState() => _showText.value = false;
 
 // details tabbar navigation state
-  var _tabbarCurrentIndex = 0.obs;
+  final _tabbarCurrentIndex = 0.obs;
 
   int get tabbarCurrentIndex => _tabbarCurrentIndex.value;
 
@@ -56,7 +56,7 @@ class UtilityController extends BaseController {
   void resetTabbarState() => _tabbarCurrentIndex.value = 0;
 
   // toggle movie/tv details title to show / hide title
-  var _titlevisiblity = false.obs;
+  final _titlevisiblity = false.obs;
 
   bool get titlevisiblity => _titlevisiblity.value;
 
@@ -65,11 +65,11 @@ class UtilityController extends BaseController {
   }
 
   // trending movies/tv switch btn state
-  var _isMovieToday = Prefs.movieIsTodayState.obs;
-  var _isTvToday = Prefs.tvIsTodayState.obs;
+  final _isMovieToday = Prefs.movieIsTodayState.obs;
+  final _isTvToday = Prefs.tvIsTodayState.obs;
 
-  var _isMovieNowPlaying = Prefs.isMovieNowPlayingState.obs;
-  var _isTvAiringToday = Prefs.isTvAiringTodayState.obs;
+  final _isMovieNowPlaying = Prefs.isMovieNowPlayingState.obs;
+  final _isTvAiringToday = Prefs.isTvAiringTodayState.obs;
 
   bool get isMovieNowPlaying => _isMovieNowPlaying.value;
   bool get isTvAiringToday => _isTvAiringToday.value;
@@ -100,7 +100,7 @@ class UtilityController extends BaseController {
   ///
 
   /// [ img slider pageview state ]
-  var _imgSliderIndex = 0.obs;
+  final _imgSliderIndex = 0.obs;
   final _controller = PageController(keepPage: true).obs;
 
   int get imgSliderIndex => _imgSliderIndex.value;

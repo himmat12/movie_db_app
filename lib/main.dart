@@ -15,14 +15,17 @@ void main() async {
   // service locator initialization
   setUp();
 
-  runApp(MyApp());
+  runApp(const MyApp(key: Key('muApp')));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      getPages: Routes().getRoutes(),
+      initialRoute: '/',
+      getPages: Routes.getRoutes(),
       initialBinding: InitBindings(),
       title: "Movie DB",
       debugShowCheckedModeBanner: false,

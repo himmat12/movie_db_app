@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
@@ -20,63 +22,87 @@ class DashboardPage extends StatelessWidget {
   final _resultsController = Get.find<ResultsController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
 
-  List<Widget> pages = [
+  DashboardPage({Key? key}) : super(key: key);
+
+  final List<Widget> pages = [
     HomePage(),
-    DiscoverPage(),
-    MyListPage(),
-    ProfilePage(),
+    const DiscoverPage(),
+    const MyListPage(),
+    const ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(),
-        bottomNavigationBar: Obx(
-          () => WidgetBuilderHelper(
-            state: _configurationController.configState.value,
-            onLoadingBuilder: bottomNavSkeleton(),
-            onErrorBuilder: const Center(
-              child: Text('error while initializing data...'),
-            ),
-            onSuccessBuilder: BottomNavigationBar(
-              elevation: 0,
-              currentIndex: _utilityController.navCurrentIndex,
-              onTap: (newIndex) {
-                _utilityController.setBottomNavIndex(newIndex);
+    return WillPopScope(
+      onWillPop: () async {
+        Get.dialog(AlertDialog(
+          title: const Text('Do you want to exit ?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                exit(1);
               },
-              type: BottomNavigationBarType.fixed,
-              unselectedFontSize: 0,
-              selectedFontSize: 0,
-              selectedIconTheme: const IconThemeData(color: Colors.blue),
-              selectedItemColor: Colors.blue,
-              items: List.from(
-                menus.map(
-                  (e) => BottomNavigationBarItem(
-                    icon: Text(e),
-                    label: "",
+              child: const Text('Exit'),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text('Cancle'),
+            ),
+          ],
+        ));
+        return false;
+      },
+      child: Scaffold(
+          // appBar: AppBar(),
+          bottomNavigationBar: Obx(
+            () => WidgetBuilderHelper(
+              state: _configurationController.configState.value,
+              onLoadingBuilder: bottomNavSkeleton(),
+              onErrorBuilder: const Center(
+                child: Text('error while initializing data...'),
+              ),
+              onSuccessBuilder: BottomNavigationBar(
+                elevation: 0,
+                currentIndex: _utilityController.navCurrentIndex,
+                onTap: (newIndex) {
+                  _utilityController.setBottomNavIndex(newIndex);
+                },
+                type: BottomNavigationBarType.fixed,
+                unselectedFontSize: 0,
+                selectedFontSize: 0,
+                selectedIconTheme: const IconThemeData(color: Colors.blue),
+                selectedItemColor: Colors.blue,
+                items: List.from(
+                  menus.map(
+                    (e) => BottomNavigationBarItem(
+                      icon: Text(e),
+                      label: "",
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-        body: Obx(
-          () => WidgetBuilderHelper(
-            state: _configurationController.configState.value,
-            onLoadingBuilder: pageSkeleton(),
-            onErrorBuilder: const Center(
-              child: Text('error while initializing data ...'),
-            ),
-            onSuccessBuilder: SafeArea(
-                child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  pages[_utilityController.navCurrentIndex],
-                ],
+          body: Obx(
+            () => WidgetBuilderHelper(
+              state: _configurationController.configState.value,
+              onLoadingBuilder: pageSkeleton(),
+              onErrorBuilder: const Center(
+                child: Text('error while initializing data ...'),
               ),
-            )),
-          ),
-        ));
+              onSuccessBuilder: SafeArea(
+                  child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    pages[_utilityController.navCurrentIndex],
+                  ],
+                ),
+              )),
+            ),
+          )),
+    );
   }
 }
 

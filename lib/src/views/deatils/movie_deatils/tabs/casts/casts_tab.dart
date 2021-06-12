@@ -26,9 +26,9 @@ class MovieCastsTab extends StatelessWidget with AvatarBuilderMixin {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
+            resultType: movieString,
             id: _resultController.movie.id!,
-            appendTo: CREDITS_STRING);
+            appendTo: creditsString);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.creditsState.value,

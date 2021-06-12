@@ -19,6 +19,8 @@ class HomePage extends StatelessWidget {
   final _trendingResultsController = Get.find<TrendingResultsController>();
   final _detailsController = Get.find<DetailsController>();
 
+  HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,14 +31,14 @@ class HomePage extends StatelessWidget {
 
         // TextButton(
         //   onPressed: () {
-        //     _detailsController.getDetails(resultType: MOVIE_STRING, id: 337404);
+        //     _detailsController.getDetails(resultType: movieString, id: 337404);
         //   },
         //   child: const Text('getDetails movie'),
         // ),
 
         // TextButton(
         //   onPressed: () {
-        //     _detailsController.getDetails(resultType: TV_STRING, id: 63174);
+        //     _detailsController.getDetails(resultType: tvString, id: 63174);
         //   },
         //   child: const Text('getDetails tv'),
         // ),
@@ -54,7 +56,7 @@ class HomePage extends StatelessWidget {
         // upcoming movies *
         movieResultBuilder(
           onMoreTap: () {},
-          resultType: UPCOMING_STRING,
+          resultType: upcomingString,
           state: _resultsController.upcommingMoviesState,
           posterUrl: _configurationController.posterUrl,
           title: "Upcoming",
@@ -65,7 +67,7 @@ class HomePage extends StatelessWidget {
         // on the air tv shows
         tvResultBuilder(
           onMoreTap: () {},
-          resultType: ON_THE_AIR_STRING,
+          resultType: onTheAirString,
           state: _resultsController.onTheAirTvState,
           posterUrl: _configurationController.posterUrl,
           title: "On The Air",
@@ -76,7 +78,7 @@ class HomePage extends StatelessWidget {
         // popular movies *
         movieResultBuilder(
           onMoreTap: () {},
-          resultType: POPULAR_STRING,
+          resultType: popularString,
           state: _resultsController.popularMoviesState,
           posterUrl: _configurationController.posterUrl,
           title: "Popular",
@@ -87,7 +89,7 @@ class HomePage extends StatelessWidget {
         // popular tv shows
         tvResultBuilder(
           onMoreTap: () {},
-          resultType: POPULAR_STRING,
+          resultType: popularString,
           state: _resultsController.popularTvState,
           posterUrl: _configurationController.posterUrl,
           title: "Popular",
@@ -98,7 +100,7 @@ class HomePage extends StatelessWidget {
         // top rated movies *
         movieResultBuilder(
           onMoreTap: () {},
-          resultType: TOP_RATED_STRING,
+          resultType: topRatedString,
           state: _resultsController.topRatedMoviesState,
           posterUrl: _configurationController.posterUrl,
           title: "Top Rated",
@@ -109,7 +111,7 @@ class HomePage extends StatelessWidget {
         // top rated tv shows
         tvResultBuilder(
           onMoreTap: () {},
-          resultType: TOP_RATED_STRING,
+          resultType: topRatedString,
           state: _resultsController.topRatedTvState,
           posterUrl: _configurationController.posterUrl,
           title: "Top Rated",
@@ -120,7 +122,7 @@ class HomePage extends StatelessWidget {
         // now playing movies *
         movieResultBuilder(
           onMoreTap: () {},
-          resultType: NOW_PLAYING_STRING,
+          resultType: nowPlayingString,
           state: _resultsController.nowPlayingMoviesState,
           posterUrl: _configurationController.posterUrl,
           title: "Now Playing",
@@ -131,7 +133,7 @@ class HomePage extends StatelessWidget {
         // airing today tv shows
         tvResultBuilder(
           onMoreTap: () {},
-          resultType: AIRING_TODAY_STRING,
+          resultType: airingTodayString,
           state: _resultsController.airingTodayTvState,
           posterUrl: _configurationController.posterUrl,
           title: "Airing Today",

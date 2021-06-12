@@ -25,9 +25,9 @@ class MovieReviewTab extends StatelessWidget with AvatarBuilderMixin {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
+            resultType: movieString,
             id: _resultsController.movie.id!,
-            appendTo: REVIEWS_STRING);
+            appendTo: reviewsString);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.reviewsState.value,

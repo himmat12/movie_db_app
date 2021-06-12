@@ -13,7 +13,7 @@ String authority = "api.themoviedb.org";
 class BaseService {
   final client = http.Client();
   late http.Response response;
-  int _timeOutDuration = 30;
+  final _timeOutDuration = 30;
 
 // headers
   Map<String, String> headers() => {

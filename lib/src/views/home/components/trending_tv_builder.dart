@@ -40,8 +40,8 @@ Widget trendingTvBuilder({
           onTap: () {
             _trendingResultsController.loadMoreTrendingTvResults(
                 timeWindow: _utilityController.isTvToday == true
-                    ? DAY_STRING
-                    : WEEK_STRING);
+                    ? dayString
+                    : weekString);
           },
           viewState: _trendingResultsController.tvViewState),
     );

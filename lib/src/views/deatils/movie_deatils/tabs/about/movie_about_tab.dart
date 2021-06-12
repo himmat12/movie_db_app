@@ -29,9 +29,9 @@ class MovieAboutTab extends StatelessWidget {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
+            resultType: movieString,
             id: _resultsController.movie.id!,
-            appendTo: IMAGES_STRING);
+            appendTo: imagesString);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.movieDetailState.value,
@@ -58,15 +58,15 @@ class MovieAboutTab extends StatelessWidget {
                 init: _detailsController,
                 initState: (_) {
                   _detailsController.getOtherDetails(
-                      resultType: MOVIE_STRING,
+                      resultType: movieString,
                       id: _resultsController.movie.id!,
-                      appendTo: CREDITS_STRING);
+                      appendTo: creditsString);
                 },
                 builder: (controller) => WidgetBuilderHelper(
                   state: _detailsController.creditsState.value,
                   onLoadingBuilder: LoadingSpinner.horizontalLoading,
                   onSuccessBuilder: crewBuilder(
-                    resultType: MOVIE_STRING,
+                    resultType: movieString,
                     crews: _detailsController.credits.value.crew ?? [],
                   ),
                   onErrorBuilder: const Center(

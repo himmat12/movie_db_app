@@ -32,13 +32,13 @@ Widget movieResultBuilder({
 // returns respected movies list according to the given resultType parameter
   RxList<MovieResultModel>? getItem(String resultType) {
     switch (resultType) {
-      case POPULAR_STRING:
+      case popularString:
         return _resultsController.popularMovies;
-      case TOP_RATED_STRING:
+      case topRatedString:
         return _resultsController.topRatedMovies;
-      case UPCOMING_STRING:
+      case upcomingString:
         return _resultsController.upcommingMovies;
-      case NOW_PLAYING_STRING:
+      case nowPlayingString:
         return _resultsController.nowPlayingMovies;
       default:
         break;

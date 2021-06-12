@@ -19,10 +19,10 @@ Widget crewBuilder({required List<Crew> crews, required String resultType}) {
           IconButton(
               onPressed: () {
                 switch (resultType) {
-                  case MOVIE_STRING:
+                  case movieString:
                     Get.to(() => MovieCrewPage());
                     break;
-                  case TV_STRING:
+                  case tvString:
                     Get.to(() => TvCrewPage());
                     break;
                   default:

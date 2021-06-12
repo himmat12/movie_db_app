@@ -26,9 +26,9 @@ class MovieRecommendedTab extends StatelessWidget {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: MOVIE_STRING,
+            resultType: movieString,
             id: _resultsController.movie.id!,
-            appendTo: RECOMMENDED_STRING);
+            appendTo: recommendedSTring);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.recommendedState.value,

@@ -20,7 +20,6 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'components/tv_flexible_spacebar.dart';
 import '../components/sliver_appbar_title.dart';
-import 'components/tv_flexible_spacebar.dart';
 import 'components/tv_flexible_spacebar_options.dart';
 import 'tabs/about/tv_about_tab.dart';
 import 'tabs/tv_list/recommended_list.dart';
@@ -51,7 +50,7 @@ class TvDetails extends StatelessWidget {
             init: _detailsController,
             initState: (_) {
               _detailsController.getDetails(
-                  resultType: TV_STRING, id: _resultssController.tv.id!);
+                  resultType: tvString, id: _resultssController.tv.id!);
               _utilityController.resetImgSliderIndex();
               _utilityController.resetTabbarState();
               _utilityController.resetHideShowState();
@@ -93,9 +92,9 @@ class TvDetails extends StatelessWidget {
                               initState: (_) {
                                 // _resultssController.setMovie(movie);
                                 _detailsController.getOtherDetails(
-                                    resultType: TV_STRING,
+                                    resultType: tvString,
                                     id: _resultssController.tv.id!,
-                                    appendTo: IMAGES_STRING);
+                                    appendTo: imagesString);
                               },
                               builder: (controller) => WidgetBuilderHelper(
                                 state: _detailsController.imagesState.value,

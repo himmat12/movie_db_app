@@ -27,9 +27,9 @@ class TvSimilarTab extends StatelessWidget {
       init: _detailsController,
       initState: (_) {
         _detailsController.getOtherDetails(
-            resultType: TV_STRING,
+            resultType: tvString,
             id: _resultsController.tv.id!,
-            appendTo: SIMILAR_STRING);
+            appendTo: similarString);
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.similarState.value,

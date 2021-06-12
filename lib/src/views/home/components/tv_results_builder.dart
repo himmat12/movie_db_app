@@ -31,13 +31,13 @@ Widget tvResultBuilder({
 // returns respected TV list according to the given resultType parameter
   RxList<TvResultsModel>? getItem(String resultType) {
     switch (resultType) {
-      case POPULAR_STRING:
+      case popularString:
         return _resultsController.popularTvList;
-      case TOP_RATED_STRING:
+      case topRatedString:
         return _resultsController.topRatedTvList;
-      case AIRING_TODAY_STRING:
+      case airingTodayString:
         return _resultsController.airingTodayTvList;
-      case ON_THE_AIR_STRING:
+      case onTheAirString:
         return _resultsController.onTheAirTvList;
       default:
         break;

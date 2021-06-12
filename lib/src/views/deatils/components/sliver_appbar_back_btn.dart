@@ -4,6 +4,8 @@ import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/views/dashboard/dashboard.dart';
+import 'package:movie_app/src/views/home/home_page.dart';
 
 // title widget
 class SABTN extends StatefulWidget {
@@ -65,9 +67,7 @@ class _SABTNState extends State<SABTN> {
       curve: Curves.easeIn,
       child: IconButton(
         onPressed: () {
-          // _detailsController.getDetails(
-          //     resultType: MOVIE_STRING, id: _resultsController.movie.id!);
-          Get.back();
+          Get.offAllNamed('/');
         },
         icon: Icon(
           Icons.arrow_back,
