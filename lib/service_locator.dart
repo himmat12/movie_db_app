@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:movie_app/src/services/configuration_service.dart';
 import 'package:movie_app/src/services/details_service.dart';
+import 'package:movie_app/src/services/people_service.dart';
 import 'package:movie_app/src/services/results_service.dart';
 
 import 'src/services/trending_results_service.dart';
@@ -13,4 +14,5 @@ void setUp() {
   sl.registerLazySingleton<TrendingResultsService>(
       () => TrendingResultsService());
   sl.registerLazySingleton<DetailsService>(() => DetailsService());
+  sl.registerLazySingleton<PeopleService>(() => PeopleService());
 }

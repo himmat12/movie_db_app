@@ -21,3 +21,6 @@ const String accountStateString = "account_states";
 const String reviewsString = "reviews";
 const String creditsString = "credits";
 const String externalIdsString = "external_ids";
+
+const String movieCreditsString = "movie_credits";
+const String tvCreditsString = "tv_credits";

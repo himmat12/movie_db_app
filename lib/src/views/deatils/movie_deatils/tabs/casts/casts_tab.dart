@@ -60,7 +60,9 @@ class MovieCastsTab extends StatelessWidget with AvatarBuilderMixin {
                 Cast cast = _detailsController.credits.value.cast![index];
 
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed('/people_details');
+                  },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 16),

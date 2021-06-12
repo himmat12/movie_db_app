@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:movie_app/src/exceptions/app_exceptions.dart';
 import 'dart:convert';
 import 'package:movie_app/src/utils/auth.dart';
 
@@ -20,6 +21,27 @@ class BaseService {
         HttpHeaders.contentTypeHeader: 'application/json;charset=utf-8',
         HttpHeaders.acceptHeader: 'application/json'
       };
+
+// response
+  dynamic returnResponse(http.Response response) {
+    switch (response.statusCode) {
+      case 200:
+      case 201:
+        return response;
+
+      case 400:
+        throw BadRequestException(jsonDecode(jsonEncode(response.body)));
+
+      case 401:
+      case 403:
+        throw UnauthorizedException(jsonDecode(jsonEncode(response.body)));
+
+      case 500:
+      default:
+        throw FetchDataException(
+            'Error occured while Communicating with Server with StatusCode: ${response.statusCode}');
+    }
+  }
 
   Future<http.Response> request({
     required Requests method,
@@ -72,12 +94,12 @@ class BaseService {
     if (response.statusCode == 401 || response.statusCode == 403) {
       Auth.logout();
       // Get.offAll(page);
-      return response;
+      return returnResponse(response);
     }
-    return response;
+    return returnResponse(response);
   }
 
-  //
+  //decodes response from string to json object
   decodeResponse(http.Response response) {
     return jsonDecode(utf8.decode(response.bodyBytes));
   }

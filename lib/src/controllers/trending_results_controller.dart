@@ -61,15 +61,15 @@ class TrendingResultsController extends BaseController {
       page: '$moviesPage',
     )
         .then((value) {
-      if (value != null) {
-        trendingMovies =
-            RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
-        // for (var i in trendingMovies) {
-        // // ignore: avoid_print
-        //   print(i.title);
-        // }
-        _movieViewState.value = ViewState.retrived;
-      }
+      // if (value != null) {
+      trendingMovies =
+          RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
+      // for (var i in trendingMovies) {
+      // // ignore: avoid_print
+      //   print(i.title);
+      // }
+      _movieViewState.value = ViewState.retrived;
+      // }
     });
   }
 

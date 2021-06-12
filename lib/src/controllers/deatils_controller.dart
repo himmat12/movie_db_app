@@ -44,26 +44,26 @@ class DetailsController extends BaseController {
       case movieString:
         movieDetailState.value = ViewState.busy;
         await _service.getDetails(resultType: resultType, id: id).then((value) {
-          if (value != null) {
-            movieDetail.value = MovieDetailsModel.fromJson(value);
-            // ignore: avoid_print
-            // print('${movieDetail.value.title} MOVIE DETAILS');
-            movieDetailState.value = ViewState.retrived;
-            update(['movie_about', 'movie_details']);
-          }
+          // if (value != null) {
+          movieDetail.value = MovieDetailsModel.fromJson(value);
+          // ignore: avoid_print
+          // print('${movieDetail.value.title} MOVIE DETAILS');
+          movieDetailState.value = ViewState.retrived;
+          update(['movie_about', 'movie_details']);
+          // }
         });
         break;
 
       case tvString:
         tvDetailState.value = ViewState.busy;
         await _service.getDetails(resultType: resultType, id: id).then((value) {
-          if (value != null) {
-            tvDetail.value = TvDetailsModel.fromJson(value);
-            // ignore: avoid_print
-            // print('${tvDetail.value.name} TV DETAILS');
-            tvDetailState.value = ViewState.retrived;
-            update(['tv_about', 'tv_details']);
-          }
+          // if (value != null) {
+          tvDetail.value = TvDetailsModel.fromJson(value);
+          // ignore: avoid_print
+          // print('${tvDetail.value.name} TV DETAILS');
+          tvDetailState.value = ViewState.retrived;
+          update(['tv_about', 'tv_details']);
+          // }
         });
         break;
       default:
@@ -86,11 +86,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                images.value = Images.fromJson(value);
-                imagesState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              images.value = Images.fromJson(value);
+              imagesState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           case videosString:
@@ -99,11 +99,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                videos.value = Videos.fromJson(value);
-                videosState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              videos.value = Videos.fromJson(value);
+              videosState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           case similarString:
@@ -112,11 +112,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                similarMovie.value = SimilarMovie.fromJson(value);
-                similarState.value = ViewState.retrived;
-                update(['movie_similar']);
-              }
+              // if (value != null) {
+              similarMovie.value = SimilarMovie.fromJson(value);
+              similarState.value = ViewState.retrived;
+              update(['movie_similar']);
+              // }
             });
             break;
           case recommendedSTring:
@@ -125,11 +125,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                recommendedMovie.value = MovieRecommendations.fromJson(value);
-                recommendedState.value = ViewState.retrived;
-                update(['movie_recommended']);
-              }
+              // if (value != null) {
+              recommendedMovie.value = MovieRecommendations.fromJson(value);
+              recommendedState.value = ViewState.retrived;
+              update(['movie_recommended']);
+              // }
             });
             break;
           case accountStateString:
@@ -138,11 +138,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                accountState.value = AccountStates.fromJson(value);
-                accountstateState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              accountState.value = AccountStates.fromJson(value);
+              accountstateState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           case creditsString:
@@ -151,11 +151,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                credits.value = Credits.fromJson(value);
-                creditsState.value = ViewState.retrived;
-                update(['movie_cast', 'movie_crews']);
-              }
+              // if (value != null) {
+              credits.value = Credits.fromJson(value);
+              creditsState.value = ViewState.retrived;
+              update(['movie_cast', 'movie_crews']);
+              // }
             });
             break;
           case reviewsString:
@@ -164,11 +164,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                reviews.value = Reviews.fromJson(value);
-                reviewsState.value = ViewState.retrived;
-                update(['movie_reviews']);
-              }
+              // if (value != null) {
+              reviews.value = Reviews.fromJson(value);
+              reviewsState.value = ViewState.retrived;
+              update(['movie_reviews']);
+              // }
             });
             break;
           case externalIdsString:
@@ -177,11 +177,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                movieExternalIds.value = MovieExternalIds.fromJson(value);
-                externalIdsState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              movieExternalIds.value = MovieExternalIds.fromJson(value);
+              externalIdsState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           default:
@@ -197,11 +197,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                images.value = Images.fromJson(value);
-                imagesState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              images.value = Images.fromJson(value);
+              imagesState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           case videosString:
@@ -210,11 +210,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                videos.value = Videos.fromJson(value);
-                videosState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              videos.value = Videos.fromJson(value);
+              videosState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           case similarString:
@@ -223,11 +223,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                similarTv.value = SimilarTv.fromJson(value);
-                similarState.value = ViewState.retrived;
-                update(['tv_similar']);
-              }
+              // if (value != null) {
+              similarTv.value = SimilarTv.fromJson(value);
+              similarState.value = ViewState.retrived;
+              update(['tv_similar']);
+              // }
             });
             break;
           case recommendedSTring:
@@ -236,11 +236,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                recommendedTv.value = TvRecommendations.fromJson(value);
-                recommendedState.value = ViewState.retrived;
-                update(['tv_recommended']);
-              }
+              // if (value != null) {
+              recommendedTv.value = TvRecommendations.fromJson(value);
+              recommendedState.value = ViewState.retrived;
+              update(['tv_recommended']);
+              // }
             });
             break;
           case accountStateString:
@@ -249,11 +249,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                accountState.value = AccountStates.fromJson(value);
-                accountstateState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              accountState.value = AccountStates.fromJson(value);
+              accountstateState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           case creditsString:
@@ -262,11 +262,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                credits.value = Credits.fromJson(value);
-                creditsState.value = ViewState.retrived;
-                update(['tv_cast', 'tv_crews']);
-              }
+              // if (value != null) {
+              credits.value = Credits.fromJson(value);
+              creditsState.value = ViewState.retrived;
+              update(['tv_cast', 'tv_crews']);
+              // }
             });
             break;
           case reviewsString:
@@ -275,11 +275,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                reviews.value = Reviews.fromJson(value);
-                reviewsState.value = ViewState.retrived;
-                update(['tv_reviews']);
-              }
+              // if (value != null) {
+              reviews.value = Reviews.fromJson(value);
+              reviewsState.value = ViewState.retrived;
+              update(['tv_reviews']);
+              // }
             });
             break;
           case externalIdsString:
@@ -288,11 +288,11 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              if (value != null) {
-                tvExternalIds.value = TvExternalIds.fromJson(value);
-                externalIdsState.value = ViewState.retrived;
-                update();
-              }
+              // if (value != null) {
+              tvExternalIds.value = TvExternalIds.fromJson(value);
+              externalIdsState.value = ViewState.retrived;
+              update();
+              // }
             });
             break;
           default:

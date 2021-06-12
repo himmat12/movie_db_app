@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:movie_app/routes.dart';
 import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/bindings/init_bindings.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/views/dashboard/dashboard.dart';
+
+import 'init_bindings.dart';
 
 void main() async {
   // get storage initialization

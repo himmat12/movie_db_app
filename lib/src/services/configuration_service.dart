@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:movie_app/src/exceptions/app_exceptions.dart';
 import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
@@ -11,14 +14,9 @@ class ConfigurationService extends BaseService with QueryParameterMixin {
       // ignore: avoid_print
       // print('CONFIGURATION STATUS => ${response.statusCode}');
 
-      if (response.statusCode == 200) {
-        return decodeResponse(response);
-      } else {
-        return null;
-      }
-    } catch (e) {
-      // ignore: avoid_print
-      print(e);
+      return decodeResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
     }
   }
 }

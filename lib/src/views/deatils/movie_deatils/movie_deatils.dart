@@ -50,106 +50,114 @@ class _MoviesDetailsState extends State<MoviesDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return WillPopScope(
+      onWillPop: () async {
+        Get.offAllNamed('/');
+        return false;
+      },
       child: Scaffold(
-        body: GetBuilder(
-          id: 'movie_details',
-          init: _detailsController,
-          initState: (_) {
-            _detailsController.getDetails(
-                resultType: movieString, id: _resultsController.movie.id!);
-            _utilityController.resetImgSliderIndex();
-            _utilityController.resetTabbarState();
-            _utilityController.resetHideShowState();
-            // ignore: avoid_print
-            // print("initialized ...");
-          },
-          builder: (_) {
-            return
-                // Obx(
-                //   () =>
-                WidgetBuilderHelper(
-              state: _detailsController.movieDetailState.value,
-              onLoadingBuilder: Center(child: LoadingSpinner.horizontalLoading),
-              onErrorBuilder: const Center(
-                child: Text('error while initializing data...'),
-              ),
-              onSuccessBuilder: CustomScrollView(
-                controller: scrollController,
-                slivers: [
-                  SliverAppBar(
-                    pinned: true,
-                    elevation: 0.5,
-                    forceElevated: true,
-                    leading: const SABTN(),
-                    title: SABT(
-                        child: Text(
-                      _resultsController.movie.title ?? 'Title',
-                      style: TextStyle(
-                        color: primaryDarkBlue.withOpacity(0.9),
+        body: SafeArea(
+          child: GetBuilder(
+            id: 'movie_details',
+            init: _detailsController,
+            initState: (_) {
+              _detailsController.getDetails(
+                  resultType: movieString, id: _resultsController.movie.id!);
+              _utilityController.resetImgSliderIndex();
+              _utilityController.resetTabbarState();
+              _utilityController.resetHideShowState();
+              // ignore: avoid_print
+              // print("initialized ...");
+            },
+            builder: (_) {
+              return
+                  // Obx(
+                  //   () =>
+                  WidgetBuilderHelper(
+                state: _detailsController.movieDetailState.value,
+                onLoadingBuilder:
+                    Center(child: LoadingSpinner.horizontalLoading),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data...'),
+                ),
+                onSuccessBuilder: CustomScrollView(
+                  controller: scrollController,
+                  slivers: [
+                    SliverAppBar(
+                      pinned: true,
+                      elevation: 0.5,
+                      forceElevated: true,
+                      leading: const SABTN(),
+                      title: SABT(
+                          child: Text(
+                        _resultsController.movie.title ?? 'Title',
+                        style: TextStyle(
+                          color: primaryDarkBlue.withOpacity(0.9),
+                        ),
+                      )),
+                      expandedHeight: _utilityController.titlevisiblity == false
+                          ? 446
+                          : 440,
+                      flexibleSpace: FlexibleSpaceBar(
+                        collapseMode: CollapseMode.pin,
+                        background: Column(
+                          children: [
+                            // slider img/poster/title
+                            // GetBuilder(
+                            //   init: _detailsController,
+                            //   initState: (_) {
+                            //     // _resultssController.setMovie(movie);
+                            //     // _detailsController.getOtherDetails(
+                            //     //     resultType: movieString,
+                            //     //     id: _resultsController.movie.id!,
+                            //     //     appendTo: imagesString);
+                            //   },
+                            //   builder: (controller) => WidgetBuilderHelper(
+                            //     state: _detailsController.imagesState.value,
+                            //     onLoadingBuilder:
+                            //         LoadingSpinner.fadingCircleSpinner,
+                            //     onErrorBuilder: const Center(
+                            //       child: Text('error while loading data ...'),
+                            //     ),
+                            //     onSuccessBuilder:
+                            movieFlexibleSpacebarComponent(
+                              movie: _resultsController.movie,
+                              height: 200,
+                            ),
+                            //   ),
+                            // ),
+
+                            const SizedBox(height: 18),
+
+                            // ratings / lists / bookmark options
+                            movieFlexibleSpacebarOptions(),
+                          ],
+                        ),
                       ),
-                    )),
-                    expandedHeight:
-                        _utilityController.titlevisiblity == false ? 446 : 440,
-                    flexibleSpace: FlexibleSpaceBar(
-                      collapseMode: CollapseMode.pin,
-                      background: Column(
-                        children: [
-                          // slider img/poster/title
-                          // GetBuilder(
-                          //   init: _detailsController,
-                          //   initState: (_) {
-                          //     // _resultssController.setMovie(movie);
-                          //     // _detailsController.getOtherDetails(
-                          //     //     resultType: movieString,
-                          //     //     id: _resultsController.movie.id!,
-                          //     //     appendTo: imagesString);
-                          //   },
-                          //   builder: (controller) => WidgetBuilderHelper(
-                          //     state: _detailsController.imagesState.value,
-                          //     onLoadingBuilder:
-                          //         LoadingSpinner.fadingCircleSpinner,
-                          //     onErrorBuilder: const Center(
-                          //       child: Text('error while loading data ...'),
-                          //     ),
-                          //     onSuccessBuilder:
-                          movieFlexibleSpacebarComponent(
-                            movie: _resultsController.movie,
-                            height: 200,
-                          ),
-                          //   ),
-                          // ),
+                      bottom: bottomTabbarComponent(tabMenuItems: tabMenuItems),
+                    ),
 
-                          const SizedBox(height: 18),
-
-                          // ratings / lists / bookmark options
-                          movieFlexibleSpacebarOptions(),
-                        ],
+                    // body
+                    GetBuilder(
+                      id: 'tabs',
+                      init: _utilityController,
+                      builder: (controller) => SliverList(
+                        delegate: SliverChildListDelegate.fixed(
+                          [
+                            movieTabs[_utilityController.tabbarCurrentIndex],
+                            const SizedBox(height: 120),
+                          ],
+                        ),
                       ),
                     ),
-                    bottom: bottomTabbarComponent(tabMenuItems: tabMenuItems),
-                  ),
-
-                  // body
-                  GetBuilder(
-                    id: 'tabs',
-                    init: _utilityController,
-                    builder: (controller) => SliverList(
-                      delegate: SliverChildListDelegate.fixed(
-                        [
-                          movieTabs[_utilityController.tabbarCurrentIndex],
-                          const SizedBox(height: 120),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-                //   ,
-                // )
-                ;
-          },
+                  ],
+                ),
+              )
+                  //   ,
+                  // )
+                  ;
+            },
+          ),
         ),
       ),
     );

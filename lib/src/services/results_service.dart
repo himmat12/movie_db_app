@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:movie_app/src/exceptions/app_exceptions.dart';
 import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
@@ -16,18 +19,12 @@ class ResultsService extends BaseService with QueryParameterMixin {
       );
       // ignore: avoid_print
       // print('$resultType MOVIE RESULTS STATUS => ${response.statusCode}');
-      if (response.statusCode == 200) {
-        // ignore: avoid_print
-        // print('PAGE => $page');
-        // ignore: avoid_print
-        // print(decodeResponse(response)['results']);
-        return decodeResponse(response)['results'];
-      } else {
-        return null;
-      }
-    } catch (e) {
       // ignore: avoid_print
-      print(e);
+      // print('PAGE => $page');
+
+      return decodeResponse(response)['results'];
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
     }
   }
 
@@ -44,15 +41,12 @@ class ResultsService extends BaseService with QueryParameterMixin {
       );
       // ignore: avoid_print
       // print('$resultType TV RESULTS STATUS => ${response.statusCode}');
-      if (response.statusCode == 200) {
-        // ignore: avoid_print
-        // print('PAGE => ${decodeResponse(response)['page']}');
-        return decodeResponse(response)['results'];
-      } else {
-        return null;
-      }
-    } catch (e) {
-      rethrow;
+      // ignore: avoid_print
+      // print('PAGE => ${decodeResponse(response)['page']}');
+
+      return decodeResponse(response)['results'];
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
     }
   }
 }

@@ -5,6 +5,8 @@ import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 
+import 'src/controllers/person_controller.dart';
+
 class InitBindings extends Bindings {
   InitBindings() {
     dependencies();
@@ -16,5 +18,6 @@ class InitBindings extends Bindings {
     Get.lazyPut(() => ResultsController());
     Get.lazyPut(() => TrendingResultsController());
     Get.lazyPut(() => DetailsController());
+    Get.lazyPut(() => PeopleController());
   }
 }
