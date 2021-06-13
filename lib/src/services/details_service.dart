@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:movie_app/src/configs/strings.dart';
@@ -20,6 +21,9 @@ class DetailsService extends BaseService with QueryParameterMixin {
       return decodeResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
+    } on TimeoutException {
+      throw ServiceNotRespondingException(
+          'Service not responding in time please check your Internet Connection');
     }
   }
 
@@ -40,6 +44,9 @@ class DetailsService extends BaseService with QueryParameterMixin {
       return decodeResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
+    } on TimeoutException {
+      throw ServiceNotRespondingException(
+          'Service not responding in time please check your Internet Connection');
     }
   }
 }

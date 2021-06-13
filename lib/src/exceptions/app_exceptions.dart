@@ -24,6 +24,7 @@ class InvalidInputException extends AppException {
   InvalidInputException([String? message]) : super(message, 'Invalid Input: ');
 }
 
-class TimeOutException extends AppException {
-  TimeOutException([String? message]) : super(message, 'Timeout: ');
+class ServiceNotRespondingException extends AppException {
+  ServiceNotRespondingException([String? message])
+      : super(message, 'Not Responding: ');
 }

@@ -54,37 +54,28 @@ class BaseService {
       case Requests.get:
         response = await client
             .get(
-          Uri.https(authority, path, queryParameter),
-          headers: headers(),
-        )
-            .timeout(Duration(seconds: _timeOutDuration), onTimeout: () {
-          throw TimeoutException(
-              'The connection has timed out, Please try again!');
-        });
+              Uri.https(authority, path, queryParameter),
+              headers: headers(),
+            )
+            .timeout(Duration(seconds: _timeOutDuration));
         break;
       case Requests.post:
         response = await client
             .post(
-          Uri.https(authority, path, queryParameter),
-          headers: headers(),
-          body: jsonEncode(body),
-        )
-            .timeout(Duration(seconds: _timeOutDuration), onTimeout: () {
-          throw TimeoutException(
-              'The connection has timed out, Please try again!');
-        });
+              Uri.https(authority, path, queryParameter),
+              headers: headers(),
+              body: jsonEncode(body),
+            )
+            .timeout(Duration(seconds: _timeOutDuration));
         break;
       case Requests.delete:
         response = await client
             .delete(
-          Uri.https(authority, path, queryParameter),
-          headers: headers(),
-          body: jsonEncode(body),
-        )
-            .timeout(Duration(seconds: _timeOutDuration), onTimeout: () {
-          throw TimeoutException(
-              'The connection has timed out, Please try again!');
-        });
+              Uri.https(authority, path, queryParameter),
+              headers: headers(),
+              body: jsonEncode(body),
+            )
+            .timeout(Duration(seconds: _timeOutDuration));
         break;
 
       default:
