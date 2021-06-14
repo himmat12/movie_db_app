@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_crew_page.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_crew_page.dart';
@@ -9,6 +10,8 @@ import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_
 import 'header_text.dart';
 
 Widget crewBuilder({required List<Crew> crews, required String resultType}) {
+  final _peopleController = Get.find<PeopleController>();
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -55,7 +58,10 @@ Widget crewBuilder({required List<Crew> crews, required String resultType}) {
               ),
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    _peopleController.setPersonId(crews[index].id!);
+                    Get.toNamed('/people_details');
+                  },
                   child: Container(
                     color: Colors.transparent,
                     child: Column(

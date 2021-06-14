@@ -53,7 +53,7 @@ class PeopleController extends BaseController {
       people.value = PeopleModel.fromJson(value);
       peopleState.value = ViewState.retrived;
       // ignore: avoid_print
-      print(people.value.name);
+      // print(people.value.name);
       update(['people_details']);
     });
   }
@@ -67,7 +67,7 @@ class PeopleController extends BaseController {
             .then((value) {
           movieCredits.value = PeopleMovieCreditsModel.fromJson(value);
           // ignore: avoid_print
-          print(movieCredits.value.cast![0].originalTitle);
+          // print(movieCredits.value.cast![0].originalTitle);
           movieCreditsState.value = ViewState.retrived;
           update(['people_movies']);
         });
@@ -79,8 +79,9 @@ class PeopleController extends BaseController {
             .then((value) {
           tvCredits.value = PeopleTvCreditsModel.fromJson(value);
           // ignore: avoid_print
-          print(tvCredits.value.cast![0].originalName);
+          // print(tvCredits.value.cast![0].originalName);
           tvCreditsState.value = ViewState.retrived;
+          update(['people_tv']);
         });
         break;
       case imagesString:

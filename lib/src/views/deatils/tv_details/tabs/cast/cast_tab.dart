@@ -6,6 +6,7 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -16,6 +17,7 @@ class TvCastsTab extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();
   final _resultController = Get.find<ResultsController>();
   final _configurationController = Get.find<ConfigurationController>();
+  final _peopleController = Get.find<PeopleController>();
 
   TvCastsTab({Key? key}) : super(key: key);
 
@@ -60,7 +62,10 @@ class TvCastsTab extends StatelessWidget with AvatarBuilderMixin {
                 Cast cast = _detailsController.credits.value.cast![index];
 
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    _peopleController.setPersonId(cast.id!);
+                    Get.toNamed('/people_details');
+                  },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 12, horizontal: 16),

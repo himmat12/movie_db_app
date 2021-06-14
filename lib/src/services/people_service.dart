@@ -16,7 +16,7 @@ class PeopleService extends BaseService with QueryParameterMixin {
             query: {},
           ));
       // ignore: avoid_print
-      print(response.statusCode);
+      // print(response.statusCode);
       return decodeResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
@@ -37,7 +37,7 @@ class PeopleService extends BaseService with QueryParameterMixin {
             query: {},
           ));
       // ignore: avoid_print
-      print(response.statusCode);
+      // print(response.statusCode);
       return decodeResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');

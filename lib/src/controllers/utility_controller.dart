@@ -45,15 +45,23 @@ class UtilityController extends BaseController {
 
 // details tabbar navigation state
   final _tabbarCurrentIndex = 0.obs;
+  final _peopleTabbarCurrentIndex = 0.obs;
 
   int get tabbarCurrentIndex => _tabbarCurrentIndex.value;
+  int get peopleTabbarCurrentIndex => _peopleTabbarCurrentIndex.value;
 
   void setTabbarIndex(int newIndex) {
     _tabbarCurrentIndex.value = newIndex;
     update(['bottomTabBar', 'tabs']);
   }
 
+  void setPeopleTabbarIndex(int newIndex) {
+    _peopleTabbarCurrentIndex.value = newIndex;
+    update(['peopleBottomTabBar', 'peopleTabs']);
+  }
+
   void resetTabbarState() => _tabbarCurrentIndex.value = 0;
+  void resetPeopleTabbarState() => _peopleTabbarCurrentIndex.value = 0;
 
   // toggle movie/tv details title to show / hide title
   final _titlevisiblity = false.obs;

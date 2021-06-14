@@ -57,7 +57,7 @@ class MoviesDetails extends StatelessWidget {
             init: _detailsController,
             initState: (_) {
               // ignore: avoid_print
-              print(movieId);
+              // print(movieId);
 
               _detailsController.getDetails(
                   resultType: movieString, id: movieId);
