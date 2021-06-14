@@ -27,7 +27,7 @@ class TvCastsTab extends StatelessWidget with AvatarBuilderMixin {
       initState: (_) {
         _detailsController.getOtherDetails(
             resultType: tvString,
-            id: _resultController.tv.id!,
+            id: _resultController.tvId,
             appendTo: creditsString);
       },
       builder: (controller) => WidgetBuilderHelper(

@@ -50,7 +50,7 @@ class TvDetails extends StatelessWidget {
             init: _detailsController,
             initState: (_) {
               _detailsController.getDetails(
-                  resultType: tvString, id: _resultssController.tv.id!);
+                  resultType: tvString, id: _resultssController.tvId);
               _utilityController.resetImgSliderIndex();
               _utilityController.resetTabbarState();
               _utilityController.resetHideShowState();
@@ -70,10 +70,14 @@ class TvDetails extends StatelessWidget {
                       pinned: true,
                       elevation: 0.5,
                       forceElevated: true,
-                      leading: const SABTN(),
+                      leading: SABTN(
+                        onBack: () {
+                          Get.offAllNamed('/');
+                        },
+                      ),
                       title: SABT(
                           child: Text(
-                        _resultssController.tv.name ?? 'Title',
+                        _detailsController.tvDetail.value.name ?? 'Title',
                         style: TextStyle(
                           color: primaryDark,
                         ),
@@ -93,7 +97,7 @@ class TvDetails extends StatelessWidget {
                                 // _resultssController.setMovie(movie);
                                 _detailsController.getOtherDetails(
                                     resultType: tvString,
-                                    id: _resultssController.tv.id!,
+                                    id: _resultssController.tvId,
                                     appendTo: imagesString);
                               },
                               builder: (controller) => WidgetBuilderHelper(
@@ -104,7 +108,7 @@ class TvDetails extends StatelessWidget {
                                   child: Text('error while loading data ...'),
                                 ),
                                 onSuccessBuilder: tvFlexibleSpacebarComponent(
-                                  tv: _resultssController.tv,
+                                  tv: _detailsController.tvDetail.value,
                                   height: 200,
                                 ),
                               ),

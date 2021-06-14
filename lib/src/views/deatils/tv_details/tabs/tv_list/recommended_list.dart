@@ -29,7 +29,7 @@ class TvRecommendedTab extends StatelessWidget {
       initState: (_) {
         _detailsController.getOtherDetails(
             resultType: tvString,
-            id: _resultsController.tv.id!,
+            id: _resultsController.tvId,
             appendTo: recommendedSTring);
       },
       builder: (controller) => WidgetBuilderHelper(

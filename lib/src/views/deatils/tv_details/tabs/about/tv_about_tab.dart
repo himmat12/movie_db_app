@@ -35,7 +35,7 @@ class TvAboutTab extends StatelessWidget {
       initState: (_) {
         _detailsController.getOtherDetails(
             resultType: tvString,
-            id: _resultsController.tv.id!,
+            id: _resultsController.tvId,
             appendTo: imagesString);
       },
       builder: (controller) => Padding(
@@ -61,7 +61,7 @@ class TvAboutTab extends StatelessWidget {
               initState: (_) {
                 _detailsController.getOtherDetails(
                     resultType: tvString,
-                    id: _resultsController.tv.id!,
+                    id: _resultsController.tvId,
                     appendTo: creditsString);
               },
               builder: (controller) => WidgetBuilderHelper(

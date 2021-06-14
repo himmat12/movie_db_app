@@ -6,6 +6,7 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -16,6 +17,7 @@ class MovieCastsTab extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();
   final _resultController = Get.find<ResultsController>();
   final _configurationController = Get.find<ConfigurationController>();
+  final _peopleController = Get.find<PeopleController>();
 
   MovieCastsTab({Key? key}) : super(key: key);
 
@@ -27,7 +29,7 @@ class MovieCastsTab extends StatelessWidget with AvatarBuilderMixin {
       initState: (_) {
         _detailsController.getOtherDetails(
             resultType: movieString,
-            id: _resultController.movie.id!,
+            id: _resultController.movieId,
             appendTo: creditsString);
       },
       builder: (controller) => WidgetBuilderHelper(
@@ -61,6 +63,7 @@ class MovieCastsTab extends StatelessWidget with AvatarBuilderMixin {
 
                 return InkWell(
                   onTap: () {
+                    _peopleController.setPersonId(cast.id!);
                     Get.toNamed('/people_details');
                   },
                   child: Padding(

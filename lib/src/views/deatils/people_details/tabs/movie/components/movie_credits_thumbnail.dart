@@ -1,31 +1,37 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/models/results/tv_result_model.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
+import 'package:movie_app/src/models/peoples/people_movie_credits.dart';
+import 'package:movie_app/src/models/results/movie_result_model.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 
-Widget tvThumbnailCard({
-  required TvResultsModel tv,
+Widget movieCreditsThumbnailCard({
+  required MovieCast movie,
   required String imageUrl,
   EdgeInsetsGeometry? padding,
 }) {
   final _resultController = Get.find<ResultsController>();
+  final _detailsController = Get.find<DetailsController>();
+  final _peopleController = Get.find<PeopleController>();
 
   return GestureDetector(
     onTap: () {
-      // _resultController.setTv(tv);
+      // _peopleController.setMovie(movie);
+      _resultController.setMovieId(movie.id!);
 
-      _resultController.setTvId(tv.id!);
+      // ignore: avoid_print
+      // print('${movie.title}, ${movie.id}');
 
-      Get.to(
-        () => TvDetails(
-          // tv: tv,
-          key: UniqueKey(),
-        ),
-        preventDuplicates: false,
-      );
+      // ignore: avoid_print
+      // print('${_peopleController.movie.title}, ${_resultController.movie.id}');
+
+      Get.offAllNamed('/movie_details', arguments: _resultController.movieId);
     },
     child: SizedBox(
       width: 100,
@@ -39,7 +45,7 @@ Widget tvThumbnailCard({
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: tv.posterPath == null
+                  child: movie.posterPath == null
                       ? Container(
                           alignment: Alignment.center,
                           width: 94,
@@ -71,7 +77,7 @@ Widget tvThumbnailCard({
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
-                      '${tv.voteAverage}',
+                      '${movie.voteAverage}',
                       style: const TextStyle(
                         fontSize: n - 5,
                         color: primaryWhite,
@@ -91,7 +97,7 @@ Widget tvThumbnailCard({
               children: [
                 Expanded(
                   child: Text(
-                    tv.name ?? "Title",
+                    movie.title ?? "Title",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(

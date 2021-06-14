@@ -9,9 +9,9 @@ import 'package:movie_app/src/views/home/home_page.dart';
 
 // title widget
 class SABTN extends StatefulWidget {
-  // final Widget child;
+  final void Function()? onBack;
 
-  const SABTN({Key? key}) : super(key: key);
+  const SABTN({Key? key, this.onBack}) : super(key: key);
 
   @override
   _SABTNState createState() => _SABTNState();
@@ -66,9 +66,10 @@ class _SABTNState extends State<SABTN> {
       opacity: 1,
       curve: Curves.easeIn,
       child: IconButton(
-        onPressed: () {
-          Get.offAllNamed('/');
-        },
+        onPressed: widget.onBack ??
+            () {
+              Get.back();
+            },
         icon: Icon(
           Icons.arrow_back,
           color: _visible == false ? primaryWhite : primaryDarkBlue,

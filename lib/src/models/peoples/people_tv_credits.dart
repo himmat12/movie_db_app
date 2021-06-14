@@ -4,15 +4,15 @@ class PeopleTvCreditsModel {
     this.id,
   });
 
-  List<Cast>? cast;
+  List<TvCast>? cast;
   int? id;
 
   factory PeopleTvCreditsModel.fromJson(Map<String, dynamic> json) =>
       _$PeopleTvCreditsModelFromJson(json);
 }
 
-class Cast {
-  Cast({
+class TvCast {
+  TvCast({
     this.originalName,
     this.genreIds,
     this.originalLanguage,
@@ -48,7 +48,7 @@ class Cast {
   String? creditId;
   int? episodeCount;
 
-  factory Cast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
+  factory TvCast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,13 +65,13 @@ PeopleTvCreditsModel _$PeopleTvCreditsModelFromJson(Map<String, dynamic> json) {
   return PeopleTvCreditsModel(
     cast: json['cast'] == null
         ? null
-        : List.from(json['cast'].map((e) => Cast.fromJson(e))),
+        : List.from(json['cast'].map((e) => TvCast.fromJson(e))),
     id: json['id'] as int?,
   );
 }
 
-Cast _$CastFromJson(Map<String, dynamic> json) {
-  return Cast(
+TvCast _$CastFromJson(Map<String, dynamic> json) {
+  return TvCast(
     originalName: json['original_name'] as String?,
     genreIds:
         (json['genre_ids'] as List<dynamic>?)?.map((e) => e as int).toList(),

@@ -19,20 +19,10 @@ Widget movieThumbnailCard({
 
   return GestureDetector(
     onTap: () {
-      _resultController.setMovie(movie);
+      // _resultController.setMovie(movie);
+      _resultController.setMovieId(movie.id!);
 
-      // Navigator.pushReplacement(Get.context!,
-      //     MaterialPageRoute(builder: (context) => MoviesDetails()));
-
-      Get.toNamed('/movie_details', preventDuplicates: false);
-      // Navigator.push(
-      //     Get.context!,
-      //     MaterialPageRoute(
-      //       builder: (context) => MoviesDetails(
-      //         // movie: movie,
-      //         key: const Key('movie_detail'),
-      //       ),
-      //     ));
+      Get.offAllNamed('/movie_details', arguments: _resultController.movieId);
     },
     child: SizedBox(
       width: 100,

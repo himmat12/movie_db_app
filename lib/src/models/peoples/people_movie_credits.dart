@@ -4,15 +4,15 @@ class PeopleMovieCreditsModel {
     this.id,
   });
 
-  List<Cast>? cast;
+  List<MovieCast>? cast;
   int? id;
 
   factory PeopleMovieCreditsModel.fromJson(Map<String, dynamic> json) =>
       _$PeopleMovieCreditsModelFromJson(json);
 }
 
-class Cast {
-  Cast({
+class MovieCast {
+  MovieCast({
     this.adult,
     this.backdropPath,
     this.title,
@@ -50,7 +50,7 @@ class Cast {
   String? creditId;
   int? order;
 
-  factory Cast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
+  factory MovieCast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,13 +68,13 @@ PeopleMovieCreditsModel _$PeopleMovieCreditsModelFromJson(
   return PeopleMovieCreditsModel(
     cast: json['cast'] == null
         ? null
-        : List.from(json['cast'].map((e) => Cast.fromJson(e))),
+        : List.from(json['cast'].map((e) => MovieCast.fromJson(e))),
     id: json['id'] as int?,
   );
 }
 
-Cast _$CastFromJson(Map<String, dynamic> json) {
-  return Cast(
+MovieCast _$CastFromJson(Map<String, dynamic> json) {
+  return MovieCast(
     adult: json['adult'] as bool?,
     backdropPath: json['backdrop_path'] as String?,
     title: json['title'] as String?,

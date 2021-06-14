@@ -89,7 +89,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               images.value = Images.fromJson(value);
               imagesState.value = ViewState.retrived;
-              update();
+              update(['imageSlider']);
               // }
             });
             break;

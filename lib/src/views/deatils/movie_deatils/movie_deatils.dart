@@ -25,19 +25,14 @@ import '../components/sliver_appbar_title.dart';
 import 'tabs/movie _list/movie_list.dart';
 import 'tabs/movie _list/similar_list.dart';
 
-class MoviesDetails extends StatefulWidget with LoadingSpinnerMixin {
-  // final MovieResultModel movie;
+class MoviesDetails extends StatelessWidget {
+  final int movieId;
 
   MoviesDetails({
     Key? key,
-    // required this.movie,
+    required this.movieId,
   }) : super(key: key);
 
-  @override
-  State<MoviesDetails> createState() => _MoviesDetailsState();
-}
-
-class _MoviesDetailsState extends State<MoviesDetails> {
   final _detailsController = Get.find<DetailsController>();
 
   final _resultssController = Get.find<ResultsController>();
@@ -61,8 +56,11 @@ class _MoviesDetailsState extends State<MoviesDetails> {
             id: 'movie_details',
             init: _detailsController,
             initState: (_) {
+              // ignore: avoid_print
+              print(movieId);
+
               _detailsController.getDetails(
-                  resultType: movieString, id: _resultsController.movie.id!);
+                  resultType: movieString, id: movieId);
               _utilityController.resetImgSliderIndex();
               _utilityController.resetTabbarState();
               _utilityController.resetHideShowState();
@@ -70,10 +68,7 @@ class _MoviesDetailsState extends State<MoviesDetails> {
               // print("initialized ...");
             },
             builder: (_) {
-              return
-                  // Obx(
-                  //   () =>
-                  WidgetBuilderHelper(
+              return WidgetBuilderHelper(
                 state: _detailsController.movieDetailState.value,
                 onLoadingBuilder:
                     Center(child: LoadingSpinner.horizontalLoading),
@@ -87,10 +82,14 @@ class _MoviesDetailsState extends State<MoviesDetails> {
                       pinned: true,
                       elevation: 0.5,
                       forceElevated: true,
-                      leading: const SABTN(),
+                      leading: SABTN(
+                        onBack: () {
+                          Get.offAllNamed('/');
+                        },
+                      ),
                       title: SABT(
                           child: Text(
-                        _resultsController.movie.title ?? 'Title',
+                        _detailsController.movieDetail.value.title ?? 'Title',
                         style: TextStyle(
                           color: primaryDarkBlue.withOpacity(0.9),
                         ),
@@ -103,29 +102,10 @@ class _MoviesDetailsState extends State<MoviesDetails> {
                         background: Column(
                           children: [
                             // slider img/poster/title
-                            // GetBuilder(
-                            //   init: _detailsController,
-                            //   initState: (_) {
-                            //     // _resultssController.setMovie(movie);
-                            //     // _detailsController.getOtherDetails(
-                            //     //     resultType: movieString,
-                            //     //     id: _resultsController.movie.id!,
-                            //     //     appendTo: imagesString);
-                            //   },
-                            //   builder: (controller) => WidgetBuilderHelper(
-                            //     state: _detailsController.imagesState.value,
-                            //     onLoadingBuilder:
-                            //         LoadingSpinner.fadingCircleSpinner,
-                            //     onErrorBuilder: const Center(
-                            //       child: Text('error while loading data ...'),
-                            //     ),
-                            //     onSuccessBuilder:
                             movieFlexibleSpacebarComponent(
-                              movie: _resultsController.movie,
+                              movie: _detailsController.movieDetail.value,
                               height: 200,
                             ),
-                            //   ),
-                            // ),
 
                             const SizedBox(height: 18),
 
@@ -152,10 +132,7 @@ class _MoviesDetailsState extends State<MoviesDetails> {
                     ),
                   ],
                 ),
-              )
-                  //   ,
-                  // )
-                  ;
+              );
             },
           ),
         ),

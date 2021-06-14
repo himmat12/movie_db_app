@@ -25,21 +25,30 @@ class ResultsController extends BaseController {
 
   final _service = sl<ResultsService>();
 
-  final _movie = MovieResultModel().obs;
-  final _tv = TvResultsModel().obs;
+  // final _movie = MovieResultModel().obs;
+  // final _tv = TvResultsModel().obs;
 
-  MovieResultModel get movie => _movie.value;
-  TvResultsModel get tv => _tv.value;
+  final _movieId = 0.obs;
+  final _tvId = 0.obs;
 
-  void setMovie(MovieResultModel movie) {
-    _movie.value = movie;
-    update();
-  }
+  int get movieId => _movieId.value;
+  int get tvId => _tvId.value;
 
-  void setTv(TvResultsModel tv) {
-    _tv.value = tv;
-    update();
-  }
+  void setMovieId(int id) => _movieId.value = id;
+  void setTvId(int id) => _tvId.value = id;
+
+  // MovieResultModel get movie => _movie.value;
+  // TvResultsModel get tv => _tv.value;
+
+  // void setMovie(MovieResultModel movie) {
+  //   _movie.value = movie;
+  //   update();
+  // }
+
+  // void setTv(TvResultsModel tv) {
+  //   _tv.value = tv;
+  //   update();
+  // }
 
 // tv observable lists
   var popularTvList = <TvResultsModel>[].obs;

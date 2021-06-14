@@ -9,7 +9,9 @@ class Routes {
   static List<GetPage> getRoutes() {
     return [
       GetPage(name: '/', page: () => DashboardPage()),
-      GetPage(name: '/movie_details', page: () => MoviesDetails()),
+      GetPage(
+          name: '/movie_details/',
+          page: () => MoviesDetails(movieId: Get.arguments)),
       GetPage(name: '/tv_details', page: () => TvDetails()),
       GetPage(name: '/people_details', page: () => PeopleDetails()),
     ];

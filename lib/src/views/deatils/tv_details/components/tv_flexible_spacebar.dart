@@ -11,11 +11,12 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
+import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 Widget tvFlexibleSpacebarComponent({
-  required TvResultsModel tv,
+  required TvDetailsModel tv,
   // required Images? images,
   double? height,
 }) {
@@ -48,7 +49,7 @@ Widget tvFlexibleSpacebarComponent({
                 initState: (_) {
                   _detailsController.getOtherDetails(
                       resultType: tvString,
-                      id: _resultController.tv.id!,
+                      id: _resultController.tvId,
                       appendTo: imagesString);
                 },
                 builder: (controller) => WidgetBuilderHelper(

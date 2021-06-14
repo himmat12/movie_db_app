@@ -14,14 +14,13 @@ import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 
 class MovieList extends StatelessWidget with AvatarBuilderMixin {
   final List<MovieResultModel> movies;
-  final String? imageUrl;
 
   final _detailsController = Get.find<DetailsController>();
   final _configurationController = Get.find<ConfigurationController>();
 
   final _utilityController = Get.find<UtilityController>();
 
-  MovieList({Key? key, required this.movies, this.imageUrl}) : super(key: key);
+  MovieList({Key? key, required this.movies}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

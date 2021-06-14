@@ -19,7 +19,7 @@ class PeopleModel {
   bool? adult;
   List<String>? alsoKnownAs;
   String? biography;
-  DateTime? birthday;
+  String? birthday;
   dynamic deathday;
   int? gender;
   dynamic homepage;
@@ -52,10 +52,8 @@ PeopleModel _$PeopleModelFromJson(Map<String, dynamic> json) {
         ?.map((e) => e as String)
         .toList(),
     biography: json['biography'] as String?,
-    birthday: json['birthday'] == null
-        ? null
-        : DateTime.parse(json['birthday'] as String),
-    deathday: json['deathday'],
+    birthday: json['birthday'] as String?,
+    deathday: json['deathday'] as String?,
     gender: json['gender'] as int?,
     homepage: json['homepage'],
     id: json['id'] as int?,

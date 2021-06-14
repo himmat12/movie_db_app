@@ -30,7 +30,7 @@ class MovieAboutTab extends StatelessWidget {
       initState: (_) {
         _detailsController.getOtherDetails(
             resultType: movieString,
-            id: _resultsController.movie.id!,
+            id: _resultsController.movieId,
             appendTo: imagesString);
       },
       builder: (controller) => WidgetBuilderHelper(
@@ -59,7 +59,7 @@ class MovieAboutTab extends StatelessWidget {
                 initState: (_) {
                   _detailsController.getOtherDetails(
                       resultType: movieString,
-                      id: _resultsController.movie.id!,
+                      id: _resultsController.movieId,
                       appendTo: creditsString);
                 },
                 builder: (controller) => WidgetBuilderHelper(

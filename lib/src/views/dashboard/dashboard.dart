@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
+import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
@@ -21,6 +22,7 @@ class DashboardPage extends StatelessWidget {
   final _utilityController = Get.find<UtilityController>();
   final _resultsController = Get.find<ResultsController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
+  final _peopleController = Get.find<PeopleController>();
 
   DashboardPage({Key? key}) : super(key: key);
 
