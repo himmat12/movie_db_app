@@ -96,28 +96,9 @@ class TvDetails extends StatelessWidget {
                           background: Column(
                             children: [
                               // slider img/poster/title
-
-                              GetBuilder(
-                                init: _detailsController,
-                                initState: (_) {
-                                  // _resultssController.setMovie(movie);
-                                  _detailsController.getOtherDetails(
-                                      resultType: tvString,
-                                      id: _resultssController.tvId,
-                                      appendTo: imagesString);
-                                },
-                                builder: (controller) => WidgetBuilderHelper(
-                                  state: _detailsController.imagesState.value,
-                                  onLoadingBuilder:
-                                      LoadingSpinner.fadingCircleSpinner,
-                                  onErrorBuilder: const Center(
-                                    child: Text('error while loading data ...'),
-                                  ),
-                                  onSuccessBuilder: tvFlexibleSpacebarComponent(
-                                    tv: _detailsController.tvDetail.value,
-                                    height: 200,
-                                  ),
-                                ),
+                              tvFlexibleSpacebarComponent(
+                                tv: _detailsController.tvDetail.value,
+                                height: 200,
                               ),
 
                               // ),
