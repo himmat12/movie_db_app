@@ -347,7 +347,8 @@ Widget tvFlexibleSpacebarComponent({
   final _resultController = Get.find<ResultsController>();
 
   final String? releaseDate = '${tv.firstAirDate}';
-  final String? formatedDate = DateFormat.yMMMMd().format(tv.firstAirDate!);
+  final String? formatedDate =
+      DateFormat.yMMMMd().format(tv.firstAirDate ?? DateTime(0000));
   final String tvDate = releaseDate!.substring(0, 4);
   return GetBuilder(
     id: 'imageSlider',
