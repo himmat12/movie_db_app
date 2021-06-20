@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
@@ -7,19 +6,15 @@ import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
-import 'package:movie_app/src/models/results/tv_result_model.dart';
 import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/recommended_list.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/cast/cast_tab.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/reviews/reviews_tab.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/seasons/seasons_tab.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/tv_list/similar_list.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import 'components/tv_flexible_spacebar.dart';
 import '../components/sliver_appbar_title.dart';
+import 'components/tv_flexible_spacebar.dart';
 import 'components/tv_flexible_spacebar_options.dart';
 import 'tabs/about/tv_about_tab.dart';
 import 'tabs/tv_list/recommended_list.dart';
