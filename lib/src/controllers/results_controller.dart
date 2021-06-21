@@ -28,14 +28,14 @@ class ResultsController extends BaseController {
   // final _movie = MovieResultModel().obs;
   // final _tv = TvResultsModel().obs;
 
-  final _movieId = 0.obs;
-  final _tvId = 0.obs;
+  final _movieId = '0'.obs;
+  final _tvId = '0'.obs;
 
-  int get movieId => _movieId.value;
-  int get tvId => _tvId.value;
+  String get movieId => _movieId.value;
+  String get tvId => _tvId.value;
 
-  void setMovieId(int id) => _movieId.value = id;
-  void setTvId(int id) => _tvId.value = id;
+  void setMovieId(String id) => _movieId.value = id;
+  void setTvId(String id) => _tvId.value = id;
 
   // MovieResultModel get movie => _movie.value;
   // TvResultsModel get tv => _tv.value;

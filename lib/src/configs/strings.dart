@@ -24,3 +24,8 @@ const String externalIdsString = "external_ids";
 
 const String movieCreditsString = "movie_credits";
 const String tvCreditsString = "tv_credits";
+
+const String facebookString = "https://www.facebook.com";
+const String instagramString = "https://www.instagram.com";
+const String twitterString = "https://twitter.com";
+const String imdbString = "https://www.imdb.com/name";
