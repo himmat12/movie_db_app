@@ -17,7 +17,7 @@ Widget tvThumbnailCard({
     onTap: () {
       // _resultController.setTv(tv);
 
-      _resultController.setTvId(tv.id!);
+      _resultController.setTvId('${tv.id!}');
 
       Get.to(
         () => TvDetails(

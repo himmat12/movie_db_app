@@ -9,8 +9,8 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
-import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
 import 'package:movie_app/src/views/deatils/people_details/tabs/movie/movie_tab.dart';
 import 'package:movie_app/src/views/deatils/people_details/tabs/tv/tv_tab.dart';
 
@@ -52,6 +52,10 @@ class _MoviesDetailsState extends State<PeopleDetails> {
             initState: (_) {
               _peopleController.getPeopleDetails(
                   personId: _peopleController.personId);
+
+              // _peopleController.getCreditsDetails(
+              //     personId: _peopleController.personId,
+              //     resultType: externalIdsString);
 
               _utilityController.resetImgSliderIndex();
               _utilityController.resetPeopleTabbarState();

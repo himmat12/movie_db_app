@@ -1,15 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/models/peoples/people_movie_credits.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 
 Widget movieCreditsThumbnailCard({
   required MovieCast movie,
@@ -23,7 +19,7 @@ Widget movieCreditsThumbnailCard({
   return GestureDetector(
     onTap: () {
       // _peopleController.setMovie(movie);
-      _resultController.setMovieId(movie.id!);
+      _resultController.setMovieId("${movie.id!}");
 
       // ignore: avoid_print
       // print('${movie.title}, ${movie.id}');
@@ -31,7 +27,8 @@ Widget movieCreditsThumbnailCard({
       // ignore: avoid_print
       // print('${_peopleController.movie.title}, ${_resultController.movie.id}');
 
-      Get.offAllNamed('/movie_details', arguments: _resultController.movieId);
+      Get.offAllNamed('/movie_details',
+          parameters: {"movieId": "${_resultController.movieId}"});
     },
     child: SizedBox(
       width: 100,
