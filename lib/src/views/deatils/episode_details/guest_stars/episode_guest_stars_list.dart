@@ -27,15 +27,14 @@ class GuestStarsList extends StatelessWidget with AvatarBuilderMixin {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text('Guest Stars - ${_seasonController.episodeModel.value.name}'),
             Text(
-                'Guest Stars (S${_seasonController.seasonModel.value.seasonNumber.toString().padLeft(2, '0')} E${_seasonController.episodeModel.value.episodeNumber.toString().padLeft(2, '0')})'),
-            Text(
-              _detailsController.tvDetail.value.name ?? "name",
+              '${_detailsController.tvDetail.value.name} [S${_seasonController.seasonModel.value.seasonNumber.toString().padLeft(2, '0')} | E${_seasonController.episodeModel.value.episodeNumber.toString().padLeft(2, '0')}]',
               style: TextStyle(
                 fontSize: n,
                 color: primaryDarkBlue.withOpacity(0.8),
               ),
-            )
+            ),
           ],
         ),
       ),

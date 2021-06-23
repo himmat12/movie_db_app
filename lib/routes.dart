@@ -6,10 +6,14 @@ import 'package:movie_app/src/views/deatils/people_details/people_details.dart';
 import 'package:movie_app/src/views/deatils/season_details/season_details.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_crew_page.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
+import 'package:movie_app/src/views/home/lists/tv/tv_result_list.dart';
 
 import 'src/views/deatils/episode_details/episode_crew/episode_crew_page.dart';
 import 'src/views/deatils/episode_details/episode_details.dart';
 import 'src/views/deatils/episode_details/guest_stars/episode_guest_stars_list.dart';
+import 'src/views/home/lists/movies/movie_result_list.dart';
+import 'src/views/home/lists/movies/trending_movie_list.dart';
+import 'src/views/home/lists/tv/trending_tv_list.dart';
 
 class Routes {
   static List<GetPage> getRoutes() {
@@ -26,6 +30,30 @@ class Routes {
       GetPage(name: '/tv_crew', page: () => TvCrewPage()),
       GetPage(name: '/movie_crew', page: () => MovieCrewPage()),
       GetPage(name: '/guest_stars', page: () => GuestStarsList()),
+      GetPage(
+          name: '/trending_movie_list',
+          page: () => HomeTrendingMovieList(
+                title: Get.arguments['title'],
+                toggleOption: Get.arguments['toggleOption'],
+              )),
+      GetPage(
+          name: '/movie_results_list',
+          page: () => HomeMovieresultsList(
+                title: Get.arguments['title'],
+                movies: Get.arguments['movies'],
+              )),
+      GetPage(
+          name: '/trending_tv_list',
+          page: () => HomeTrendingTvList(
+                title: Get.arguments['title'],
+                toggleOption: Get.arguments['toggleOption'],
+              )),
+      GetPage(
+          name: '/tv_results_list',
+          page: () => HomeTvResultList(
+                title: Get.arguments['title'],
+                tv: Get.arguments['tv'],
+              )),
     ];
   }
 }

@@ -1,20 +1,14 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/add_more_pagination_btn.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/global/more_btn.dart';
 import 'package:movie_app/src/global/movie_thumbnail_card.dart';
 import 'package:movie_app/src/global/switch_btn.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
-
-import 'header_tile.dart';
+import 'package:movie_app/src/views/home/components/header_tile.dart';
 
 Widget trendingMoviesBuilder({
   required String posterUrl,
@@ -57,7 +51,10 @@ Widget trendingMoviesBuilder({
         // title & more option
         headerTile(
           onMoreTap: () {
-            // navigate to movie lists page
+            Get.toNamed('/trending_movie_list', arguments: {
+              "title": "Trending Movies",
+              "toggleOption": trendingMovieSwitchBtnBuilder()
+            });
           },
           title: "Trending",
           subtitle: "Movies",
