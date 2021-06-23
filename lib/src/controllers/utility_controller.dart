@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/utils/preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,6 +10,9 @@ class UtilityController extends BaseController {
     resetHideShowState();
     resetImgSliderIndex();
     resetTabbarState();
+    resetPeopleTabbarState();
+    resetSeasonTabbarState();
+    resetEpisodeTabbarState();
     super.onInit();
   }
 
@@ -46,9 +48,13 @@ class UtilityController extends BaseController {
 // details tabbar navigation state
   final _tabbarCurrentIndex = 0.obs;
   final _peopleTabbarCurrentIndex = 0.obs;
+  final _seasonTabbarCurrentIndex = 0.obs;
+  final _episodeTabbarCurrentIndex = 0.obs;
 
   int get tabbarCurrentIndex => _tabbarCurrentIndex.value;
   int get peopleTabbarCurrentIndex => _peopleTabbarCurrentIndex.value;
+  int get seasonTabbarCurrentIndex => _seasonTabbarCurrentIndex.value;
+  int get episodeTabbarCurrentIndex => _episodeTabbarCurrentIndex.value;
 
   void setTabbarIndex(int newIndex) {
     _tabbarCurrentIndex.value = newIndex;
@@ -60,8 +66,20 @@ class UtilityController extends BaseController {
     update(['peopleBottomTabBar', 'peopleTabs']);
   }
 
+  void setSeasonTabbarIndex(int newIndex) {
+    _seasonTabbarCurrentIndex.value = newIndex;
+    update(['seasonBottomTabBar', 'seasonTabs']);
+  }
+
+  void setEpisodeTabbarIndex(int newIndex) {
+    _episodeTabbarCurrentIndex.value = newIndex;
+    update(['episodeBottomTabBar', 'episodeTabs']);
+  }
+
   void resetTabbarState() => _tabbarCurrentIndex.value = 0;
   void resetPeopleTabbarState() => _peopleTabbarCurrentIndex.value = 0;
+  void resetSeasonTabbarState() => _seasonTabbarCurrentIndex.value = 0;
+  void resetEpisodeTabbarState() => _episodeTabbarCurrentIndex.value = 0;
 
   // toggle movie/tv details title to show / hide title
   final _titlevisiblity = false.obs;

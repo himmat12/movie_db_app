@@ -7,17 +7,19 @@ import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
+import 'package:movie_app/src/models/details/season_details_model.dart';
 
-class TvCrewPage extends StatelessWidget with AvatarBuilderMixin {
+class EpisodeCrewPage extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();
   final _resultController = Get.find<ResultsController>();
   final _configurationController = Get.find<ConfigurationController>();
 
   final _peopleController = Get.find<PeopleController>();
+  final _seasonController = Get.find<SeasonController>();
 
-  TvCrewPage({Key? key}) : super(key: key);
+  EpisodeCrewPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class TvCrewPage extends StatelessWidget with AvatarBuilderMixin {
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            child: _detailsController.credits.value.crew == null ||
-                    _detailsController.credits.value.crew!.isEmpty
+            child: _seasonController.episodeModel.value.crew == null ||
+                    _seasonController.episodeModel.value.crew!.isEmpty
                 ? SizedBox(
                     height: 80,
                     child: Center(
@@ -47,7 +49,7 @@ class TvCrewPage extends StatelessWidget with AvatarBuilderMixin {
                         padding: const EdgeInsets.symmetric(
                             vertical: 12, horizontal: 18),
                         child: Text(
-                          '${_detailsController.credits.value.crew == null ? 0 : _detailsController.credits.value.crew!.length} Persons',
+                          '${_seasonController.episodeModel.value.crew == null ? 0 : _seasonController.episodeModel.value.crew!.length} Persons',
                           style: TextStyle(
                             color: primaryDarkBlue.withOpacity(0.7),
                             fontSize: n,
@@ -55,16 +57,17 @@ class TvCrewPage extends StatelessWidget with AvatarBuilderMixin {
                         ),
                       ),
                       ListView.separated(
-                        itemCount: _detailsController.credits.value.crew == null
+                        itemCount: _seasonController.episodeModel.value.crew ==
+                                null
                             ? 0
-                            : _detailsController.credits.value.crew!.length,
+                            : _seasonController.episodeModel.value.crew!.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 8),
                         itemBuilder: (context, index) {
-                          Crew crew =
-                              _detailsController.credits.value.crew![index];
+                          SeasonCrew crew =
+                              _seasonController.episodeModel.value.crew![index];
 
                           return InkWell(
                             onTap: () {

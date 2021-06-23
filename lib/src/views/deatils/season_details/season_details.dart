@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/cast/cast_tab.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/reviews/reviews_tab.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/seasons/seasons_tab.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/tv_list/similar_list.dart';
+import 'package:movie_app/src/views/deatils/season_details/tabs/about/season_about_tab.dart';
+import 'package:movie_app/src/views/deatils/season_details/tabs/cast/season_cast.dart';
+import 'package:movie_app/src/views/deatils/season_details/tabs/episodes/episodes_tab.dart';
 
 import '../components/sliver_appbar_title.dart';
-import 'components/tv_flexible_spacebar.dart';
-import 'components/tv_flexible_spacebar_options.dart';
-import 'tabs/about/tv_about_tab.dart';
-import 'tabs/tv_list/recommended_list.dart';
+import 'components/season_bottom_tabbar.dart';
+import 'components/season_flexible_spacebar.dart';
 
-class TvDetails extends StatelessWidget {
+class SeasonDetails extends StatelessWidget {
   // final TvResultsModel tv;
 
   final _detailsController = Get.find<DetailsController>();
   final _utilityController = Get.find<UtilityController>();
   final _resultssController = Get.find<ResultsController>();
+  final _seasonController = Get.find<SeasonController>();
 
-  TvDetails({
+  SeasonDetails({
     Key? key,
     // required this.tv,
   }) : super(key: key);
@@ -39,24 +37,27 @@ class TvDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.offAllNamed('/');
+        // Get.offAllNamed('/');
+        Get.back();
         return false;
       },
       child: Scaffold(
         body: SafeArea(
           child: GetBuilder(
-            id: "tv_details",
-            init: _detailsController,
+            id: "season_details",
+            init: _seasonController,
             initState: (_) {
-              _detailsController.getDetails(
-                  resultType: tvString, id: _resultssController.tvId);
+              _seasonController.getSeasonDetails(
+                  tvId: '${_seasonController.tvId}',
+                  seasonNo: '${_seasonController.seasonNo}');
+
               _utilityController.resetImgSliderIndex();
-              _utilityController.resetTabbarState();
+              _utilityController.resetSeasonTabbarState();
               _utilityController.resetHideShowState();
             },
             builder: (_) {
               return WidgetBuilderHelper(
-                state: _detailsController.tvDetailState.value,
+                state: _seasonController.seasonState,
                 onLoadingBuilder:
                     Center(child: LoadingSpinner.horizontalLoading),
                 onErrorBuilder: const Center(
@@ -69,63 +70,64 @@ class TvDetails extends StatelessWidget {
                       pinned: true,
                       elevation: 0.5,
                       forceElevated: true,
-                      leading: SABTN(
-                        onBack: () {
-                          Get.offAllNamed('/');
-                        },
-                      ),
+                      leading: const SABTN(
+                          // onBack: () {
+                          // Get.offAllNamed('/');
+                          // },
+                          ),
                       title: SABT(
-                          child: Text(
-                        _detailsController.tvDetail.value.name ?? 'Title',
-                        style: TextStyle(
-                          color: primaryDark,
-                        ),
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _seasonController.seasonModel.value.name ??
+                                'season name',
+                            style: TextStyle(
+                              color: primaryDark,
+                            ),
+                          ),
+                          Text(
+                            _detailsController.tvDetail.value.name ?? 'name',
+                            style: TextStyle(
+                              fontSize: n,
+                              color: primaryDarkBlue.withOpacity(0.8),
+                            ),
+                          ),
+                        ],
                       )),
-                      expandedHeight: _utilityController.titlevisiblity == false
-                          ? 446
-                          : 440,
+                      expandedHeight: 390,
                       flexibleSpace: FlexibleSpaceBar(
                         collapseMode: CollapseMode.pin,
                         background: Column(
                           children: [
                             // slider img/poster/title
-                            tvFlexibleSpacebarComponent(
-                              tv: _detailsController.tvDetail.value,
+                            seasonFlexibleSpacebarComponent(
+                              season: _seasonController.seasonModel.value,
                               height: 200,
                             ),
-
-                            // ),
-                            const SizedBox(height: 18),
-
-                            // ratings / lists / bookmark options
-                            tvFlexibleSpacebarOptions(
-                                controller: _detailsController),
                           ],
                         ),
                       ),
-                      bottom: bottomTabbarComponent(tabMenuItems: tabMenuItems),
+                      bottom: seasonBottomTabbarComponent(
+                          tabMenuItems: tabMenuItems),
                     ),
 
                     // body
-                    // Obx(
-                    //   () =>
                     GetBuilder(
-                      id: 'tabs',
+                      id: 'seasonTabs',
                       init: _utilityController,
                       initState: (_) {},
                       builder: (controller) => SliverList(
                         delegate: SliverChildListDelegate.fixed(
                           [
-                            tvTabs[_utilityController.tabbarCurrentIndex],
+                            tvTabs[_utilityController.seasonTabbarCurrentIndex],
                             const SizedBox(height: 120),
                           ],
                         ),
                       ),
                     ),
-                    // ),
                   ],
                 ),
-                // ),
               );
             },
           ),
@@ -136,19 +138,13 @@ class TvDetails extends StatelessWidget {
 }
 
 var tabMenuItems = <String>[
+  "Episodes",
   "Overview",
   "Cast",
-  "Seasons",
-  "Reviews",
-  "Recommended",
-  "Similar",
 ];
 
 var tvTabs = <Widget>[
-  TvAboutTab(),
-  TvCastsTab(),
-  SeasonsTab(),
-  TvReviewTab(),
-  TvRecommendedTab(),
-  TvSimilarTab(),
+  EpisodesTab(),
+  SeasonAboutTab(),
+  SeasonCastsTab(),
 ];
