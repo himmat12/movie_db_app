@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/views/dashboard/dashboard.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 import 'package:movie_app/src/views/deatils/people_details/people_details.dart';
+import 'package:movie_app/src/views/deatils/season_details/season_details.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
 
 class Routes {
@@ -13,6 +14,7 @@ class Routes {
           page: () => MoviesDetails(movieId: Get.parameters['movieId'] ?? "")),
       GetPage(name: '/tv_details', page: () => TvDetails()),
       GetPage(name: '/people_details', page: () => PeopleDetails()),
+      GetPage(name: '/season_details', page: () => SeasonDetails()),
     ];
   }
 }

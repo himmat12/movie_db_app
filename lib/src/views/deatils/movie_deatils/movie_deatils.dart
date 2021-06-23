@@ -137,7 +137,7 @@ class MoviesDetails extends StatelessWidget {
 }
 
 var tabMenuItems = <String>[
-  "About",
+  "Overview",
   "Cast",
   "Reviews",
   "Recommended",

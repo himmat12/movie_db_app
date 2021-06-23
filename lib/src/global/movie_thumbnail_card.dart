@@ -20,7 +20,7 @@ Widget movieThumbnailCard({
       _resultController.setMovieId('${movie.id!}');
 
       Get.offAllNamed('/movie_details',
-          parameters: {"movieId": "${_resultController.movieId}"});
+          parameters: {"movieId": _resultController.movieId});
     },
     child: SizedBox(
       width: 100,
