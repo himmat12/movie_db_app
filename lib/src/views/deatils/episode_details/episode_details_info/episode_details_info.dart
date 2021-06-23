@@ -7,7 +7,7 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
 import 'package:movie_app/src/views/deatils/episode_details/episode_crew/episode_crew_builder.dart';
-import 'package:movie_app/src/views/deatils/episode_details/guest_stars/episode_guest_cast.dart';
+import 'package:movie_app/src/views/deatils/episode_details/guest_casts/episode_guest_cast.dart';
 
 class EpisodeDetailsInfo extends StatelessWidget {
   EpisodeDetailsInfo({Key? key}) : super(key: key);

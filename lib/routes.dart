@@ -10,7 +10,7 @@ import 'package:movie_app/src/views/home/lists/tv/tv_result_list.dart';
 
 import 'src/views/deatils/episode_details/episode_crew/episode_crew_page.dart';
 import 'src/views/deatils/episode_details/episode_details.dart';
-import 'src/views/deatils/episode_details/guest_stars/episode_guest_stars_list.dart';
+import 'src/views/deatils/episode_details/guest_casts/episode_guest_stars_list.dart';
 import 'src/views/home/lists/movies/movie_result_list.dart';
 import 'src/views/home/lists/movies/trending_movie_list.dart';
 import 'src/views/home/lists/tv/trending_tv_list.dart';
