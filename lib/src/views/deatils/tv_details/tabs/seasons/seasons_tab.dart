@@ -71,7 +71,7 @@ class SeasonsTab extends StatelessWidget with AvatarBuilderMixin {
                     .setTvId(_detailsController.tvDetail.value.id ?? 0);
                 _seasonController.setSeasonNo(season.seasonNumber ?? 0);
 
-                Get.toNamed('/season_details');
+                Get.toNamed('/season_details', preventDuplicates: false);
               },
               child: Padding(
                 padding:

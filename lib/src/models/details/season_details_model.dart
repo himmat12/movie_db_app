@@ -2,7 +2,6 @@
 
 // part 'season_details_model.g.dart';
 
-// @JsonSerializable()
 import 'package:movie_app/src/models/details/common_details_models.dart';
 
 class SeasonModel {
@@ -47,6 +46,7 @@ class Episode {
     this.voteAverage,
     this.voteCount,
     this.accountState,
+    this.images,
   });
 
   DateTime? airDate;
@@ -61,7 +61,8 @@ class Episode {
   String? stillPath;
   double? voteAverage;
   int? voteCount;
-  AccountStae? accountState;
+  AccountState? accountState;
+  EpisodeImages? images;
 
   factory Episode.fromJson(Map<String, dynamic> json) =>
       _$EpisodeFromJson(json);
@@ -103,9 +104,44 @@ class SeasonCrew {
       _$SeasonCrewFromJson(json);
 }
 
-class AccountStae {
-  AccountStae({this.rated});
+class AccountState {
+  AccountState({this.rated});
   dynamic rated;
+
+  factory AccountState.fromJson(Map<String, dynamic> json) =>
+      accountStateFromJson(json);
+}
+
+class EpisodeImages {
+  EpisodeImages({
+    this.stills,
+  });
+
+  List<Still>? stills;
+  factory EpisodeImages.fromJson(Map<String, dynamic> json) =>
+      episodeImagesFromJson(json);
+}
+
+class Still {
+  Still({
+    this.aspectRatio,
+    this.filePath,
+    this.height,
+    this.iso6391,
+    this.voteAverage,
+    this.voteCount,
+    this.width,
+  });
+
+  double? aspectRatio;
+  String? filePath;
+  int? height;
+  String? iso6391;
+  double? voteAverage;
+  int? voteCount;
+  int? width;
+
+  factory Still.fromJson(Map<String, dynamic> json) => stillFromJson(json);
 }
 
 ///
@@ -167,6 +203,12 @@ Episode _$EpisodeFromJson(Map<String, dynamic> json) {
     stillPath: json['still_path'] as String?,
     voteAverage: (json['vote_average'] as num?)?.toDouble(),
     voteCount: json['vote_count'] as int?,
+    accountState: json['account_states'] == null
+        ? null
+        : AccountState.fromJson(json['account_states'] as Map<String, dynamic>),
+    images: json['images'] == null
+        ? null
+        : EpisodeImages.fromJson(json['images'] as Map<String, dynamic>),
   );
 }
 
@@ -188,7 +230,27 @@ SeasonCrew _$SeasonCrewFromJson(Map<String, dynamic> json) {
   );
 }
 
-AccountStae accountStateFromJson(Map<String, dynamic> json) {
-  return AccountStae(
+AccountState accountStateFromJson(Map<String, dynamic> json) {
+  return AccountState(
       rated: json['rated'] == null ? null : ratedFromJson(json['rated']));
+}
+
+EpisodeImages episodeImagesFromJson(Map<String, dynamic> json) {
+  return EpisodeImages(
+      stills: json['stills'] == null
+          ? null
+          : List.from((json['stills'] as List<dynamic>?)!
+              .map((e) => Still.fromJson(e as Map<String, dynamic>))));
+}
+
+Still stillFromJson(Map<String, dynamic> json) {
+  return Still(
+    aspectRatio: (json['aspect_ratio'] as num?)?.toDouble(),
+    filePath: json['file_path'] as String?,
+    height: json['height'] as int?,
+    iso6391: json['iso_639_1'] as String?,
+    voteAverage: (json['vote_average'] as num?)?.toDouble(),
+    voteCount: json['vote_count'] as int?,
+    width: json['width'] as int?,
+  );
 }

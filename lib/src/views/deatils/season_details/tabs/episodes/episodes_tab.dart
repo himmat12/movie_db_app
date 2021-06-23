@@ -51,11 +51,12 @@ class EpisodesTab extends StatelessWidget with AvatarBuilderMixin {
 
             return InkWell(
               onTap: () {
-                // _seasonController
-                //     .setTvId(_detailsController.tvDetail.value.id ?? 0);
-                // _seasonController.setSeasonNo(episode.seasonNumber ?? 0);
+                _seasonController
+                    .setTvId(_detailsController.tvDetail.value.id ?? 0);
+                _seasonController.setSeasonNo(episode.seasonNumber ?? 0);
+                _seasonController.setEpisodeNo(episode.episodeNumber ?? 0);
 
-                // Get.toNamed('/season_details');
+                Get.toNamed('/episode_details', preventDuplicates: false);
               },
               child: Padding(
                 padding:

@@ -63,7 +63,8 @@ class SeasonService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: '/3/tv/$tvId/season/$seasonNo/episode/$episodeNo',
-        queryParameter: setQueryParameters(query: {}),
+        queryParameter: setQueryParameters(
+            query: {"append_to_response": "account_states,images"}),
       );
       return decodeResponse(response);
     } on SocketException {

@@ -37,7 +37,8 @@ Widget tvFlexibleSpacebarComponent({
           appendTo: imagesString);
     },
     builder: (controller) => SizedBox(
-      height: _utilityController.titlevisiblity == false ? 310 : 300,
+      // height: _utilityController.titlevisiblity == false ? 310 : 300,
+      height: 310,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: AlignmentDirectional.bottomCenter,
@@ -230,12 +231,14 @@ Widget tvFlexibleSpacebarComponent({
                         const SizedBox(height: 6),
                         GestureDetector(
                           onTap: () {
-                            _utilityController.toggleTitleVisibility();
+                            // _utilityController.toggleTitleVisibility();
                           },
                           child: Obx(
                             () => _utilityController.titlevisiblity == false
                                 ? Text(
                                     '${tv.name} ($tvDate)',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       fontSize: m - 2,
                                       fontWeight: FontWeight.bold,

@@ -29,7 +29,8 @@ Widget seasonFlexibleSpacebarComponent({
     init: _seasonController,
     initState: (_) {},
     builder: (controller) => SizedBox(
-      height: _utilityController.titlevisiblity == false ? 310 : 300,
+      // height: _utilityController.titlevisiblity == false ? 310 : 300,
+      height: 310,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: AlignmentDirectional.bottomCenter,
@@ -59,7 +60,8 @@ Widget seasonFlexibleSpacebarComponent({
                 ),
                 child: SizedBox(
                   height: height ?? 190,
-                  child: _detailsController.images.value.backdrops == null
+                  child: _detailsController.images.value.backdrops == null ||
+                          _detailsController.images.value.backdrops!.isEmpty
                       ? const SizedBox.shrink()
                       : CachedNetworkImage(
                           fit: BoxFit.cover,
@@ -126,12 +128,14 @@ Widget seasonFlexibleSpacebarComponent({
                       children: [
                         GestureDetector(
                           onTap: () {
-                            _utilityController.toggleTitleVisibility();
+                            // _utilityController.toggleTitleVisibility();
                           },
                           child: Obx(
                             () => _utilityController.titlevisiblity == false
                                 ? Text(
                                     season.name ?? 'season name',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       fontSize: m - 2,
                                       fontWeight: FontWeight.bold,

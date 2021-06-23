@@ -22,11 +22,11 @@ class SeasonController extends BaseController {
 
   int get tvId => _tvId.value;
   int get seasonNo => _seasonNo.value;
-  int get episodeNo => _seasonNo.value;
+  int get episodeNo => _episodeNo.value;
 
   void setTvId(int tvId) => _tvId.value = tvId;
   void setSeasonNo(int seasonNo) => _seasonNo.value = seasonNo;
-  void setEpisodeNo(int episodeNo) => _seasonNo.value = episodeNo;
+  void setEpisodeNo(int episodeNo) => _episodeNo.value = episodeNo;
 
   // get season details
   getSeasonDetails({
@@ -55,6 +55,7 @@ class SeasonController extends BaseController {
         .then((value) {
       episodeModel.value = Episode.fromJson(value);
       _episodeState.value = ViewState.retrived;
+      update(['episode_details']);
     });
   }
 
