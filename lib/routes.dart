@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 import 'package:movie_app/src/views/dashboard/dashboard.dart';
-import 'package:movie_app/src/views/deatils/episode_details/components/episode_crew_page.dart';
-import 'package:movie_app/src/views/deatils/episode_details/components/episode_guest_stars_list.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_crew_page.dart';
 import 'package:movie_app/src/views/deatils/people_details/people_details.dart';
@@ -9,7 +7,9 @@ import 'package:movie_app/src/views/deatils/season_details/season_details.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_crew_page.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
 
+import 'src/views/deatils/episode_details/episode_crew/episode_crew_page.dart';
 import 'src/views/deatils/episode_details/episode_details.dart';
+import 'src/views/deatils/episode_details/guest_stars/episode_guest_stars_list.dart';
 
 class Routes {
   static List<GetPage> getRoutes() {
