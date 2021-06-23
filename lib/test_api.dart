@@ -12,41 +12,43 @@ class _TestApiWidgetState extends State<TestApiWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Test Api Widget'),
-            test(),
-            TextButton(
-              onPressed: () {
-                showLicensePage(
-                  context: context,
-                  applicationLegalese: 'himmat',
-                  applicationName: 'movie db',
-                );
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Test Api Widget'),
+              test(),
+              TextButton(
+                onPressed: () {
+                  showLicensePage(
+                    context: context,
+                    applicationLegalese: 'himmat',
+                    applicationName: 'movie db',
+                  );
 
-                // showModalBottomSheet(
-                //   context: context,
-                //   builder: (context) => BottomSheet(
-                //     onClosing: () {},
-                //     builder: (context) => Column(
-                //       children: const [
-                //         Text('flutter bottom sheet'),
-                //       ],
-                //     ),
-                //   ),
-                //   constraints: BoxConstraints(
-                //     minHeight: 120,
-                //     maxHeight: 400,
-                //     minWidth: 70,
-                //     maxWidth: MediaQuery.of(context).size.width,
-                //   ),
-                // );
-              },
-              child: const Text('Show Api Service'),
-            ),
-          ],
+                  // showModalBottomSheet(
+                  //   context: context,
+                  //   builder: (context) => BottomSheet(
+                  //     onClosing: () {},
+                  //     builder: (context) => Column(
+                  //       children: const [
+                  //         Text('flutter bottom sheet'),
+                  //       ],
+                  //     ),
+                  //   ),
+                  //   constraints: BoxConstraints(
+                  //     minHeight: 120,
+                  //     maxHeight: 400,
+                  //     minWidth: 70,
+                  //     maxWidth: MediaQuery.of(context).size.width,
+                  //   ),
+                  // );
+                },
+                child: const Text('Show Api Service'),
+              ),
+            ],
+          ),
         ),
       ),
     );

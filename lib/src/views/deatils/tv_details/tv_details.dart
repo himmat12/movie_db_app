@@ -44,94 +44,90 @@ class TvDetails extends StatelessWidget {
       },
       child: Scaffold(
         body: SafeArea(
-          child: Scaffold(
-            body: GetBuilder(
-              id: "tv_details",
-              init: _detailsController,
-              initState: (_) {
-                _detailsController.getDetails(
-                    resultType: tvString, id: _resultssController.tvId);
-                _utilityController.resetImgSliderIndex();
-                _utilityController.resetTabbarState();
-                _utilityController.resetHideShowState();
-              },
-              builder: (_) {
-                return WidgetBuilderHelper(
-                  state: _detailsController.tvDetailState.value,
-                  onLoadingBuilder:
-                      Center(child: LoadingSpinner.horizontalLoading),
-                  onErrorBuilder: const Center(
-                    child: Text('error while initializing data...'),
-                  ),
-                  onSuccessBuilder: CustomScrollView(
-                    controller: scrollController,
-                    slivers: [
-                      SliverAppBar(
-                        pinned: true,
-                        elevation: 0.5,
-                        forceElevated: true,
-                        leading: SABTN(
-                          onBack: () {
-                            Get.offAllNamed('/');
-                          },
-                        ),
-                        title: SABT(
-                            child: Text(
-                          _detailsController.tvDetail.value.name ?? 'Title',
-                          style: TextStyle(
-                            color: primaryDark,
-                          ),
-                        )),
-                        expandedHeight:
-                            _utilityController.titlevisiblity == false
-                                ? 446
-                                : 440,
-                        flexibleSpace: FlexibleSpaceBar(
-                          collapseMode: CollapseMode.pin,
-                          background: Column(
-                            children: [
-                              // slider img/poster/title
-                              tvFlexibleSpacebarComponent(
-                                tv: _detailsController.tvDetail.value,
-                                height: 200,
-                              ),
-
-                              // ),
-                              const SizedBox(height: 18),
-
-                              // ratings / lists / bookmark options
-                              tvFlexibleSpacebarOptions(
-                                  controller: _detailsController),
-                            ],
-                          ),
-                        ),
-                        bottom:
-                            bottomTabbarComponent(tabMenuItems: tabMenuItems),
+          child: GetBuilder(
+            id: "tv_details",
+            init: _detailsController,
+            initState: (_) {
+              _detailsController.getDetails(
+                  resultType: tvString, id: _resultssController.tvId);
+              _utilityController.resetImgSliderIndex();
+              _utilityController.resetTabbarState();
+              _utilityController.resetHideShowState();
+            },
+            builder: (_) {
+              return WidgetBuilderHelper(
+                state: _detailsController.tvDetailState.value,
+                onLoadingBuilder:
+                    Center(child: LoadingSpinner.horizontalLoading),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data...'),
+                ),
+                onSuccessBuilder: CustomScrollView(
+                  controller: scrollController,
+                  slivers: [
+                    SliverAppBar(
+                      pinned: true,
+                      elevation: 0.5,
+                      forceElevated: true,
+                      leading: SABTN(
+                        onBack: () {
+                          Get.offAllNamed('/');
+                        },
                       ),
+                      title: SABT(
+                          child: Text(
+                        _detailsController.tvDetail.value.name ?? 'Title',
+                        style: TextStyle(
+                          color: primaryDark,
+                        ),
+                      )),
+                      expandedHeight: _utilityController.titlevisiblity == false
+                          ? 446
+                          : 440,
+                      flexibleSpace: FlexibleSpaceBar(
+                        collapseMode: CollapseMode.pin,
+                        background: Column(
+                          children: [
+                            // slider img/poster/title
+                            tvFlexibleSpacebarComponent(
+                              tv: _detailsController.tvDetail.value,
+                              height: 200,
+                            ),
 
-                      // body
-                      // Obx(
-                      //   () =>
-                      GetBuilder(
-                        id: 'tabs',
-                        init: _utilityController,
-                        initState: (_) {},
-                        builder: (controller) => SliverList(
-                          delegate: SliverChildListDelegate.fixed(
-                            [
-                              tvTabs[_utilityController.tabbarCurrentIndex],
-                              const SizedBox(height: 120),
-                            ],
-                          ),
+                            // ),
+                            const SizedBox(height: 18),
+
+                            // ratings / lists / bookmark options
+                            tvFlexibleSpacebarOptions(
+                                controller: _detailsController),
+                          ],
                         ),
                       ),
-                      // ),
-                    ],
-                  ),
-                  // ),
-                );
-              },
-            ),
+                      bottom: bottomTabbarComponent(tabMenuItems: tabMenuItems),
+                    ),
+
+                    // body
+                    // Obx(
+                    //   () =>
+                    GetBuilder(
+                      id: 'tabs',
+                      init: _utilityController,
+                      initState: (_) {},
+                      builder: (controller) => SliverList(
+                        delegate: SliverChildListDelegate.fixed(
+                          [
+                            tvTabs[_utilityController.tabbarCurrentIndex],
+                            const SizedBox(height: 120),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // ),
+                  ],
+                ),
+                // ),
+              );
+            },
           ),
         ),
       ),

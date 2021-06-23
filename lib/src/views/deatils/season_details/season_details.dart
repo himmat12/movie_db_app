@@ -43,106 +43,93 @@ class SeasonDetails extends StatelessWidget {
       },
       child: Scaffold(
         body: SafeArea(
-          child: Scaffold(
-            body: GetBuilder(
-              id: "season_details",
-              init: _seasonController,
-              initState: (_) {
-                _seasonController.getSeasonDetails(
-                    tvId: '${_seasonController.tvId}',
-                    seasonNo: '${_seasonController.seasonNo}');
+          child: GetBuilder(
+            id: "season_details",
+            init: _seasonController,
+            initState: (_) {
+              _seasonController.getSeasonDetails(
+                  tvId: '${_seasonController.tvId}',
+                  seasonNo: '${_seasonController.seasonNo}');
 
-                _utilityController.resetImgSliderIndex();
-                _utilityController.resetSeasonTabbarState();
-                _utilityController.resetHideShowState();
-              },
-              builder: (_) {
-                return WidgetBuilderHelper(
-                  state: _seasonController.seasonState,
-                  onLoadingBuilder:
-                      Center(child: LoadingSpinner.horizontalLoading),
-                  onErrorBuilder: const Center(
-                    child: Text('error while initializing data...'),
-                  ),
-                  onSuccessBuilder: CustomScrollView(
-                    controller: scrollController,
-                    slivers: [
-                      SliverAppBar(
-                        pinned: true,
-                        elevation: 0.5,
-                        forceElevated: true,
-                        leading: const SABTN(
-                            // onBack: () {
-                            // Get.offAllNamed('/');
-                            // },
+              _utilityController.resetImgSliderIndex();
+              _utilityController.resetSeasonTabbarState();
+              _utilityController.resetHideShowState();
+            },
+            builder: (_) {
+              return WidgetBuilderHelper(
+                state: _seasonController.seasonState,
+                onLoadingBuilder:
+                    Center(child: LoadingSpinner.horizontalLoading),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data...'),
+                ),
+                onSuccessBuilder: CustomScrollView(
+                  controller: scrollController,
+                  slivers: [
+                    SliverAppBar(
+                      pinned: true,
+                      elevation: 0.5,
+                      forceElevated: true,
+                      leading: const SABTN(
+                          // onBack: () {
+                          // Get.offAllNamed('/');
+                          // },
+                          ),
+                      title: SABT(
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _seasonController.seasonModel.value.name ??
+                                'season name',
+                            style: TextStyle(
+                              color: primaryDark,
                             ),
-                        title: SABT(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          ),
+                          Text(
+                            _detailsController.tvDetail.value.name ?? 'name',
+                            style: TextStyle(
+                              fontSize: n,
+                              color: primaryDarkBlue.withOpacity(0.8),
+                            ),
+                          ),
+                        ],
+                      )),
+                      expandedHeight: 390,
+                      flexibleSpace: FlexibleSpaceBar(
+                        collapseMode: CollapseMode.pin,
+                        background: Column(
                           children: [
-                            Text(
-                              _seasonController.seasonModel.value.name ??
-                                  'season name',
-                              style: TextStyle(
-                                color: primaryDark,
-                              ),
-                            ),
-                            Text(
-                              _detailsController.tvDetail.value.name ?? 'name',
-                              style: TextStyle(
-                                fontSize: n,
-                                color: primaryDarkBlue.withOpacity(0.8),
-                              ),
+                            // slider img/poster/title
+                            seasonFlexibleSpacebarComponent(
+                              season: _seasonController.seasonModel.value,
+                              height: 200,
                             ),
                           ],
-                        )),
-                        expandedHeight: 390,
-                        flexibleSpace: FlexibleSpaceBar(
-                          collapseMode: CollapseMode.pin,
-                          background: Column(
-                            children: [
-                              // slider img/poster/title
-                              seasonFlexibleSpacebarComponent(
-                                season: _seasonController.seasonModel.value,
-                                height: 200,
-                              ),
-
-                              // ),
-                              // const SizedBox(height: 18),
-
-                              // overview
-                              // seasonFlexibleSpacebarOptions(),
-                            ],
-                          ),
-                        ),
-                        bottom: seasonBottomTabbarComponent(
-                            tabMenuItems: tabMenuItems),
-                      ),
-
-                      // body
-                      // Obx(
-                      //   () =>
-                      GetBuilder(
-                        id: 'seasonTabs',
-                        init: _utilityController,
-                        initState: (_) {},
-                        builder: (controller) => SliverList(
-                          delegate: SliverChildListDelegate.fixed(
-                            [
-                              tvTabs[
-                                  _utilityController.seasonTabbarCurrentIndex],
-                              const SizedBox(height: 120),
-                            ],
-                          ),
                         ),
                       ),
-                      // ),
-                    ],
-                  ),
-                  // ),
-                );
-              },
-            ),
+                      bottom: seasonBottomTabbarComponent(
+                          tabMenuItems: tabMenuItems),
+                    ),
+
+                    // body
+                    GetBuilder(
+                      id: 'seasonTabs',
+                      init: _utilityController,
+                      initState: (_) {},
+                      builder: (controller) => SliverList(
+                        delegate: SliverChildListDelegate.fixed(
+                          [
+                            tvTabs[_utilityController.seasonTabbarCurrentIndex],
+                            const SizedBox(height: 120),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ),

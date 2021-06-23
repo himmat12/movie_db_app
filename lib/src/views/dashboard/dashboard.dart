@@ -58,50 +58,53 @@ class DashboardPage extends StatelessWidget {
       },
       child: Scaffold(
           // appBar: AppBar(),
-          bottomNavigationBar: Obx(
-            () => WidgetBuilderHelper(
-              state: _configurationController.configState.value,
-              onLoadingBuilder: bottomNavSkeleton(),
-              onErrorBuilder: const Center(
-                child: Text('error while initializing data...'),
-              ),
-              onSuccessBuilder: BottomNavigationBar(
-                elevation: 0,
-                currentIndex: _utilityController.navCurrentIndex,
-                onTap: (newIndex) {
-                  _utilityController.setBottomNavIndex(newIndex);
-                },
-                type: BottomNavigationBarType.fixed,
-                unselectedFontSize: 0,
-                selectedFontSize: 0,
-                selectedIconTheme: const IconThemeData(color: Colors.blue),
-                selectedItemColor: Colors.blue,
-                items: List.from(
-                  menus.map(
-                    (e) => BottomNavigationBarItem(
-                      icon: Text(e),
-                      label: "",
+          bottomNavigationBar: SafeArea(
+            child: Obx(
+              () => WidgetBuilderHelper(
+                state: _configurationController.configState.value,
+                onLoadingBuilder: bottomNavSkeleton(),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data...'),
+                ),
+                onSuccessBuilder: BottomNavigationBar(
+                  elevation: 0,
+                  currentIndex: _utilityController.navCurrentIndex,
+                  onTap: (newIndex) {
+                    _utilityController.setBottomNavIndex(newIndex);
+                  },
+                  type: BottomNavigationBarType.fixed,
+                  unselectedFontSize: 0,
+                  selectedFontSize: 0,
+                  selectedIconTheme: const IconThemeData(color: Colors.blue),
+                  selectedItemColor: Colors.blue,
+                  items: List.from(
+                    menus.map(
+                      (e) => BottomNavigationBarItem(
+                        icon: Text(e),
+                        label: "",
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-          body: Obx(
-            () => WidgetBuilderHelper(
-              state: _configurationController.configState.value,
-              onLoadingBuilder: pageSkeleton(),
-              onErrorBuilder: const Center(
-                child: Text('error while initializing data ...'),
-              ),
-              onSuccessBuilder: SafeArea(
-                  child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    pages[_utilityController.navCurrentIndex],
-                  ],
+          body: SafeArea(
+            child: Obx(
+              () => WidgetBuilderHelper(
+                state: _configurationController.configState.value,
+                onLoadingBuilder: pageSkeleton(),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data ...'),
                 ),
-              )),
+                onSuccessBuilder: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      pages[_utilityController.navCurrentIndex],
+                    ],
+                  ),
+                ),
+              ),
             ),
           )),
     );
