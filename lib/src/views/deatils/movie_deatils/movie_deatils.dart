@@ -5,6 +5,7 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -30,18 +31,32 @@ class MoviesDetails extends StatelessWidget {
 
   final _detailsController = Get.find<DetailsController>();
 
-  final _resultssController = Get.find<ResultsController>();
-
   final _utilityController = Get.find<UtilityController>();
 
   final scrollController = ScrollController();
 
   final _resultsController = Get.find<ResultsController>();
+  final _trendingResultsController = Get.find<TrendingResultsController>();
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        // initializing trending MOVIES services
+        if (_utilityController.isMovieToday == true) {
+          _trendingResultsController.getTrendingMovieResults(
+              timeWindow: dayString, page: '1');
+        } else {
+          _trendingResultsController.getTrendingMovieResults(
+              timeWindow: weekString, page: '1');
+        }
+
+        // reseting toinitial init state of popular/top rated/upcomming/now playing MOVIES services
+        _resultsController.getMovieResults(resultType: popularString);
+        _resultsController.getMovieResults(resultType: topRatedString);
+        _resultsController.getMovieResults(resultType: upcomingString);
+        _resultsController.getMovieResults(resultType: nowPlayingString);
+
         Get.offAllNamed('/');
         return false;
       },
@@ -79,6 +94,25 @@ class MoviesDetails extends StatelessWidget {
                       forceElevated: true,
                       leading: SABTN(
                         onBack: () {
+                          // initializing trending MOVIES services
+                          if (_utilityController.isMovieToday == true) {
+                            _trendingResultsController.getTrendingMovieResults(
+                                timeWindow: dayString, page: '1');
+                          } else {
+                            _trendingResultsController.getTrendingMovieResults(
+                                timeWindow: weekString, page: '1');
+                          }
+
+                          // reseting toinitial init state of popular/top rated/upcomming/now playing MOVIES services
+                          _resultsController.getMovieResults(
+                              resultType: popularString);
+                          _resultsController.getMovieResults(
+                              resultType: topRatedString);
+                          _resultsController.getMovieResults(
+                              resultType: upcomingString);
+                          _resultsController.getMovieResults(
+                              resultType: nowPlayingString);
+
                           Get.offAllNamed('/');
                         },
                       ),

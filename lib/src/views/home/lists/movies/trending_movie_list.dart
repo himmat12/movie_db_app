@@ -78,6 +78,7 @@ class HomeTrendingMovieList extends StatelessWidget with LoadingSpinnerMixin {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount:
                             _trendingResultsController.trendingMovies.length,
+                        cacheExtent: 2400,
                         semanticChildCount:
                             _trendingResultsController.trendingMovies.length,
                         gridDelegate:

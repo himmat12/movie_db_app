@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/views/dashboard/dashboard.dart';
-import 'package:movie_app/src/views/home/home_page.dart';
 
 // title widget
 class SABTN extends StatefulWidget {
@@ -55,9 +50,6 @@ class _SABTNState extends State<SABTN> {
       });
     }
   }
-
-  final _detailsController = Get.find<DetailsController>();
-  final _resultsController = Get.find<ResultsController>();
 
   @override
   Widget build(BuildContext context) {

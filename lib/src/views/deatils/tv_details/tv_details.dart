@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -24,7 +25,9 @@ class TvDetails extends StatelessWidget {
 
   final _detailsController = Get.find<DetailsController>();
   final _utilityController = Get.find<UtilityController>();
-  final _resultssController = Get.find<ResultsController>();
+  final _resultsController = Get.find<ResultsController>();
+
+  final _trendingResultsController = Get.find<TrendingResultsController>();
 
   TvDetails({
     Key? key,
@@ -39,6 +42,21 @@ class TvDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        // initializing trending TV services
+        if (_utilityController.isTvToday == true) {
+          _trendingResultsController.getTrendingTvResults(
+              timeWindow: dayString, page: '1');
+        } else {
+          _trendingResultsController.getTrendingTvResults(
+              timeWindow: weekString, page: '1');
+        }
+
+        // reseting toinitial init state of popular/top rated/airing today/on the air TV services
+        _resultsController.getTvResults(resultType: popularString);
+        _resultsController.getTvResults(resultType: topRatedString);
+        _resultsController.getTvResults(resultType: airingTodayString);
+        _resultsController.getTvResults(resultType: onTheAirString);
+
         Get.offAllNamed('/');
         return false;
       },
@@ -49,7 +67,7 @@ class TvDetails extends StatelessWidget {
             init: _detailsController,
             initState: (_) {
               _detailsController.getDetails(
-                  resultType: tvString, id: _resultssController.tvId);
+                  resultType: tvString, id: _resultsController.tvId);
               _utilityController.resetImgSliderIndex();
               _utilityController.resetTabbarState();
               _utilityController.resetHideShowState();
@@ -71,6 +89,25 @@ class TvDetails extends StatelessWidget {
                       forceElevated: true,
                       leading: SABTN(
                         onBack: () {
+                          // initializing trending TV services
+                          if (_utilityController.isTvToday == true) {
+                            _trendingResultsController.getTrendingTvResults(
+                                timeWindow: dayString, page: '1');
+                          } else {
+                            _trendingResultsController.getTrendingTvResults(
+                                timeWindow: weekString, page: '1');
+                          }
+
+                          // reseting toinitial init state of popular/top rated/airing today/on the air TV services
+                          _resultsController.getTvResults(
+                              resultType: popularString);
+                          _resultsController.getTvResults(
+                              resultType: topRatedString);
+                          _resultsController.getTvResults(
+                              resultType: airingTodayString);
+                          _resultsController.getTvResults(
+                              resultType: onTheAirString);
+
                           Get.offAllNamed('/');
                         },
                       ),

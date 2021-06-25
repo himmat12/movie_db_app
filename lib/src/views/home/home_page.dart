@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/trending_results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
 
 import 'components/app_bar.dart';
 import 'results/movies_results_builder.dart';
@@ -15,10 +12,7 @@ import 'trending/trending_tv_builder.dart';
 
 class HomePage extends StatelessWidget {
   final _configurationController = Get.find<ConfigurationController>();
-  final _utilityController = Get.find<UtilityController>();
   final _resultsController = Get.find<ResultsController>();
-  final _trendingResultsController = Get.find<TrendingResultsController>();
-  final _detailsController = Get.find<DetailsController>();
 
   HomePage({Key? key}) : super(key: key);
 

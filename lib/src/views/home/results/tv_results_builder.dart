@@ -22,8 +22,6 @@ Widget tvResultBuilder({
 
   final _resultsController = Get.find<ResultsController>();
 
-  var items = <Widget>[];
-
 // returns respected TV list according to the given resultType parameter
   RxList<TvResultsModel>? getItem(String resultType) {
     switch (resultType) {
@@ -38,26 +36,6 @@ Widget tvResultBuilder({
       default:
         break;
     }
-  }
-
-// returns listview items
-  List<Widget> tvList(List<TvResultsModel> tv) {
-    items = List.from(
-      tv.map(
-        (e) => tvThumbnailCard(tv: e, imageUrl: "$posterUrl${e.posterPath}"),
-      ),
-    );
-
-    // load more option
-    items.add(
-      addMorePaginationBtn(
-          onTap: () {
-            _resultsController.loadMoreTvResults(resultType: resultType);
-          },
-          viewState: state.value),
-    );
-
-    return items;
   }
 
   return SizedBox(
@@ -80,15 +58,43 @@ Widget tvResultBuilder({
         const SizedBox(height: 12),
 
         // horizontal scroll view
+
         Container(
           // color: primaryblue,
+          height: 200,
+          width: MediaQuery.of(Get.context!).size.width,
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(
               () => Padding(
                 padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-                child: Row(children: tvList(getItem(resultType) ?? [])),
+                child: Row(
+                  children: [
+                    ListView.builder(
+                        itemExtent: 96,
+                        cacheExtent: 1200,
+                        semanticChildCount: getItem(resultType) == null
+                            ? 0
+                            : getItem(resultType)!.length,
+                        itemCount: getItem(resultType) == null
+                            ? 0
+                            : getItem(resultType)!.length,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => tvThumbnailCard(
+                            tv: getItem(resultType)![index],
+                            imageUrl:
+                                '$posterUrl${getItem(resultType)![index].posterPath}')),
+                    addMorePaginationBtn(
+                        onTap: () {
+                          _resultsController.loadMoreTvResults(
+                              resultType: resultType);
+                        },
+                        viewState: state.value),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/add_more_pagination_btn.dart';
 import 'package:movie_app/src/global/movie_thumbnail_card.dart';
 import 'package:movie_app/src/global/switch_btn.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/views/home/components/header_tile.dart';
 
 Widget trendingMoviesBuilder({
@@ -16,33 +14,8 @@ Widget trendingMoviesBuilder({
   // ignore: avoid_print
   // print("trending movie builder builded");
 
-  final _resultsController = Get.find<ResultsController>();
   final _utilityController = Get.find<UtilityController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
-
-  var items = <Widget>[];
-
-// returns listview items
-  List<Widget> moviesList(List<MovieResultModel> movies) {
-    items = List.from(
-      movies.map((e) =>
-          movieThumbnailCard(movie: e, imageUrl: '$posterUrl${e.posterPath}')),
-    );
-
-    // load more option
-    items.add(
-      addMorePaginationBtn(
-          onTap: () {
-            _trendingResultsController.loadMoreTrendingMoviesResults(
-                timeWindow: _utilityController.isMovieToday == true
-                    ? dayString
-                    : weekString);
-          },
-          viewState: _trendingResultsController.movieViewState),
-    );
-
-    return items;
-  }
 
   return SizedBox(
     child: Column(

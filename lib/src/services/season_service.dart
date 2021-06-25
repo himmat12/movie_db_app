@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
 import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
 class SeasonService extends BaseService with QueryParameterMixin {
@@ -21,7 +20,7 @@ class SeasonService extends BaseService with QueryParameterMixin {
         queryParameter:
             setQueryParameters(query: {"append_to_response": "credits"}),
       );
-      print(Credits.fromJson(decodeResponse(response)['credits']).cast!.length);
+      // print(Credits.fromJson(decodeResponse(response)['credits']).cast!.length);
       return decodeResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');

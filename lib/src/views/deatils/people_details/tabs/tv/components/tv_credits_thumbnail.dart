@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/models/peoples/people_tv_credits.dart';
 
@@ -13,8 +11,6 @@ Widget tvCreditsThumbnailCard({
   EdgeInsetsGeometry? padding,
 }) {
   final _resultController = Get.find<ResultsController>();
-  final _detailsController = Get.find<DetailsController>();
-  final _peopleController = Get.find<PeopleController>();
 
   return GestureDetector(
     onTap: () {

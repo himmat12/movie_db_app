@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -21,7 +20,6 @@ class EpisodeDetails extends StatelessWidget {
 
   final _detailsController = Get.find<DetailsController>();
   final _utilityController = Get.find<UtilityController>();
-  final _resultssController = Get.find<ResultsController>();
   final _seasonController = Get.find<SeasonController>();
 
   EpisodeDetails({
