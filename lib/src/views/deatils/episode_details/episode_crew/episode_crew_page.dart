@@ -26,7 +26,20 @@ class EpisodeCrewPage extends StatelessWidget with AvatarBuilderMixin {
     return Scaffold(
         appBar: AppBar(
           elevation: 0.5,
-          title: Text(_detailsController.tvDetail.value.name ?? "tv title"),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                  'Featured Crew - ${_seasonController.episodeModel.value.name}'),
+              Text(
+                '${_detailsController.tvDetail.value.name} [S${_seasonController.seasonModel.value.seasonNumber.toString().padLeft(2, '0')} | E${_seasonController.episodeModel.value.episodeNumber.toString().padLeft(2, '0')}]',
+                style: TextStyle(
+                  fontSize: n,
+                  color: primaryDarkBlue.withOpacity(0.8),
+                ),
+              ),
+            ],
+          ),
         ),
         body: SafeArea(
           child: SingleChildScrollView(

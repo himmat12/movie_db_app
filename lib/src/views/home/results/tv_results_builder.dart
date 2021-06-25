@@ -67,9 +67,11 @@ Widget tvResultBuilder({
         // title & more option
         headerTile(
           onMoreTap: () {
+            _resultsController.getTvResults(resultType: resultType, page: '1');
             Get.toNamed('/tv_results_list', arguments: {
+              "state": state,
               "title": '$title $subtitle',
-              "tv": getItem(resultType)
+              "resultType": resultType
             });
           },
           title: title ?? "title",

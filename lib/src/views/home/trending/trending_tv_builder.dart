@@ -51,6 +51,14 @@ Widget trendingTvBuilder({
         // title & more option
         headerTile(
           onMoreTap: () {
+            // initializing trending TV services
+            if (_utilityController.isTvToday == true) {
+              _trendingResultsController.getTrendingTvResults(
+                  timeWindow: dayString, page: '1');
+            } else {
+              _trendingResultsController.getTrendingTvResults(
+                  timeWindow: weekString, page: '1');
+            }
             Get.toNamed('/trending_tv_list', arguments: {
               "title": "Trending TV",
               "toggleOption": trendingTvSwitchBtnBuilder()
@@ -65,6 +73,8 @@ Widget trendingTvBuilder({
         // horizontal scroll view
         Container(
           // color: primaryblue,
+          height: 200,
+          width: MediaQuery.of(Get.context!).size.width,
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -72,7 +82,31 @@ Widget trendingTvBuilder({
               () => Padding(
                 padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
                 child: Row(
-                    children: tvsList(_trendingResultsController.trendingTVs)),
+                  children: [
+                    ListView.builder(
+                        itemExtent: 96,
+                        cacheExtent: 1200,
+                        semanticChildCount:
+                            _trendingResultsController.trendingTVs.length,
+                        itemCount:
+                            _trendingResultsController.trendingTVs.length,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => tvThumbnailCard(
+                            tv: _trendingResultsController.trendingTVs[index],
+                            imageUrl:
+                                '$posterUrl${_trendingResultsController.trendingTVs[index].posterPath}')),
+                    addMorePaginationBtn(
+                        onTap: () {
+                          _trendingResultsController.loadMoreTrendingTvResults(
+                              timeWindow: _utilityController.isTvToday == true
+                                  ? dayString
+                                  : weekString);
+                        },
+                        viewState: _trendingResultsController.tvViewState),
+                  ],
+                ),
               ),
             ),
           ),

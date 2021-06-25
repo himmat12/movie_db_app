@@ -51,6 +51,14 @@ Widget trendingMoviesBuilder({
         // title & more option
         headerTile(
           onMoreTap: () {
+            // initializing trending MOVIES services
+            if (_utilityController.isMovieToday == true) {
+              _trendingResultsController.getTrendingMovieResults(
+                  timeWindow: dayString, page: '1');
+            } else {
+              _trendingResultsController.getTrendingMovieResults(
+                  timeWindow: weekString, page: '1');
+            }
             Get.toNamed('/trending_movie_list', arguments: {
               "title": "Trending Movies",
               "toggleOption": trendingMovieSwitchBtnBuilder()
@@ -66,6 +74,8 @@ Widget trendingMoviesBuilder({
         // horizontal scroll view
         Container(
           // color: primaryblue,
+          height: 200,
+          width: MediaQuery.of(Get.context!).size.width,
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -73,8 +83,34 @@ Widget trendingMoviesBuilder({
               () => Padding(
                 padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
                 child: Row(
-                    children:
-                        moviesList(_trendingResultsController.trendingMovies)),
+                  children: [
+                    ListView.builder(
+                        itemExtent: 96,
+                        cacheExtent: 1200,
+                        semanticChildCount:
+                            _trendingResultsController.trendingMovies.length,
+                        itemCount:
+                            _trendingResultsController.trendingMovies.length,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => movieThumbnailCard(
+                            movie: _trendingResultsController
+                                .trendingMovies[index],
+                            imageUrl:
+                                '$posterUrl${_trendingResultsController.trendingMovies[index].posterPath}')),
+                    addMorePaginationBtn(
+                        onTap: () {
+                          _trendingResultsController
+                              .loadMoreTrendingMoviesResults(
+                                  timeWindow:
+                                      _utilityController.isMovieToday == true
+                                          ? dayString
+                                          : weekString);
+                        },
+                        viewState: _trendingResultsController.movieViewState),
+                  ],
+                ),
               ),
             ),
           ),

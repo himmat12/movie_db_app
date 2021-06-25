@@ -5,7 +5,6 @@ import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
-import 'package:movie_app/src/services/results_service.dart';
 import 'package:movie_app/src/services/trending_results_service.dart';
 
 class TrendingResultsController extends BaseController {
@@ -52,13 +51,14 @@ class TrendingResultsController extends BaseController {
   }
 
   // trending movie results controller
-  getTrendingMovieResults({required String timeWindow}) async {
+  getTrendingMovieResults({required String timeWindow, String? page}) async {
     _movieViewState.value = ViewState.busy;
+    resetMoviePage();
     await _service
         .getTrendingResults(
       mediaType: movieString,
       timeWindow: timeWindow,
-      page: '$moviesPage',
+      page: page ?? '$moviesPage',
     )
         .then((value) {
       // if (value != null) {
@@ -69,6 +69,7 @@ class TrendingResultsController extends BaseController {
       //   print(i.title);
       // }
       _movieViewState.value = ViewState.retrived;
+      update(['trending_movies_list']);
       // }
     });
   }
@@ -93,19 +94,21 @@ class TrendingResultsController extends BaseController {
         // print(trendingMovies);
         // }
         _movieViewState.value = ViewState.retrived;
+        update(['trending_movies_list']);
       }
     });
   }
 
 // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  getTrendingTvResults({required String timeWindow}) async {
+  getTrendingTvResults({required String timeWindow, String? page}) async {
     _tvViewState.value = ViewState.busy;
+    resetTvPage();
     await _service
         .getTrendingResults(
       mediaType: tvString,
       timeWindow: timeWindow,
-      page: '$tvPage',
+      page: page ?? '$tvPage',
     )
         .then((value) {
       if (value != null) {
@@ -115,6 +118,7 @@ class TrendingResultsController extends BaseController {
         //   print(i.title);
         // }
         _tvViewState.value = ViewState.retrived;
+        update(['trending_tv_list']);
       }
     });
   }
@@ -139,6 +143,7 @@ class TrendingResultsController extends BaseController {
         // print(trendingMovies);
         // }
         _tvViewState.value = ViewState.retrived;
+        update(['trending_tv_list']);
       }
     });
   }
