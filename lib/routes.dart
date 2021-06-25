@@ -39,9 +39,9 @@ class Routes {
       GetPage(
           name: '/movie_results_list',
           page: () => HomeMovieresultsList(
-                title: Get.arguments['title'],
-                movies: Get.arguments['movies'],
-              )),
+              state: Get.arguments['state'],
+              title: Get.arguments['title'],
+              resultType: Get.arguments['resultType'] ?? '')),
       GetPage(
           name: '/trending_tv_list',
           page: () => HomeTrendingTvList(
@@ -51,9 +51,9 @@ class Routes {
       GetPage(
           name: '/tv_results_list',
           page: () => HomeTvResultList(
-                title: Get.arguments['title'],
-                tv: Get.arguments['tv'],
-              )),
+              state: Get.arguments['state'],
+              title: Get.arguments['title'],
+              resultType: Get.arguments['resultType'] ?? '')),
     ];
   }
 }

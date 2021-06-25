@@ -67,9 +67,12 @@ Widget movieResultBuilder({
         // title & more option
         headerTile(
           onMoreTap: () {
+            _resultsController.getMovieResults(
+                resultType: resultType, page: '1');
             Get.toNamed('/movie_results_list', arguments: {
+              "state": state,
               "title": '$title $subtitle',
-              "movies": getItem(resultType)
+              "resultType": resultType
             });
           },
           title: title ?? "title",

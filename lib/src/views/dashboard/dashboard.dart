@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
@@ -70,6 +71,41 @@ class DashboardPage extends StatelessWidget {
                   elevation: 0,
                   currentIndex: _utilityController.navCurrentIndex,
                   onTap: (newIndex) {
+                    // initializing trending MOVIES services
+                    if (_utilityController.isMovieToday == true) {
+                      _trendingResultsController.getTrendingMovieResults(
+                          timeWindow: dayString, page: '1');
+                    } else {
+                      _trendingResultsController.getTrendingMovieResults(
+                          timeWindow: weekString, page: '1');
+                    }
+
+                    // initializing trending TV services
+                    if (_utilityController.isTvToday == true) {
+                      _trendingResultsController.getTrendingTvResults(
+                          timeWindow: dayString, page: '1');
+                    } else {
+                      _trendingResultsController.getTrendingTvResults(
+                          timeWindow: weekString, page: '1');
+                    }
+
+                    // reseting toinitial init state of popular/top rated/upcomming/now playing MOVIES services
+                    _resultsController.getMovieResults(
+                        resultType: popularString);
+                    _resultsController.getMovieResults(
+                        resultType: topRatedString);
+                    _resultsController.getMovieResults(
+                        resultType: upcomingString);
+                    _resultsController.getMovieResults(
+                        resultType: nowPlayingString);
+
+                    // reseting toinitial init state of popular/top rated/airing today/on the air TV services
+                    _resultsController.getTvResults(resultType: popularString);
+                    _resultsController.getTvResults(resultType: topRatedString);
+                    _resultsController.getTvResults(
+                        resultType: airingTodayString);
+                    _resultsController.getTvResults(resultType: onTheAirString);
+
                     _utilityController.setBottomNavIndex(newIndex);
                   },
                   type: BottomNavigationBarType.fixed,
