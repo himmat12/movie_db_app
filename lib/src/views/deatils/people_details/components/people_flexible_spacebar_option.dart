@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/models/peoples/people_model.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 Widget peopleFlexibleSpacebarOptions({required PeopleModel people}) {
-  final _detailsController = Get.find<DetailsController>();
-
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 14),
     child: Row(

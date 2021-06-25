@@ -5,14 +5,12 @@ import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 
 class SeasonCastsTab extends StatelessWidget with AvatarBuilderMixin {
   final _seasonController = Get.find<SeasonController>();
-  final _resultController = Get.find<ResultsController>();
   final _configurationController = Get.find<ConfigurationController>();
   final _peopleController = Get.find<PeopleController>();
 

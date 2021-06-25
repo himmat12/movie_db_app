@@ -23,8 +23,6 @@ Widget movieResultBuilder({
 
   final _resultsController = Get.find<ResultsController>();
 
-  var items = <Widget>[];
-
 // returns respected movies list according to the given resultType parameter
   RxList<MovieResultModel>? getItem(String resultType) {
     switch (resultType) {
@@ -39,25 +37,6 @@ Widget movieResultBuilder({
       default:
         break;
     }
-  }
-
-// returns listview items
-  List<Widget> moviesList(List<MovieResultModel> movies) {
-    items = List.from(
-      movies.map((e) =>
-          movieThumbnailCard(movie: e, imageUrl: '$posterUrl${e.posterPath}')),
-    );
-
-    // load more option
-    items.add(
-      addMorePaginationBtn(
-          onTap: () {
-            _resultsController.loadMoreMoviesResults(resultType: resultType);
-          },
-          viewState: state.value),
-    );
-
-    return items;
   }
 
   return SizedBox(
@@ -82,15 +61,43 @@ Widget movieResultBuilder({
         const SizedBox(height: 12),
 
         // horizontal scroll view
+
         Container(
           // color: primaryblue,
+          height: 200,
+          width: MediaQuery.of(Get.context!).size.width,
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(
               () => Padding(
                 padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-                child: Row(children: moviesList(getItem(resultType) ?? [])),
+                child: Row(
+                  children: [
+                    ListView.builder(
+                        itemExtent: 96,
+                        cacheExtent: 1200,
+                        semanticChildCount: getItem(resultType) == null
+                            ? 0
+                            : getItem(resultType)!.length,
+                        itemCount: getItem(resultType) == null
+                            ? 0
+                            : getItem(resultType)!.length,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => movieThumbnailCard(
+                            movie: getItem(resultType)![index],
+                            imageUrl:
+                                '$posterUrl${getItem(resultType)![index].posterPath}')),
+                    addMorePaginationBtn(
+                        onTap: () {
+                          _resultsController.loadMoreMoviesResults(
+                              resultType: resultType);
+                        },
+                        viewState: state.value),
+                  ],
+                ),
               ),
             ),
           ),

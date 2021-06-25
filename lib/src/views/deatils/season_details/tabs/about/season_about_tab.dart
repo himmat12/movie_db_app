@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
@@ -11,8 +9,7 @@ import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/net
 
 class SeasonAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();
-  final _utilityController = Get.find<UtilityController>();
-  final _resultsController = Get.find<ResultsController>();
+
   final _seasonController = Get.find<SeasonController>();
 
   SeasonAboutTab({Key? key}) : super(key: key);

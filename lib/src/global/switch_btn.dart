@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -157,81 +156,3 @@ Widget trendingTvSwitchBtnBuilder({
     ),
   );
 }
-
-// upcomming/now playing movie switch
-
-// Widget upcommingMovieSwitchBtnBuilder({
-//   Color? color,
-//   Color? selectedColor,
-//   Color? textColor,
-//   BorderRadiusGeometry? borderRadius,
-//   EdgeInsetsGeometry? padding,
-//   BoxBorder? border,
-// }) {
-//   final _controller = Get.find<UtilityController>();
-//   final _resultsController = Get.find<ResultsController>();
-
-//   return Obx(
-//     () => Container(
-//       decoration: BoxDecoration(
-//         borderRadius: borderRadius ?? BorderRadius.circular(8),
-//         color: color ?? secondaryDarkBlue,
-//         border: border ??
-//             const Border(
-//               bottom: BorderSide.none,
-//               top: BorderSide.none,
-//               left: BorderSide.none,
-//               right: BorderSide.none,
-//             ),
-//       ),
-//       child: Row(
-//         children: [
-//           _resultsController.nowPlayingMoviesState.value == ViewState.busy
-//               ? Padding(
-//                   padding: padding ??
-//                       const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-//                   child: LoadingSpinner.horizontalLoading,
-//                 )
-//               : GestureDetector(
-//                   onTap: () {
-//                     _controller.toggleIsMovieNowPlayingSwitch();
-
-//                     if (_controller.isMovieNowPlaying == true) {
-//                       _resultsController.nowPlayingMoviesPage = 1;
-//                       _resultsController.getMovieResults(
-//                           resultType: nowPlayingString);
-//                     } else if (_controller.isMovieNowPlaying != true) {
-//                       _resultsController.upcommingMoviesPage = 1;
-//                       _resultsController.getMovieResults(
-//                           resultType: upcomingString);
-//                     }
-//                   },
-//                   child: Container(
-//                     padding: padding ??
-//                         const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-//                     alignment: Alignment.center,
-//                     decoration: BoxDecoration(
-//                       color: secondaryDarkBlue,
-//                       borderRadius: BorderRadius.circular(8),
-//                     ),
-//                     child: Text(
-//                       _controller.isMovieNowPlaying == true
-//                           ? 'Now Playing'
-//                           : 'Upcoming',
-//                       style: TextStyle(
-//                         color: textColor ?? primaryWhite,
-//                         fontSize: n - 6,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//           const Icon(
-//             Icons.import_export,
-//             size: 16,
-//             color: primaryWhite,
-//           ),
-//         ],
-//       ),
-//     ),
-//   );
-// }

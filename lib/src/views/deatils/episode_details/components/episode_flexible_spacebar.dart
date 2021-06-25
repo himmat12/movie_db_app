@@ -5,8 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -21,8 +19,7 @@ Widget episodeFlexibleSpacebarComponent({
 }) {
   final _utilityController = Get.find<UtilityController>();
   final _configController = Get.find<ConfigurationController>();
-  final _detailsController = Get.find<DetailsController>();
-  final _resultController = Get.find<ResultsController>();
+
   final _seasonController = Get.find<SeasonController>();
 
   final String? firstAirDate =

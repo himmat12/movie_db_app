@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -26,15 +24,10 @@ class PeopleDetails extends StatefulWidget with LoadingSpinnerMixin {
 }
 
 class _MoviesDetailsState extends State<PeopleDetails> {
-  final _detailsController = Get.find<DetailsController>();
-
-  final _resultssController = Get.find<ResultsController>();
-
   final _utilityController = Get.find<UtilityController>();
 
   final scrollController = ScrollController();
 
-  final _resultsController = Get.find<ResultsController>();
   final _peopleController = Get.find<PeopleController>();
 
   @override
