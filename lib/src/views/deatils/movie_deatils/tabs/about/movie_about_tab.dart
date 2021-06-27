@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/components/crew_component.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
-
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
-
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_info.dart';
 
 class MovieAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();
   final _resultsController = Get.find<ResultsController>();
-  final _utilityController = Get.find<UtilityController>();
 
   MovieAboutTab({Key? key}) : super(key: key);
 

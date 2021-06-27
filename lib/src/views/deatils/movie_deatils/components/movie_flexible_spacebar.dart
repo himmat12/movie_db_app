@@ -11,9 +11,7 @@ import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/details/movie_details_model.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 Widget movieFlexibleSpacebarComponent({
@@ -40,7 +38,8 @@ Widget movieFlexibleSpacebarComponent({
           appendTo: imagesString);
     },
     builder: (controller) => SizedBox(
-      height: _utilityController.titlevisiblity == false ? 310 : 300,
+      // height: _utilityController.titlevisiblity == false ? 310 : 300,
+      height: 310,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: AlignmentDirectional.bottomCenter,
@@ -127,25 +126,24 @@ Widget movieFlexibleSpacebarComponent({
                 _detailsController.images.value.backdrops == null ||
                         _detailsController.images.value.backdrops!.isEmpty
                     ? const SizedBox.shrink()
-                    :
-                    // Obx(
-                    //     () =>
-
-                    Positioned(
-                        bottom: 16,
-                        child: AnimatedSmoothIndicator(
-                          activeIndex: _utilityController.imgSliderIndex,
-                          effect: const ScrollingDotsEffect(
-                            activeDotColor: primaryDarkBlue,
-                            dotColor: primaryblue,
-                            dotHeight: 6,
-                            dotWidth: 6,
+                    : GetBuilder(
+                        id: 'imageSlider',
+                        init: _utilityController,
+                        builder: (controller) => Positioned(
+                          bottom: 16,
+                          child: AnimatedSmoothIndicator(
+                            activeIndex: _utilityController.imgSliderIndex,
+                            effect: const ScrollingDotsEffect(
+                              activeDotColor: primaryDarkBlue,
+                              dotColor: primaryblue,
+                              dotHeight: 6,
+                              dotWidth: 6,
+                            ),
+                            count: _detailsController
+                                .images.value.backdrops!.length,
                           ),
-                          count:
-                              _detailsController.images.value.backdrops!.length,
                         ),
                       ),
-                // ),
               ],
             ),
           ),
@@ -235,12 +233,14 @@ Widget movieFlexibleSpacebarComponent({
                         const SizedBox(height: 6),
                         GestureDetector(
                           onTap: () {
-                            _utilityController.toggleTitleVisibility();
+                            // _utilityController.toggleTitleVisibility();
                           },
                           child: Obx(
                             () => _utilityController.titlevisiblity == false
                                 ? Text(
                                     '${movie.title} ($movieDate)',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       fontSize: m - 2,
                                       fontWeight: FontWeight.bold,

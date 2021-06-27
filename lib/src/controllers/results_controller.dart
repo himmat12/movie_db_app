@@ -28,26 +28,26 @@ class ResultsController extends BaseController {
   // final _movie = MovieResultModel().obs;
   // final _tv = TvResultsModel().obs;
 
-  final _movieId = 0.obs;
-  final _tvId = 0.obs;
+  final _movieId = '0'.obs;
+  final _tvId = '0'.obs;
 
-  int get movieId => _movieId.value;
-  int get tvId => _tvId.value;
+  String get movieId => _movieId.value;
+  String get tvId => _tvId.value;
 
-  void setMovieId(int id) => _movieId.value = id;
-  void setTvId(int id) => _tvId.value = id;
+  void setMovieId(String id) => _movieId.value = id;
+  void setTvId(String id) => _tvId.value = id;
 
   // MovieResultModel get movie => _movie.value;
   // TvResultsModel get tv => _tv.value;
 
   // void setMovie(MovieResultModel movie) {
   //   _movie.value = movie;
-  //   update();
+  //
   // }
 
   // void setTv(TvResultsModel tv) {
   //   _tv.value = tv;
-  //   update();
+  //
   // }
 
 // tv observable lists
@@ -97,57 +97,70 @@ class ResultsController extends BaseController {
   }
 
   /// [movie results controller]
-  getMovieResults({required String resultType}) async {
+  getMovieResults({required String resultType, String? page}) async {
     switch (resultType) {
       case popularString:
         popularMoviesState.value = ViewState.busy;
+        popularMoviesPage = 1;
         await _service
-            .getMovieResults(resultType: resultType, page: '$popularMoviesPage')
+            .getMovieResults(
+                resultType: resultType, page: page ?? '$popularMoviesPage')
             .then((value) {
           if (value != null) {
             popularMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
             popularMovies.refresh();
             popularMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
       case topRatedString:
         topRatedMoviesState.value = ViewState.busy;
+        topRatedMoviesPage = 1;
         await _service
             .getMovieResults(
-                resultType: resultType, page: '$topRatedMoviesPage')
+                resultType: resultType, page: page ?? '$topRatedMoviesPage')
             .then((value) {
           if (value != null) {
             topRatedMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
             topRatedMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
       case upcomingString:
         upcommingMoviesState.value = ViewState.busy;
+        upcommingMoviesPage = 1;
         await _service
             .getMovieResults(
-                resultType: resultType, page: '$upcommingMoviesPage')
+                resultType: resultType, page: page ?? '$upcommingMoviesPage')
             .then((value) {
           if (value != null) {
             upcommingMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
             upcommingMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
       case nowPlayingString:
         nowPlayingMoviesState.value = ViewState.busy;
+        nowPlayingMoviesPage = 1;
         await _service
             .getMovieResults(
-                resultType: resultType, page: '$nowPlayingMoviesPage')
+                resultType: resultType, page: page ?? '$nowPlayingMoviesPage')
             .then((value) {
           if (value != null) {
             nowPlayingMovies =
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e)));
             nowPlayingMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
@@ -169,6 +182,8 @@ class ResultsController extends BaseController {
             popularMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
             popularMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
@@ -183,6 +198,8 @@ class ResultsController extends BaseController {
             topRatedMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
             topRatedMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
@@ -197,6 +214,8 @@ class ResultsController extends BaseController {
             upcommingMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
             upcommingMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
@@ -211,6 +230,8 @@ class ResultsController extends BaseController {
             nowPlayingMovies.addAll(
                 RxList.from(value.map((e) => MovieResultModel.fromJson(e))));
             nowPlayingMoviesState.value = ViewState.retrived;
+
+            update(['movies_result']);
           }
         });
         break;
@@ -221,54 +242,70 @@ class ResultsController extends BaseController {
   }
 
   /// [tvList results controller]
-  getTvResults({required String resultType}) async {
+  getTvResults({required String resultType, String? page}) async {
     switch (resultType) {
       case popularString:
         popularTvState.value = ViewState.busy;
+        popularTvPage = 1;
         await _service
-            .getTvResults(resultType: resultType, page: '$popularTvPage')
+            .getTvResults(
+                resultType: resultType, page: page ?? '$popularTvPage')
             .then((value) {
           if (value != null) {
             popularTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
             popularTvList.refresh();
             popularTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;
       case topRatedString:
         topRatedTvState.value = ViewState.busy;
+        topRatedTvPage = 1;
         await _service
-            .getTvResults(resultType: resultType, page: '$topRatedTvPage')
+            .getTvResults(
+                resultType: resultType, page: page ?? '$topRatedTvPage')
             .then((value) {
           if (value != null) {
             topRatedTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
             topRatedTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;
       case onTheAirString:
         onTheAirTvState.value = ViewState.busy;
+        onTheAirTvPage = 1;
         await _service
-            .getTvResults(resultType: resultType, page: '$onTheAirTvPage')
+            .getTvResults(
+                resultType: resultType, page: page ?? '$onTheAirTvPage')
             .then((value) {
           if (value != null) {
             onTheAirTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
             onTheAirTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;
       case airingTodayString:
         airingTodayTvState.value = ViewState.busy;
+        airingTodayTvPage = 1;
         await _service
-            .getTvResults(resultType: resultType, page: '$airingTodayTvPage')
+            .getTvResults(
+                resultType: resultType, page: page ?? '$airingTodayTvPage')
             .then((value) {
           if (value != null) {
             airingTodayTvList =
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e)));
             airingTodayTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;
@@ -290,6 +327,8 @@ class ResultsController extends BaseController {
             popularTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
             popularTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;
@@ -303,6 +342,8 @@ class ResultsController extends BaseController {
             topRatedTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
             topRatedTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;
@@ -316,6 +357,8 @@ class ResultsController extends BaseController {
             onTheAirTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
             onTheAirTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;
@@ -329,6 +372,8 @@ class ResultsController extends BaseController {
             airingTodayTvList.addAll(
                 RxList.from(value.map((e) => TvResultsModel.fromJson(e))));
             airingTodayTvState.value = ViewState.retrived;
+
+            update(['tv_result']);
           }
         });
         break;

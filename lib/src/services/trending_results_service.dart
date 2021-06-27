@@ -2,10 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
-class TrendingResultsService extends BaseService with QueryParameterMixin {
+class TrendingResultsService extends BaseService {
   // trending results service
   Future<dynamic> getTrendingResults({
     String page = "",
@@ -16,6 +15,7 @@ class TrendingResultsService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: "/3/trending/$mediaType/$timeWindow",
+        header: setHeaders(),
         queryParameter: setQueryParameters(query: {"page": page}),
       );
       // ignore: avoid_print

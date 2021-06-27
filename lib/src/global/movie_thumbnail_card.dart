@@ -1,13 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 
 Widget movieThumbnailCard({
   required MovieResultModel movie,
@@ -15,14 +11,14 @@ Widget movieThumbnailCard({
   EdgeInsetsGeometry? padding,
 }) {
   final _resultController = Get.find<ResultsController>();
-  final _detailsController = Get.find<DetailsController>();
 
   return GestureDetector(
     onTap: () {
       // _resultController.setMovie(movie);
-      _resultController.setMovieId(movie.id!);
+      _resultController.setMovieId('${movie.id!}');
 
-      Get.offAllNamed('/movie_details', arguments: _resultController.movieId);
+      Get.offAllNamed('/movie_details',
+          parameters: {"movieId": _resultController.movieId});
     },
     child: SizedBox(
       width: 100,

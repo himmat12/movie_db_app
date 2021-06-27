@@ -11,6 +11,7 @@
             "args": [
                 "--enable-experiment=non-nullable",
             ],
+            "flutterMode": "debug"
         }
     ]
 }

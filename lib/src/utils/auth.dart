@@ -1,5 +1,4 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:movie_app/src/models/account_model.dart';
 
 final box = GetStorage('auth');
 

@@ -1,9 +1,9 @@
+import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/peoples/people_external_ids.dart';
 import 'package:movie_app/src/models/peoples/people_model.dart';
-import 'package:get/get.dart';
 import 'package:movie_app/src/models/peoples/people_movie_credits.dart';
 import 'package:movie_app/src/models/peoples/people_tv_credits.dart';
 import 'package:movie_app/src/services/people_service.dart';
@@ -102,6 +102,7 @@ class PeopleController extends BaseController {
             .then((value) {
           externalIds.value = PeopleExternelIds.fromJson(value);
           externalIdsState.value = ViewState.retrived;
+          update(['external_id']);
         });
         break;
       default:

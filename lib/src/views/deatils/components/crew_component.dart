@@ -4,8 +4,6 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_crew_page.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_crew_page.dart';
 
 import 'header_text.dart';
 
@@ -23,10 +21,10 @@ Widget crewBuilder({required List<Crew> crews, required String resultType}) {
               onPressed: () {
                 switch (resultType) {
                   case movieString:
-                    Get.to(() => MovieCrewPage());
+                    Get.toNamed('/movie_crew');
                     break;
                   case tvString:
-                    Get.to(() => TvCrewPage());
+                    Get.toNamed('/tv_crew');
                     break;
                   default:
                     break;

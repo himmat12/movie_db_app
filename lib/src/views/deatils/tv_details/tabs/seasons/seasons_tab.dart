@@ -1,23 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
+import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
 
 class SeasonsTab extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();
-  final _resultController = Get.find<ResultsController>();
   final _configurationController = Get.find<ConfigurationController>();
+  final _seasonController = Get.find<SeasonController>();
 
   SeasonsTab({Key? key}) : super(key: key);
 
@@ -69,7 +64,13 @@ class SeasonsTab extends StatelessWidget with AvatarBuilderMixin {
             Season season = _detailsController.tvDetail.value.seasons![index];
 
             return InkWell(
-              onTap: () {},
+              onTap: () {
+                _seasonController
+                    .setTvId(_detailsController.tvDetail.value.id ?? 0);
+                _seasonController.setSeasonNo(season.seasonNumber ?? 0);
+
+                Get.toNamed('/season_details', preventDuplicates: false);
+              },
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 16),

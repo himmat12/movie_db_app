@@ -4,7 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:movie_app/routes.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/views/dashboard/dashboard.dart';
+import 'package:movie_app/src/views/auth/auth_page.dart';
 
 import 'init_bindings.dart';
 
@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
         canvasColor: primaryWhite,
         primaryColor: primaryWhite,
       ),
-      home: DashboardPage(),
+      // home: DashboardPage(),
+      home: const AuthPage(),
     );
   }
 }

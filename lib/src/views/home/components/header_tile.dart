@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/global/more_btn.dart';
-import 'package:movie_app/src/global/switch_btn.dart';
 
 Widget headerTile({
   String? title,
@@ -32,13 +30,12 @@ Widget headerTile({
             toggleOption ?? const SizedBox.shrink(),
           ],
         ),
-        GestureDetector(
-          onTap: onMoreTap ?? () {},
-          child: Container(
-            color: Colors.transparent,
-            child: const Text('More'),
-          ),
-        ),
+        IconButton(
+            onPressed: onMoreTap,
+            icon: Icon(
+              Icons.arrow_forward,
+              color: primaryDarkBlue.withOpacity(0.8),
+            )),
       ],
     ),
   );

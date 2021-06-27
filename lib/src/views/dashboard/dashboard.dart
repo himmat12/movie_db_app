@@ -2,11 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
+import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -23,6 +24,8 @@ class DashboardPage extends StatelessWidget {
   final _resultsController = Get.find<ResultsController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
   final _peopleController = Get.find<PeopleController>();
+  final _seasonController = Get.find<SeasonController>();
+  final _detailsController = Get.find<DetailsController>();
 
   DashboardPage({Key? key}) : super(key: key);
 
@@ -58,50 +61,88 @@ class DashboardPage extends StatelessWidget {
       },
       child: Scaffold(
           // appBar: AppBar(),
-          bottomNavigationBar: Obx(
-            () => WidgetBuilderHelper(
-              state: _configurationController.configState.value,
-              onLoadingBuilder: bottomNavSkeleton(),
-              onErrorBuilder: const Center(
-                child: Text('error while initializing data...'),
-              ),
-              onSuccessBuilder: BottomNavigationBar(
-                elevation: 0,
-                currentIndex: _utilityController.navCurrentIndex,
-                onTap: (newIndex) {
-                  _utilityController.setBottomNavIndex(newIndex);
-                },
-                type: BottomNavigationBarType.fixed,
-                unselectedFontSize: 0,
-                selectedFontSize: 0,
-                selectedIconTheme: const IconThemeData(color: Colors.blue),
-                selectedItemColor: Colors.blue,
-                items: List.from(
-                  menus.map(
-                    (e) => BottomNavigationBarItem(
-                      icon: Text(e),
-                      label: "",
+          bottomNavigationBar: SafeArea(
+            child: Obx(
+              () => WidgetBuilderHelper(
+                state: _configurationController.configState.value,
+                onLoadingBuilder: bottomNavSkeleton(),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data...'),
+                ),
+                onSuccessBuilder: BottomNavigationBar(
+                  elevation: 0,
+                  currentIndex: _utilityController.navCurrentIndex,
+                  onTap: (newIndex) {
+                    // initializing trending MOVIES services
+                    if (_utilityController.isMovieToday == true) {
+                      _trendingResultsController.getTrendingMovieResults(
+                          timeWindow: dayString, page: '1');
+                    } else {
+                      _trendingResultsController.getTrendingMovieResults(
+                          timeWindow: weekString, page: '1');
+                    }
+
+                    // initializing trending TV services
+                    if (_utilityController.isTvToday == true) {
+                      _trendingResultsController.getTrendingTvResults(
+                          timeWindow: dayString, page: '1');
+                    } else {
+                      _trendingResultsController.getTrendingTvResults(
+                          timeWindow: weekString, page: '1');
+                    }
+
+                    // reseting toinitial init state of popular/top rated/upcomming/now playing MOVIES services
+                    _resultsController.getMovieResults(
+                        resultType: popularString);
+                    _resultsController.getMovieResults(
+                        resultType: topRatedString);
+                    _resultsController.getMovieResults(
+                        resultType: upcomingString);
+                    _resultsController.getMovieResults(
+                        resultType: nowPlayingString);
+
+                    // reseting toinitial init state of popular/top rated/airing today/on the air TV services
+                    _resultsController.getTvResults(resultType: popularString);
+                    _resultsController.getTvResults(resultType: topRatedString);
+                    _resultsController.getTvResults(
+                        resultType: airingTodayString);
+                    _resultsController.getTvResults(resultType: onTheAirString);
+
+                    _utilityController.setBottomNavIndex(newIndex);
+                  },
+                  type: BottomNavigationBarType.fixed,
+                  unselectedFontSize: 0,
+                  selectedFontSize: 0,
+                  selectedIconTheme: const IconThemeData(color: Colors.blue),
+                  selectedItemColor: Colors.blue,
+                  items: List.from(
+                    menus.map(
+                      (e) => BottomNavigationBarItem(
+                        icon: Text(e),
+                        label: "",
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-          body: Obx(
-            () => WidgetBuilderHelper(
-              state: _configurationController.configState.value,
-              onLoadingBuilder: pageSkeleton(),
-              onErrorBuilder: const Center(
-                child: Text('error while initializing data ...'),
-              ),
-              onSuccessBuilder: SafeArea(
-                  child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    pages[_utilityController.navCurrentIndex],
-                  ],
+          body: SafeArea(
+            child: Obx(
+              () => WidgetBuilderHelper(
+                state: _configurationController.configState.value,
+                onLoadingBuilder: pageSkeleton(),
+                onErrorBuilder: const Center(
+                  child: Text('error while initializing data ...'),
                 ),
-              )),
+                onSuccessBuilder: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      pages[_utilityController.navCurrentIndex],
+                    ],
+                  ),
+                ),
+              ),
             ),
           )),
     );

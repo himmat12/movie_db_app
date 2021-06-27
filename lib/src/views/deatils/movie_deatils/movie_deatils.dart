@@ -1,32 +1,28 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/movie_about_tab.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/casts/casts_tab.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/recommended_list.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/reviews/reviews_tab.dart';
 
-import 'components/movie_flexible_spacebar.dart';
 import '../components/sliver_appbar_title.dart';
-import 'tabs/movie _list/movie_list.dart';
+import 'components/movie_flexible_spacebar.dart';
 import 'tabs/movie _list/similar_list.dart';
 
 class MoviesDetails extends StatelessWidget {
-  final int movieId;
+  final String movieId;
 
   MoviesDetails({
     Key? key,
@@ -35,19 +31,33 @@ class MoviesDetails extends StatelessWidget {
 
   final _detailsController = Get.find<DetailsController>();
 
-  final _resultssController = Get.find<ResultsController>();
-
   final _utilityController = Get.find<UtilityController>();
 
   final scrollController = ScrollController();
 
   final _resultsController = Get.find<ResultsController>();
+  final _trendingResultsController = Get.find<TrendingResultsController>();
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        Get.offAllNamed('/');
+        // initializing trending MOVIES services
+        if (_utilityController.isMovieToday == true) {
+          _trendingResultsController.getTrendingMovieResults(
+              timeWindow: dayString, page: '1');
+        } else {
+          _trendingResultsController.getTrendingMovieResults(
+              timeWindow: weekString, page: '1');
+        }
+
+        // reseting toinitial init state of popular/top rated/upcomming/now playing MOVIES services
+        _resultsController.getMovieResults(resultType: popularString);
+        _resultsController.getMovieResults(resultType: topRatedString);
+        _resultsController.getMovieResults(resultType: upcomingString);
+        _resultsController.getMovieResults(resultType: nowPlayingString);
+
+        Get.offAllNamed('/dashboard');
         return false;
       },
       child: Scaffold(
@@ -84,7 +94,26 @@ class MoviesDetails extends StatelessWidget {
                       forceElevated: true,
                       leading: SABTN(
                         onBack: () {
-                          Get.offAllNamed('/');
+                          // initializing trending MOVIES services
+                          if (_utilityController.isMovieToday == true) {
+                            _trendingResultsController.getTrendingMovieResults(
+                                timeWindow: dayString, page: '1');
+                          } else {
+                            _trendingResultsController.getTrendingMovieResults(
+                                timeWindow: weekString, page: '1');
+                          }
+
+                          // reseting toinitial init state of popular/top rated/upcomming/now playing MOVIES services
+                          _resultsController.getMovieResults(
+                              resultType: popularString);
+                          _resultsController.getMovieResults(
+                              resultType: topRatedString);
+                          _resultsController.getMovieResults(
+                              resultType: upcomingString);
+                          _resultsController.getMovieResults(
+                              resultType: nowPlayingString);
+
+                          Get.offAllNamed('/dashboard');
                         },
                       ),
                       title: SABT(
@@ -142,7 +171,7 @@ class MoviesDetails extends StatelessWidget {
 }
 
 var tabMenuItems = <String>[
-  "About",
+  "Overview",
   "Cast",
   "Reviews",
   "Recommended",

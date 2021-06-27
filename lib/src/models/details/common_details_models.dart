@@ -1,5 +1,3 @@
-import 'package:movie_app/src/models/results/movie_result_model.dart';
-
 // @JsonSerializable()*
 class Genre {
   Genre({
@@ -432,9 +430,7 @@ Crew crewFromJson(Map<String, dynamic> json) {
 AccountStates accountStatesFromJson(Map<String, dynamic> json) {
   return AccountStates(
     favorite: json['favorite'] as bool?,
-    rated: json['rated'] == null
-        ? null
-        : ratedFromJson(json['rated'] as Map<String, dynamic>),
+    rated: json['rated'] == null ? null : ratedFromJson(json['rated']),
     watchlist: json['watchlist'] as bool?,
   );
 }

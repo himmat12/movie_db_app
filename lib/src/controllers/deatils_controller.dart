@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
@@ -5,7 +6,6 @@ import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/details/movie_details_model.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/services/details_service.dart';
-import 'package:get/get.dart';
 
 class DetailsController extends BaseController {
   final _service = sl<DetailsService>();
@@ -39,7 +39,7 @@ class DetailsController extends BaseController {
   var accountState = AccountStates().obs;
 
 // movie/tv basic details
-  getDetails({required String resultType, required int id}) async {
+  getDetails({required String resultType, required String id}) async {
     switch (resultType) {
       case movieString:
         movieDetailState.value = ViewState.busy;
@@ -74,7 +74,7 @@ class DetailsController extends BaseController {
 // other movies details like (images,videos,credits,account_states,similar,recommendations,reviews,external_ids)
   getOtherDetails({
     required String resultType,
-    required int id,
+    required String id,
     required String appendTo,
   }) async {
     switch (resultType) {

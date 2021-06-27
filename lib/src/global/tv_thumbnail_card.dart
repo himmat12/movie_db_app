@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tv_details.dart';
 
 Widget tvThumbnailCard({
   required TvResultsModel tv,
@@ -17,15 +16,9 @@ Widget tvThumbnailCard({
     onTap: () {
       // _resultController.setTv(tv);
 
-      _resultController.setTvId(tv.id!);
+      _resultController.setTvId('${tv.id!}');
 
-      Get.to(
-        () => TvDetails(
-          // tv: tv,
-          key: UniqueKey(),
-        ),
-        preventDuplicates: false,
-      );
+      Get.offAllNamed('/tv_details');
     },
     child: SizedBox(
       width: 100,

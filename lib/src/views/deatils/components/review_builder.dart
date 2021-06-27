@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
-import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 
 class ReviewBuilder extends StatefulWidget {
   final ReviewsResult review;

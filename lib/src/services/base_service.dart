@@ -1,10 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'dart:convert';
 import 'package:movie_app/src/utils/auth.dart';
 
 enum Requests { get, post, put, delete, update }
@@ -16,11 +15,35 @@ class BaseService {
   late http.Response response;
   final _timeOutDuration = 30;
 
+  String api = "1a5ebef58b08ad825f24591860b26990";
+
+  late Map<String, String> queryParma;
+
+  Map<String, String> headers = {
+    HttpHeaders.contentTypeHeader: 'application/json;charset=utf-8',
+    HttpHeaders.authorizationHeader:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTVlYmVmNThiMDhhZDgyNWYyNDU5MTg2MGIyNjk5MCIsInN1YiI6IjYwYTM1OTI2NzMxNGExMDA3OGZjZTRkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VJG0GMDEpcYQBtm5VZlCHEmqTY5jH4kfIkYhosKqOA0"
+  };
+
 // headers
-  Map<String, String> headers() => {
-        HttpHeaders.contentTypeHeader: 'application/json;charset=utf-8',
-        HttpHeaders.acceptHeader: 'application/json'
-      };
+  Map<String, String> setHeaders({Map<String, String>? header}) {
+    headers.addAll(header ?? {});
+    return headers;
+  }
+
+// query parameters
+
+  Map<String, String> setQueryParameters({Map<String, String>? query}) {
+    queryParma = {"api_key": api};
+    queryParma.addAll(query ?? {});
+    if (Auth.isLoggedIn == true) {
+      queryParma["session_id"] = Auth.sessionId;
+    }
+    if (Auth.isGuestLoggedIn == true) {
+      queryParma["guest_session_id"] = Auth.guestSessionId;
+    }
+    return queryParma;
+  }
 
 // response
   dynamic returnResponse(http.Response response) {
@@ -47,6 +70,7 @@ class BaseService {
     required Requests method,
     Map<String, dynamic>? body,
     Map<String, String>? queryParameter,
+    Map<String, String>? header,
     required String path,
   }) async {
     // setQueryParameters();
@@ -54,26 +78,29 @@ class BaseService {
       case Requests.get:
         response = await client
             .get(
-              Uri.https(authority, path, queryParameter),
-              headers: headers(),
+              Uri.https(
+                  authority, path, queryParameter ?? setQueryParameters()),
+              headers: header ?? headers,
             )
             .timeout(Duration(seconds: _timeOutDuration));
         break;
       case Requests.post:
         response = await client
             .post(
-              Uri.https(authority, path, queryParameter),
-              headers: headers(),
-              body: jsonEncode(body),
+              Uri.https(
+                  authority, path, queryParameter ?? setQueryParameters()),
+              headers: header ?? headers,
+              body: jsonEncode(body ?? {}),
             )
             .timeout(Duration(seconds: _timeOutDuration));
         break;
       case Requests.delete:
         response = await client
             .delete(
-              Uri.https(authority, path, queryParameter),
-              headers: headers(),
-              body: jsonEncode(body),
+              Uri.https(
+                  authority, path, queryParameter ?? setQueryParameters()),
+              headers: header ?? headers,
+              body: jsonEncode(body ?? {}),
             )
             .timeout(Duration(seconds: _timeOutDuration));
         break;

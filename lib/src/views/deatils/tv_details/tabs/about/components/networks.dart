@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/views/deatils/components/header_text.dart';
 
