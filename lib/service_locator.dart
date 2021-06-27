@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:movie_app/src/services/auth_service.dart';
 import 'package:movie_app/src/services/configuration_service.dart';
 import 'package:movie_app/src/services/details_service.dart';
 import 'package:movie_app/src/services/people_service.dart';
@@ -17,4 +18,5 @@ void setUp() {
   sl.registerLazySingleton<DetailsService>(() => DetailsService());
   sl.registerLazySingleton<PeopleService>(() => PeopleService());
   sl.registerLazySingleton<SeasonService>(() => SeasonService());
+  sl.registerLazySingleton<AuthService>(() => AuthService());
 }

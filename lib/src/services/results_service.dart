@@ -2,10 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
-class ResultsService extends BaseService with QueryParameterMixin {
+class ResultsService extends BaseService {
   // movie results service
   Future<dynamic> getMovieResults({
     String page = "",
@@ -16,6 +15,7 @@ class ResultsService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: "/3/movie/$resultType",
+        header: setHeaders(),
         queryParameter: setQueryParameters(query: {"page": page}),
       );
       // ignore: avoid_print
@@ -41,6 +41,7 @@ class ResultsService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: "/3/tv/$resultType",
+        header: setHeaders(),
         queryParameter: setQueryParameters(query: {"page": page}),
       );
       // ignore: avoid_print

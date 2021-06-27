@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
+import 'package:movie_app/src/controllers/deatils_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
@@ -24,6 +25,7 @@ class DashboardPage extends StatelessWidget {
   final _trendingResultsController = Get.find<TrendingResultsController>();
   final _peopleController = Get.find<PeopleController>();
   final _seasonController = Get.find<SeasonController>();
+  final _detailsController = Get.find<DetailsController>();
 
   DashboardPage({Key? key}) : super(key: key);
 

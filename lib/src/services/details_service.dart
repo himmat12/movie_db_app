@@ -2,10 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
-class DetailsService extends BaseService with QueryParameterMixin {
+class DetailsService extends BaseService {
   // only movie basic details
   Future<dynamic> getDetails(
       {required String resultType, required String id}) async {
@@ -13,7 +12,8 @@ class DetailsService extends BaseService with QueryParameterMixin {
       final response = await request(
           method: Requests.get,
           path: "/3/$resultType/$id",
-          queryParameter: setQueryParameters(query: {}));
+          header: setHeaders(),
+          queryParameter: setQueryParameters());
 
       // ignore: avoid_print
       // print('$resultType DETAILS STATUS => ${response.statusCode}');
@@ -36,7 +36,8 @@ class DetailsService extends BaseService with QueryParameterMixin {
       final response = await request(
           method: Requests.get,
           path: "/3/$resultType/$id/$appendTo",
-          queryParameter: setQueryParameters(query: {}));
+          header: setHeaders(),
+          queryParameter: setQueryParameters());
 
       // ignore: avoid_print
       // print('$resultType OTHER DETAILS STATUS => ${response.statusCode}');

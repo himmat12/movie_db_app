@@ -2,10 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
-class SeasonService extends BaseService with QueryParameterMixin {
+class SeasonService extends BaseService {
   /// *** SEASON DETAILS ***
 
   // season details
@@ -17,6 +16,7 @@ class SeasonService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: '/3/tv/$tvId/season/$seasonNo',
+        header: setHeaders(),
         queryParameter:
             setQueryParameters(query: {"append_to_response": "credits"}),
       );
@@ -39,7 +39,8 @@ class SeasonService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: '/3/tv/$tvId/season/$seasonNo/account_states',
-        queryParameter: setQueryParameters(query: {}),
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
       );
       return decodeResponse(response);
     } on SocketException {
@@ -62,6 +63,7 @@ class SeasonService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: '/3/tv/$tvId/season/$seasonNo/episode/$episodeNo',
+        header: setHeaders(),
         queryParameter: setQueryParameters(
             query: {"append_to_response": "account_states,images"}),
       );
@@ -84,7 +86,8 @@ class SeasonService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.get,
         path: '/3/tv/$tvId/season/$seasonNo/episode/$episodeNo/account_states',
-        queryParameter: setQueryParameters(query: {}),
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
       );
       return decodeResponse(response);
     } on SocketException {
@@ -106,7 +109,8 @@ class SeasonService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.post,
         path: '/3/tv/$tvId/season/$seasonNo/episode/$episodeNo/rating',
-        queryParameter: setQueryParameters(query: {}),
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
         body: {"value": ratingValue},
       );
       return decodeResponse(response);
@@ -129,7 +133,8 @@ class SeasonService extends BaseService with QueryParameterMixin {
       final response = await request(
         method: Requests.delete,
         path: '/3/tv/$tvId/season/$seasonNo/episode/$episodeNo/rating',
-        queryParameter: setQueryParameters(query: {}),
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
       );
       return decodeResponse(response);
     } on SocketException {
