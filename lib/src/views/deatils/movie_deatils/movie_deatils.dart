@@ -57,7 +57,7 @@ class MoviesDetails extends StatelessWidget {
         _resultsController.getMovieResults(resultType: upcomingString);
         _resultsController.getMovieResults(resultType: nowPlayingString);
 
-        Get.offAllNamed('/');
+        Get.offAllNamed('/dashboard');
         return false;
       },
       child: Scaffold(
@@ -113,7 +113,7 @@ class MoviesDetails extends StatelessWidget {
                           _resultsController.getMovieResults(
                               resultType: nowPlayingString);
 
-                          Get.offAllNamed('/');
+                          Get.offAllNamed('/dashboard');
                         },
                       ),
                       title: SABT(

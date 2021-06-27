@@ -57,7 +57,7 @@ class TvDetails extends StatelessWidget {
         _resultsController.getTvResults(resultType: airingTodayString);
         _resultsController.getTvResults(resultType: onTheAirString);
 
-        Get.offAllNamed('/');
+        Get.offAllNamed('/dashboard');
         return false;
       },
       child: Scaffold(
@@ -108,7 +108,7 @@ class TvDetails extends StatelessWidget {
                           _resultsController.getTvResults(
                               resultType: onTheAirString);
 
-                          Get.offAllNamed('/');
+                          Get.offAllNamed('/dashboard');
                         },
                       ),
                       title: SABT(

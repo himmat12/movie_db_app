@@ -2,19 +2,17 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/mixins/query_parameter_mixin.dart';
 import 'package:movie_app/src/services/base_service.dart';
 
-class PeopleService extends BaseService with QueryParameterMixin {
+class PeopleService extends BaseService {
   /// fetches people details
   Future<dynamic> getPeopleDetails({required int personId}) async {
     try {
       final response = await request(
           method: Requests.get,
           path: '/3/person/$personId',
-          queryParameter: setQueryParameters(
-            query: {},
-          ));
+          header: setHeaders(),
+          queryParameter: setQueryParameters());
       // ignore: avoid_print
       // print(response.statusCode);
       return decodeResponse(response);
@@ -33,9 +31,8 @@ class PeopleService extends BaseService with QueryParameterMixin {
       final response = await request(
           method: Requests.get,
           path: '/3/person/$personId/$resultType',
-          queryParameter: setQueryParameters(
-            query: {},
-          ));
+          header: setHeaders(),
+          queryParameter: setQueryParameters());
       // ignore: avoid_print
       // print(response.statusCode);
       return decodeResponse(response);
