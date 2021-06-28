@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:movie_app/src/views/auth/components/request_authorization_webview.dart';
+import 'package:movie_app/src/views/auth/auth_page.dart';
+import 'package:movie_app/src/views/auth/components/webview_request_authorization.dart';
 import 'package:movie_app/src/views/dashboard/dashboard.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_crew_page.dart';
@@ -57,6 +58,7 @@ class Routes {
               resultType: Get.arguments['resultType'] ?? '')),
       GetPage(
           name: '/authorization', page: () => const AuthorizeRequestToken()),
+      GetPage(name: '/auth', page: () => const AuthPage()),
     ];
   }
 }

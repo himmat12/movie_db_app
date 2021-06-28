@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:movie_app/src/exceptions/app_exceptions.dart';
 import 'package:movie_app/src/utils/auth.dart';
 
 enum Requests { get, post, put, delete, update }
@@ -53,16 +52,19 @@ class BaseService {
         return response;
 
       case 400:
-        throw BadRequestException(jsonDecode(jsonEncode(response.body)));
+        // throw BadRequestException(jsonDecode(jsonEncode(response.body)));
+        return response;
 
       case 401:
       case 403:
-        throw UnauthorizedException(jsonDecode(jsonEncode(response.body)));
+        // throw UnauthorizedException(jsonDecode(jsonEncode(response.body)));
+        return response;
 
       case 500:
       default:
-        throw FetchDataException(
-            'Error occured while Communicating with Server with StatusCode: ${response.statusCode}');
+        // throw FetchDataException(
+        //     'Error occured while Communicating with Server with StatusCode: ${response.statusCode}\nRESPONSE:${decodeResponse(response)}');
+        return response;
     }
   }
 
