@@ -7,7 +7,6 @@ class FormFieldsWidget extends StatefulWidget {
   const FormFieldsWidget({
     Key? key,
     this.name,
-    required this.controller,
     this.hintText,
     this.labelText,
     this.validator,
@@ -26,12 +25,12 @@ class FormFieldsWidget extends StatefulWidget {
     this.focusedErrorBorder,
     this.errorBorder,
     this.enabledBorder,
+    this.disabledBorder,
     this.focusColor,
     this.fillColor,
   }) : super(key: key);
 
   final String? name;
-  final TextEditingController controller;
   final String? hintText;
   final String? labelText;
   final String? Function(String?)? validator;
@@ -50,6 +49,7 @@ class FormFieldsWidget extends StatefulWidget {
   final InputBorder? focusedErrorBorder;
   final InputBorder? errorBorder;
   final InputBorder? enabledBorder;
+  final InputBorder? disabledBorder;
   final Color? focusColor;
   final Color? fillColor;
 
@@ -74,18 +74,18 @@ class _FormFieldsWidgetState extends State<FormFieldsWidget> {
         widget.labelText == null
             ? const SizedBox.shrink()
             : Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Text(
                   widget.labelText ?? 'label text',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: n),
+                  style: TextStyle(
+                      fontSize: n - 2, color: Colors.blueGrey.shade600),
                 ),
               ),
         FormBuilderTextField(
           name: widget.name ?? '',
           initialValue: widget.initialValue,
-          controller: widget.controller,
           validator: widget.validator ??
               (data) {
                 FormBuilderValidators.required(context, errorText: data);
@@ -103,10 +103,14 @@ class _FormFieldsWidgetState extends State<FormFieldsWidget> {
           onTap: widget.onTap,
           readOnly: widget.readOnly ?? false,
           cursorColor: Colors.green.shade300,
+          style: const TextStyle(
+            fontSize: n,
+            color: secondaryDarkBlue,
+          ),
           decoration: InputDecoration(
             hintText: widget.hintText ?? '',
             contentPadding:
-                const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
             filled: true,
             fillColor: widget.fillColor ?? const Color(0xff3d5661),
             focusColor: widget.focusColor ?? Colors.green.shade200,
@@ -145,6 +149,12 @@ class _FormFieldsWidgetState extends State<FormFieldsWidget> {
                   gapPadding: 0,
                 ),
             enabledBorder: widget.enabledBorder ??
+                OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(4),
+                  gapPadding: 0,
+                ),
+            disabledBorder: widget.enabledBorder ??
                 OutlineInputBorder(
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(4),
