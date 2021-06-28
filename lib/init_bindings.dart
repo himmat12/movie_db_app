@@ -7,6 +7,8 @@ import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 
+import 'src/controllers/auth_v3_controller.dart';
+
 class InitBindings extends Bindings {
   InitBindings() {
     dependencies();
@@ -20,5 +22,6 @@ class InitBindings extends Bindings {
     Get.lazyPut(() => DetailsController());
     Get.lazyPut(() => PeopleController());
     Get.lazyPut(() => SeasonController());
+    Get.lazyPut(() => AuthV3Controller());
   }
 }

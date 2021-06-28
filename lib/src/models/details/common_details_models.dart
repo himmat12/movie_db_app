@@ -230,7 +230,7 @@ class Rated {
     this.value,
   });
 
-  double? value;
+  dynamic value;
   factory Rated.fromJson(Map<String, dynamic> json) => ratedFromJson(json);
 }
 
@@ -436,9 +436,7 @@ AccountStates accountStatesFromJson(Map<String, dynamic> json) {
 }
 
 Rated ratedFromJson(Map<String, dynamic> json) {
-  return Rated(
-    value: (json['value'] as num?)?.toDouble(),
-  );
+  return Rated(value: json['value']);
 }
 
 Reviews reviewsFromJson(Map<String, dynamic> json) {

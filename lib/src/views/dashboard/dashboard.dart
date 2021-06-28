@@ -3,11 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/auth_v3_controller.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -23,9 +21,10 @@ class DashboardPage extends StatelessWidget {
   final _utilityController = Get.find<UtilityController>();
   final _resultsController = Get.find<ResultsController>();
   final _trendingResultsController = Get.find<TrendingResultsController>();
-  final _peopleController = Get.find<PeopleController>();
-  final _seasonController = Get.find<SeasonController>();
-  final _detailsController = Get.find<DetailsController>();
+  // final _peopleController = Get.find<PeopleController>();
+  // final _seasonController = Get.find<SeasonController>();
+  // final _detailsController = Get.find<DetailsController>();
+  final _authV3Controller = Get.find<AuthV3Controller>();
 
   DashboardPage({Key? key}) : super(key: key);
 
@@ -43,6 +42,12 @@ class DashboardPage extends StatelessWidget {
         Get.dialog(AlertDialog(
           title: const Text('Do you want to exit ?'),
           actions: [
+            TextButton(
+              onPressed: () {
+                _authV3Controller.logoutV3();
+              },
+              child: const Text('Logout'),
+            ),
             TextButton(
               onPressed: () {
                 exit(1);
