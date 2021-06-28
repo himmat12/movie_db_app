@@ -96,7 +96,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: primaryDarkBlue,
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(2),
                           ),
                           child: const Text(
                             'Get Started',

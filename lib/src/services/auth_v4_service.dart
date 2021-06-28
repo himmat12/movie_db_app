@@ -42,8 +42,8 @@ class AuthV4Service extends BaseService {
         }),
         queryParameter: setQueryParameters(),
       ).then((value) {
-        print(
-            '\n\n\n ACCESS TOKEN ==>> ${decodeResponse(response)['access_token']}');
+        // print(
+        //     '\n\n\n ACCESS TOKEN ==>> ${decodeResponse(response)['access_token']}');
         createV4Session(accessToken: decodeResponse(response)['access_token']);
       });
 
@@ -68,9 +68,9 @@ class AuthV4Service extends BaseService {
       ).then((value) {
         Auth.setSessionId(decodeResponse(response)['session_id']);
 
-        print('\n\n\n SESSION REQUEST STATUS ==>> ${response.statusCode}');
-        print(
-            '\n\n\n SESSION_ID ==>> ${decodeResponse(response)['session_id']}');
+        // print('\n\n\n SESSION REQUEST STATUS ==>> ${response.statusCode}');
+        // print(
+        //     '\n\n\n SESSION_ID ==>> ${decodeResponse(response)['session_id']}');
 
         Get.offAllNamed('/dashboard');
       });
