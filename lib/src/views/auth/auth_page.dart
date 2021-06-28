@@ -4,13 +4,6 @@ import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/src/controllers/auth_v3_controller.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/season_controller.dart';
-import 'package:movie_app/src/controllers/trending_results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/form_field.dart';
 import 'package:movie_app/src/global/form_wrapper.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -28,21 +21,19 @@ class _AuthPageState extends State<AuthPage> {
   final v4Service = sl<AuthV4Service>();
   final v3Service = sl<AuthV3Service>();
 
-  final _configurationController = Get.find<ConfigurationController>();
-  final _utilityController = Get.find<UtilityController>();
-  final _resultsController = Get.find<ResultsController>();
-  final _trendingResultsController = Get.find<TrendingResultsController>();
-  final _peopleController = Get.find<PeopleController>();
-  final _seasonController = Get.find<SeasonController>();
-  final _detailsController = Get.find<DetailsController>();
+  // final _configurationController = Get.find<ConfigurationController>();
+  // final _utilityController = Get.find<UtilityController>();
+  // final _resultsController = Get.find<ResultsController>();
+  // final _trendingResultsController = Get.find<TrendingResultsController>();
+  // final _peopleController = Get.find<PeopleController>();
+  // final _seasonController = Get.find<SeasonController>();
+  // final _detailsController = Get.find<DetailsController>();
   final _authV3Controller = Get.find<AuthV3Controller>();
 
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
-    print('auth page build');
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
