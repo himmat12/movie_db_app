@@ -14,16 +14,25 @@ class AuthV3Controller extends BaseController {
   ViewState get sessionState => _sessionState.value;
 
   // authuntication method
-  authV3({required Map<String, dynamic> userData}) async {
+  authV3({required Map<String, dynamic> userData}) {
     // _requestTokenState.value = ViewState.busy;
     _sessionState.value = ViewState.busy;
     Get.dialog(
-      const AlertDialog(
-        content: Text('Authunticating ....'),
+      AlertDialog(
+        content: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 18),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Authunticating ...'),
+              CircularProgressIndicator(),
+            ],
+          ),
+        ),
       ),
       barrierDismissible: false,
     );
-    await v3Service.createV3RequestToken().then((value) {
+    v3Service.createV3RequestToken().then((value) {
       if (value['success'] != false) {
         // _requestTokenState.value = ViewState.retrived;
         // _authorizationState.value = ViewState.busy;
@@ -75,7 +84,28 @@ class AuthV3Controller extends BaseController {
   }
 
   logoutV3() {
-    Auth.logout();
-    Get.offAllNamed('/');
+    _sessionState.value = ViewState.busy;
+    Get.back();
+    Get.dialog(
+      AlertDialog(
+        content: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 18),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Destroying sessions ...'),
+              CircularProgressIndicator(),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: false,
+    );
+
+    v3Service.deleteSession(sessionId: Auth.sessionId).then((value) {
+      Auth.logout();
+      _sessionState.value = ViewState.retrived;
+      Get.offAllNamed('/');
+    });
   }
 }
