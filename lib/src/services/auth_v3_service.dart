@@ -68,4 +68,25 @@ class AuthV3Service extends BaseService {
           'Service not responding in time please check your Internet Connection');
     }
   }
+
+  // logout - delete session
+
+  Future<dynamic> deleteSession({required String sessionId}) async {
+    try {
+      await request(
+        method: Requests.delete,
+        path: '/3/authentication/session',
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
+        body: {"session_id": sessionId},
+      );
+
+      return decodeResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    } on TimeoutException {
+      throw ServiceNotRespondingException(
+          'Service not responding in time please check your Internet Connection');
+    }
+  }
 }
