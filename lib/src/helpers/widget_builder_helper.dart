@@ -8,11 +8,11 @@ class WidgetBuilderHelper extends StatelessWidget {
   final Widget onErrorBuilder;
 
   const WidgetBuilderHelper({
-    Key? key,
     required this.state,
     required this.onLoadingBuilder,
     required this.onSuccessBuilder,
     required this.onErrorBuilder,
+    Key? key,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {

@@ -14,8 +14,7 @@ import 'package:movie_app/src/global/form_field.dart';
 import 'package:movie_app/src/global/form_wrapper.dart';
 import 'package:movie_app/src/services/auth_v3_service.dart';
 import 'package:movie_app/src/services/auth_v4_service.dart';
-
-import 'components/auth_btn.dart';
+import 'package:movie_app/src/views/auth/components/auth_btn.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);

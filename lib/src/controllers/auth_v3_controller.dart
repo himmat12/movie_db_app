@@ -14,7 +14,7 @@ class AuthV3Controller extends BaseController {
   ViewState get sessionState => _sessionState.value;
 
   // authuntication method
-  authV3({required Map<String, dynamic> userData}) {
+  void authV3({required Map<String, dynamic> userData}) {
     // _requestTokenState.value = ViewState.busy;
     _sessionState.value = ViewState.busy;
     Get.dialog(
@@ -23,8 +23,8 @@ class AuthV3Controller extends BaseController {
           padding: const EdgeInsets.symmetric(vertical: 18),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Authunticating ...'),
+            children: const [
+              Text('Authunticating ...'),
               CircularProgressIndicator(),
             ],
           ),
@@ -48,7 +48,7 @@ class AuthV3Controller extends BaseController {
                 .then((value) {
               _sessionState.value = ViewState.retrived;
 
-              Auth.setSessionId(value['session_id']);
+              Auth().setSessionId(value['session_id']);
 
               // print('\n\n\n SESSION_ID ==>> ${value['session_id']}');
 
@@ -83,7 +83,7 @@ class AuthV3Controller extends BaseController {
     });
   }
 
-  logoutV3() {
+  void logoutV3() {
     _sessionState.value = ViewState.busy;
     Get.back();
     Get.dialog(
@@ -92,8 +92,8 @@ class AuthV3Controller extends BaseController {
           padding: const EdgeInsets.symmetric(vertical: 18),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Destroying sessions ...'),
+            children: const [
+              Text('Destroying sessions ...'),
               CircularProgressIndicator(),
             ],
           ),
@@ -102,8 +102,8 @@ class AuthV3Controller extends BaseController {
       barrierDismissible: false,
     );
 
-    v3Service.deleteSession(sessionId: Auth.sessionId).then((value) {
-      Auth.logout();
+    v3Service.deleteSession(sessionId: Auth().sessionId).then((value) {
+      Auth().logout();
       _sessionState.value = ViewState.retrived;
       Get.offAllNamed('/');
     });

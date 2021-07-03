@@ -27,7 +27,7 @@ class TvSimilarTab extends StatelessWidget {
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.similarState.value,
-        onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+        onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),

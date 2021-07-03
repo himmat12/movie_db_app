@@ -29,8 +29,10 @@ class AuthV4Service extends BaseService {
   }
 
   // create access token [2]
-  Future<dynamic> createV4AccessToken(
-      {Map<String, String>? header, required String requestToken}) async {
+  Future<dynamic> createV4AccessToken({
+    required String requestToken,
+    Map<String, String>? header,
+  }) async {
     try {
       await request(
         method: Requests.post,
@@ -66,7 +68,7 @@ class AuthV4Service extends BaseService {
         header: setHeaders(),
         queryParameter: setQueryParameters(),
       ).then((value) {
-        Auth.setSessionId(decodeResponse(response)['session_id']);
+        Auth().setSessionId(decodeResponse(response)['session_id']);
 
         // print('\n\n\n SESSION REQUEST STATUS ==>> ${response.statusCode}');
         // print(

@@ -11,7 +11,7 @@ class TvList extends StatelessWidget with AvatarBuilderMixin {
 
   final _configurationController = Get.find<ConfigurationController>();
 
-  TvList({Key? key, required this.tv, this.imageUrl}) : super(key: key);
+  TvList({required this.tv, Key? key, this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

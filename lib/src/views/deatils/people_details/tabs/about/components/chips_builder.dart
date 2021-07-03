@@ -3,8 +3,6 @@ import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/views/deatils/components/header_text.dart';
 
-import '../../../../../../configs/configs.dart';
-
 Widget chipsBuilder({required List<String?> chips}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,

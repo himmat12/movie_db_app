@@ -21,7 +21,7 @@ class UtilityController extends BaseController {
 
   int get navCurrentIndex => _navCurrentIndex.value;
 
-  setBottomNavIndex(int newIndex) {
+  void setBottomNavIndex(int newIndex) {
     _navCurrentIndex.value = newIndex;
   }
 
@@ -91,11 +91,11 @@ class UtilityController extends BaseController {
   }
 
   // trending movies/tv switch btn state
-  final _isMovieToday = Prefs.movieIsTodayState.obs;
-  final _isTvToday = Prefs.tvIsTodayState.obs;
+  final _isMovieToday = Prefs().movieIsTodayState.obs;
+  final _isTvToday = Prefs().tvIsTodayState.obs;
 
-  final _isMovieNowPlaying = Prefs.isMovieNowPlayingState.obs;
-  final _isTvAiringToday = Prefs.isTvAiringTodayState.obs;
+  final _isMovieNowPlaying = Prefs().isMovieNowPlayingState.obs;
+  final _isTvAiringToday = Prefs().isTvAiringTodayState.obs;
 
   bool get isMovieNowPlaying => _isMovieNowPlaying.value;
   bool get isTvAiringToday => _isTvAiringToday.value;
@@ -105,22 +105,22 @@ class UtilityController extends BaseController {
 
   void toggleIsMovieNowPlayingSwitch() {
     _isMovieNowPlaying.value = !_isMovieNowPlaying.value;
-    Prefs.setMovieNowPlayingState(_isMovieNowPlaying.value);
+    Prefs().setMovieNowPlayingState(_isMovieNowPlaying.value);
   }
 
   void toggleIsTvAiringTodaySwitch() {
     _isTvAiringToday.value = !_isTvAiringToday.value;
-    Prefs.setTvAiringTodayState(_isTvAiringToday.value);
+    Prefs().setTvAiringTodayState(_isTvAiringToday.value);
   }
 
   void toggleTrendingMovieSwitch() {
     _isMovieToday.value = !_isMovieToday.value;
-    Prefs.setMoveiIstodayState(_isMovieToday.value);
+    Prefs().setMoveiIstodayState(_isMovieToday.value);
   }
 
   void toggleTrendingTvSwitch() {
     _isTvToday.value = !_isTvToday.value;
-    Prefs.setTvIstodayState(_isTvToday.value);
+    Prefs().setTvIstodayState(_isTvToday.value);
   }
 
   ///

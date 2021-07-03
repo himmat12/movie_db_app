@@ -9,12 +9,11 @@ import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
+import 'package:movie_app/src/views/deatils/people_details/components/people_bottom_tabbar.dart';
+import 'package:movie_app/src/views/deatils/people_details/components/people_flexible_spacebar.dart';
+import 'package:movie_app/src/views/deatils/people_details/tabs/about/people_about_tab.dart';
 import 'package:movie_app/src/views/deatils/people_details/tabs/movie/movie_tab.dart';
 import 'package:movie_app/src/views/deatils/people_details/tabs/tv/tv_tab.dart';
-
-import 'components/people_bottom_tabbar.dart';
-import 'components/people_flexible_spacebar.dart';
-import 'tabs/about/people_about_tab.dart';
 
 class PeopleDetails extends StatefulWidget with LoadingSpinnerMixin {
   PeopleDetails({Key? key}) : super(key: key);
@@ -60,7 +59,7 @@ class _MoviesDetailsState extends State<PeopleDetails> {
               return WidgetBuilderHelper(
                 state: _peopleController.peopleState.value,
                 onLoadingBuilder:
-                    Center(child: LoadingSpinner.horizontalLoading),
+                    Center(child: LoadingSpinner().horizontalLoading),
                 onErrorBuilder: const Center(
                   child: Text('error while initializing data...'),
                 ),

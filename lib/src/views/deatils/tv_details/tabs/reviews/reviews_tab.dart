@@ -30,7 +30,7 @@ class TvReviewTab extends StatelessWidget with AvatarBuilderMixin {
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.reviewsState.value,
-        onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+        onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error whlie loading data ...'),
         ),

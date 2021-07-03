@@ -3,18 +3,16 @@ import 'package:get_storage/get_storage.dart';
 final prefs = GetStorage('prefs');
 
 class Prefs {
-  static setMoveiIstodayState(bool data) => prefs.write('movieIsToday', data);
-  static setTvIstodayState(bool data) => prefs.write('tvIsToday', data);
+  void setMoveiIstodayState(bool data) => prefs.write('movieIsToday', data);
+  void setTvIstodayState(bool data) => prefs.write('tvIsToday', data);
 
-  static setMovieNowPlayingState(bool data) =>
+  void setMovieNowPlayingState(bool data) =>
       prefs.write('isMovieNowPlaying', data);
-  static setTvAiringTodayState(bool data) =>
-      prefs.write('isTvAiringToday', data);
+  void setTvAiringTodayState(bool data) => prefs.write('isTvAiringToday', data);
 
-  static bool get isMovieNowPlayingState =>
-      prefs.read('isMovieNowPlaying') ?? true;
-  static bool get isTvAiringTodayState => prefs.read('isTvAiringToday') ?? true;
+  bool get isMovieNowPlayingState => prefs.read('isMovieNowPlaying') ?? true;
+  bool get isTvAiringTodayState => prefs.read('isTvAiringToday') ?? true;
 
-  static bool get movieIsTodayState => prefs.read('movieIsToday') ?? true;
-  static bool get tvIsTodayState => prefs.read('tvIsToday') ?? true;
+  bool get movieIsTodayState => prefs.read('movieIsToday') ?? true;
+  bool get tvIsTodayState => prefs.read('tvIsToday') ?? true;
 }

@@ -9,8 +9,7 @@ import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
-
-import '../../../components/review_builder.dart';
+import 'package:movie_app/src/views/deatils/components/review_builder.dart';
 
 class MovieReviewTab extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();
@@ -31,7 +30,7 @@ class MovieReviewTab extends StatelessWidget with AvatarBuilderMixin {
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.reviewsState.value,
-        onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+        onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error whlie loading data ...'),
         ),

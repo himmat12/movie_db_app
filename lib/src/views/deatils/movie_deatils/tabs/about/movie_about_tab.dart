@@ -30,7 +30,7 @@ class MovieAboutTab extends StatelessWidget {
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.movieDetailState.value,
-        onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+        onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),
@@ -59,7 +59,7 @@ class MovieAboutTab extends StatelessWidget {
                 },
                 builder: (controller) => WidgetBuilderHelper(
                   state: _detailsController.creditsState.value,
-                  onLoadingBuilder: LoadingSpinner.horizontalLoading,
+                  onLoadingBuilder: LoadingSpinner().horizontalLoading,
                   onSuccessBuilder: crewBuilder(
                     resultType: movieString,
                     crews: _detailsController.credits.value.crew ?? [],

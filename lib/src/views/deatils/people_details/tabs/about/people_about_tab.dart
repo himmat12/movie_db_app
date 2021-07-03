@@ -9,9 +9,8 @@ import 'package:movie_app/src/views/deatils/components/header_text.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/deatils/components/poster_card.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
-
-import 'components/about_info.dart';
-import 'components/chips_builder.dart';
+import 'package:movie_app/src/views/deatils/people_details/tabs/about/components/about_info.dart';
+import 'package:movie_app/src/views/deatils/people_details/tabs/about/components/chips_builder.dart';
 
 class PeopleAboutTab extends StatelessWidget {
   final _peopleController = Get.find<PeopleController>();
@@ -48,7 +47,7 @@ class PeopleAboutTab extends StatelessWidget {
             },
             builder: (controller) => WidgetBuilderHelper(
               state: _peopleController.imagesState.value,
-              onLoadingBuilder: LoadingSpinner.horizontalLoading,
+              onLoadingBuilder: LoadingSpinner().horizontalLoading,
               onSuccessBuilder: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

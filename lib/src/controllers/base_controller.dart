@@ -7,7 +7,7 @@ class BaseController extends GetxController {
 
   ViewState get state => _state.value;
 
-  setState(ViewState newState) {
+  void setState(ViewState newState) {
     _state.value = newState;
   }
 }
