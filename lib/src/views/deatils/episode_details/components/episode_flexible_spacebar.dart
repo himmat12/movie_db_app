@@ -57,7 +57,7 @@ Widget episodeFlexibleSpacebarComponent({
                   state: _seasonController.episodeState,
                   onLoadingBuilder: SizedBox(
                     height: 200,
-                    child: LoadingSpinner.fadingCircleSpinner,
+                    child: LoadingSpinner().fadingCircleSpinner,
                   ),
                   onErrorBuilder: const Center(
                     child: Text('error while initializing data...'),

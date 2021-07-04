@@ -7,9 +7,9 @@ import 'package:movie_app/src/services/base_service.dart';
 class ResultsService extends BaseService {
   // movie results service
   Future<dynamic> getMovieResults({
+    required String resultType,
     String page = "",
     String region = "",
-    required String resultType,
   }) async {
     try {
       final response = await request(
@@ -34,8 +34,8 @@ class ResultsService extends BaseService {
 
   // tv results service
   Future<dynamic> getTvResults({
-    String page = "",
     required String resultType,
+    String page = "",
   }) async {
     try {
       final response = await request(

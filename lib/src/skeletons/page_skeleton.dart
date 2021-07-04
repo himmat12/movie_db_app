@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/src/skeletons/horizontal_bloc_skeleton.dart';
 import 'package:shimmer/shimmer.dart';
-
-import 'horizontal_bloc_skeleton.dart';
 
 Widget pageSkeleton() {
   return SingleChildScrollView(

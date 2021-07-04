@@ -3,8 +3,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class FormWrapper extends StatelessWidget {
   const FormWrapper({
-    Key? key,
     required this.formKey,
+    Key? key,
     this.autovalidateMode,
     this.initialValue,
     this.onChanged,

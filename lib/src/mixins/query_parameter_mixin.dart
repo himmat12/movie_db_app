@@ -10,11 +10,11 @@ mixin QueryParameterMixin {
   Map<String, String> setQueryParameters({required Map<String, String> query}) {
     queryParma = {"api_key": api};
     queryParma.addAll(query);
-    if (Auth.isLoggedIn == true) {
-      queryParma["session_id"] = Auth.sessionId;
+    if (Auth().isLoggedIn == true) {
+      queryParma["session_id"] = Auth().sessionId;
     }
-    if (Auth.isGuestLoggedIn == true) {
-      queryParma["guest_session_id"] = Auth.guestSessionId;
+    if (Auth().isGuestLoggedIn == true) {
+      queryParma["guest_session_id"] = Auth().guestSessionId;
     }
     return queryParma;
   }

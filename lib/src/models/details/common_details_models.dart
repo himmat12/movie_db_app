@@ -430,7 +430,7 @@ Crew crewFromJson(Map<String, dynamic> json) {
 AccountStates accountStatesFromJson(Map<String, dynamic> json) {
   return AccountStates(
     favorite: json['favorite'] as bool?,
-    rated: json['rated'] == null ? null : ratedFromJson(json['rated']),
+    rated: json['rated'],
     watchlist: json['watchlist'] as bool?,
   );
 }

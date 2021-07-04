@@ -27,7 +27,7 @@ class MovieRecommendedTab extends StatelessWidget {
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.recommendedState.value,
-        onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+        onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),

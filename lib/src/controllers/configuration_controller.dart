@@ -38,7 +38,7 @@ class ConfigurationController extends BaseController {
   String get logoUrl => _logoUrl;
   String get stillUrl => _stillUrl;
 
-  getConfigurations() async {
+  void getConfigurations() async {
     configState.value = ViewState.busy;
     await _service.getConfiguration().then((value) {
       // if (value != null) {

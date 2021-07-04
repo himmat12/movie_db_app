@@ -10,8 +10,7 @@ import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/networks.dart';
-
-import 'components/tv_info.dart';
+import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_info.dart';
 
 class TvAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();
@@ -61,7 +60,7 @@ class TvAboutTab extends StatelessWidget {
               },
               builder: (controller) => WidgetBuilderHelper(
                 state: _detailsController.creditsState.value,
-                onLoadingBuilder: LoadingSpinner.horizontalLoading,
+                onLoadingBuilder: LoadingSpinner().horizontalLoading,
                 onSuccessBuilder: crewBuilder(
                   resultType: tvString,
                   crews: _detailsController.credits.value.crew ?? [],

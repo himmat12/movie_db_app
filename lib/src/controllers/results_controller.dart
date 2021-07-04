@@ -87,17 +87,17 @@ class ResultsController extends BaseController {
   int airingTodayTvPage = 1;
 
 // method only for trending movie pagination state
-  resetMoviePage() {
+  void resetMoviePage() {
     popularMoviesPage = 1;
   }
 
 // method only for trending tv pagination state
-  resetTvPage() {
+  void resetTvPage() {
     popularTvPage = 1;
   }
 
   /// [movie results controller]
-  getMovieResults({required String resultType, String? page}) async {
+  void getMovieResults({required String resultType, String? page}) async {
     switch (resultType) {
       case popularString:
         popularMoviesState.value = ViewState.busy;
@@ -170,7 +170,7 @@ class ResultsController extends BaseController {
     }
   }
 
-  loadMoreMoviesResults({required String resultType}) async {
+  void loadMoreMoviesResults({required String resultType}) async {
     switch (resultType) {
       case popularString:
         popularMoviesPage = popularMoviesPage + 1;
@@ -242,7 +242,7 @@ class ResultsController extends BaseController {
   }
 
   /// [tvList results controller]
-  getTvResults({required String resultType, String? page}) async {
+  void getTvResults({required String resultType, String? page}) async {
     switch (resultType) {
       case popularString:
         popularTvState.value = ViewState.busy;
@@ -315,7 +315,7 @@ class ResultsController extends BaseController {
     }
   }
 
-  loadMoreTvResults({required String resultType}) async {
+  void loadMoreTvResults({required String resultType}) async {
     switch (resultType) {
       case popularString:
         popularTvPage = popularTvPage + 1;

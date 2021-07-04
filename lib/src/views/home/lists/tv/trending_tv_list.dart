@@ -71,7 +71,7 @@ class HomeTrendingTvList extends StatelessWidget with AvatarBuilderMixin {
                   builder: (controller) {
                     return WidgetBuilderHelper(
                       state: _trendingResultsController.tvViewState,
-                      onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+                      onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
                       onSuccessBuilder: GridView.builder(
                         padding: const EdgeInsets.symmetric(horizontal: 14),
                         shrinkWrap: true,

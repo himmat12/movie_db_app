@@ -16,9 +16,9 @@ class HomeMovieresultsList extends StatelessWidget with LoadingSpinnerMixin {
   final Rx<ViewState> state;
 
   HomeMovieresultsList({
-    Key? key,
     required this.state,
     required this.resultType,
+    Key? key,
     this.title,
   }) : super(key: key);
 
@@ -78,7 +78,7 @@ class HomeMovieresultsList extends StatelessWidget with LoadingSpinnerMixin {
                   builder: (controller) {
                     return WidgetBuilderHelper(
                       state: state.value,
-                      onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+                      onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
                       onSuccessBuilder: GridView.builder(
                         padding: const EdgeInsets.symmetric(horizontal: 14),
                         shrinkWrap: true,

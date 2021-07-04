@@ -40,7 +40,7 @@ Widget trendingMovieSwitchBtnBuilder({
               ? Padding(
                   padding: padding ??
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  child: LoadingSpinner.horizontalLoading,
+                  child: LoadingSpinner().horizontalLoading,
                 )
               : GestureDetector(
                   onTap: () {
@@ -114,7 +114,7 @@ Widget trendingTvSwitchBtnBuilder({
               ? Padding(
                   padding: padding ??
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                  child: LoadingSpinner.horizontalLoading,
+                  child: LoadingSpinner().horizontalLoading,
                 )
               : GestureDetector(
                   onTap: () {

@@ -10,7 +10,10 @@ class MovieList extends StatelessWidget with AvatarBuilderMixin {
 
   final _configurationController = Get.find<ConfigurationController>();
 
-  MovieList({Key? key, required this.movies}) : super(key: key);
+  MovieList({
+    required this.movies,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

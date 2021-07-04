@@ -11,22 +11,21 @@ import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/movie_about_tab.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/casts/casts_tab.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/recommended_list.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/similar_list.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/reviews/reviews_tab.dart';
-
-import '../components/sliver_appbar_title.dart';
-import 'components/movie_flexible_spacebar.dart';
-import 'tabs/movie _list/similar_list.dart';
 
 class MoviesDetails extends StatelessWidget {
   final String movieId;
 
   MoviesDetails({
-    Key? key,
     required this.movieId,
+    Key? key,
   }) : super(key: key);
 
   final _detailsController = Get.find<DetailsController>();
@@ -71,6 +70,12 @@ class MoviesDetails extends StatelessWidget {
 
               _detailsController.getDetails(
                   resultType: movieString, id: movieId);
+              _detailsController.getOtherDetails(
+                resultType: movieString,
+                id: movieId,
+                appendTo: 'account_states',
+              );
+
               _utilityController.resetImgSliderIndex();
               _utilityController.resetTabbarState();
               _utilityController.resetHideShowState();
@@ -81,7 +86,7 @@ class MoviesDetails extends StatelessWidget {
               return WidgetBuilderHelper(
                 state: _detailsController.movieDetailState.value,
                 onLoadingBuilder:
-                    Center(child: LoadingSpinner.horizontalLoading),
+                    Center(child: LoadingSpinner().horizontalLoading),
                 onErrorBuilder: const Center(
                   child: Text('error while initializing data...'),
                 ),
@@ -103,7 +108,7 @@ class MoviesDetails extends StatelessWidget {
                                 timeWindow: weekString, page: '1');
                           }
 
-                          // reseting toinitial init state of popular/top rated/upcomming/now playing MOVIES services
+                          // reseting to initial init state of popular/top rated/upcomming/now playing MOVIES services
                           _resultsController.getMovieResults(
                               resultType: popularString);
                           _resultsController.getMovieResults(

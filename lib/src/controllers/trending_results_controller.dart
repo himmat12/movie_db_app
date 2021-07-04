@@ -42,16 +42,17 @@ class TrendingResultsController extends BaseController {
   ViewState get movieViewState => _movieViewState.value;
   ViewState get tvViewState => _tvViewState.value;
 
-  resetMoviePage() {
+  void resetMoviePage() {
     moviesPage = 1;
   }
 
-  resetTvPage() {
+  void resetTvPage() {
     tvPage = 1;
   }
 
   // trending movie results controller
-  getTrendingMovieResults({required String timeWindow, String? page}) async {
+  void getTrendingMovieResults(
+      {required String timeWindow, String? page}) async {
     _movieViewState.value = ViewState.busy;
     resetMoviePage();
     await _service
@@ -74,7 +75,7 @@ class TrendingResultsController extends BaseController {
     });
   }
 
-  loadMoreTrendingMoviesResults({required String timeWindow}) async {
+  void loadMoreTrendingMoviesResults({required String timeWindow}) async {
     _movieViewState.value = ViewState.busy;
     moviesPage = moviesPage + 1;
 
@@ -101,7 +102,7 @@ class TrendingResultsController extends BaseController {
 
 // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-  getTrendingTvResults({required String timeWindow, String? page}) async {
+  void getTrendingTvResults({required String timeWindow, String? page}) async {
     _tvViewState.value = ViewState.busy;
     resetTvPage();
     await _service
@@ -123,7 +124,7 @@ class TrendingResultsController extends BaseController {
     });
   }
 
-  loadMoreTrendingTvResults({required String timeWindow}) async {
+  void loadMoreTrendingTvResults({required String timeWindow}) async {
     _tvViewState.value = ViewState.busy;
     tvPage = tvPage + 1;
 

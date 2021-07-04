@@ -7,13 +7,12 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
+import 'package:movie_app/src/views/deatils/season_details/components/season_bottom_tabbar.dart';
+import 'package:movie_app/src/views/deatils/season_details/components/season_flexible_spacebar.dart';
 import 'package:movie_app/src/views/deatils/season_details/tabs/about/season_about_tab.dart';
 import 'package:movie_app/src/views/deatils/season_details/tabs/cast/season_cast.dart';
 import 'package:movie_app/src/views/deatils/season_details/tabs/episodes/episodes_tab.dart';
-
-import '../components/sliver_appbar_title.dart';
-import 'components/season_bottom_tabbar.dart';
-import 'components/season_flexible_spacebar.dart';
 
 class SeasonDetails extends StatelessWidget {
   // final TvResultsModel tv;
@@ -28,8 +27,6 @@ class SeasonDetails extends StatelessWidget {
   }) : super(key: key);
 
   final scrollController = ScrollController();
-
-  get primaryDark => null;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +54,7 @@ class SeasonDetails extends StatelessWidget {
               return WidgetBuilderHelper(
                 state: _seasonController.seasonState,
                 onLoadingBuilder:
-                    Center(child: LoadingSpinner.horizontalLoading),
+                    Center(child: LoadingSpinner().horizontalLoading),
                 onErrorBuilder: const Center(
                   child: Text('error while initializing data...'),
                 ),
@@ -80,7 +77,7 @@ class SeasonDetails extends StatelessWidget {
                           Text(
                             _seasonController.seasonModel.value.name ??
                                 'season name',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: primaryDark,
                             ),
                           ),

@@ -27,7 +27,7 @@ class AuthBtn extends StatelessWidget {
           borderRadius: BorderRadius.circular(2),
         ),
         child: Text(
-          // _authV3Controller.sessionState == ViewState.busy
+          // _authV3Controller.getSessionState == ViewState.busy
           //     ? 'Authunticating ...'
           //     :
           title ?? 'Sign In',

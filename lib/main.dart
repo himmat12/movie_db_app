@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:movie_app/init_bindings.dart';
 import 'package:movie_app/routes.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/splash_screen.dart';
 import 'package:movie_app/src/configs/configs.dart';
-
-import 'init_bindings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +34,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       getPages: Routes.getRoutes(),
       initialBinding: InitBindings(),
-      title: "Movie DB",
+      title: 'Movie DB',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Poppins',

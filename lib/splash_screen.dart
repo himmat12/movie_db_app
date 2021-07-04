@@ -4,16 +4,15 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
-
-import 'src/controllers/auth_v3_controller.dart';
-import 'src/controllers/configuration_controller.dart';
-import 'src/controllers/deatils_controller.dart';
-import 'src/controllers/people_controller.dart';
-import 'src/controllers/results_controller.dart';
-import 'src/controllers/season_controller.dart';
-import 'src/controllers/trending_results_controller.dart';
-import 'src/controllers/utility_controller.dart';
-import 'src/utils/auth.dart';
+import 'package:movie_app/src/controllers/auth_v3_controller.dart';
+import 'package:movie_app/src/controllers/configuration_controller.dart';
+import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/people_controller.dart';
+import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/season_controller.dart';
+import 'package:movie_app/src/controllers/trending_results_controller.dart';
+import 'package:movie_app/src/controllers/utility_controller.dart';
+import 'package:movie_app/src/utils/auth.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,14 +22,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final _configurationController = Get.find<ConfigurationController>();
-  final _utilityController = Get.find<UtilityController>();
-  final _resultsController = Get.find<ResultsController>();
-  final _trendingResultsController = Get.find<TrendingResultsController>();
-  final _peopleController = Get.find<PeopleController>();
-  final _seasonController = Get.find<SeasonController>();
-  final _detailsController = Get.find<DetailsController>();
-  final _authV3Controller = Get.find<AuthV3Controller>();
+  final configurationController = Get.find<ConfigurationController>();
+  final utilityController = Get.find<UtilityController>();
+  final resultsController = Get.find<ResultsController>();
+  final trendingResultsController = Get.find<TrendingResultsController>();
+  final peopleController = Get.find<PeopleController>();
+  final seasonController = Get.find<SeasonController>();
+  final detailsController = Get.find<DetailsController>();
+  final authV3Controller = Get.find<AuthV3Controller>();
 
   Future delay() async {
     return await Future.delayed(const Duration(microseconds: 3600));
@@ -41,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     delay().whenComplete(() {
       SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
-        if (Auth.isLoggedIn == true) {
+        if (Auth().isLoggedIn == true) {
           Get.offAllNamed('/dashboard');
         }
         // else {
@@ -53,9 +52,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SizedBox(
+    return Scaffold(
+      body: SafeArea(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Stack(
             alignment: AlignmentDirectional.topCenter,
@@ -82,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ],
                 ),
               ),
-              Auth.isLoggedIn == true
+              Auth().isLoggedIn == true
                   ? const SizedBox.shrink()
                   : Positioned(
                       bottom: 30,

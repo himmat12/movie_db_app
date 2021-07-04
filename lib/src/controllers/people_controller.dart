@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
@@ -7,8 +8,6 @@ import 'package:movie_app/src/models/peoples/people_model.dart';
 import 'package:movie_app/src/models/peoples/people_movie_credits.dart';
 import 'package:movie_app/src/models/peoples/people_tv_credits.dart';
 import 'package:movie_app/src/services/people_service.dart';
-
-import '../../service_locator.dart';
 
 class PeopleController extends BaseController {
   final _service = sl<PeopleService>();
@@ -47,7 +46,7 @@ class PeopleController extends BaseController {
   final imagesState = ViewState.idle.obs;
   final externalIdsState = ViewState.idle.obs;
 
-  getPeopleDetails({required int personId}) async {
+  void getPeopleDetails({required int personId}) async {
     peopleState.value = ViewState.busy;
     await _service.getPeopleDetails(personId: personId).then((value) {
       people.value = PeopleModel.fromJson(value);
@@ -58,7 +57,8 @@ class PeopleController extends BaseController {
     });
   }
 
-  getCreditsDetails({required int personId, required String resultType}) async {
+  void getCreditsDetails(
+      {required int personId, required String resultType}) async {
     switch (resultType) {
       case movieCreditsString:
         movieCreditsState.value = ViewState.busy;

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:movie_app/src/exceptions/app_exceptions.dart';
 import 'package:movie_app/src/utils/auth.dart';
 
 enum Requests { get, post, put, delete, update }
@@ -35,11 +36,11 @@ class BaseService {
   Map<String, String> setQueryParameters({Map<String, String>? query}) {
     queryParma = {"api_key": api};
     queryParma.addAll(query ?? {});
-    if (Auth.isLoggedIn == true) {
-      queryParma["session_id"] = Auth.sessionId;
+    if (Auth().isLoggedIn == true) {
+      queryParma["session_id"] = Auth().sessionId;
     }
-    if (Auth.isGuestLoggedIn == true) {
-      queryParma["guest_session_id"] = Auth.guestSessionId;
+    if (Auth().isGuestLoggedIn == true) {
+      queryParma["guest_session_id"] = Auth().guestSessionId;
     }
     return queryParma;
   }
@@ -52,28 +53,28 @@ class BaseService {
         return response;
 
       case 400:
-        // throw BadRequestException(jsonDecode(jsonEncode(response.body)));
-        return response;
+        throw BadRequestException(jsonDecode(jsonEncode(response.body)));
+      // return response;
 
       case 401:
       case 403:
-        // throw UnauthorizedException(jsonDecode(jsonEncode(response.body)));
-        return response;
+        throw UnauthorizedException(jsonDecode(jsonEncode(response.body)));
+      // return response;
 
       case 500:
       default:
-        // throw FetchDataException(
-        //     'Error occured while Communicating with Server with StatusCode: ${response.statusCode}\nRESPONSE:${decodeResponse(response)}');
-        return response;
+        throw FetchDataException(
+            'Error occured while Communicating with Server with StatusCode: ${response.statusCode}\nRESPONSE:${decodeResponse(response)}');
+      // return response;
     }
   }
 
   Future<http.Response> request({
     required Requests method,
+    required String path,
     Map<String, dynamic>? body,
     Map<String, String>? queryParameter,
     Map<String, String>? header,
-    required String path,
   }) async {
     // setQueryParameters();
     switch (method) {
@@ -112,7 +113,7 @@ class BaseService {
     }
 
     if (response.statusCode == 401 || response.statusCode == 403) {
-      Auth.logout();
+      Auth().logout();
       // Get.offAll(page);
       return returnResponse(response);
     }
@@ -120,7 +121,7 @@ class BaseService {
   }
 
   //decodes response from string to json object
-  decodeResponse(http.Response response) {
+  dynamic decodeResponse(http.Response response) {
     return jsonDecode(utf8.decode(response.bodyBytes));
   }
 }

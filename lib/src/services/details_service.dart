@@ -41,6 +41,55 @@ class DetailsService extends BaseService {
 
       // ignore: avoid_print
       // print('$resultType OTHER DETAILS STATUS => ${response.statusCode}');
+      // print('$resultType RATED => ${jsonDecode(response.body)['rated']}');
+      return decodeResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    } on TimeoutException {
+      throw ServiceNotRespondingException(
+          'Service not responding in time please check your Internet Connection');
+    }
+  }
+
+  // rate movie/tv
+  Future<dynamic> rate({
+    required num value,
+    required int? mediaId,
+    required String mediaType,
+  }) async {
+    try {
+      await request(
+        method: Requests.post,
+        path: '/3/$mediaType/$mediaId/rating',
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
+        body: {"value": value},
+      ).then((value) {
+        print(value.statusCode);
+      });
+
+      return decodeResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    } on TimeoutException {
+      throw ServiceNotRespondingException(
+          'Service not responding in time please check your Internet Connection');
+    }
+  }
+
+  // rate movie/tv
+  Future<dynamic> deleteRating({
+    required int mediaId,
+    required String mediaType,
+  }) async {
+    try {
+      await request(
+        method: Requests.delete,
+        path: '/3/$mediaType/$mediaId/rating',
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
+      );
+
       return decodeResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');

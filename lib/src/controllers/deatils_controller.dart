@@ -22,6 +22,8 @@ class DetailsController extends BaseController {
   var reviewsState = ViewState.idle.obs;
   var externalIdsState = ViewState.idle.obs;
 
+  var rateState = ViewState.idle.obs;
+
   var movieDetail = MovieDetailsModel().obs;
   var tvDetail = TvDetailsModel().obs;
 
@@ -38,8 +40,10 @@ class DetailsController extends BaseController {
   var tvExternalIds = TvExternalIds().obs;
   var accountState = AccountStates().obs;
 
+  var isRated = false.obs;
+
 // movie/tv basic details
-  getDetails({required String resultType, required String id}) async {
+  void getDetails({required String resultType, required String id}) async {
     switch (resultType) {
       case movieString:
         movieDetailState.value = ViewState.busy;
@@ -71,8 +75,37 @@ class DetailsController extends BaseController {
     }
   }
 
+// rate movie/tv
+  void rate({
+    required num value,
+    required int? mediaId,
+    required String mediaType,
+  }) {
+    rateState.value = ViewState.busy;
+    _service
+        .rate(value: value, mediaId: mediaId, mediaType: mediaType)
+        .then((value) {
+      // update(['rating']);
+      rateState.value = ViewState.retrived;
+    });
+  }
+
+// rate movie/tv
+  void deleteRating({
+    required int mediaId,
+    required String mediaType,
+  }) {
+    rateState.value = ViewState.busy;
+    _service.deleteRating(mediaId: mediaId, mediaType: mediaType).then((value) {
+      value['status'] != true
+          ? null
+          : Get.snackbar('Rate', value['status_message']);
+      rateState.value = ViewState.retrived;
+    });
+  }
+
 // other movies details like (images,videos,credits,account_states,similar,recommendations,reviews,external_ids)
-  getOtherDetails({
+  void getOtherDetails({
     required String resultType,
     required String id,
     required String appendTo,
@@ -252,7 +285,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               accountState.value = AccountStates.fromJson(value);
               accountstateState.value = ViewState.retrived;
-              update();
+
               // }
             });
             break;
