@@ -3,7 +3,7 @@
 
 >**"This app project (movie_app) uses the TMDb API but is not endorsed or certified by [TMDb](https://www.themoviedb.org/)."**
 
->movie database app with TMDb api data (still in developent)*
+>movie database app with TMDb api data (still in development)*
                   
 
 ## screen shots of App
