@@ -20,137 +20,153 @@ class RatingComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     evaluateRateQuote(_detailsController.rateValue.value);
     print('HASH CODE: $hashCode');
-    return BottomSheet(
-      onClosing: () {},
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12),
-          topRight: Radius.circular(12),
-        ),
-      ),
-      builder: (context) => Stack(
-        alignment: AlignmentDirectional.topEnd,
-        children: [
-          SingleChildScrollView(
-            child: SizedBox(
-              height: 360,
-              child: Column(
-                children: [
-                  const SizedBox(height: 44),
-                  // percentage indicator
-                  Obx(
-                    () => CircularPercentIndicator(
-                      radius: 80,
-                      percent: (_detailsController.rateValue.value / 10),
-                      curve: Curves.ease,
-                      animation: true,
-                      animationDuration: 800,
-                      progressColor: primaryblue,
-                      lineWidth: 8,
-                      animateFromLastPercent: true,
-                      center: Text(
-                        '${(_detailsController.rateValue.value * 10).toInt()}%',
-                        style: const TextStyle(
-                          color: primaryDarkBlue,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
 
-                  // rating bar
-                  RatingBar(
-                    onRatingUpdate: (value) {
-                      _detailsController.setRateValue(value);
-                      print(_detailsController.rateValue.value);
-                      evaluateRateQuote(value);
-                    },
-                    ratingWidget: RatingWidget(
-                        full: const Icon(
-                          Icons.star,
-                          color: primaryDarkBlue05,
-                        ),
-                        half: const Icon(
-                          Icons.star_half,
-                          color: primaryDarkBlue05,
-                        ),
-                        empty: const Icon(
-                          Icons.star_outline,
-                          color: primaryDarkBlue05,
-                        )),
-                    itemCount: 10,
-                    allowHalfRating: true,
-                    initialRating: rating,
-                    maxRating: 10,
-                    minRating: 0.5,
-                    updateOnDrag: true,
-                    itemSize: 34,
-                    wrapAlignment: WrapAlignment.center,
-                    glow: false,
-                  ),
-                  const SizedBox(height: 18),
-
-                  Obx(
-                    () => ratingQuotes(_detailsController.rateQuote.value),
-                  ),
-                  const SizedBox(height: 18),
-
-                  // rate actions
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+    return DraggableScrollableSheet(
+      initialChildSize: 0.9,
+      maxChildSize: 1,
+      minChildSize: 0.3,
+      expand: true,
+      builder: (context, scrollController) {
+        return SingleChildScrollView(
+          controller: scrollController,
+          child: Container(
+            decoration: const BoxDecoration(
+              color: primaryWhite,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+            ),
+            child: Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: [
+                SizedBox(
+                  height: 360,
+                  child: Column(
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          _detailsController.deleteRating(
-                            mediaId: _detailsController.movieDetail.value.id,
-                            mediaType: movieString,
-                          );
-                        },
-                        child: const Text('Remove'),
+                      const SizedBox(height: 44),
+                      // percentage indicator
+                      Obx(
+                        () => CircularPercentIndicator(
+                          radius: 80,
+                          percent: (_detailsController.rateValue.value / 10),
+                          curve: Curves.ease,
+                          animation: true,
+                          animationDuration: 800,
+                          progressColor: primaryblue,
+                          lineWidth: 8,
+                          animateFromLastPercent: true,
+                          center: Text(
+                            '${(_detailsController.rateValue.value * 10).toInt()}%',
+                            style: const TextStyle(
+                              color: primaryDarkBlue,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
                       ),
-                      const SizedBox(width: 16),
-                      TextButton(
-                        onPressed: () {
-                          _detailsController.rate(
-                            rateValue: _detailsController.rateValue.value,
-                            mediaId: _detailsController.movieDetail.value.id,
-                            mediaType: movieString,
-                            appendTo: accountStateString,
-                          );
+                      const SizedBox(height: 16),
+
+                      // rating bar
+                      RatingBar(
+                        onRatingUpdate: (value) {
+                          _detailsController.setRateValue(value);
+                          print(_detailsController.rateValue.value);
+                          evaluateRateQuote(value);
                         },
-                        child: const Text('Apply'),
+                        ratingWidget: RatingWidget(
+                            full: const Icon(
+                              Icons.star,
+                              color: primaryDarkBlue05,
+                            ),
+                            half: const Icon(
+                              Icons.star_half,
+                              color: primaryDarkBlue05,
+                            ),
+                            empty: const Icon(
+                              Icons.star_outline,
+                              color: primaryDarkBlue05,
+                            )),
+                        itemCount: 10,
+                        allowHalfRating: true,
+                        initialRating: rating,
+                        maxRating: 10,
+                        minRating: 0.5,
+                        updateOnDrag: true,
+                        itemSize: 34,
+                        wrapAlignment: WrapAlignment.center,
+                        glow: false,
+                      ),
+                      const SizedBox(height: 18),
+
+                      // rating quotes
+                      Obx(
+                        () => ratingQuotes(_detailsController.rateQuote.value),
+                      ),
+                      const SizedBox(height: 18),
+
+                      // rate actions
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                _detailsController.deleteRating(
+                                  mediaId:
+                                      _detailsController.movieDetail.value.id,
+                                  mediaType: movieString,
+                                );
+                              },
+                              child: const Text('Remove'),
+                            ),
+                            const SizedBox(width: 8),
+                            TextButton(
+                              onPressed: () {
+                                _detailsController.rate(
+                                  rateValue: _detailsController.rateValue.value,
+                                  mediaId:
+                                      _detailsController.movieDetail.value.id,
+                                  mediaType: movieString,
+                                  appendTo: accountStateString,
+                                );
+                              },
+                              child: const Text('Apply'),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          ),
+                ),
 
-          // exit btn
-          Positioned(
-            top: 12,
-            right: 10,
-            child: GestureDetector(
-              onTap: () {
-                Get.back();
-              },
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: primaryDarkBlue05,
+                // exit btn
+                Positioned(
+                  top: 12,
+                  right: 10,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: primaryDarkBlue05,
+                      ),
+                      child: const Icon(
+                        Icons.clear,
+                        color: primaryWhite,
+                      ),
+                    ),
+                  ),
                 ),
-                child: const Icon(
-                  Icons.clear,
-                  color: primaryWhite,
-                ),
-              ),
+              ],
             ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 

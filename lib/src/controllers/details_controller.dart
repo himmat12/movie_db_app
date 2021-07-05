@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';
+import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
@@ -106,6 +108,46 @@ class DetailsController extends BaseController {
         accountState.value.rated = {"value": rateValue};
         isRated.value = true;
         accountState.refresh();
+        Get.back();
+        value['status_code'] == 1
+            ? Get.snackbar(
+                'Rating',
+                'Rated with $rateValue⭐',
+                padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                animationDuration: const Duration(milliseconds: 900),
+                borderRadius: 8,
+                dismissDirection: SnackDismissDirection.HORIZONTAL,
+                snackStyle: SnackStyle.GROUNDED,
+                backgroundColor: primaryWhite,
+                mainButton: TextButton(
+                  onPressed: () {},
+                  child: const Text('Go to list'),
+                ),
+              )
+            : Get.snackbar(
+                'Rating',
+                'Rating updated with $rateValue⭐',
+                padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                animationDuration: const Duration(milliseconds: 900),
+                borderRadius: 8,
+                dismissDirection: SnackDismissDirection.HORIZONTAL,
+                snackStyle: SnackStyle.GROUNDED,
+                backgroundColor: primaryWhite,
+                mainButton: TextButton(
+                  onPressed: () {},
+                  child: const Text('Go to list'),
+                ),
+              );
+      } else {
+        Get.snackbar(
+          'Rating',
+          value['status_message'],
+          padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+          animationDuration: const Duration(milliseconds: 900),
+          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          snackStyle: SnackStyle.GROUNDED,
+          backgroundColor: primaryWhite,
+        );
       }
     });
     rateState.value = ViewState.retrived;
@@ -125,6 +167,22 @@ class DetailsController extends BaseController {
         accountState.value.rated = false;
         isRated.value = false;
         accountState.refresh();
+        Get.back();
+        Get.snackbar(
+          'Rating',
+          'Rating removed successfully.',
+          padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+          animationDuration: const Duration(milliseconds: 900),
+          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          snackStyle: SnackStyle.GROUNDED,
+          backgroundColor: primaryWhite,
+          mainButton: TextButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: const Text('Ok'),
+          ),
+        );
       }
     });
     rateState.value = ViewState.retrived;
