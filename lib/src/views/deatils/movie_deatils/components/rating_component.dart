@@ -83,7 +83,7 @@ class RatingComponent extends StatelessWidget {
                     allowHalfRating: true,
                     initialRating: rating,
                     maxRating: 10,
-                    minRating: 0,
+                    minRating: 0.5,
                     updateOnDrag: true,
                     itemSize: 34,
                     wrapAlignment: WrapAlignment.center,
@@ -186,7 +186,7 @@ class RatingComponent extends StatelessWidget {
       );
 
   void evaluateRateQuote(value) {
-    if (value > 0 && value <= 1.5) {
+    if (value > 0.5 && value <= 1.5) {
       _detailsController.setRateQuote(terribleString);
     } else if (value > 1.5 && value <= 3) {
       _detailsController.setRateQuote(poorString);

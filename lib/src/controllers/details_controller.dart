@@ -45,7 +45,8 @@ class DetailsController extends BaseController {
   var rateQuote = ''.obs;
 
   // set / reset rate value
-  void setRateValue(double value) => rateValue.value = value;
+  void setRateValue(double value) =>
+      rateValue.value = value < 0.5 ? 0.5 : value;
   void resetRateValue() => rateValue.value = 0.0;
 
   // set rate quotes
@@ -95,7 +96,7 @@ class DetailsController extends BaseController {
     print(rateValue);
     await _service
         .rate(
-      value: rateValue < 0.5 ? 0.5 : rateValue,
+      value: rateValue,
       mediaId: mediaId,
       mediaType: mediaType,
     )
