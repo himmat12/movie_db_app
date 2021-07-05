@@ -1,4 +1,5 @@
 const String movieString = "movie";
+const String moviesString = "movies";
 const String tvString = "tv";
 const String allString = "all";
 const String peopleString = "people";

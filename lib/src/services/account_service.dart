@@ -24,8 +24,11 @@ class AccountService extends BaseService {
   }
 
   // add to watchlist - movies/tv
-  Future<dynamic> addToWatchlist(
-      {required String mediaType, required int mediaId}) async {
+  Future<dynamic> postToWatchlist({
+    required String mediaType,
+    required int? mediaId,
+    required bool watchlist,
+  }) async {
     try {
       await request(
         method: Requests.post,
@@ -35,7 +38,7 @@ class AccountService extends BaseService {
         body: {
           "media_type": mediaType,
           "media_id": '$mediaId',
-          "watchlist": true
+          "watchlist": watchlist
         },
       );
 
@@ -49,15 +52,15 @@ class AccountService extends BaseService {
   }
 
   // get watchlist - movies/tv
-  Future<dynamic> getMovieWatchList({required int accountId}) async {
+  Future<dynamic> getWatchList({required String mediaType}) async {
     try {
       await request(
         method: Requests.get,
-        path: '/3/account/$accountId/watchlist/movies',
+        path: '/3/account/{account_id}/watchlist/$mediaType',
         queryParameter: setQueryParameters(),
       );
 
-      return decodeResponse(response);
+      return decodeResponse(response)['results'];
     } on SocketException {
       throw FetchDataException('No Internet Connection');
     } on TimeoutException {
@@ -66,26 +69,29 @@ class AccountService extends BaseService {
     }
   }
 
-  Future<dynamic> getTvWatchList({required int accountId}) async {
-    try {
-      await request(
-        method: Requests.get,
-        path: '/3/account/$accountId/watchlist/tv',
-        queryParameter: setQueryParameters(),
-      );
+  // Future<dynamic> getTvWatchList({required int accountId}) async {
+  //   try {
+  //     await request(
+  //       method: Requests.get,
+  //       path: '/3/account/$accountId/watchlist/tv',
+  //       queryParameter: setQueryParameters(),
+  //     );
 
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
+  //     return decodeResponse(response);
+  //   } on SocketException {
+  //     throw FetchDataException('No Internet Connection');
+  //   } on TimeoutException {
+  //     throw ServiceNotRespondingException(
+  //         'Service not responding in time please check your Internet Connection');
+  //   }
+  // }
 
   // add to favorite
-  Future<dynamic> addToFavorite(
-      {required String mediaType, required int mediaId}) async {
+  Future<dynamic> postToFavorite({
+    required String mediaType,
+    required int? mediaId,
+    required bool favorite,
+  }) async {
     try {
       await request(
         method: Requests.post,
@@ -95,7 +101,7 @@ class AccountService extends BaseService {
         body: {
           "media_type": mediaType,
           "media_id": '$mediaId',
-          "favorite": true
+          "favorite": favorite
         },
       );
 
@@ -109,15 +115,15 @@ class AccountService extends BaseService {
   }
 
   // get favorite list movies/tv
-  Future<dynamic> getFavorteMovies({required int accountId}) async {
+  Future<dynamic> getFavortes({required String mediaType}) async {
     try {
       await request(
         method: Requests.get,
-        path: '/3/account/$accountId/favorite/movies',
+        path: '/3/account/{account_id}/favorite/$mediaType',
         queryParameter: setQueryParameters(),
       );
 
-      return decodeResponse(response);
+      return decodeResponse(response)['results'];
     } on SocketException {
       throw FetchDataException('No Internet Connection');
     } on TimeoutException {
@@ -126,162 +132,22 @@ class AccountService extends BaseService {
     }
   }
 
-  Future<dynamic> getFavorteTv({required int accountId}) async {
-    try {
-      await request(
-        method: Requests.get,
-        path: '/3/account/$accountId/favorite/tv',
-        queryParameter: setQueryParameters(),
-      );
+  // Future<dynamic> getFavorteTv({required int accountId}) async {
+  //   try {
+  //     await request(
+  //       method: Requests.get,
+  //       path: '/3/account/$accountId/favorite/tv',
+  //       queryParameter: setQueryParameters(),
+  //     );
 
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
-
-  // create list
-  Future<dynamic> createList(
-      {required String name, required String description}) async {
-    try {
-      await request(
-        method: Requests.post,
-        path: '/3/list',
-        header: setHeaders(),
-        queryParameter: setQueryParameters(),
-        body: {
-          "name": "John1241 first list",
-          "description": "Namaste everyone im John1241 , your host",
-          "language": "en"
-        },
-      );
-
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
-
-  // get created lists
-  Future<dynamic> getLists({required int accountId}) async {
-    try {
-      await request(
-        method: Requests.get,
-        path: '/3/account/$accountId/lists',
-        queryParameter: setQueryParameters(),
-      );
-
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
-
-  //  get list details
-  Future<dynamic> getListDetails({required int listId}) async {
-    try {
-      await request(
-        method: Requests.get,
-        path: '/3/list/$listId',
-        queryParameter: setQueryParameters(),
-      );
-
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
-
-  // add movie to list
-  Future<dynamic> addMovieToList(
-      {required int listId, required int movieId}) async {
-    try {
-      await request(
-        method: Requests.post,
-        path: '/3/list/$listId/add_item',
-        header: setHeaders(),
-        queryParameter: setQueryParameters(),
-        body: {"media_id": movieId},
-      );
-
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
-
-  // remove movie from list
-  Future<dynamic> removeMovieFromList(
-      {required int listId, required int movieId}) async {
-    try {
-      await request(
-        method: Requests.post,
-        path: '/3/list/$listId/remove_item',
-        header: setHeaders(),
-        queryParameter: setQueryParameters(),
-        body: {"media_id": movieId},
-      );
-
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
-
-  // clear list - empty
-  Future<dynamic> clearList({required int listId}) async {
-    try {
-      await request(
-        method: Requests.post,
-        path: '/3/list/$listId/clear',
-        header: setHeaders(),
-        queryParameter: setQueryParameters(query: {"confirm": "true"}),
-      );
-
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
-
-  // clear list - empty
-  Future<dynamic> deleteList({required int listId}) async {
-    try {
-      await request(
-        method: Requests.delete,
-        path: '/3/list/$listId',
-        queryParameter: setQueryParameters(),
-      );
-
-      return decodeResponse(response);
-    } on SocketException {
-      throw FetchDataException('No Internet Connection');
-    } on TimeoutException {
-      throw ServiceNotRespondingException(
-          'Service not responding in time please check your Internet Connection');
-    }
-  }
+  //     return decodeResponse(response);
+  //   } on SocketException {
+  //     throw FetchDataException('No Internet Connection');
+  //   } on TimeoutException {
+  //     throw ServiceNotRespondingException(
+  //         'Service not responding in time please check your Internet Connection');
+  //   }
+  // }
 
 //
 }

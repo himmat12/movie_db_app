@@ -94,6 +94,7 @@ Widget optionBtn({IconData? icon, void Function()? onTap, Color? color}) {
         ),
         Icon(
           icon ?? Icons.list,
+          size: 20,
           color: color ?? primaryWhite,
         ),
       ],
