@@ -32,6 +32,7 @@ dependencies:
   cached_network_image: null
   cupertino_icons: ^1.0.2
   flutter_form_builder: ^6.0.1
+  flutter_rating_bar: ^4.0.0
   flutter_spinkit: ^5.0.0
   flutter_svg: ^0.22.0
   get: ^4.1.4

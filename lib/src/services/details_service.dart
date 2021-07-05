@@ -39,9 +39,10 @@ class DetailsService extends BaseService {
           header: setHeaders(),
           queryParameter: setQueryParameters());
 
-      // ignore: avoid_print
-      // print('$resultType OTHER DETAILS STATUS => ${response.statusCode}');
-      // print('$resultType RATED => ${jsonDecode(response.body)['rated']}');
+      //   // ignore: avoid_print
+      //   print('$resultType OTHER DETAILS STATUS => ${value.statusCode}');
+      //   print('$resultType RATED => ${jsonDecode(value.body)['rated']}');
+
       return decodeResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
@@ -79,7 +80,7 @@ class DetailsService extends BaseService {
 
   // rate movie/tv
   Future<dynamic> deleteRating({
-    required int mediaId,
+    required int? mediaId,
     required String mediaType,
   }) async {
     try {

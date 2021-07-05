@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/auth_v3_controller.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
