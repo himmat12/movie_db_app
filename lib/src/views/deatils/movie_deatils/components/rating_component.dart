@@ -3,7 +3,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
+import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class RatingComponent extends StatelessWidget {
@@ -37,17 +39,17 @@ class RatingComponent extends StatelessWidget {
                 topRight: Radius.circular(16),
               ),
             ),
-            child: Stack(
-              alignment: AlignmentDirectional.topEnd,
-              children: [
-                SizedBox(
-                  height: 360,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 44),
-                      // percentage indicator
-                      Obx(
-                        () => CircularPercentIndicator(
+            child: Obx(
+              () => Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  SizedBox(
+                    height: 360,
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 44),
+                        // percentage indicator
+                        CircularPercentIndicator(
                           radius: 80,
                           percent: (_detailsController.rateValue.value / 10),
                           curve: Curves.ease,
@@ -64,105 +66,138 @@ class RatingComponent extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 16),
+                        const SizedBox(height: 16),
 
-                      // rating bar
-                      RatingBar(
-                        onRatingUpdate: (value) {
-                          _detailsController.setRateValue(value);
-                          print(_detailsController.rateValue.value);
-                          evaluateRateQuote(value);
-                        },
-                        ratingWidget: RatingWidget(
-                            full: const Icon(
-                              Icons.star,
-                              color: primaryDarkBlue05,
-                            ),
-                            half: const Icon(
-                              Icons.star_half,
-                              color: primaryDarkBlue05,
-                            ),
-                            empty: const Icon(
-                              Icons.star_outline,
-                              color: primaryDarkBlue05,
-                            )),
-                        itemCount: 10,
-                        allowHalfRating: true,
-                        initialRating: rating,
-                        maxRating: 10,
-                        minRating: 0.5,
-                        updateOnDrag: true,
-                        itemSize: 34,
-                        wrapAlignment: WrapAlignment.center,
-                        glow: false,
-                      ),
-                      const SizedBox(height: 18),
-
-                      // rating quotes
-                      Obx(
-                        () => ratingQuotes(_detailsController.rateQuote.value),
-                      ),
-                      const SizedBox(height: 18),
-
-                      // rate actions
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                _detailsController.deleteRating(
-                                  mediaId:
-                                      _detailsController.movieDetail.value.id,
-                                  mediaType: movieString,
-                                );
-                              },
-                              child: const Text('Remove'),
-                            ),
-                            const SizedBox(width: 8),
-                            TextButton(
-                              onPressed: () {
-                                _detailsController.rate(
-                                  rateValue: _detailsController.rateValue.value,
-                                  mediaId:
-                                      _detailsController.movieDetail.value.id,
-                                  mediaType: movieString,
-                                  appendTo: accountStateString,
-                                );
-                              },
-                              child: const Text('Apply'),
-                            ),
-                          ],
+                        // rating bar
+                        AbsorbPointer(
+                          absorbing: _detailsController.rateState.value ==
+                                  ViewState.busy
+                              ? true
+                              : false,
+                          child: RatingBar(
+                            onRatingUpdate: (value) {
+                              _detailsController.setRateValue(value);
+                              print(_detailsController.rateValue.value);
+                              evaluateRateQuote(value);
+                            },
+                            ratingWidget: RatingWidget(
+                                full: const Icon(
+                                  Icons.star,
+                                  color: primaryDarkBlue05,
+                                ),
+                                half: const Icon(
+                                  Icons.star_half,
+                                  color: primaryDarkBlue05,
+                                ),
+                                empty: const Icon(
+                                  Icons.star_outline,
+                                  color: primaryDarkBlue05,
+                                )),
+                            itemCount: 10,
+                            allowHalfRating: true,
+                            initialRating: rating,
+                            maxRating: 10,
+                            minRating: 0.5,
+                            updateOnDrag: true,
+                            itemSize: 34,
+                            wrapAlignment: WrapAlignment.center,
+                            glow: false,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
 
-                // exit btn
-                Positioned(
-                  top: 12,
-                  right: 10,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: primaryDarkBlue05,
-                      ),
-                      child: const Icon(
-                        Icons.clear,
-                        color: primaryWhite,
+                        const SizedBox(height: 18),
+
+                        // rating quotes
+                        ratingQuotes(_detailsController.rateQuote.value),
+
+                        const SizedBox(height: 18),
+
+                        // rate actions
+                        AbsorbPointer(
+                          absorbing: _detailsController.rateState.value ==
+                                  ViewState.busy
+                              ? true
+                              : false,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                  onPressed: () {
+                                    _detailsController.deleteRating(
+                                      mediaId: _detailsController
+                                          .movieDetail.value.id,
+                                      mediaType: movieString,
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    foregroundColor: MaterialStateProperty.all(
+                                        primaryblue05),
+                                    backgroundColor: MaterialStateProperty.all(
+                                        primaryDarkBlue),
+                                  ),
+                                  child: const Text('Remove'),
+                                ),
+                                const SizedBox(width: 8),
+                                TextButton(
+                                  onPressed: () {
+                                    _detailsController.rate(
+                                      rateValue:
+                                          _detailsController.rateValue.value,
+                                      mediaId: _detailsController
+                                          .movieDetail.value.id,
+                                      mediaType: movieString,
+                                      appendTo: accountStateString,
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    foregroundColor:
+                                        MaterialStateProperty.all(primaryWhite),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(primaryblue),
+                                  ),
+                                  child: const Text('Apply'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // loading state spinner
+                  _detailsController.rateState.value == ViewState.busy
+                      ? Positioned(
+                          top: 6,
+                          child: LoadingSpinner().horizontalLoading,
+                        )
+                      : const SizedBox.shrink(),
+
+                  // exit btn
+                  Positioned(
+                    top: 12,
+                    right: 10,
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: primaryDarkBlue05,
+                        ),
+                        child: const Icon(
+                          Icons.clear,
+                          color: primaryWhite,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
