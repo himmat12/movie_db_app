@@ -111,11 +111,11 @@ Widget movieFlexibleSpacebarOptions() {
                                 // initialization on rate value in controller
 
                                 print(_detailsController
-                                    .accountState.value.rated['value']);
+                                    .accountState.value.rated);
 
                                 _detailsController.accountState.value.rated ==
                                         false
-                                    ? _detailsController.setRateValue(0.0)
+                                    ? _detailsController.setRateValue(0.5)
                                     : _detailsController.setRateValue(
                                         _detailsController
                                             .accountState.value.rated['value']);
@@ -124,7 +124,7 @@ Widget movieFlexibleSpacebarOptions() {
                                     rating: _detailsController
                                                 .accountState.value.rated ==
                                             false
-                                        ? 0.0
+                                        ? 0.5
                                         : _detailsController
                                             .accountState.value.rated['value'],
                                   ),
