@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';

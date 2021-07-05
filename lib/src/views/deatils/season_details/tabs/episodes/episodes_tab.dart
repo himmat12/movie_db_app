@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
 import 'package:movie_app/src/models/details/season_details_model.dart';

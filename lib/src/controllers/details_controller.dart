@@ -41,6 +41,15 @@ class DetailsController extends BaseController {
   var accountState = AccountStates().obs;
 
   var isRated = false.obs;
+  var rateValue = 0.0.obs;
+  var rateQuote = ''.obs;
+
+  // set / reset rate value
+  void setRateValue(double value) => rateValue.value = value;
+  void resetRateValue() => rateValue.value = 0.0;
+
+  // set rate quotes
+  void setRateQuote(value) => rateQuote.value = value;
 
 // movie/tv basic details
   void getDetails({required String resultType, required String id}) async {
@@ -77,31 +86,47 @@ class DetailsController extends BaseController {
 
 // rate movie/tv
   void rate({
-    required num value,
+    required double rateValue,
     required int? mediaId,
     required String mediaType,
-  }) {
+    required String appendTo,
+  }) async {
     rateState.value = ViewState.busy;
-    _service
-        .rate(value: value, mediaId: mediaId, mediaType: mediaType)
+    print(rateValue);
+    await _service
+        .rate(
+      value: rateValue < 0.5 ? 0.5 : rateValue,
+      mediaId: mediaId,
+      mediaType: mediaType,
+    )
         .then((value) {
-      // update(['rating']);
-      rateState.value = ViewState.retrived;
+      print(value);
+      if (value['success'] == true) {
+        accountState.value.rated = {"value": rateValue};
+        isRated.value = true;
+        accountState.refresh();
+      }
     });
+    rateState.value = ViewState.retrived;
   }
 
 // rate movie/tv
   void deleteRating({
-    required int mediaId,
+    required int? mediaId,
     required String mediaType,
-  }) {
+  }) async {
     rateState.value = ViewState.busy;
-    _service.deleteRating(mediaId: mediaId, mediaType: mediaType).then((value) {
-      value['status'] != true
-          ? null
-          : Get.snackbar('Rate', value['status_message']);
-      rateState.value = ViewState.retrived;
+    await _service
+        .deleteRating(mediaId: mediaId, mediaType: mediaType)
+        .then((value) {
+      print(value);
+      if (value['success'] == true) {
+        accountState.value.rated = false;
+        isRated.value = false;
+        accountState.refresh();
+      }
     });
+    rateState.value = ViewState.retrived;
   }
 
 // other movies details like (images,videos,credits,account_states,similar,recommendations,reviews,external_ids)
@@ -171,10 +196,14 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              // if (value != null) {
               accountState.value = AccountStates.fromJson(value);
+              if (accountState.value.rated != false) {
+                isRated.value = true;
+              } else {
+                isRated.value = false;
+              }
               accountstateState.value = ViewState.retrived;
-              update();
+              update(['account_state']);
               // }
             });
             break;
