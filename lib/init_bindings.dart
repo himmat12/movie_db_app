@@ -3,6 +3,7 @@ import 'package:movie_app/src/controllers/account_controller.dart';
 import 'package:movie_app/src/controllers/auth_v3_controller.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
+import 'package:movie_app/src/controllers/list_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
@@ -24,5 +25,6 @@ class InitBindings extends Bindings {
     Get.lazyPut(() => SeasonController(), fenix: true);
     Get.lazyPut(() => AuthV3Controller(), fenix: true);
     Get.lazyPut(() => AccountController(), fenix: true);
+    Get.lazyPut(() => ListController(), fenix: true);
   }
 }

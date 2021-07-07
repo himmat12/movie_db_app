@@ -15,9 +15,9 @@ class ListService extends BaseService {
         header: setHeaders(),
         queryParameter: setQueryParameters(),
         body: {
-          "name": "John1241 first list",
-          "description": "Namaste everyone im John1241 , your host",
-          "language": "en"
+          "name": name,
+          "description": description,
+          "language": "en",
         },
       );
 
@@ -31,11 +31,11 @@ class ListService extends BaseService {
   }
 
   // get created lists
-  Future<dynamic> getLists({required int accountId}) async {
+  Future<dynamic> getLists() async {
     try {
       await request(
         method: Requests.get,
-        path: '/3/account/$accountId/lists',
+        path: '/3/account/{account_id}/lists',
         queryParameter: setQueryParameters(),
       );
 
@@ -68,7 +68,7 @@ class ListService extends BaseService {
 
   // add movie to list
   Future<dynamic> addMovieToList(
-      {required int listId, required int movieId}) async {
+      {required int? listId, required int? movieId}) async {
     try {
       await request(
         method: Requests.post,
@@ -127,7 +127,7 @@ class ListService extends BaseService {
     }
   }
 
-  // clear list - empty
+  // delete list - empty
   Future<dynamic> deleteList({required int listId}) async {
     try {
       await request(
