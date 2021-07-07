@@ -8,8 +8,8 @@ import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class RatingComponent extends StatelessWidget {
-  RatingComponent({
+class MovieRatingComponent extends StatelessWidget {
+  MovieRatingComponent({
     required this.rating,
     Key? key,
   }) : super(key: key);
