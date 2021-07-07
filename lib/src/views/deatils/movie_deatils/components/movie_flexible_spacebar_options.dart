@@ -9,7 +9,7 @@ import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/utils/auth.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/components/list_component.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/components/rating_component.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_rating_component.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 Widget movieFlexibleSpacebarOptions() {
@@ -90,8 +90,9 @@ Widget movieFlexibleSpacebarOptions() {
                               onTap: () {
                                 print(_detailsController
                                     .accountState.value.favorite);
-                                if (_accountController.isAddToFavorite.value ==
-                                    false) {
+                                if (_detailsController
+                                        .accountState.value.favorite !=
+                                    true) {
                                   _accountController.postToFavorites(
                                     mediaId:
                                         _detailsController.movieDetail.value.id,
@@ -107,7 +108,8 @@ Widget movieFlexibleSpacebarOptions() {
                                   );
                                 }
                               },
-                              color: _accountController.isAddToFavorite.value ==
+                              color: _detailsController
+                                          .accountState.value.favorite ==
                                       true
                                   ? const Color(0xfffc19e2)
                                   : primaryWhite,
@@ -122,7 +124,8 @@ Widget movieFlexibleSpacebarOptions() {
                                 print(_detailsController
                                     .accountState.value.watchlist);
 
-                                if (_accountController.isAddToWatchlist.value ==
+                                if (_detailsController
+                                        .accountState.value.watchlist ==
                                     false) {
                                   _accountController.postToWatchlist(
                                     mediaId:
@@ -139,11 +142,11 @@ Widget movieFlexibleSpacebarOptions() {
                                   );
                                 }
                               },
-                              color:
-                                  _accountController.isAddToWatchlist.value ==
-                                          true
-                                      ? primaryblue
-                                      : primaryWhite,
+                              color: _detailsController
+                                          .accountState.value.watchlist ==
+                                      true
+                                  ? primaryblue
+                                  : primaryWhite,
                               icon: Icons.bookmark,
                             ),
 
@@ -165,7 +168,7 @@ Widget movieFlexibleSpacebarOptions() {
                                         _detailsController
                                             .accountState.value.rated['value']);
                                 Get.bottomSheet(
-                                  RatingComponent(
+                                  MovieRatingComponent(
                                     rating: _detailsController
                                                 .accountState.value.rated ==
                                             false
