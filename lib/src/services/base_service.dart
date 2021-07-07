@@ -58,8 +58,8 @@ class BaseService {
 
       case 401:
       case 403:
-        throw UnauthorizedException(jsonDecode(jsonEncode(response.body)));
-      // return response;
+        // throw UnauthorizedException(jsonDecode(jsonEncode(response.body)));
+        return response;
 
       case 500:
       default:
@@ -112,11 +112,12 @@ class BaseService {
         break;
     }
 
-    if (response.statusCode == 401 || response.statusCode == 403) {
-      Auth().logout();
-      // Get.offAll(page);
-      return returnResponse(response);
-    }
+    // if (response.statusCode == 401 || response.statusCode == 403) {
+    //   Auth().logout();
+    //   // Get.offAll(page);
+
+    //   return returnResponse(response);
+    // }
     return returnResponse(response);
   }
 

@@ -45,32 +45,34 @@ class AccountController extends BaseController {
         if (watchlist == true) {
           isAddToWatchlist.value = true;
           _detailsController.accountState.value.watchlist = true;
-          Get.snackbar(
-            'Watchlist',
-            'Added to watchlist.',
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-            animationDuration: const Duration(milliseconds: 900),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
-            snackStyle: SnackStyle.GROUNDED,
-            backgroundColor: primaryWhite,
-            mainButton: TextButton(
-              onPressed: () {
-                // watchlist route
-              },
-              child: const Text('Go to list'),
+          Get.showSnackbar(
+            GetBar(
+              message: 'Added to watchlist.',
+              isDismissible: true,
+              duration: const Duration(milliseconds: 1600),
+              dismissDirection: SnackDismissDirection.HORIZONTAL,
+              snackStyle: SnackStyle.GROUNDED,
+              backgroundColor: primaryDarkBlue,
+              mainButton: TextButton(
+                onPressed: () {
+                  // watchlist route
+                },
+                child: const Text('Go to list'),
+              ),
             ),
           );
         } else {
           isAddToWatchlist.value = false;
           _detailsController.accountState.value.watchlist = false;
-          Get.snackbar(
-            'Watchlist',
-            'Removed from watchlist.',
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-            animationDuration: const Duration(milliseconds: 900),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
-            snackStyle: SnackStyle.GROUNDED,
-            backgroundColor: primaryWhite,
+          Get.showSnackbar(
+            GetBar(
+              message: 'Removed from watchlist.',
+              isDismissible: true,
+              duration: const Duration(milliseconds: 1600),
+              dismissDirection: SnackDismissDirection.HORIZONTAL,
+              snackStyle: SnackStyle.GROUNDED,
+              backgroundColor: primaryDarkBlue,
+            ),
           );
         }
       }
@@ -114,32 +116,34 @@ class AccountController extends BaseController {
         if (favorite == true) {
           isAddToFavorite.value = true;
           _detailsController.accountState.value.favorite = true;
-          Get.snackbar(
-            'Favorite',
-            'Added to favorites.',
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-            animationDuration: const Duration(milliseconds: 900),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
-            snackStyle: SnackStyle.GROUNDED,
-            backgroundColor: primaryWhite,
-            mainButton: TextButton(
-              onPressed: () {
-                // watchlist route
-              },
-              child: const Text('Go to list'),
+          Get.showSnackbar(
+            GetBar(
+              message: 'Added to favorites.',
+              isDismissible: true,
+              duration: const Duration(milliseconds: 1600),
+              dismissDirection: SnackDismissDirection.HORIZONTAL,
+              snackStyle: SnackStyle.GROUNDED,
+              backgroundColor: primaryDarkBlue,
+              mainButton: TextButton(
+                onPressed: () {
+                  // watchlist route
+                },
+                child: const Text('Go to list'),
+              ),
             ),
           );
         } else {
           isAddToFavorite.value = false;
           _detailsController.accountState.value.favorite = false;
-          Get.snackbar(
-            'Favorite',
-            'Removed from favorites.',
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-            animationDuration: const Duration(milliseconds: 900),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
-            snackStyle: SnackStyle.GROUNDED,
-            backgroundColor: primaryWhite,
+          Get.showSnackbar(
+            GetBar(
+              message: 'Removed from favorites.',
+              isDismissible: true,
+              duration: const Duration(milliseconds: 1600),
+              dismissDirection: SnackDismissDirection.HORIZONTAL,
+              snackStyle: SnackStyle.GROUNDED,
+              backgroundColor: primaryDarkBlue,
+            ),
           );
         }
       }
