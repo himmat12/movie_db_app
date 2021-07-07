@@ -124,22 +124,25 @@ class ListComponent extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: FormBuilderTextField(
           name: 'search_collection',
-          onChanged: (value) {},
+          onChanged: (value) {
+            _listController.getMovieLists(query: value);
+          },
           style: const TextStyle(
             fontSize: n,
             color: secondaryDarkBlue,
           ),
           textAlignVertical: TextAlignVertical.center,
           decoration: InputDecoration(
+            hintText: 'Search',
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
             filled: true,
             focusColor: Colors.green.shade200,
             suffixIcon: IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Icons.search,
-                  color: primaryDarkBlue,
+                  color: primaryDarkBlue.withOpacity(0.8),
                   size: 28,
                 )),
             border: const UnderlineInputBorder(borderSide: BorderSide.none),
@@ -194,7 +197,7 @@ class ListComponent extends StatelessWidget {
                       itemBuilder: (context, index) => _listController
                               .lists.isEmpty
                           ? const Center(
-                              child: Text('No collections list added'),
+                              child: Text('No collections list available'),
                             )
                           : GestureDetector(
                               onTap: () {

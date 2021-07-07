@@ -43,11 +43,19 @@ class ListController extends BaseController {
   }
 
   //  get created lists
-  void getMovieLists({String}) async {
+  void getMovieLists({String? query}) async {
     movieListState.value = ViewState.busy;
     await _service.getLists().then((value) {
       lists.value = List.from(
           (value['results'] as List).map((e) => ListModel.fromJson(e)));
+
+      if (query != "" || query != null) {
+        lists.value = List.from(lists.where((element) =>
+            element.name!.toLowerCase().contains((query ?? "").toLowerCase())));
+      } else {
+        lists.value = List.from(
+            (value['results'] as List).map((e) => ListModel.fromJson(e)));
+      }
     });
 
     movieListState.value = ViewState.retrived;
