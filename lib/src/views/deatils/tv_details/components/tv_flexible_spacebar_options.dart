@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 Widget tvFlexibleSpacebarOptions({required DetailsController controller}) {
@@ -94,6 +94,7 @@ Widget optionBtn({IconData? icon, void Function()? onTap, Color? color}) {
         ),
         Icon(
           icon ?? Icons.list,
+          size: 20,
           color: color ?? primaryWhite,
         ),
       ],

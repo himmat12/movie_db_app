@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
+import 'package:movie_app/src/controllers/account_controller.dart';
+import 'package:movie_app/src/controllers/auth_v3_controller.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
+import 'package:movie_app/src/controllers/list_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
@@ -13,12 +16,15 @@ class InitBindings extends Bindings {
   }
   @override
   void dependencies() {
-    Get.lazyPut(() => ConfigurationController());
-    Get.lazyPut(() => UtilityController());
-    Get.lazyPut(() => ResultsController());
-    Get.lazyPut(() => TrendingResultsController());
-    Get.lazyPut(() => DetailsController());
-    Get.lazyPut(() => PeopleController());
-    Get.lazyPut(() => SeasonController());
+    Get.lazyPut(() => ConfigurationController(), fenix: true);
+    Get.lazyPut(() => UtilityController(), fenix: true);
+    Get.lazyPut(() => ResultsController(), fenix: true);
+    Get.lazyPut(() => TrendingResultsController(), fenix: true);
+    Get.lazyPut(() => DetailsController(), fenix: true);
+    Get.lazyPut(() => PeopleController(), fenix: true);
+    Get.lazyPut(() => SeasonController(), fenix: true);
+    Get.lazyPut(() => AuthV3Controller(), fenix: true);
+    Get.lazyPut(() => AccountController(), fenix: true);
+    Get.lazyPut(() => ListController(), fenix: true);
   }
 }

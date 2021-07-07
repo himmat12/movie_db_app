@@ -17,10 +17,10 @@ class HomeTvResultList extends StatelessWidget with LoadingSpinnerMixin {
   final Rx<ViewState> state;
 
   HomeTvResultList({
-    Key? key,
-    // required this.tv,
     required this.state,
     required this.resultType,
+    Key? key,
+    // required this.tv,
     this.title,
   }) : super(key: key);
 
@@ -75,7 +75,7 @@ class HomeTvResultList extends StatelessWidget with LoadingSpinnerMixin {
                   builder: (controller) {
                     return WidgetBuilderHelper(
                       state: state.value,
-                      onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+                      onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
                       onSuccessBuilder: GridView.builder(
                         padding: const EdgeInsets.symmetric(horizontal: 14),
                         shrinkWrap: true,

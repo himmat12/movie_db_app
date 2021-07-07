@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 class SABT extends StatefulWidget {
   final Widget child;
 
-  const SABT({Key? key, required this.child}) : super(key: key);
+  const SABT({
+    required this.child,
+    Key? key,
+  }) : super(key: key);
 
   @override
   _SABTState createState() => _SABTState();

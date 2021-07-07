@@ -6,15 +6,14 @@ import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/add_more_pagination_btn.dart';
 import 'package:movie_app/src/global/tv_thumbnail_card.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
-
-import '../components/header_tile.dart';
+import 'package:movie_app/src/views/home/components/header_tile.dart';
 
 Widget tvResultBuilder({
-  String? title,
-  String? subtitle,
   required Rx<ViewState> state,
   required String resultType,
   required String posterUrl,
+  String? title,
+  String? subtitle,
   void Function()? onMoreTap,
 }) {
   // ignore: avoid_print

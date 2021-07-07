@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
-
-import 'loading_spinner.dart';
+import 'package:movie_app/src/global/loading_spinner.dart';
 
 Widget addMorePaginationBtn(
     {required void Function()? onTap, required ViewState viewState}) {
@@ -25,7 +24,7 @@ Widget addMorePaginationBtn(
             ),
             Center(
               child: viewState == ViewState.busy
-                  ? LoadingSpinner.fadingCircleSpinner
+                  ? LoadingSpinner().fadingCircleSpinner
                   : const Icon(
                       Icons.add,
                       size: 34,

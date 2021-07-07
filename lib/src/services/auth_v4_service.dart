@@ -2,16 +2,13 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:get/get.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/exceptions/app_exceptions.dart';
 import 'package:movie_app/src/services/base_service.dart';
 import 'package:movie_app/src/utils/auth.dart';
 
-class AuthService extends BaseService {
-  final utilityController = Get.find<UtilityController>();
-
+class AuthV4Service extends BaseService {
 // create request token [1]
-  Future<dynamic> createRequestToken({Map<String, String>? header}) async {
+  Future<dynamic> createV4RequestToken({Map<String, String>? header}) async {
     try {
       await request(
         method: Requests.post,
@@ -20,9 +17,6 @@ class AuthService extends BaseService {
       ).then((value) {
         Get.toNamed(
             '/authorization?url=https://www.themoviedb.org/auth/access?request_token=${decodeResponse(response)['request_token']}&requestToken=${decodeResponse(response)['request_token']}');
-        // utilityController.loadUrl(
-        //     url:
-        //         "https://www.themoviedb.org/auth/access?request_token=${decodeResponse(response)['request_token']}");
       });
 
       return decodeResponse(response);
@@ -35,8 +29,10 @@ class AuthService extends BaseService {
   }
 
   // create access token [2]
-  Future<dynamic> createAccessToken(
-      {Map<String, String>? header, required String requestToken}) async {
+  Future<dynamic> createV4AccessToken({
+    required String requestToken,
+    Map<String, String>? header,
+  }) async {
     try {
       await request(
         method: Requests.post,
@@ -48,9 +44,9 @@ class AuthService extends BaseService {
         }),
         queryParameter: setQueryParameters(),
       ).then((value) {
-        print(
-            '\n\n\n ACCESS TOKEN ==>> ${decodeResponse(response)['access_token']}');
-        createSession(accessToken: decodeResponse(response)['access_token']);
+        // print(
+        //     '\n\n\n ACCESS TOKEN ==>> ${decodeResponse(response)['access_token']}');
+        createV4Session(accessToken: decodeResponse(response)['access_token']);
       });
 
       return decodeResponse(response);
@@ -63,7 +59,7 @@ class AuthService extends BaseService {
   }
 
 // create session [3]
-  Future<dynamic> createSession({required String accessToken}) async {
+  Future<dynamic> createV4Session({required String accessToken}) async {
     try {
       await request(
         method: Requests.post,
@@ -72,11 +68,11 @@ class AuthService extends BaseService {
         header: setHeaders(),
         queryParameter: setQueryParameters(),
       ).then((value) {
-        Auth.setSessionId(decodeResponse(response)['session_id']);
+        Auth().setSessionId(decodeResponse(response)['session_id']);
 
-        print('\n\n\n SESSION REQUEST STATUS ==>> ${response.statusCode}');
-        print(
-            '\n\n\n SESSION_ID ==>> ${decodeResponse(response)['session_id']}');
+        // print('\n\n\n SESSION REQUEST STATUS ==>> ${response.statusCode}');
+        // print(
+        //     '\n\n\n SESSION_ID ==>> ${decodeResponse(response)['session_id']}');
 
         Get.offAllNamed('/dashboard');
       });

@@ -29,7 +29,7 @@ class SeasonController extends BaseController {
   void setEpisodeNo(int episodeNo) => _episodeNo.value = episodeNo;
 
   // get season details
-  getSeasonDetails({
+  void getSeasonDetails({
     required String tvId,
     required String seasonNo,
   }) async {
@@ -44,7 +44,7 @@ class SeasonController extends BaseController {
   }
 
   // get episode details
-  getEpisodeDetails({
+  void getEpisodeDetails({
     required String tvId,
     required String seasonNo,
     required String episodeNo,
@@ -60,7 +60,7 @@ class SeasonController extends BaseController {
   }
 
   // rate episode
-  rateEpisode({
+  void rateEpisode({
     required String tvId,
     required String seasonNo,
     required String episodeNo,
@@ -75,7 +75,7 @@ class SeasonController extends BaseController {
   }
 
   // rate episode
-  deleteEpisodeRating({
+  void deleteEpisodeRating({
     required String tvId,
     required String seasonNo,
     required String episodeNo,

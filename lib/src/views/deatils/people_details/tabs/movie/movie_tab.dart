@@ -8,8 +8,7 @@ import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
-
-import 'components/movie_credits_thumbnail.dart';
+import 'package:movie_app/src/views/deatils/people_details/tabs/movie/components/movie_credits_thumbnail.dart';
 
 class PeopleMovieTab extends StatelessWidget with AvatarBuilderMixin {
   // final List<MovieResultModel> movies;
@@ -36,7 +35,7 @@ class PeopleMovieTab extends StatelessWidget with AvatarBuilderMixin {
       builder: (controller) {
         return WidgetBuilderHelper(
           state: _peopleController.movieCreditsState.value,
-          onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+          onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
           onErrorBuilder: const Center(
             child: Text('error while loading data ...'),
           ),

@@ -1,4 +1,5 @@
 const String movieString = "movie";
+const String moviesString = "movies";
 const String tvString = "tv";
 const String allString = "all";
 const String peopleString = "people";
@@ -29,3 +30,13 @@ const String facebookString = "https://www.facebook.com";
 const String instagramString = "https://www.instagram.com";
 const String twitterString = "https://twitter.com";
 const String imdbString = "https://www.imdb.com/name";
+
+// ratings strings
+const String rateQuestionString = "DO you like it ?"; // question
+const String terribleString = "Terrible"; //0.5 - 1.5
+const String poorString = "Poor"; //1.5> - 3
+const String notBadString = "Not Bad"; //3> - 4
+const String okayString = "It's Okay!"; // 4> - 5.5
+const String goodString = "Good"; // 5.5> - 6.5
+const String greatString = "Great"; //6.5> - 8
+const String wonderfulString = "Wonderful"; //8> - <=10

@@ -109,7 +109,7 @@ Widget peopleFlexibleSpacebarComponent({
                               state: _peopleController.externalIdsState.value,
                               onLoadingBuilder: Row(
                                 children: [
-                                  LoadingSpinner.horizontalLoading,
+                                  LoadingSpinner().horizontalLoading,
                                 ],
                               ),
                               onErrorBuilder: const Center(

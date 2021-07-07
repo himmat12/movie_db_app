@@ -1,8 +1,7 @@
 // import 'package:json_annotation/json_annotation.dart';
 
+import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
-
-import 'common_details_models.dart';
 
 // part 'movie_details_model.g.dart';
 
@@ -37,7 +36,7 @@ class MovieDetailsModel {
     // this.images,
     // this.videos,
     // this.credits,
-    // this.accountStates,
+    this.accountStates,
     // this.externalIds,
     // this.recommendations,
     // this.similar,
@@ -72,7 +71,7 @@ class MovieDetailsModel {
   // Images? images;
   // Videos? videos;
   // Credits? credits;
-  // AccountStates? accountStates;
+  AccountStates? accountStates;
   // SimilarMovie? similar;
   // MovieRecommendations? recommendations;
   // Reviews? reviews;

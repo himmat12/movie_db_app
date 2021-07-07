@@ -5,7 +5,7 @@ import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -34,7 +34,7 @@ class TvCastsTab extends StatelessWidget with AvatarBuilderMixin {
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.creditsState.value,
-        onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+        onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),

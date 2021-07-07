@@ -6,7 +6,10 @@ import 'package:movie_app/src/models/details/common_details_models.dart';
 
 class ReviewBuilder extends StatefulWidget {
   final ReviewsResult review;
-  const ReviewBuilder({Key? key, required this.review}) : super(key: key);
+  const ReviewBuilder({
+    required this.review,
+    Key? key,
+  }) : super(key: key);
 
   @override
   _ReviewBuilderState createState() => _ReviewBuilderState();

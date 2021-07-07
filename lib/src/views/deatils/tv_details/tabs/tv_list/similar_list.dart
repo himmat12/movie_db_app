@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -27,7 +27,7 @@ class TvSimilarTab extends StatelessWidget {
       },
       builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.similarState.value,
-        onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+        onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),

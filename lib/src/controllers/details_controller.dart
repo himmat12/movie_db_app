@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';
+import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
@@ -22,6 +24,8 @@ class DetailsController extends BaseController {
   var reviewsState = ViewState.idle.obs;
   var externalIdsState = ViewState.idle.obs;
 
+  var rateState = ViewState.idle.obs;
+
   var movieDetail = MovieDetailsModel().obs;
   var tvDetail = TvDetailsModel().obs;
 
@@ -38,8 +42,20 @@ class DetailsController extends BaseController {
   var tvExternalIds = TvExternalIds().obs;
   var accountState = AccountStates().obs;
 
+  var isRated = false.obs;
+  var rateValue = 0.0.obs;
+  var rateQuote = ''.obs;
+
+  // set / reset rate value
+  void setRateValue(double value) =>
+      rateValue.value = value < 0.5 ? 0.5 : value;
+  void resetRateValue() => rateValue.value = 0.0;
+
+  // set rate quotes
+  void setRateQuote(value) => rateQuote.value = value;
+
 // movie/tv basic details
-  getDetails({required String resultType, required String id}) async {
+  void getDetails({required String resultType, required String id}) async {
     switch (resultType) {
       case movieString:
         movieDetailState.value = ViewState.busy;
@@ -71,8 +87,115 @@ class DetailsController extends BaseController {
     }
   }
 
+// rate movie/tv
+  void rate({
+    required double rateValue,
+    required int? mediaId,
+    required String mediaType,
+    required String appendTo,
+  }) async {
+    rateState.value = ViewState.busy;
+    print(rateValue);
+    await _service
+        .rate(
+      value: rateValue,
+      mediaId: mediaId,
+      mediaType: mediaType,
+    )
+        .then((value) {
+      print(value);
+      if (value['success'] == true) {
+        accountState.value.rated = {"value": rateValue};
+        isRated.value = true;
+        accountState.refresh();
+        Get.back();
+        value['status_code'] == 1
+            ? Get.showSnackbar(
+                GetBar(
+                  message: 'Rated with $rateValue⭐',
+                  isDismissible: true,
+                  duration: const Duration(milliseconds: 1600),
+                  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                  snackStyle: SnackStyle.GROUNDED,
+                  backgroundColor: primaryDarkBlue,
+                  mainButton: TextButton(
+                    onPressed: () {
+                      // watchlist route
+                    },
+                    child: const Text('Go to list'),
+                  ),
+                ),
+              )
+            : Get.showSnackbar(
+                GetBar(
+                  message: 'Rating updated with $rateValue⭐',
+                  isDismissible: true,
+                  duration: const Duration(milliseconds: 1600),
+                  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                  snackStyle: SnackStyle.GROUNDED,
+                  backgroundColor: primaryDarkBlue,
+                  mainButton: TextButton(
+                    onPressed: () {
+                      // watchlist route
+                    },
+                    child: const Text('Go to list'),
+                  ),
+                ),
+              );
+      } else {
+        Get.showSnackbar(
+          GetBar(
+            message: value['status_message'],
+            isDismissible: true,
+            duration: const Duration(milliseconds: 1600),
+            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            snackStyle: SnackStyle.GROUNDED,
+            backgroundColor: primaryDarkBlue,
+          ),
+        );
+      }
+    });
+    rateState.value = ViewState.retrived;
+  }
+
+// rate movie/tv
+  void deleteRating({
+    required int? mediaId,
+    required String mediaType,
+  }) async {
+    rateState.value = ViewState.busy;
+    await _service
+        .deleteRating(mediaId: mediaId, mediaType: mediaType)
+        .then((value) {
+      print(value);
+      if (value['success'] == true) {
+        accountState.value.rated = false;
+        isRated.value = false;
+        accountState.refresh();
+        Get.back();
+        Get.showSnackbar(
+          GetBar(
+            message: 'Rating removed successfully.',
+            isDismissible: true,
+            duration: const Duration(milliseconds: 1600),
+            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            snackStyle: SnackStyle.GROUNDED,
+            backgroundColor: primaryDarkBlue,
+            mainButton: TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text('Ok'),
+            ),
+          ),
+        );
+      }
+    });
+    rateState.value = ViewState.retrived;
+  }
+
 // other movies details like (images,videos,credits,account_states,similar,recommendations,reviews,external_ids)
-  getOtherDetails({
+  void getOtherDetails({
     required String resultType,
     required String id,
     required String appendTo,
@@ -138,10 +261,14 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              // if (value != null) {
               accountState.value = AccountStates.fromJson(value);
+              if (accountState.value.rated != false) {
+                isRated.value = true;
+              } else {
+                isRated.value = false;
+              }
               accountstateState.value = ViewState.retrived;
-              update();
+              update(['account_state']);
               // }
             });
             break;
@@ -252,7 +379,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               accountState.value = AccountStates.fromJson(value);
               accountstateState.value = ViewState.retrived;
-              update();
+
               // }
             });
             break;

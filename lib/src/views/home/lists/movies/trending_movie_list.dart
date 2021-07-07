@@ -71,7 +71,7 @@ class HomeTrendingMovieList extends StatelessWidget with LoadingSpinnerMixin {
                   builder: (controller) {
                     return WidgetBuilderHelper(
                       state: _trendingResultsController.movieViewState,
-                      onLoadingBuilder: LoadingSpinner.fadingCircleSpinner,
+                      onLoadingBuilder: LoadingSpinner().fadingCircleSpinner,
                       onSuccessBuilder: GridView.builder(
                         padding: const EdgeInsets.symmetric(horizontal: 14),
                         shrinkWrap: true,

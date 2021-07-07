@@ -7,9 +7,9 @@ import 'package:movie_app/src/services/base_service.dart';
 class TrendingResultsService extends BaseService {
   // trending results service
   Future<dynamic> getTrendingResults({
-    String page = "",
     required String mediaType,
     required String timeWindow,
+    String page = "",
   }) async {
     try {
       final response = await request(

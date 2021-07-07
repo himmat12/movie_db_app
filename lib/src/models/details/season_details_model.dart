@@ -231,8 +231,7 @@ SeasonCrew _$SeasonCrewFromJson(Map<String, dynamic> json) {
 }
 
 AccountState accountStateFromJson(Map<String, dynamic> json) {
-  return AccountState(
-      rated: json['rated'] == null ? null : ratedFromJson(json['rated']));
+  return AccountState(rated: json['rated']);
 }
 
 EpisodeImages episodeImagesFromJson(Map<String, dynamic> json) {

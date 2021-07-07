@@ -6,7 +6,7 @@ import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/deatils_controller.dart';
+import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -57,7 +57,7 @@ Widget tvFlexibleSpacebarComponent({
                   state: _detailsController.imagesState.value,
                   onLoadingBuilder: SizedBox(
                     height: 200,
-                    child: LoadingSpinner.fadingCircleSpinner,
+                    child: LoadingSpinner().fadingCircleSpinner,
                   ),
                   onErrorBuilder: const Center(
                     child: Text('error while initializing data...'),
