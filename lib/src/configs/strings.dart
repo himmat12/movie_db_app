@@ -32,7 +32,7 @@ const String twitterString = "https://twitter.com";
 const String imdbString = "https://www.imdb.com/name";
 
 // ratings strings
-const String rateQuestionString = "DO you like it ?"; // question
+const String rateQuestionString = "Do you like it ?"; // question
 const String terribleString = "Terrible"; //0.5 - 1.5
 const String poorString = "Poor"; //1.5> - 3
 const String notBadString = "Not Bad"; //3> - 4
