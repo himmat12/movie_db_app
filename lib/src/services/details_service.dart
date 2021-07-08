@@ -34,10 +34,11 @@ class DetailsService extends BaseService {
   }) async {
     try {
       final response = await request(
-          method: Requests.get,
-          path: "/3/$resultType/$id/$appendTo",
-          header: setHeaders(),
-          queryParameter: setQueryParameters());
+        method: Requests.get,
+        path: "/3/$resultType/$id/$appendTo",
+        header: setHeaders(),
+        queryParameter: setQueryParameters(),
+      );
 
       //   // ignore: avoid_print
       //   print('$resultType OTHER DETAILS STATUS => ${value.statusCode}');

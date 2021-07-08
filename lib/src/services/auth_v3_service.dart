@@ -49,7 +49,7 @@ class AuthV3Service extends BaseService {
     }
   }
 
-// create session [3]
+// create session - TMDb registered users [3]
   Future<dynamic> createV3Session({required String requestToken}) async {
     try {
       await request(
@@ -58,6 +58,24 @@ class AuthV3Service extends BaseService {
         header: setHeaders(),
         queryParameter: setQueryParameters(),
         body: {"request_token": requestToken},
+      );
+
+      return decodeResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    } on TimeoutException {
+      throw ServiceNotRespondingException(
+          'Service not responding in time please check your Internet Connection');
+    }
+  }
+
+// create guest user session
+  Future<dynamic> createGuestSession() async {
+    try {
+      await request(
+        method: Requests.get,
+        path: '/3/authentication/guest_session/new',
+        queryParameter: setQueryParameters(),
       );
 
       return decodeResponse(response);

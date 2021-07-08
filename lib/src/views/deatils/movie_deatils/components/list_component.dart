@@ -211,7 +211,8 @@ class ListComponent extends StatelessWidget {
                                       _detailsController.movieDetail.value.id,
                                 );
                               },
-                              child: Padding(
+                              child: Container(
+                                color: Colors.transparent,
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 10),
                                 child: Row(
