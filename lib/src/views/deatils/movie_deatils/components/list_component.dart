@@ -211,6 +211,33 @@ class ListComponent extends StatelessWidget {
                                       _detailsController.movieDetail.value.id,
                                 );
                               },
+                              onLongPress: () {
+                                Get.showSnackbar(GetBar(
+                                  message:
+                                      'Do you want to delete ${_listController.lists[index].name} list?',
+                                  dismissDirection:
+                                      SnackDismissDirection.HORIZONTAL,
+                                  mainButton: Row(
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        child: const Text('Cancle'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          _listController.deleteList(
+                                              listId: _listController
+                                                  .lists[index].id);
+                                          Get.back();
+                                        },
+                                        child: const Text('Delete'),
+                                      ),
+                                    ],
+                                  ),
+                                ));
+                              },
                               child: Container(
                                 color: Colors.transparent,
                                 padding:

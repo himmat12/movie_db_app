@@ -109,7 +109,7 @@ class ListService extends BaseService {
   }
 
   // clear list - empty
-  Future<dynamic> clearList({required int listId}) async {
+  Future<dynamic> clearList({required int? listId}) async {
     try {
       await request(
         method: Requests.post,
@@ -128,12 +128,13 @@ class ListService extends BaseService {
   }
 
   // delete list - empty
-  Future<dynamic> deleteList({required int listId}) async {
+  Future<dynamic> deleteList({required int? listId}) async {
     try {
       await request(
         method: Requests.delete,
         path: '/3/list/$listId',
         queryParameter: setQueryParameters(),
+        header: setHeaders(),
       );
 
       return decodeResponse(response);
