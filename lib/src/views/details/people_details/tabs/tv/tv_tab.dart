@@ -8,7 +8,7 @@ import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/views/deatils/people_details/tabs/tv/components/tv_credits_thumbnail.dart';
+import 'package:movie_app/src/views/details/people_details/tabs/tv/components/tv_credits_thumbnail.dart';
 
 class PeopleTvTab extends StatelessWidget with AvatarBuilderMixin {
   // final List<MovieResultModel> movies;

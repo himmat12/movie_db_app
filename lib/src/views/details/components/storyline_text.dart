@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/views/deatils/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/header_text.dart';
 
 Widget storylineTextBuilder(
     {required String text, int? maxLines, String? headerText}) {

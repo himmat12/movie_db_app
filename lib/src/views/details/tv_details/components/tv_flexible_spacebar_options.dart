@@ -8,7 +8,7 @@ import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/utils/auth.dart';
-import 'package:movie_app/src/views/deatils/tv_details/components/tv_rating_component.dart';
+import 'package:movie_app/src/views/details/tv_details/components/tv_rating_component.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 Widget tvFlexibleSpacebarOptions({required DetailsController controller}) {

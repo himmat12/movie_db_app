@@ -9,16 +9,16 @@ import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
-import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/components/movie_flexible_spacebar_options.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/movie_about_tab.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/casts/casts_tab.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/recommended_list.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/similar_list.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/reviews/reviews_tab.dart';
+import 'package:movie_app/src/views/details/components/bottom_tabbar.dart';
+import 'package:movie_app/src/views/details/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/details/components/sliver_appbar_title.dart';
+import 'package:movie_app/src/views/details/movie_deatils/components/movie_flexible_spacebar.dart';
+import 'package:movie_app/src/views/details/movie_deatils/components/movie_flexible_spacebar_options.dart';
+import 'package:movie_app/src/views/details/movie_deatils/tabs/about/movie_about_tab.dart';
+import 'package:movie_app/src/views/details/movie_deatils/tabs/casts/casts_tab.dart';
+import 'package:movie_app/src/views/details/movie_deatils/tabs/movie%20_list/recommended_list.dart';
+import 'package:movie_app/src/views/details/movie_deatils/tabs/movie%20_list/similar_list.dart';
+import 'package:movie_app/src/views/details/movie_deatils/tabs/reviews/reviews_tab.dart';
 
 class MoviesDetails extends StatelessWidget {
   final String movieId;

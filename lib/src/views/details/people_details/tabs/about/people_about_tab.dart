@@ -5,12 +5,12 @@ import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/deatils/components/header_text.dart';
-import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
-import 'package:movie_app/src/views/deatils/components/poster_card.dart';
-import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
-import 'package:movie_app/src/views/deatils/people_details/tabs/about/components/about_info.dart';
-import 'package:movie_app/src/views/deatils/people_details/tabs/about/components/chips_builder.dart';
+import 'package:movie_app/src/views/details/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/hide_show_btn.dart';
+import 'package:movie_app/src/views/details/components/poster_card.dart';
+import 'package:movie_app/src/views/details/components/storyline_text.dart';
+import 'package:movie_app/src/views/details/people_details/tabs/about/components/about_info.dart';
+import 'package:movie_app/src/views/details/people_details/tabs/about/components/chips_builder.dart';
 
 class PeopleAboutTab extends StatelessWidget {
   final _peopleController = Get.find<PeopleController>();

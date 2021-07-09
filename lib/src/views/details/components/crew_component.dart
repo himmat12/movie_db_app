@@ -4,7 +4,7 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
-import 'package:movie_app/src/views/deatils/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/header_text.dart';
 
 Widget crewBuilder({required List<Crew> crews, required String resultType}) {
   final _peopleController = Get.find<PeopleController>();

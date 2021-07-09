@@ -5,7 +5,7 @@ import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
-import 'package:movie_app/src/views/deatils/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/header_text.dart';
 
 class GuestCasts extends StatelessWidget {
   GuestCasts({Key? key}) : super(key: key);

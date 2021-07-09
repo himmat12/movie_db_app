@@ -8,16 +8,16 @@ import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
-import 'package:movie_app/src/views/deatils/components/crew_component.dart';
-import 'package:movie_app/src/views/deatils/components/genre_component.dart';
-import 'package:movie_app/src/views/deatils/components/header_text.dart';
-import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
-import 'package:movie_app/src/views/deatils/components/media_component.dart';
-import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
-import 'package:movie_app/src/views/deatils/components/trailer_component.dart';
-import 'package:movie_app/src/views/deatils/tv_details/components/episode_tile.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/networks.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_info.dart';
+import 'package:movie_app/src/views/details/components/crew_component.dart';
+import 'package:movie_app/src/views/details/components/genre_component.dart';
+import 'package:movie_app/src/views/details/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/hide_show_btn.dart';
+import 'package:movie_app/src/views/details/components/media_component.dart';
+import 'package:movie_app/src/views/details/components/storyline_text.dart';
+import 'package:movie_app/src/views/details/components/trailer_component.dart';
+import 'package:movie_app/src/views/details/tv_details/components/episode_tile.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/about/components/networks.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/about/components/tv_info.dart';
 
 class TvAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();

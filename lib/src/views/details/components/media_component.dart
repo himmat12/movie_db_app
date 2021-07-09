@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/views/deatils/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/header_text.dart';
 
 class MediaComponent extends StatelessWidget {
   const MediaComponent({

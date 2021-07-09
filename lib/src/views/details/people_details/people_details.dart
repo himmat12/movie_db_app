@@ -7,13 +7,13 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
-import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
-import 'package:movie_app/src/views/deatils/people_details/components/people_bottom_tabbar.dart';
-import 'package:movie_app/src/views/deatils/people_details/components/people_flexible_spacebar.dart';
-import 'package:movie_app/src/views/deatils/people_details/tabs/about/people_about_tab.dart';
-import 'package:movie_app/src/views/deatils/people_details/tabs/movie/movie_tab.dart';
-import 'package:movie_app/src/views/deatils/people_details/tabs/tv/tv_tab.dart';
+import 'package:movie_app/src/views/details/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/details/components/sliver_appbar_title.dart';
+import 'package:movie_app/src/views/details/people_details/components/people_bottom_tabbar.dart';
+import 'package:movie_app/src/views/details/people_details/components/people_flexible_spacebar.dart';
+import 'package:movie_app/src/views/details/people_details/tabs/about/people_about_tab.dart';
+import 'package:movie_app/src/views/details/people_details/tabs/movie/movie_tab.dart';
+import 'package:movie_app/src/views/details/people_details/tabs/tv/tv_tab.dart';
 
 class PeopleDetails extends StatefulWidget with LoadingSpinnerMixin {
   PeopleDetails({Key? key}) : super(key: key);

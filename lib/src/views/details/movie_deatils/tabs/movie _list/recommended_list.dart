@@ -6,7 +6,7 @@ import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/movie_list.dart';
+import 'package:movie_app/src/views/details/movie_deatils/tabs/movie%20_list/movie_list.dart';
 
 class MovieRecommendedTab extends StatelessWidget {
   MovieRecommendedTab({Key? key}) : super(key: key);

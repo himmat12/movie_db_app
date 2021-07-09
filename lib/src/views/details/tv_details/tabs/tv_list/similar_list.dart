@@ -6,7 +6,7 @@ import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/tv_list/tv_list.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/tv_list/tv_list.dart';
 
 class TvSimilarTab extends StatelessWidget {
   TvSimilarTab({Key? key}) : super(key: key);

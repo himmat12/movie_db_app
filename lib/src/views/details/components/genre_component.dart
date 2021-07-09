@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
-import 'package:movie_app/src/views/deatils/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/header_text.dart';
 
 Widget genreBuilder({required List<Genre> genres}) {
   return Column(

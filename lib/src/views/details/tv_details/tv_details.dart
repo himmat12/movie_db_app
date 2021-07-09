@@ -8,17 +8,17 @@ import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/deatils/components/bottom_tabbar.dart';
-import 'package:movie_app/src/views/deatils/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/deatils/components/sliver_appbar_title.dart';
-import 'package:movie_app/src/views/deatils/tv_details/components/tv_flexible_spacebar.dart';
-import 'package:movie_app/src/views/deatils/tv_details/components/tv_flexible_spacebar_options.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/about/tv_about_tab.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/cast/cast_tab.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/reviews/reviews_tab.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/seasons/seasons_tab.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/tv_list/recommended_list.dart';
-import 'package:movie_app/src/views/deatils/tv_details/tabs/tv_list/similar_list.dart';
+import 'package:movie_app/src/views/details/components/bottom_tabbar.dart';
+import 'package:movie_app/src/views/details/components/sliver_appbar_back_btn.dart';
+import 'package:movie_app/src/views/details/components/sliver_appbar_title.dart';
+import 'package:movie_app/src/views/details/tv_details/components/tv_flexible_spacebar.dart';
+import 'package:movie_app/src/views/details/tv_details/components/tv_flexible_spacebar_options.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/about/tv_about_tab.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/cast/cast_tab.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/reviews/reviews_tab.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/seasons/seasons_tab.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/tv_list/recommended_list.dart';
+import 'package:movie_app/src/views/details/tv_details/tabs/tv_list/similar_list.dart';
 
 class TvDetails extends StatelessWidget {
   // final TvResultsModel tv;
