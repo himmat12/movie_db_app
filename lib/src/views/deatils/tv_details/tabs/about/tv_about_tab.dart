@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
+import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/views/deatils/components/crew_component.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
+import 'package:movie_app/src/views/deatils/components/header_text.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/deatils/components/media_component.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
 import 'package:movie_app/src/views/deatils/components/trailer_component.dart';
+import 'package:movie_app/src/views/deatils/tv_details/components/episode_tile.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/networks.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_info.dart';
 
@@ -24,6 +28,10 @@ class TvAboutTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    EpisodeToAir? episode = _detailsController.tvDetail.value.lastEpisodeToAir;
+    final String? airDate =
+        DateFormat.yMMMMd().format(episode!.airDate ?? DateTime(0000));
+
     return
         //  Obx(
         //   () =>
@@ -61,12 +69,31 @@ class TvAboutTab extends StatelessWidget {
                 genres: _detailsController.tvDetail.value.genres ?? []),
           ),
           const SizedBox(height: 18),
-
           // networks
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: networkBuilder(
                 networks: _detailsController.tvDetail.value.networks ?? []),
+          ),
+          const SizedBox(height: 18),
+
+          // last & next episodes
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: headerBuilder(headerText: "Episodes"),
+              ),
+              const SizedBox(height: 14),
+              EpisodeTile(
+                  headerText: 'Last Episode',
+                  episode: _detailsController.tvDetail.value.lastEpisodeToAir),
+              const SizedBox(height: 8),
+              EpisodeTile(
+                  headerText: 'Next Episode',
+                  episode: _detailsController.tvDetail.value.nextEpisodeToAir),
+            ],
           ),
           const SizedBox(height: 18),
 
