@@ -9,6 +9,7 @@ import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/models/details/common_details_models.dart';
 import 'package:movie_app/src/models/details/movie_details_model.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
+import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/services/details_service.dart';
 
 class DetailsController extends BaseController {
@@ -25,6 +26,7 @@ class DetailsController extends BaseController {
   var accountstateState = ViewState.idle.obs;
   var reviewsState = ViewState.idle.obs;
   var externalIdsState = ViewState.idle.obs;
+  var collectionsDetailsState = ViewState.idle.obs;
 
   var rateState = ViewState.idle.obs;
 
@@ -35,6 +37,8 @@ class DetailsController extends BaseController {
   var reviews = Reviews().obs;
   var images = Images().obs;
   var videos = Videos().obs;
+
+  var movieCollections = <MovieResultModel>[].obs;
 
   var similarMovie = SimilarMovie().obs;
   var similarTv = SimilarTv().obs;
@@ -87,6 +91,20 @@ class DetailsController extends BaseController {
       default:
         break;
     }
+  }
+
+// get collections details
+  void getCollectionsDetails({required String collectionId}) async {
+    collectionsDetailsState.value = ViewState.busy;
+    await _service
+        .getCollectionDetails(collectionId: collectionId)
+        .then((value) {
+      movieCollections.value =
+          List.from((value as List).map((e) => MovieResultModel.fromJson(e)));
+    });
+
+    collectionsDetailsState.value = ViewState.retrived;
+    update(['movie_collections']);
   }
 
 // rate movie/tv

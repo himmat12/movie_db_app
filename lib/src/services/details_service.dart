@@ -53,6 +53,24 @@ class DetailsService extends BaseService {
     }
   }
 
+// get collection details
+  Future<dynamic> getCollectionDetails({required String collectionId}) async {
+    try {
+      await request(
+        method: Requests.get,
+        path: '/3/collection/$collectionId',
+        queryParameter: setQueryParameters(),
+      );
+
+      return decodeResponse(response)['parts'];
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    } on TimeoutException {
+      throw ServiceNotRespondingException(
+          'Service not responding in time please check your Internet Connection');
+    }
+  }
+
   // rate movie/tv
   Future<dynamic> rate({
     required num value,

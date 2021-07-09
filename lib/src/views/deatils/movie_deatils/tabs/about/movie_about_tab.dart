@@ -10,6 +10,7 @@ import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
 import 'package:movie_app/src/views/deatils/components/trailer_component.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/belongs_to_collection.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_info.dart';
 
 class MovieAboutTab extends StatelessWidget {
@@ -121,6 +122,14 @@ class MovieAboutTab extends StatelessWidget {
                   movieDetails: _detailsController.movieDetail.value),
             ),
             const SizedBox(height: 24),
+            _detailsController.movieDetail.value.belongsToCollection == null
+                ? const SizedBox.shrink()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: MovieCollection(
+                        collection: _detailsController
+                            .movieDetail.value.belongsToCollection),
+                  ),
           ],
         ),
       ),
