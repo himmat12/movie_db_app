@@ -227,7 +227,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               videos.value = Videos.fromJson(value);
               videosState.value = ViewState.retrived;
-              update();
+              update(['video_state']);
               // }
             });
             break;
@@ -344,7 +344,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               videos.value = Videos.fromJson(value);
               videosState.value = ViewState.retrived;
-              update();
+              update(['video_state']);
               // }
             });
             break;
