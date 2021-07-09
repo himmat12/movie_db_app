@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';
@@ -225,7 +227,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               videos.value = Videos.fromJson(value);
               videosState.value = ViewState.retrived;
-              update();
+              update(['video_state']);
               // }
             });
             break;
@@ -261,6 +263,7 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
+              print(jsonDecode(jsonEncode(value)));
               accountState.value = AccountStates.fromJson(value);
               if (accountState.value.rated != false) {
                 isRated.value = true;
@@ -268,6 +271,7 @@ class DetailsController extends BaseController {
                 isRated.value = false;
               }
               accountstateState.value = ViewState.retrived;
+
               update(['account_state']);
               // }
             });
@@ -340,7 +344,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               videos.value = Videos.fromJson(value);
               videosState.value = ViewState.retrived;
-              update();
+              update(['video_state']);
               // }
             });
             break;
@@ -376,11 +380,24 @@ class DetailsController extends BaseController {
                 .getOtherDetails(
                     resultType: resultType, id: id, appendTo: appendTo)
                 .then((value) {
-              // if (value != null) {
+              print(jsonDecode(jsonEncode(value)));
               accountState.value = AccountStates.fromJson(value);
+              if (accountState.value.rated != false) {
+                isRated.value = true;
+              } else {
+                isRated.value = false;
+              }
               accountstateState.value = ViewState.retrived;
 
-              // }
+              update(['account_state']);
+              // accountstateState.value = ViewState.busy;
+              // await _service
+              //     .getOtherDetails(
+              //         resultType: resultType, id: id, appendTo: appendTo)
+              //     .then((value) {
+              //   accountState.value = AccountStates.fromJson(value);
+              //   accountstateState.value = ViewState.retrived;
+              //   update(['account_state']);
             });
             break;
           case creditsString:

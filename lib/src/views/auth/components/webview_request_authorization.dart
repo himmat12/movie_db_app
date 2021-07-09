@@ -1,3 +1,18 @@
+///
+/// this webview is integrated for TMDb v4 API
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';

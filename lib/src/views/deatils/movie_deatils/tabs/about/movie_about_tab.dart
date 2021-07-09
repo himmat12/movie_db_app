@@ -9,6 +9,7 @@ import 'package:movie_app/src/views/deatils/components/crew_component.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
+import 'package:movie_app/src/views/deatils/components/trailer_component.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_info.dart';
 
 class MovieAboutTab extends StatelessWidget {
@@ -34,47 +35,93 @@ class MovieAboutTab extends StatelessWidget {
         onErrorBuilder: const Center(
           child: Text('error while loading data ...'),
         ),
-        onSuccessBuilder: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 18),
-              storylineTextBuilder(
-                  text: _detailsController.movieDetail.value.overview ??
-                      "storyline"),
-              toggleHideShowBtn(),
-              const SizedBox(height: 12),
-              genreBuilder(
+        onSuccessBuilder: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 18),
+
+            ///story line
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  storylineTextBuilder(
+                      text: _detailsController.movieDetail.value.overview ??
+                          "storyline"),
+                  toggleHideShowBtn(),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+
+            /// genre
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: genreBuilder(
                   genres: _detailsController.movieDetail.value.genres ?? []),
-              const SizedBox(height: 18),
-              GetBuilder(
-                id: 'movie_crews',
-                init: _detailsController,
-                initState: (_) {
-                  _detailsController.getOtherDetails(
-                      resultType: movieString,
-                      id: _resultsController.movieId,
-                      appendTo: creditsString);
-                },
-                builder: (controller) => WidgetBuilderHelper(
-                  state: _detailsController.creditsState.value,
+            ),
+            const SizedBox(height: 28),
+
+            /// teasers & trailers
+            GetBuilder(
+              id: 'video_state',
+              init: _detailsController,
+              initState: (_) {
+                _detailsController.getOtherDetails(
+                    resultType: movieString,
+                    id: _resultsController.movieId,
+                    appendTo: videosString);
+              },
+              builder: (controller) {
+                return WidgetBuilderHelper(
+                  state: _detailsController.videosState.value,
                   onLoadingBuilder: LoadingSpinner().horizontalLoading,
-                  onSuccessBuilder: crewBuilder(
+                  onSuccessBuilder:
+                      TrailerComponent(videos: _detailsController.videos.value),
+                  onErrorBuilder: const Center(
+                    child: Text('error occured while loading data ...'),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 18),
+
+            ///featured crews
+            GetBuilder(
+              id: 'movie_crews',
+              init: _detailsController,
+              initState: (_) {
+                _detailsController.getOtherDetails(
+                    resultType: movieString,
+                    id: _resultsController.movieId,
+                    appendTo: creditsString);
+              },
+              builder: (controller) => WidgetBuilderHelper(
+                state: _detailsController.creditsState.value,
+                onLoadingBuilder: LoadingSpinner().horizontalLoading,
+                onSuccessBuilder: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: crewBuilder(
                     resultType: movieString,
                     crews: _detailsController.credits.value.crew ?? [],
                   ),
-                  onErrorBuilder: const Center(
-                    child: Text('error while loading data ...'),
-                  ),
-                  // )
                 ),
+                onErrorBuilder: const Center(
+                  child: Text('error while loading data ...'),
+                ),
+                // )
               ),
-              const SizedBox(height: 18),
-              movieInfoBuilder(
+            ),
+            const SizedBox(height: 18),
+
+            ///movie info
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: movieInfoBuilder(
                   movieDetails: _detailsController.movieDetail.value),
-            ],
-          ),
+            ),
+            const SizedBox(height: 24),
+          ],
         ),
       ),
     );

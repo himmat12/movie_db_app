@@ -16,8 +16,8 @@ class AccountController extends BaseController {
   var watchlistState = ViewState.idle.obs;
   var favoriteState = ViewState.idle.obs;
 
-  var isAddToWatchlist = false.obs;
-  var isAddToFavorite = false.obs;
+  // var isAddToWatchlist = false.obs;
+  // var isAddToFavorite = false.obs;
 
   var movieWatchlist = <MovieResultModel>[].obs;
   var tvWatchlist = <TvResultsModel>[].obs;
@@ -42,8 +42,7 @@ class AccountController extends BaseController {
             mediaType: mediaType, mediaId: mediaId, watchlist: watchlist)
         .then((value) {
       if (value['success'] == true) {
-        if (watchlist == true) {
-          isAddToWatchlist.value = true;
+        if (_detailsController.accountState.value.watchlist != true) {
           _detailsController.accountState.value.watchlist = true;
           Get.showSnackbar(
             GetBar(
@@ -62,7 +61,6 @@ class AccountController extends BaseController {
             ),
           );
         } else {
-          isAddToWatchlist.value = false;
           _detailsController.accountState.value.watchlist = false;
           Get.showSnackbar(
             GetBar(
@@ -113,8 +111,7 @@ class AccountController extends BaseController {
             mediaType: mediaType, mediaId: mediaId, favorite: favorite)
         .then((value) {
       if (value['success'] == true) {
-        if (favorite == true) {
-          isAddToFavorite.value = true;
+        if (_detailsController.accountState.value.favorite != true) {
           _detailsController.accountState.value.favorite = true;
           Get.showSnackbar(
             GetBar(
@@ -133,7 +130,6 @@ class AccountController extends BaseController {
             ),
           );
         } else {
-          isAddToFavorite.value = false;
           _detailsController.accountState.value.favorite = false;
           Get.showSnackbar(
             GetBar(

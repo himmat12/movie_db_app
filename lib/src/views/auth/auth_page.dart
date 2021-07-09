@@ -149,7 +149,9 @@ class _AuthPageState extends State<AuthPage> {
                     ),
                     const SizedBox(height: 18),
                     AuthBtn(
-                      onTap: () {},
+                      onTap: () {
+                        _authV3Controller.authGuestV3();
+                      },
                       btnColor: primaryDarkBlue,
                       title: 'Continue as Guest'.toUpperCase(),
                     ),

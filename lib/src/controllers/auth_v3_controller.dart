@@ -83,6 +83,48 @@ class AuthV3Controller extends BaseController {
     });
   }
 
+  /// guest authuntication
+  void authGuestV3() async {
+    _sessionState.value = ViewState.busy;
+    Get.dialog(
+      AlertDialog(
+        content: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 18),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text('Authunticating ...'),
+              CircularProgressIndicator(),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: false,
+    );
+
+    await v3Service.createGuestSession().then((value) {
+      if (value['success'] == true) {
+        print(value['guest_session_id']);
+        Auth().setGuestSessionId(value['guest_session_id']);
+
+        Get.offAllNamed('/dashboard');
+      } else {
+        Get.snackbar(
+          'Authuntication failed!!',
+          value['status_message'],
+          // duration: const Duration(milliseconds: 1600),
+          backgroundColor: primaryWhite,
+          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          barBlur: 0,
+          colorText: secondaryDarkBlue,
+        );
+      }
+    });
+
+    _sessionState.value = ViewState.retrived;
+  }
+
+  ///logout
   void logoutV3() {
     _sessionState.value = ViewState.busy;
     Get.back();
@@ -102,10 +144,18 @@ class AuthV3Controller extends BaseController {
       barrierDismissible: false,
     );
 
-    v3Service.deleteSession(sessionId: Auth().sessionId).then((value) {
-      Auth().logout();
-      _sessionState.value = ViewState.retrived;
-      Get.offAllNamed('/');
-    });
+    Auth().isLoggedIn
+        ? v3Service.deleteSession(sessionId: Auth().sessionId).then((value) {
+            Auth().logout();
+            _sessionState.value = ViewState.retrived;
+            Get.offAllNamed('/');
+          })
+        : v3Service
+            .deleteSession(sessionId: Auth().guestSessionId)
+            .then((value) {
+            Auth().logout();
+            _sessionState.value = ViewState.retrived;
+            Get.offAllNamed('/');
+          });
   }
 }

@@ -158,7 +158,7 @@ Widget episodeFlexibleSpacebarComponent({
                   children: [
                     Expanded(
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 18),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,7 +224,7 @@ Widget episodeFlexibleSpacebarComponent({
 
                 /// user votes & cote counts
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
                     children: [
                       // user score %
@@ -266,8 +266,10 @@ Widget episodeFlexibleSpacebarComponent({
                       // vote counts
                       Row(children: [
                         Container(
-                          height: 46,
-                          width: 46,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 6),
+                          // height: 46,
+                          // width: 46,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: primaryDarkBlue.withOpacity(0.9),

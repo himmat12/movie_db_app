@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/controllers/download_controller.dart';
+import 'package:movie_app/src/utils/auth.dart';
 
 Widget appBarBuilder({
   void Function()? onSearchTap,
@@ -41,7 +43,16 @@ Widget appBarBuilder({
           ),
         ),
         IconButton(
-            onPressed: onSearchTap ?? () {},
+            onPressed: onSearchTap ??
+                () {
+                  print(Auth().isGuestLoggedIn
+                      ? Auth().guestSessionId
+                      : 'guest not logged in');
+
+                  DownloadController().downloadFile(
+                      url:
+                          'https://img.youtube.com/vi/gmRKv7n2If8/hqdefault.jpg');
+                },
             icon: const Icon(
               Icons.search,
               size: 26,
