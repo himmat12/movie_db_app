@@ -47,10 +47,12 @@ class MoviesCollectionList extends StatelessWidget {
                     ),
                   ),
                 )
-              : Column(
-                  children: [
-                    MovieList(movies: _detailsController.movieCollections),
-                  ],
+              : SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      MovieList(movies: _detailsController.movieCollections),
+                    ],
+                  ),
                 ),
         ),
       ),
