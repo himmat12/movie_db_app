@@ -86,13 +86,21 @@ class TvAboutTab extends StatelessWidget {
                 child: headerBuilder(headerText: "Episodes"),
               ),
               const SizedBox(height: 14),
-              EpisodeTile(
-                  headerText: 'Last Episode',
-                  episode: _detailsController.tvDetail.value.lastEpisodeToAir),
+              _detailsController.tvDetail.value.lastEpisodeToAir == null
+                  ? const SizedBox.shrink()
+                  : EpisodeTile(
+                      headerText: 'Last Episode',
+                      episode:
+                          _detailsController.tvDetail.value.lastEpisodeToAir ??
+                              EpisodeToAir()),
               const SizedBox(height: 8),
-              EpisodeTile(
-                  headerText: 'Next Episode',
-                  episode: _detailsController.tvDetail.value.nextEpisodeToAir),
+              _detailsController.tvDetail.value.nextEpisodeToAir == null
+                  ? const SizedBox.shrink()
+                  : EpisodeTile(
+                      headerText: 'Next Episode',
+                      episode:
+                          _detailsController.tvDetail.value.nextEpisodeToAir ??
+                              EpisodeToAir()),
             ],
           ),
           const SizedBox(height: 18),
