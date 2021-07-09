@@ -7,6 +7,7 @@ import 'package:movie_app/src/views/deatils/episode_details/episode_details.dart
 import 'package:movie_app/src/views/deatils/episode_details/guest_casts/episode_guest_stars_list.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/movie_deatils.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/movie_crew_page.dart';
+import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/collections_list.dart';
 import 'package:movie_app/src/views/deatils/people_details/people_details.dart';
 import 'package:movie_app/src/views/deatils/season_details/season_details.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_crew_page.dart';
@@ -58,6 +59,10 @@ class Routes {
       GetPage(
           name: '/authorization', page: () => const AuthorizeRequestToken()),
       GetPage(name: '/auth', page: () => const AuthPage()),
+      GetPage(
+          name: '/movie_collection_list',
+          page: () => MoviesCollectionList(
+              collectionId: Get.arguments['collection_id'])),
     ];
   }
 }
