@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/movie%20_list/movie_list.dart';
@@ -14,7 +13,6 @@ class MoviesCollectionList extends StatelessWidget {
   final String collectionId;
 
   final _detailsController = Get.find<DetailsController>();
-  final _resultsController = Get.find<ResultsController>();
 
   @override
   Widget build(BuildContext context) {
