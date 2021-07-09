@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -8,6 +9,7 @@ import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/components/crew_component.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
+import 'package:movie_app/src/views/deatils/components/media_component.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
 import 'package:movie_app/src/views/deatils/components/trailer_component.dart';
 import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/networks.dart';
@@ -16,6 +18,7 @@ import 'package:movie_app/src/views/deatils/tv_details/tabs/about/components/tv_
 class TvAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();
   final _resultsController = Get.find<ResultsController>();
+  final _configurationController = Get.find<ConfigurationController>();
 
   TvAboutTab({Key? key}) : super(key: key);
 
@@ -65,30 +68,6 @@ class TvAboutTab extends StatelessWidget {
             child: networkBuilder(
                 networks: _detailsController.tvDetail.value.networks ?? []),
           ),
-          const SizedBox(height: 28),
-
-          /// teasers & trailers
-          GetBuilder(
-            id: 'video_state',
-            init: _detailsController,
-            initState: (_) {
-              _detailsController.getOtherDetails(
-                  resultType: tvString,
-                  id: _resultsController.tvId,
-                  appendTo: videosString);
-            },
-            builder: (controller) {
-              return WidgetBuilderHelper(
-                state: _detailsController.videosState.value,
-                onLoadingBuilder: LoadingSpinner().horizontalLoading,
-                onSuccessBuilder:
-                    TrailerComponent(videos: _detailsController.videos.value),
-                onErrorBuilder: const Center(
-                  child: Text('error occured while loading data ...'),
-                ),
-              );
-            },
-          ),
           const SizedBox(height: 18),
 
           // featured crews
@@ -123,6 +102,63 @@ class TvAboutTab extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: tvInfoBuilder(tvDetails: _detailsController.tvDetail.value),
           ),
+          const SizedBox(height: 28),
+
+          /// teasers & trailers
+          GetBuilder(
+            id: 'video_state',
+            init: _detailsController,
+            initState: (_) {
+              _detailsController.getOtherDetails(
+                  resultType: tvString,
+                  id: _resultsController.tvId,
+                  appendTo: videosString);
+            },
+            builder: (controller) {
+              return WidgetBuilderHelper(
+                state: _detailsController.videosState.value,
+                onLoadingBuilder: LoadingSpinner().horizontalLoading,
+                onSuccessBuilder:
+                    TrailerComponent(videos: _detailsController.videos.value),
+                onErrorBuilder: const Center(
+                  child: Text('error occured while loading data ...'),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 28),
+
+          /// media
+          GetBuilder(
+            id: 'tv_media',
+            init: _detailsController,
+            initState: (state) {
+              _detailsController.getOtherDetails(
+                  resultType: tvString,
+                  id: _resultsController.tvId,
+                  appendTo: imagesString);
+            },
+            builder: (controller) => WidgetBuilderHelper(
+              state: _detailsController.imagesState.value,
+              onLoadingBuilder: LoadingSpinner().horizontalLoading,
+              onSuccessBuilder: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: MediaComponent(
+                  posterUrl:
+                      '${_configurationController.posterUrl}${_detailsController.tvDetail.value.posterPath}',
+                  backdropUrl:
+                      '${_configurationController.backDropUrl}${_detailsController.tvDetail.value.backdropPath}',
+                  posterTitle:
+                      '${_detailsController.images.value.posters == null ? 0 : _detailsController.images.value.posters!.length}\nPosters',
+                  backdropTitle:
+                      '${_detailsController.images.value.backdrops == null ? 0 : _detailsController.images.value.backdrops!.length}  Backdrops',
+                ),
+              ),
+              onErrorBuilder: const Center(
+                child: Text('error while loadong data ...'),
+              ),
+            ),
+          )
         ],
       ),
     );

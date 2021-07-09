@@ -232,7 +232,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               images.value = Images.fromJson(value);
               imagesState.value = ViewState.retrived;
-              update(['imageSlider']);
+              update(['imageSlider', 'movie_media']);
               // }
             });
             break;
@@ -349,7 +349,7 @@ class DetailsController extends BaseController {
               // if (value != null) {
               images.value = Images.fromJson(value);
               imagesState.value = ViewState.retrived;
-              update(['imageSlider']);
+              update(['imageSlider', 'tv_media']);
               // }
             });
             break;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/strings.dart';
+import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
@@ -8,6 +9,7 @@ import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/deatils/components/crew_component.dart';
 import 'package:movie_app/src/views/deatils/components/genre_component.dart';
 import 'package:movie_app/src/views/deatils/components/hide_show_btn.dart';
+import 'package:movie_app/src/views/deatils/components/media_component.dart';
 import 'package:movie_app/src/views/deatils/components/storyline_text.dart';
 import 'package:movie_app/src/views/deatils/components/trailer_component.dart';
 import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/belongs_to_collection.dart';
@@ -16,6 +18,7 @@ import 'package:movie_app/src/views/deatils/movie_deatils/tabs/about/components/
 class MovieAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();
   final _resultsController = Get.find<ResultsController>();
+  final _configurationController = Get.find<ConfigurationController>();
 
   MovieAboutTab({Key? key}) : super(key: key);
 
@@ -122,6 +125,8 @@ class MovieAboutTab extends StatelessWidget {
                   movieDetails: _detailsController.movieDetail.value),
             ),
             const SizedBox(height: 24),
+
+            ///belongs to collections
             _detailsController.movieDetail.value.belongsToCollection == null
                 ? const SizedBox.shrink()
                 : Padding(
@@ -130,6 +135,39 @@ class MovieAboutTab extends StatelessWidget {
                         collection: _detailsController
                             .movieDetail.value.belongsToCollection),
                   ),
+            const SizedBox(height: 28),
+
+            /// media
+            GetBuilder(
+              id: 'movie_media',
+              init: _detailsController,
+              initState: (state) {
+                _detailsController.getOtherDetails(
+                    resultType: movieString,
+                    id: _resultsController.movieId,
+                    appendTo: imagesString);
+              },
+              builder: (controller) => WidgetBuilderHelper(
+                state: _detailsController.imagesState.value,
+                onLoadingBuilder: LoadingSpinner().horizontalLoading,
+                onSuccessBuilder: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: MediaComponent(
+                    posterUrl:
+                        '${_configurationController.posterUrl}${_detailsController.movieDetail.value.posterPath}',
+                    backdropUrl:
+                        '${_configurationController.backDropUrl}${_detailsController.movieDetail.value.backdropPath}',
+                    posterTitle:
+                        '${_detailsController.images.value.posters == null ? 0 : _detailsController.images.value.posters!.length}\nPosters',
+                    backdropTitle:
+                        '${_detailsController.images.value.backdrops == null ? 0 : _detailsController.images.value.backdrops!.length}  Backdrops',
+                  ),
+                ),
+                onErrorBuilder: const Center(
+                  child: Text('error while loadong data ...'),
+                ),
+              ),
+            )
           ],
         ),
       ),
