@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
+import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
 
 class EpisodeTile extends StatelessWidget {
@@ -13,7 +15,7 @@ class EpisodeTile extends StatelessWidget {
       : super(key: key);
 
   final String? headerText;
-  final EpisodeToAir? episode;
+  final EpisodeToAir episode;
 
   final _detailsController = Get.find<DetailsController>();
   final _configurationController = Get.find<ConfigurationController>();
@@ -23,7 +25,7 @@ class EpisodeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     // EpisodeToAir? episode = _detailsController.tvDetail.value.lastEpisodeToAir;
     final String? airDate =
-        DateFormat.yMMMMd().format(episode!.airDate ?? DateTime(0000));
+        DateFormat.yMMMMd().format(episode.airDate ?? DateTime(0000));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,8 +44,8 @@ class EpisodeTile extends StatelessWidget {
           onTap: () {
             _seasonController
                 .setTvId(_detailsController.tvDetail.value.id ?? 0);
-            _seasonController.setSeasonNo(episode!.seasonNumber ?? 0);
-            _seasonController.setEpisodeNo(episode!.episodeNumber ?? 0);
+            _seasonController.setSeasonNo(episode.seasonNumber ?? 0);
+            _seasonController.setEpisodeNo(episode.episodeNumber ?? 0);
 
             Get.toNamed('/episode_details', preventDuplicates: false);
           },
@@ -57,31 +59,37 @@ class EpisodeTile extends StatelessWidget {
                     //  episode still image
                     ClipRRect(
                       borderRadius: BorderRadius.circular(4),
-                      child: episode!.stillPath == null
-                          ? CachedNetworkImage(
-                              width: 90,
-                              height: 64,
-                              imageUrl:
-                                  '${_configurationController.backDropUrl}${_detailsController.images.value.backdrops![0].filePath}',
-                              fit: BoxFit.cover,
-                              placeholder: (context, url) =>
-                                  Container(color: Colors.black26),
-                              errorWidget: (context, url, error) => Container(
-                                color: Colors.black38,
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.error_outline,
-                                    color: primaryWhite,
-                                    size: 34,
-                                  ),
-                                ),
-                              ),
+                      child: episode.stillPath == null
+                          ? Obx(
+                              () => _detailsController.imagesState.value ==
+                                      ViewState.busy
+                                  ? LoadingSpinner().fadingCircleSpinner
+                                  : CachedNetworkImage(
+                                      width: 90,
+                                      height: 64,
+                                      imageUrl:
+                                          '${_configurationController.backDropUrl}${_detailsController.images.value.backdrops![0].filePath}',
+                                      fit: BoxFit.cover,
+                                      placeholder: (context, url) =>
+                                          Container(color: Colors.black26),
+                                      errorWidget: (context, url, error) =>
+                                          Container(
+                                        color: Colors.black38,
+                                        child: const Center(
+                                          child: Icon(
+                                            Icons.error_outline,
+                                            color: primaryWhite,
+                                            size: 34,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                             )
                           : CachedNetworkImage(
                               width: 90,
                               height: 64,
                               imageUrl:
-                                  '${_configurationController.stillUrl}${episode!.stillPath}',
+                                  '${_configurationController.stillUrl}${episode.stillPath}',
                               fit: BoxFit.cover,
                               placeholder: (context, url) =>
                                   Container(color: Colors.black26),
@@ -109,7 +117,7 @@ class EpisodeTile extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
-                          'SE${episode!.seasonNumber.toString().padLeft(2, '0')} • EP${episode!.episodeNumber.toString().padLeft(2, '0')}',
+                          'SE${episode.seasonNumber.toString().padLeft(2, '0')} • EP${episode.episodeNumber.toString().padLeft(2, '0')}',
                           style: const TextStyle(
                             color: primaryWhite,
                             fontSize: n - 4,
@@ -126,18 +134,20 @@ class EpisodeTile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        episode!.name == ""
-                            ? 'Episode ${episode!.episodeNumber.toString().padLeft(2, '0')}'
-                            : episode!.name ?? "Episode",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: m - 4,
-                          color: primaryDarkBlue.withOpacity(0.7),
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
+                      episode == null
+                          ? const SizedBox.shrink()
+                          : Text(
+                              episode.name == ""
+                                  ? 'Episode ${episode.episodeNumber.toString().padLeft(2, '0')}'
+                                  : episode.name ?? "Episode",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: m - 4,
+                                color: primaryDarkBlue.withOpacity(0.7),
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                       Text(
                         '${airDate ?? 0}',
                         maxLines: 2,
