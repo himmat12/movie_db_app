@@ -142,7 +142,7 @@ class ListController extends BaseController {
   }
 
   // clear list
-  void clearList({required int listId}) async {
+  void clearList({required int? listId}) async {
     movieListState.value = ViewState.busy;
     await _service.clearList(listId: listId).then((value) {
       if (value['success'] == true) {
@@ -164,13 +164,24 @@ class ListController extends BaseController {
   }
 
   // delete list
-  void deleteList({required int listId}) async {
+  void deleteList({required int? listId}) async {
     movieListState.value = ViewState.busy;
     await _service.deleteList(listId: listId).then((value) {
       if (value['success'] == true) {
         Get.showSnackbar(
           GetBar(
             message: 'Collections list deleted successfuly ...',
+            isDismissible: true,
+            animationDuration: const Duration(milliseconds: 1200),
+            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            snackStyle: SnackStyle.GROUNDED,
+            backgroundColor: primaryDarkBlue,
+          ),
+        );
+      } else {
+        Get.showSnackbar(
+          GetBar(
+            message: '${value['status_message']}',
             isDismissible: true,
             animationDuration: const Duration(milliseconds: 1200),
             dismissDirection: SnackDismissDirection.HORIZONTAL,
