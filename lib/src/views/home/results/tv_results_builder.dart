@@ -82,10 +82,22 @@ Widget tvResultBuilder({
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => tvThumbnailCard(
-                            tv: getItem(resultType)![index],
-                            imageUrl:
-                                '$posterUrl${getItem(resultType)![index].posterPath}')),
+                        itemBuilder: (context, index) => getItem(
+                                            resultType)![index]
+                                        .posterPath ==
+                                    null ||
+                                getItem(resultType)![index].posterPath == ""
+                            ? AbsorbPointer(
+                                absorbing: true,
+                                child: tvThumbnailCard(
+                                    tv: getItem(resultType)![index],
+                                    imageUrl:
+                                        '$posterUrl${getItem(resultType)![index].posterPath}'),
+                              )
+                            : tvThumbnailCard(
+                                tv: getItem(resultType)![index],
+                                imageUrl:
+                                    '$posterUrl${getItem(resultType)![index].posterPath}')),
                     addMorePaginationBtn(
                         onTap: () {
                           _resultsController.loadMoreTvResults(

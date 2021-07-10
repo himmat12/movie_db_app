@@ -67,11 +67,25 @@ Widget trendingMoviesBuilder({
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => movieThumbnailCard(
-                            movie: _trendingResultsController
-                                .trendingMovies[index],
-                            imageUrl:
-                                '$posterUrl${_trendingResultsController.trendingMovies[index].posterPath}')),
+                        itemBuilder: (context, index) => _trendingResultsController
+                                        .trendingMovies[index].posterPath ==
+                                    null ||
+                                _trendingResultsController
+                                        .trendingMovies[index].posterPath ==
+                                    null
+                            ? AbsorbPointer(
+                                absorbing: true,
+                                child: movieThumbnailCard(
+                                    movie: _trendingResultsController
+                                        .trendingMovies[index],
+                                    imageUrl:
+                                        '$posterUrl${_trendingResultsController.trendingMovies[index].posterPath}'),
+                              )
+                            : movieThumbnailCard(
+                                movie: _trendingResultsController
+                                    .trendingMovies[index],
+                                imageUrl:
+                                    '$posterUrl${_trendingResultsController.trendingMovies[index].posterPath}')),
                     addMorePaginationBtn(
                         onTap: () {
                           _trendingResultsController

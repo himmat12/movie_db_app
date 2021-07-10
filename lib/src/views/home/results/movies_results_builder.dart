@@ -85,10 +85,22 @@ Widget movieResultBuilder({
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => movieThumbnailCard(
-                            movie: getItem(resultType)![index],
-                            imageUrl:
-                                '$posterUrl${getItem(resultType)![index].posterPath}')),
+                        itemBuilder: (context, index) => getItem(
+                                            resultType)![index]
+                                        .posterPath ==
+                                    null ||
+                                getItem(resultType)![index].posterPath == ""
+                            ? AbsorbPointer(
+                                absorbing: true,
+                                child: movieThumbnailCard(
+                                    movie: getItem(resultType)![index],
+                                    imageUrl:
+                                        '$posterUrl${getItem(resultType)![index].posterPath}'),
+                              )
+                            : movieThumbnailCard(
+                                movie: getItem(resultType)![index],
+                                imageUrl:
+                                    '$posterUrl${getItem(resultType)![index].posterPath}')),
                     addMorePaginationBtn(
                         onTap: () {
                           _resultsController.loadMoreMoviesResults(

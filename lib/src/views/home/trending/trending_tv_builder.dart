@@ -66,10 +66,25 @@ Widget trendingTvBuilder({
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => tvThumbnailCard(
-                            tv: _trendingResultsController.trendingTVs[index],
-                            imageUrl:
-                                '$posterUrl${_trendingResultsController.trendingTVs[index].posterPath}')),
+                        itemBuilder: (context, index) => _trendingResultsController
+                                        .trendingTVs[index].posterPath ==
+                                    null ||
+                                _trendingResultsController
+                                        .trendingTVs[index].posterPath ==
+                                    ""
+                            ? AbsorbPointer(
+                                absorbing: true,
+                                child: tvThumbnailCard(
+                                    tv: _trendingResultsController
+                                        .trendingTVs[index],
+                                    imageUrl:
+                                        '$posterUrl${_trendingResultsController.trendingTVs[index].posterPath}'),
+                              )
+                            : tvThumbnailCard(
+                                tv: _trendingResultsController
+                                    .trendingTVs[index],
+                                imageUrl:
+                                    '$posterUrl${_trendingResultsController.trendingTVs[index].posterPath}')),
                     addMorePaginationBtn(
                         onTap: () {
                           _trendingResultsController.loadMoreTrendingTvResults(
