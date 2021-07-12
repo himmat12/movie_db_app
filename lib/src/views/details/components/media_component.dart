@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/views/details/components/header_text.dart';
 
@@ -41,7 +42,9 @@ class MediaComponent extends StatelessWidget {
                       ),
                     )
                   : imageHelper(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/poster_viewer');
+                      },
                       height: 136,
                       url: posterUrl,
                       title: posterTitle,
@@ -64,7 +67,9 @@ class MediaComponent extends StatelessWidget {
                       ),
                     )
                   : imageHelper(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed('/backdrops_viewer');
+                      },
                       height: 136,
                       url: backdropUrl,
                       title: backdropTitle,

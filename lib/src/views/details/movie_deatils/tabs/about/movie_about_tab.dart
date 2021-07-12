@@ -66,30 +66,6 @@ class MovieAboutTab extends StatelessWidget {
             ),
             const SizedBox(height: 28),
 
-            /// teasers & trailers
-            GetBuilder(
-              id: 'video_state',
-              init: _detailsController,
-              initState: (_) {
-                _detailsController.getOtherDetails(
-                    resultType: movieString,
-                    id: _resultsController.movieId,
-                    appendTo: videosString);
-              },
-              builder: (controller) {
-                return WidgetBuilderHelper(
-                  state: _detailsController.videosState.value,
-                  onLoadingBuilder: LoadingSpinner().horizontalLoading,
-                  onSuccessBuilder:
-                      TrailerComponent(videos: _detailsController.videos.value),
-                  onErrorBuilder: const Center(
-                    child: Text('error occured while loading data ...'),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(height: 18),
-
             ///featured crews
             GetBuilder(
               id: 'movie_crews',
@@ -136,6 +112,30 @@ class MovieAboutTab extends StatelessWidget {
                             .movieDetail.value.belongsToCollection),
                   ),
             const SizedBox(height: 28),
+
+            /// teasers & trailers
+            GetBuilder(
+              id: 'video_state',
+              init: _detailsController,
+              initState: (_) {
+                _detailsController.getOtherDetails(
+                    resultType: movieString,
+                    id: _resultsController.movieId,
+                    appendTo: videosString);
+              },
+              builder: (controller) {
+                return WidgetBuilderHelper(
+                  state: _detailsController.videosState.value,
+                  onLoadingBuilder: LoadingSpinner().horizontalLoading,
+                  onSuccessBuilder:
+                      TrailerComponent(videos: _detailsController.videos.value),
+                  onErrorBuilder: const Center(
+                    child: Text('error occured while loading data ...'),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 18),
 
             /// media
             GetBuilder(

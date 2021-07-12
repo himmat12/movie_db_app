@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/views/auth/auth_page.dart';
 import 'package:movie_app/src/views/auth/components/webview_request_authorization.dart';
 import 'package:movie_app/src/views/dashboard/dashboard.dart';
+import 'package:movie_app/src/views/details/components/backdrops_viewer.dart';
+import 'package:movie_app/src/views/details/components/poster_viewer.dart';
 import 'package:movie_app/src/views/details/episode_details/episode_crew/episode_crew_page.dart';
 import 'package:movie_app/src/views/details/episode_details/episode_details.dart';
 import 'package:movie_app/src/views/details/episode_details/guest_casts/episode_guest_stars_list.dart';
@@ -63,6 +65,8 @@ class Routes {
           name: '/movie_collection_list',
           page: () => MoviesCollectionList(
               collectionId: Get.arguments['collection_id'])),
+      GetPage(name: '/poster_viewer', page: () => const PosterViewer()),
+      GetPage(name: '/backdrops_viewer', page: () => const BackdropsViewer()),
     ];
   }
 }
