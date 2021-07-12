@@ -28,9 +28,11 @@ Widget networkBuilder({required List<Network> networks}) {
                 color: primaryDarkBlue.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: _configurationController.logoUrl.isEmpty ||
-                      _configurationController.logoUrl == ""
-                  ? const SizedBox.shrink()
+              child: e.logoPath == null || e.logoPath == ""
+                  ? const SizedBox(
+                      height: 40,
+                      width: 40,
+                    )
                   : CachedNetworkImage(
                       height: 40,
                       width: 40,

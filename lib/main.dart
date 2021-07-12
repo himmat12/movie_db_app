@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:movie_app/init_bindings.dart';
@@ -13,6 +14,8 @@ void main() async {
   // get storage initialization
   await GetStorage.init('auth');
   await GetStorage.init('prefs');
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   // service locator initialization
   setUp();

@@ -79,25 +79,38 @@ class SeasonsTab extends StatelessWidget with AvatarBuilderMixin {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(4),
                       child: season.posterPath == null
-                          ? CachedNetworkImage(
-                              width: 64,
-                              height: 90,
-                              imageUrl:
-                                  '${_configurationController.posterUrl}${_detailsController.tvDetail.value.posterPath}',
-                              fit: BoxFit.cover,
-                              placeholder: (context, url) =>
-                                  Container(color: Colors.black26),
-                              errorWidget: (context, url, error) => Container(
-                                color: Colors.black38,
-                                child: const Center(
-                                  child: Icon(
+                          ? _detailsController.tvDetail.value.posterPath == null
+                              ? Container(
+                                  alignment: Alignment.center,
+                                  width: 64,
+                                  height: 90,
+                                  color: Colors.black12,
+                                  child: const Icon(
                                     Icons.error_outline,
                                     color: primaryWhite,
                                     size: 34,
                                   ),
-                                ),
-                              ),
-                            )
+                                )
+                              : CachedNetworkImage(
+                                  width: 64,
+                                  height: 90,
+                                  imageUrl:
+                                      '${_configurationController.posterUrl}${_detailsController.tvDetail.value.posterPath}',
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) =>
+                                      Container(color: Colors.black26),
+                                  errorWidget: (context, url, error) =>
+                                      Container(
+                                    color: Colors.black38,
+                                    child: const Center(
+                                      child: Icon(
+                                        Icons.error_outline,
+                                        color: primaryWhite,
+                                        size: 34,
+                                      ),
+                                    ),
+                                  ),
+                                )
                           : CachedNetworkImage(
                               width: 64,
                               height: 90,

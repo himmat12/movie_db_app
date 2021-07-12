@@ -52,6 +52,10 @@ class DetailsController extends BaseController {
   var rateValue = 0.0.obs;
   var rateQuote = ''.obs;
 
+  var mediaPageCount = 1.obs;
+
+  void setMediaPageCount(int count) => mediaPageCount.value = count;
+
   // set / reset rate value
   void setRateValue(double value) =>
       rateValue.value = value < 0.5 ? 0.5 : value;

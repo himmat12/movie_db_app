@@ -8,6 +8,11 @@ class LoadingSpinner {
     color: primaryDarkBlue,
   );
 
+  SpinKitFadingCircle miniFadingCircleSpinner = const SpinKitFadingCircle(
+    size: 22,
+    color: primaryWhite,
+  );
+
   SpinKitThreeBounce horizontalLoading = const SpinKitThreeBounce(
     size: 14,
     color: primaryblue,

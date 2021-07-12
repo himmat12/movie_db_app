@@ -64,26 +64,43 @@ class EpisodeTile extends StatelessWidget {
                               () => _detailsController.imagesState.value ==
                                       ViewState.busy
                                   ? LoadingSpinner().fadingCircleSpinner
-                                  : CachedNetworkImage(
-                                      width: 90,
-                                      height: 64,
-                                      imageUrl:
-                                          '${_configurationController.backDropUrl}${_detailsController.images.value.backdrops![0].filePath}',
-                                      fit: BoxFit.cover,
-                                      placeholder: (context, url) =>
-                                          Container(color: Colors.black26),
-                                      errorWidget: (context, url, error) =>
-                                          Container(
-                                        color: Colors.black38,
-                                        child: const Center(
-                                          child: Icon(
+                                  : _detailsController.tvDetail.value
+                                                  .backdropPath ==
+                                              null ||
+                                          _detailsController.tvDetail.value
+                                                  .backdropPath ==
+                                              ""
+                                      ? Container(
+                                          alignment: Alignment.center,
+                                          width: 90,
+                                          height: 64,
+                                          color: Colors.black12,
+                                          child: const Icon(
                                             Icons.error_outline,
                                             color: primaryWhite,
                                             size: 34,
                                           ),
+                                        )
+                                      : CachedNetworkImage(
+                                          width: 90,
+                                          height: 64,
+                                          imageUrl:
+                                              '${_configurationController.backDropUrl}${_detailsController.tvDetail.value.backdropPath}',
+                                          fit: BoxFit.cover,
+                                          placeholder: (context, url) =>
+                                              Container(color: Colors.black26),
+                                          errorWidget: (context, url, error) =>
+                                              Container(
+                                            color: Colors.black38,
+                                            child: const Center(
+                                              child: Icon(
+                                                Icons.error_outline,
+                                                color: primaryWhite,
+                                                size: 34,
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
                             )
                           : CachedNetworkImage(
                               width: 90,
