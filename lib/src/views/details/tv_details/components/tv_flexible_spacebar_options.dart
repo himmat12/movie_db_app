@@ -19,11 +19,13 @@ Widget tvFlexibleSpacebarOptions({required DetailsController controller}) {
     id: 'account_state',
     init: _detailsController,
     initState: (_) {
-      _detailsController.getOtherDetails(
-        resultType: tvString,
-        id: '${_detailsController.tvDetail.value.id}',
-        appendTo: accountStateString,
-      );
+      Auth().isGuestLoggedIn == true
+          ? null
+          : _detailsController.getOtherDetails(
+              resultType: tvString,
+              id: '${_detailsController.tvDetail.value.id}',
+              appendTo: accountStateString,
+            );
     },
     builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.accountstateState.value,

@@ -20,11 +20,13 @@ Widget movieFlexibleSpacebarOptions() {
     id: 'account_state',
     init: _detailsController,
     initState: (_) {
-      _detailsController.getOtherDetails(
-        resultType: movieString,
-        id: '${_detailsController.movieDetail.value.id}',
-        appendTo: accountStateString,
-      );
+      Auth().isGuestLoggedIn == true
+          ? null
+          : _detailsController.getOtherDetails(
+              resultType: movieString,
+              id: '${_detailsController.movieDetail.value.id}',
+              appendTo: accountStateString,
+            );
     },
     builder: (controller) => WidgetBuilderHelper(
         state: _detailsController.accountstateState.value,

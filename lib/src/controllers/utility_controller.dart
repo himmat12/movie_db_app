@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/utils/preferences.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UtilityController extends BaseController {
@@ -14,6 +16,18 @@ class UtilityController extends BaseController {
     resetSeasonTabbarState();
     resetEpisodeTabbarState();
     super.onInit();
+  }
+
+  // set orientation to landscape/portrait
+  void setLandscapeOrientation() => SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+
+  void setDefaultOrientation() =>
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+// share medias
+  void shareIt(String? text) {
+    Share.share(text ?? 'Hello world');
   }
 
 // bottom navigation state

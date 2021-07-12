@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ],
                 ),
               ),
-              Auth().isLoggedIn == true
+              Auth().isLoggedIn == true || Auth().isGuestLoggedIn == true
                   ? const SizedBox.shrink()
                   : Positioned(
                       bottom: 30,
