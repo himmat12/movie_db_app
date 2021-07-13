@@ -72,7 +72,7 @@ Widget trendingMoviesBuilder({
                                     null ||
                                 _trendingResultsController
                                         .trendingMovies[index].posterPath ==
-                                    null
+                                    ""
                             ? AbsorbPointer(
                                 absorbing: true,
                                 child: movieThumbnailCard(

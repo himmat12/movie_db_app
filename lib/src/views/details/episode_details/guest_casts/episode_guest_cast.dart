@@ -71,6 +71,17 @@ class GuestCasts extends StatelessWidget {
                                       width: 94,
                                       height: 130,
                                       fit: BoxFit.fill,
+                                      errorWidget: (context, url, error) =>
+                                          Container(
+                                        alignment: Alignment.center,
+                                        decoration: const BoxDecoration(
+                                          color: Colors.black12,
+                                        ),
+                                        child: const Icon(
+                                          Icons.error,
+                                          color: primaryWhite,
+                                        ),
+                                      ),
                                       imageUrl:
                                           '${_configurationController.posterUrl}${e.profilePath}',
                                       placeholder: (context, url) => Container(

@@ -56,6 +56,16 @@ class TrailerComponent extends StatelessWidget {
                                 fit: BoxFit.fill,
                                 placeholder: (context, url) =>
                                     Container(color: Colors.black12),
+                                errorWidget: (context, url, error) => Container(
+                                  alignment: Alignment.center,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.black12,
+                                  ),
+                                  child: const Icon(
+                                    Icons.error,
+                                    color: primaryWhite,
+                                  ),
+                                ),
                                 imageUrl:
                                     '$youtubeThumbnailString/${videos.results![index].key}$mqQualityString',
                               ),

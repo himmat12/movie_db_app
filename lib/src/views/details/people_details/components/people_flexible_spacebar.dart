@@ -57,6 +57,16 @@ Widget peopleFlexibleSpacebarComponent({
                               width: 104,
                               height: 104,
                               fit: BoxFit.cover,
+                              errorWidget: (context, url, error) => Container(
+                                alignment: Alignment.center,
+                                decoration: const BoxDecoration(
+                                  color: Colors.black12,
+                                ),
+                                child: const Icon(
+                                  Icons.error,
+                                  color: primaryWhite,
+                                ),
+                              ),
                               imageUrl:
                                   '${_configController.profileUrl}${people.profilePath}',
                               placeholder: (context, url) => Container(

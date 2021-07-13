@@ -87,12 +87,30 @@ class HomeTrendingTvList extends StatelessWidget with AvatarBuilderMixin {
                           crossAxisSpacing: 12,
                           mainAxisExtent: 186,
                         ),
-                        itemBuilder: (context, index) => tvThumbnailCard(
-                          padding: const EdgeInsets.all(0),
-                          tv: _trendingResultsController.trendingTVs[index],
-                          imageUrl:
-                              '${_configurationController.posterUrl}${_trendingResultsController.trendingTVs[index].posterPath}',
-                        ),
+                        itemBuilder: (context, index) =>
+                            _trendingResultsController
+                                            .trendingTVs[index].posterPath !=
+                                        null ||
+                                    _trendingResultsController
+                                            .trendingTVs[index].posterPath !=
+                                        ""
+                                ? tvThumbnailCard(
+                                    padding: const EdgeInsets.all(0),
+                                    tv: _trendingResultsController
+                                        .trendingTVs[index],
+                                    imageUrl:
+                                        '${_configurationController.posterUrl}${_trendingResultsController.trendingTVs[index].posterPath}',
+                                  )
+                                : AbsorbPointer(
+                                    absorbing: true,
+                                    child: tvThumbnailCard(
+                                      padding: const EdgeInsets.all(0),
+                                      tv: _trendingResultsController
+                                          .trendingTVs[index],
+                                      imageUrl:
+                                          '${_configurationController.posterUrl}${_trendingResultsController.trendingTVs[index].posterPath}',
+                                    ),
+                                  ),
                       ),
                       onErrorBuilder: const Center(
                         child: Text('error while loading data ...'),
