@@ -12,6 +12,7 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/details/tv_details_model.dart';
+import 'package:movie_app/src/views/details/components/poster_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 Widget tvFlexibleSpacebarComponent({
@@ -158,40 +159,43 @@ Widget tvFlexibleSpacebarComponent({
                 children: [
                   // poster
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: tv.posterPath == null
-                        ? Container(
-                            alignment: Alignment.center,
-                            width: 94,
-                            height: 140,
-                            color: Colors.black12,
-                            child: const Icon(
-                              Icons.error_outline,
-                              color: primaryWhite,
-                              size: 34,
-                            ),
-                          )
-                        : CachedNetworkImage(
-                            width: 94,
-                            height: 140,
-                            fit: BoxFit.fill,
-                            errorWidget: (context, url, error) => Container(
+                      borderRadius: BorderRadius.circular(4),
+                      child: tv.posterPath == null
+                          ? Container(
                               alignment: Alignment.center,
-                              decoration: const BoxDecoration(
-                                color: Colors.black12,
-                              ),
-                              child: const Icon(
-                                Icons.error,
-                                color: primaryWhite,
-                              ),
-                            ),
-                            imageUrl:
-                                '${_configController.posterUrl}${tv.posterPath}',
-                            placeholder: (context, url) => Container(
+                              width: 94,
+                              height: 140,
                               color: Colors.black12,
-                            ),
-                          ),
-                  ),
+                              child: const Icon(
+                                Icons.error_outline,
+                                color: primaryWhite,
+                                size: 34,
+                              ),
+                            )
+                          : posterCard(
+                              imageUrl:
+                                  '${_configController.posterUrl}${tv.posterPath}')
+                      //  CachedNetworkImage(
+                      //     width: 94,
+                      //     height: 140,
+                      //     fit: BoxFit.fill,
+                      //     errorWidget: (context, url, error) => Container(
+                      //       alignment: Alignment.center,
+                      //       decoration: const BoxDecoration(
+                      //         color: Colors.black12,
+                      //       ),
+                      //       child: const Icon(
+                      //         Icons.error,
+                      //         color: primaryWhite,
+                      //       ),
+                      //     ),
+                      //     imageUrl:
+                      //         '${_configController.posterUrl}${tv.posterPath}',
+                      //     placeholder: (context, url) => Container(
+                      //       color: Colors.black12,
+                      //     ),
+                      //   ),
+                      ),
                   const SizedBox(width: 16),
                   //  titles
                   Expanded(
