@@ -104,22 +104,6 @@ Widget movieFlexibleSpacebarComponent({
                             return BackdropCard(
                                 imageUrl:
                                     '${_configController.backDropUrl}${_detailsController.images.value.backdrops![index].filePath}');
-                            // CachedNetworkImage(
-                            //   fit: BoxFit.cover,
-                            //   imageUrl:
-                            //       '${_configController.backDropUrl}${_detailsController.images.value.backdrops![index].filePath}',
-                            //   errorWidget: (context, url, error) => Container(
-                            //     alignment: Alignment.center,
-                            //     // width: 94,
-                            //     // height: 140,
-                            //     color: Colors.black12,
-                            //     child: const Icon(
-                            //       Icons.error_outline,
-                            //       color: primaryWhite,
-                            //       size: 34,
-                            //     ),
-                            //   ),
-                            // );
                           },
                         ),
                       ),

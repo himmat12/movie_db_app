@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -10,6 +9,7 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/details/season_details_model.dart';
+import 'package:movie_app/src/views/details/components/backdrop_card.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -97,22 +97,9 @@ Widget episodeFlexibleSpacebarComponent({
                           controller: PageController(),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return CachedNetworkImage(
-                              fit: BoxFit.cover,
-                              imageUrl:
-                                  '${_configController.stillUrl}${_seasonController.episodeModel.value.images!.stills![index].filePath}',
-                              errorWidget: (context, url, error) => Container(
-                                alignment: Alignment.center,
-                                // width: 94,
-                                // height: 140,
-                                color: Colors.black12,
-                                child: const Icon(
-                                  Icons.error_outline,
-                                  color: primaryWhite,
-                                  size: 34,
-                                ),
-                              ),
-                            );
+                            return BackdropCard(
+                                imageUrl:
+                                    '${_configController.stillUrl}${_seasonController.episodeModel.value.images!.stills![index].filePath}');
                           },
                         ),
                       ),
@@ -120,6 +107,8 @@ Widget episodeFlexibleSpacebarComponent({
                   ),
                 ),
                 // ),
+
+                // img slider indicator
                 _seasonController.episodeModel.value.images!.stills == null ||
                         _seasonController
                             .episodeModel.value.images!.stills!.isEmpty
