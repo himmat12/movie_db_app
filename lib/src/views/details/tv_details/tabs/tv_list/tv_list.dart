@@ -29,12 +29,22 @@ class TvList extends StatelessWidget with AvatarBuilderMixin {
             crossAxisSpacing: 12,
             mainAxisExtent: 186,
           ),
-          itemBuilder: (context, index) => tvThumbnailCard(
-            padding: const EdgeInsets.all(0),
-            tv: tv[index],
-            imageUrl:
-                '${_configurationController.posterUrl}${tv[index].posterPath}',
-          ),
+          itemBuilder: (context, index) => tv.isNotEmpty == true
+              ? tvThumbnailCard(
+                  padding: const EdgeInsets.all(0),
+                  tv: tv[index],
+                  imageUrl:
+                      '${_configurationController.posterUrl}${tv[index].posterPath}',
+                )
+              : AbsorbPointer(
+                  absorbing: true,
+                  child: tvThumbnailCard(
+                    padding: const EdgeInsets.all(0),
+                    tv: tv[index],
+                    imageUrl:
+                        '${_configurationController.posterUrl}${tv[index].posterPath}',
+                  ),
+                ),
         ),
       ],
     );

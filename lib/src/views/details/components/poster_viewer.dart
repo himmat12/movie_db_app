@@ -65,6 +65,16 @@ class _PosterViewerState extends State<PosterViewer> {
                         () => CachedNetworkImage(
                           height: MediaQuery.of(context).size.height,
                           width: MediaQuery.of(context).size.width,
+                          errorWidget: (context, url, error) => Container(
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(
+                              color: Colors.black12,
+                            ),
+                            child: const Icon(
+                              Icons.error,
+                              color: primaryWhite,
+                            ),
+                          ),
                           imageUrl:
                               'https://image.tmdb.org/t/p/original/${_detailsController.images.value.posters![index].filePath}',
                           placeholder: (context, url) =>

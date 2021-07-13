@@ -93,12 +93,24 @@ class HomeTvResultList extends StatelessWidget with LoadingSpinnerMixin {
                           crossAxisSpacing: 12,
                           mainAxisExtent: 186,
                         ),
-                        itemBuilder: (context, index) => tvThumbnailCard(
-                          padding: const EdgeInsets.all(0),
-                          tv: getItem(resultType)![index],
-                          imageUrl:
-                              '${_configurationController.posterUrl}${getItem(resultType)![index].posterPath}',
-                        ),
+                        itemBuilder: (context, index) =>
+                            getItem(resultType)![index].posterPath != null ||
+                                    getItem(resultType)![index].posterPath != ""
+                                ? tvThumbnailCard(
+                                    padding: const EdgeInsets.all(0),
+                                    tv: getItem(resultType)![index],
+                                    imageUrl:
+                                        '${_configurationController.posterUrl}${getItem(resultType)![index].posterPath}',
+                                  )
+                                : AbsorbPointer(
+                                    absorbing: true,
+                                    child: tvThumbnailCard(
+                                      padding: const EdgeInsets.all(0),
+                                      tv: getItem(resultType)![index],
+                                      imageUrl:
+                                          '${_configurationController.posterUrl}${getItem(resultType)![index].posterPath}',
+                                    ),
+                                  ),
                       ),
                       onErrorBuilder: const Center(
                         child: Text('error while loading data ...'),

@@ -27,6 +27,16 @@ Widget posterCard({required String? imageUrl}) {
               width: 94,
               height: 140,
               fit: BoxFit.fill,
+              errorWidget: (context, url, error) => Container(
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  color: Colors.black12,
+                ),
+                child: const Icon(
+                  Icons.error,
+                  color: primaryWhite,
+                ),
+              ),
               imageUrl: '${_configurationController.posterUrl}$imageUrl',
               placeholder: (context, url) => Container(
                 color: Colors.black12,

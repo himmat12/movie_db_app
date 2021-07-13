@@ -88,13 +88,30 @@ class HomeTrendingMovieList extends StatelessWidget with LoadingSpinnerMixin {
                           crossAxisSpacing: 12,
                           mainAxisExtent: 186,
                         ),
-                        itemBuilder: (context, index) => movieThumbnailCard(
-                          padding: const EdgeInsets.all(0),
-                          movie:
-                              _trendingResultsController.trendingMovies[index],
-                          imageUrl:
-                              '${_configurationController.posterUrl}${_trendingResultsController.trendingMovies[index].posterPath}',
-                        ),
+                        itemBuilder: (context, index) =>
+                            _trendingResultsController
+                                            .trendingMovies[index].posterPath !=
+                                        null ||
+                                    _trendingResultsController
+                                            .trendingMovies[index].posterPath !=
+                                        ""
+                                ? movieThumbnailCard(
+                                    padding: const EdgeInsets.all(0),
+                                    movie: _trendingResultsController
+                                        .trendingMovies[index],
+                                    imageUrl:
+                                        '${_configurationController.posterUrl}${_trendingResultsController.trendingMovies[index].posterPath}',
+                                  )
+                                : AbsorbPointer(
+                                    absorbing: true,
+                                    child: movieThumbnailCard(
+                                      padding: const EdgeInsets.all(0),
+                                      movie: _trendingResultsController
+                                          .trendingMovies[index],
+                                      imageUrl:
+                                          '${_configurationController.posterUrl}${_trendingResultsController.trendingMovies[index].posterPath}',
+                                    ),
+                                  ),
                       ),
                       onErrorBuilder: const Center(
                         child: Text('error while loading data ...'),

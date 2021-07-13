@@ -37,6 +37,16 @@ Widget networkBuilder({required List<Network> networks}) {
                       height: 40,
                       width: 40,
                       fit: BoxFit.scaleDown,
+                      errorWidget: (context, url, error) => Container(
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(
+                              color: Colors.black12,
+                            ),
+                            child: const Icon(
+                              Icons.error,
+                              color: primaryWhite,
+                            ),
+                          ),
                       imageUrl:
                           '${_configurationController.logoUrl}${e.logoPath}'),
             ),
