@@ -8,7 +8,6 @@ import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/details/components/crew_component.dart';
 import 'package:movie_app/src/views/details/components/genre_component.dart';
-import 'package:movie_app/src/views/details/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/details/components/media_component.dart';
 import 'package:movie_app/src/views/details/components/storyline_text.dart';
 import 'package:movie_app/src/views/details/components/trailer_component.dart';
@@ -47,14 +46,9 @@ class MovieAboutTab extends StatelessWidget {
             ///story line
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  storylineTextBuilder(
-                      text: _detailsController.movieDetail.value.overview ??
-                          "storyline"),
-                  toggleHideShowBtn(),
-                ],
-              ),
+              child: storylineTextBuilder(
+                  text: _detailsController.movieDetail.value.overview ??
+                      "no storyline at the moment"),
             ),
             const SizedBox(height: 12),
 

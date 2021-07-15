@@ -27,16 +27,7 @@ class TvSearchList extends StatelessWidget {
                 onErrorBuilder: const Center(
                   child: Text('error while loading data ...'),
                 ),
-                onSuccessBuilder:
-                    //  ListView.builder(
-                    //   shrinkWrap: true,
-                    //   physics: const NeverScrollableScrollPhysics(),
-                    //   itemCount: _searchController.movieSearchResults.length,
-                    //   itemBuilder: (context, index) => Text(
-                    //       _searchController.movieSearchResults[index].title ??
-                    //           "title"),
-                    // )
-                    Column(
+                onSuccessBuilder: Column(
                   children: [
                     TvList(tv: _searchController.tvSearchResults),
                   ],

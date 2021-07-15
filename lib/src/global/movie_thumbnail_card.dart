@@ -10,10 +10,12 @@ Widget movieThumbnailCard({
   required String imageUrl,
   EdgeInsetsGeometry? padding,
   void Function()? onTap,
+  void Function()? onLongPress,
 }) {
   final _resultController = Get.find<ResultsController>();
 
   return GestureDetector(
+    onLongPress: onLongPress,
     onTap: () {
       // _resultController.setMovie(movie);
       _resultController.setMovieId('${movie.id!}');
@@ -79,7 +81,7 @@ Widget movieThumbnailCard({
 
           // movie title and option
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -96,14 +98,14 @@ Widget movieThumbnailCard({
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: onTap,
-                  child: const Icon(
-                    Icons.more_vert,
-                    color: primaryDarkBlue,
-                    size: 18,
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: onTap,
+                //   child: const Icon(
+                //     Icons.more_vert,
+                //     color: primaryDarkBlue,
+                //     size: 18,
+                //   ),
+                // ),
               ],
             ),
           ),
