@@ -9,6 +9,7 @@ Widget movieThumbnailCard({
   required MovieResultModel movie,
   required String imageUrl,
   EdgeInsetsGeometry? padding,
+  void Function()? onTap,
 }) {
   final _resultController = Get.find<ResultsController>();
 
@@ -96,10 +97,7 @@ Widget movieThumbnailCard({
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {
-                    // ignore: avoid_print
-                    print('options bottom sheet ...');
-                  },
+                  onTap: onTap,
                   child: const Icon(
                     Icons.more_vert,
                     color: primaryDarkBlue,

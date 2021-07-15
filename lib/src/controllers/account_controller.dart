@@ -83,6 +83,7 @@ class AccountController extends BaseController {
       }
     });
     watchlistState.value = ViewState.retrived;
+    update(['tv_watchlist', 'movie_watchlist']);
   }
 
   // get movie/tv watchlist
@@ -94,16 +95,19 @@ class AccountController extends BaseController {
         case moviesString:
           movieWatchlist = RxList.from(
               (value as List).map((e) => MovieResultModel.fromJson(e)));
+          watchlistState.value = ViewState.retrived;
+          update(['movie_watchlist']);
           break;
         case tvString:
           tvWatchlist = RxList.from(
               (value as List).map((e) => TvResultsModel.fromJson(e)));
+          watchlistState.value = ViewState.retrived;
+          update(['tv_watchlist']);
           break;
         default:
           break;
       }
     });
-    watchlistState.value = ViewState.busy;
   }
 
   // add / remove favorites
@@ -172,6 +176,6 @@ class AccountController extends BaseController {
           break;
       }
     });
-    favoriteState.value = ViewState.busy;
+    favoriteState.value = ViewState.retrived;
   }
 }
