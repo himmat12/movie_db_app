@@ -8,6 +8,7 @@ import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/models/results/movie_result_model.dart';
 import 'package:movie_app/src/models/results/tv_result_model.dart';
 import 'package:movie_app/src/services/account_service.dart';
+import 'package:movie_app/src/utils/auth.dart';
 
 class AccountController extends BaseController {
   final _service = sl<AccountService>();
@@ -27,7 +28,13 @@ class AccountController extends BaseController {
 
 // get account details
   void getAccountDetails() async {
-    await _service.getAccountDetails();
+    await _service.getAccountDetails().then((value) {
+      Auth().setUsername(usename: value['username']);
+      Auth().setUserAvatar(url: value['avatar']['tmdb']['avatar_path']);
+      Auth().setUserAvatar(url: value['avatar']['gravatar']['hash']);
+    });
+
+    print(Auth().username);
   }
 
   // add / remove watchlist

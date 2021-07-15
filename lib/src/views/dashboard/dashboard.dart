@@ -6,6 +6,7 @@ import 'package:movie_app/src/configs/strings.dart';
 import 'package:movie_app/src/controllers/auth_v3_controller.dart';
 import 'package:movie_app/src/controllers/configuration_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/search_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
@@ -25,6 +26,7 @@ class DashboardPage extends StatelessWidget {
   // final _seasonController = Get.find<SeasonController>();
   // final _detailsController = Get.find<DetailsController>();
   final _authV3Controller = Get.find<AuthV3Controller>();
+  final _searchController = Get.find<SearchController>();
 
   DashboardPage({Key? key}) : super(key: key);
 
@@ -45,12 +47,13 @@ class DashboardPage extends StatelessWidget {
             TextButton(
               onPressed: () {
                 _authV3Controller.logoutV3();
+                _searchController.clearSearchHistory();
               },
               child: const Text('Logout'),
             ),
             TextButton(
               onPressed: () {
-                exit(1);
+                exit(0);
               },
               child: const Text('Exit'),
             ),

@@ -64,11 +64,18 @@ class UtilityController extends BaseController {
   final _peopleTabbarCurrentIndex = 0.obs;
   final _seasonTabbarCurrentIndex = 0.obs;
   final _episodeTabbarCurrentIndex = 0.obs;
+  final _searchTabbarCurrentIndex = 0.obs;
 
   int get tabbarCurrentIndex => _tabbarCurrentIndex.value;
   int get peopleTabbarCurrentIndex => _peopleTabbarCurrentIndex.value;
   int get seasonTabbarCurrentIndex => _seasonTabbarCurrentIndex.value;
   int get episodeTabbarCurrentIndex => _episodeTabbarCurrentIndex.value;
+  int get searchTabbarCurrentIndex => _searchTabbarCurrentIndex.value;
+
+  void setSearchTabbarIndex(int newIndex) {
+    _searchTabbarCurrentIndex.value = newIndex;
+    update(['searchTabBar', 'searchTabs']);
+  }
 
   void setTabbarIndex(int newIndex) {
     _tabbarCurrentIndex.value = newIndex;
@@ -94,6 +101,7 @@ class UtilityController extends BaseController {
   void resetPeopleTabbarState() => _peopleTabbarCurrentIndex.value = 0;
   void resetSeasonTabbarState() => _seasonTabbarCurrentIndex.value = 0;
   void resetEpisodeTabbarState() => _episodeTabbarCurrentIndex.value = 0;
+  void resetSearchTabbarState() => _searchTabbarCurrentIndex.value = 0;
 
   // toggle movie/tv details title to show / hide title
   final _titlevisiblity = false.obs;

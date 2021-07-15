@@ -20,7 +20,8 @@ class HomePage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        appBarBuilder(),
+        // appBarBuilder(),
+        AppBarBuilder(),
         const SizedBox(height: 16),
 
         /// [trending movies]

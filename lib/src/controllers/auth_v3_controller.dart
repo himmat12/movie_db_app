@@ -3,18 +3,20 @@ import 'package:get/get.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
+import 'package:movie_app/src/services/account_service.dart';
 import 'package:movie_app/src/services/auth_v3_service.dart';
 import 'package:movie_app/src/utils/auth.dart';
 
 class AuthV3Controller extends BaseController {
   final v3Service = sl<AuthV3Service>();
+  final _service = sl<AccountService>();
 
   var _sessionState = ViewState.idle.obs;
 
   ViewState get sessionState => _sessionState.value;
 
   // authuntication method
-  void authV3({required Map<String, dynamic> userData}) {
+  void authV3({required Map<String, dynamic> userData}) async {
     // _requestTokenState.value = ViewState.busy;
     _sessionState.value = ViewState.busy;
     Get.dialog(
@@ -32,18 +34,18 @@ class AuthV3Controller extends BaseController {
       ),
       barrierDismissible: false,
     );
-    v3Service.createV3RequestToken().then((value) {
+    await v3Service.createV3RequestToken().then((value) async {
       if (value['success'] != false) {
         // _requestTokenState.value = ViewState.retrived;
         // _authorizationState.value = ViewState.busy;
-        v3Service
+        await v3Service
             .authorizeV3RequestTokenWithLogin(
                 requestToken: value['request_token'], data: userData)
-            .then((value) {
+            .then((value) async {
           if (value['success'] != false) {
             // _authorizationState.value = ViewState.retrived;
             // _sessionState.value = ViewState.busy;
-            v3Service
+            await v3Service
                 .createV3Session(requestToken: value['request_token'])
                 .then((value) {
               _sessionState.value = ViewState.retrived;
@@ -51,9 +53,18 @@ class AuthV3Controller extends BaseController {
               Auth().setSessionId(value['session_id']);
 
               // print('\n\n\n SESSION_ID ==>> ${value['session_id']}');
-
-              Get.offAllNamed('/dashboard');
             });
+
+            // get user details
+            await _service.getAccountDetails().then((value) {
+              Auth().setUsername(usename: value['username']);
+              Auth().setUserAvatar(url: value['avatar']['tmdb']['avatar_path']);
+              Auth().setUserGrvatar(url: value['avatar']['gravatar']['hash']);
+            });
+
+            print(Auth().username);
+
+            Get.offAllNamed('/dashboard');
           } else {
             _sessionState.value = ViewState.retrived;
             Get.back();
@@ -125,7 +136,7 @@ class AuthV3Controller extends BaseController {
   }
 
   ///logout
-  void logoutV3() {
+  void logoutV3() async {
     _sessionState.value = ViewState.busy;
     Get.back();
     Get.dialog(
@@ -145,12 +156,15 @@ class AuthV3Controller extends BaseController {
     );
 
     Auth().isLoggedIn
-        ? v3Service.deleteSession(sessionId: Auth().sessionId).then((value) {
+        ? await v3Service
+            .deleteSession(sessionId: Auth().sessionId)
+            .then((value) {
             Auth().logout();
             _sessionState.value = ViewState.retrived;
+
             Get.offAllNamed('/');
           })
-        : v3Service
+        : await v3Service
             .deleteSession(sessionId: Auth().guestSessionId)
             .then((value) {
             Auth().logout();

@@ -7,6 +7,7 @@ import 'package:movie_app/src/controllers/download_controller.dart';
 import 'package:movie_app/src/controllers/list_controller.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/controllers/results_controller.dart';
+import 'package:movie_app/src/controllers/search_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/trending_results_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
@@ -28,5 +29,7 @@ class InitBindings extends Bindings {
     Get.lazyPut(() => AccountController(), fenix: true);
     Get.lazyPut(() => ListController(), fenix: true);
     Get.lazyPut(() => DownloadController(), fenix: true);
+    Get.lazyPut(() => AccountController(), fenix: true);
+    Get.put(SearchController(), permanent: true);
   }
 }

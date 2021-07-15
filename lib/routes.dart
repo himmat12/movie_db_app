@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/views/auth/auth_page.dart';
 import 'package:movie_app/src/views/auth/components/webview_request_authorization.dart';
@@ -20,6 +21,7 @@ import 'package:movie_app/src/views/home/lists/movies/movie_result_list.dart';
 import 'package:movie_app/src/views/home/lists/movies/trending_movie_list.dart';
 import 'package:movie_app/src/views/home/lists/tv/trending_tv_list.dart';
 import 'package:movie_app/src/views/home/lists/tv/tv_result_list.dart';
+import 'package:movie_app/src/views/home/search/search.dart';
 
 class Routes {
   static List<GetPage> getRoutes() {
@@ -75,6 +77,12 @@ class Routes {
       GetPage(
           name: '/backdrop_preview',
           page: () => BackdropPreview(filePath: Get.arguments['filePath'])),
+      GetPage(
+        name: '/search',
+        page: () => SearchPage(),
+        fullscreenDialog: true,
+        curve: Curves.ease,
+      ),
     ];
   }
 }
