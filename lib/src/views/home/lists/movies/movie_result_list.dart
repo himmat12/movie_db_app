@@ -97,11 +97,18 @@ class HomeMovieresultsList extends StatelessWidget with LoadingSpinnerMixin {
                           crossAxisSpacing: 12,
                           mainAxisExtent: 186,
                         ),
-                        itemBuilder: (context, index) => movieThumbnailCard(
-                          padding: const EdgeInsets.all(0),
-                          movie: getItem(resultType)![index],
-                          imageUrl:
-                              '${_configurationController.posterUrl}${getItem(resultType)![index].posterPath}',
+                        itemBuilder: (context, index) => AbsorbPointer(
+                          absorbing: getItem(resultType)![index].posterPath !=
+                                      null ||
+                                  getItem(resultType)![index].posterPath != ""
+                              ? false
+                              : true,
+                          child: movieThumbnailCard(
+                            padding: const EdgeInsets.all(0),
+                            movie: getItem(resultType)![index],
+                            imageUrl:
+                                '${_configurationController.posterUrl}${getItem(resultType)![index].posterPath}',
+                          ),
                         ),
                       ),
                       onErrorBuilder: const Center(

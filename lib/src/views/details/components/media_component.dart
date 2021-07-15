@@ -100,6 +100,16 @@ class MediaComponent extends StatelessWidget {
                 width: width,
                 height: height,
                 fit: BoxFit.fill,
+                errorWidget: (context, url, error) => Container(
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: Colors.black12,
+                  ),
+                  child: const Icon(
+                    Icons.error,
+                    color: primaryWhite,
+                  ),
+                ),
                 imageUrl: url,
                 placeholder: (context, url) => Container(
                   color: Colors.black12,

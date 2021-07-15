@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/base_controller.dart';
 import 'package:movie_app/src/controllers/details_controller.dart';
@@ -10,14 +9,16 @@ import 'package:movie_app/src/controllers/download_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 
-class BackdropsViewer extends StatefulWidget {
-  const BackdropsViewer({Key? key}) : super(key: key);
+class BackdropPreview extends StatefulWidget {
+  const BackdropPreview({required this.filePath, Key? key}) : super(key: key);
+
+  final String filePath;
 
   @override
-  _BackdropsViewerState createState() => _BackdropsViewerState();
+  _BackdropPreviewState createState() => _BackdropPreviewState();
 }
 
-class _BackdropsViewerState extends State<BackdropsViewer> {
+class _BackdropPreviewState extends State<BackdropPreview> {
   final _detailsController = Get.find<DetailsController>();
   final _downloadController = Get.find<DownloadController>();
   final _utilityController = Get.find<UtilityController>();
@@ -25,12 +26,10 @@ class _BackdropsViewerState extends State<BackdropsViewer> {
   @override
   void initState() {
     super.initState();
-    _utilityController.setLandscapeOrientation();
     SystemChrome.setEnabledSystemUIOverlays([]);
-    _downloadController
-        .setFileUrl(_detailsController.images.value.backdrops![0].filePath);
+    _utilityController.setLandscapeOrientation();
+    _downloadController.setFileUrl(widget.filePath);
     _downloadController.resetDownloadState();
-    _detailsController.setMediaPageCount(1);
 
     print(_downloadController.filePath.value);
   }
@@ -56,43 +55,31 @@ class _BackdropsViewerState extends State<BackdropsViewer> {
         body: Stack(
           alignment: AlignmentDirectional.topCenter,
           children: [
-            PageView.builder(
-                itemCount: _detailsController.images.value.backdrops!.length,
-                onPageChanged: (value) {
-                  _downloadController.resetDownloadState();
-                  print(value);
-                  _detailsController.setMediaPageCount(value + 1);
-                },
-                itemBuilder: (context, index) {
-                  _downloadController.setFileUrl(_detailsController
-                      .images.value.backdrops![index].filePath);
-
-                  return _detailsController.images.value.backdrops == null
-                      ? const SizedBox.shrink()
-                      : Obx(
-                          () => CachedNetworkImage(
-                            height: MediaQuery.of(context).size.height,
-                            width: MediaQuery.of(context).size.width,
-                            errorWidget: (context, url, error) => Container(
-                              alignment: Alignment.center,
-                              decoration: const BoxDecoration(
-                                color: Colors.black12,
-                              ),
-                              child: const Icon(
-                                Icons.error,
-                                color: primaryWhite,
-                              ),
-                            ),
-                            imageUrl:
-                                'https://image.tmdb.org/t/p/original/${_detailsController.images.value.backdrops![index].filePath}',
-                            placeholder: (context, url) =>
-                                Container(color: Colors.black12),
-                            fit: _downloadController.isExpanded.value == true
-                                ? BoxFit.fill
-                                : BoxFit.scaleDown,
-                          ),
-                        );
-                }),
+            _detailsController.images.value.posters == null
+                ? const SizedBox.shrink()
+                : Obx(
+                    () => CachedNetworkImage(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      errorWidget: (context, url, error) => Container(
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                          color: Colors.black12,
+                        ),
+                        child: const Icon(
+                          Icons.error,
+                          color: primaryWhite,
+                        ),
+                      ),
+                      imageUrl:
+                          'https://image.tmdb.org/t/p/original/${widget.filePath}',
+                      placeholder: (context, url) =>
+                          Container(color: Colors.black12),
+                      fit: _downloadController.isExpanded.value == true
+                          ? BoxFit.fill
+                          : BoxFit.scaleDown,
+                    ),
+                  ),
             Container(
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.4),
@@ -100,26 +87,12 @@ class _BackdropsViewerState extends State<BackdropsViewer> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      BackButton(
-                        color: primaryWhite,
-                        onPressed: () {
-                          Get.back();
-                          _utilityController.setDefaultOrientation();
-                        },
-                      ),
-                      Obx(
-                        () => Text(
-                          '${_detailsController.mediaPageCount.value} / ${_detailsController.images.value.backdrops!.length}',
-                          style: const TextStyle(
-                            color: primaryWhite,
-                            fontSize: n,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ],
+                  BackButton(
+                    color: primaryWhite,
+                    onPressed: () {
+                      Get.back();
+                      _utilityController.setDefaultOrientation();
+                    },
                   ),
                   Row(
                     children: [

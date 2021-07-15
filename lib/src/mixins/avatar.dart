@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/src/configs/configs.dart';
 
 mixin AvatarBuilderMixin {
-  Widget avatarBuilder() => Container(
-        height: 68,
-        width: 68,
+  Widget avatarBuilder({double? height, double? width}) => Container(
+        height: height ?? 68,
+        width: width ?? 68,
         color: primaryDarkBlue.withOpacity(0.4),
         child: Stack(
           alignment: AlignmentDirectional.bottomCenter,

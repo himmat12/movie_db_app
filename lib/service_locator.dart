@@ -8,6 +8,7 @@ import 'package:movie_app/src/services/download_service.dart';
 import 'package:movie_app/src/services/lists_services.dart';
 import 'package:movie_app/src/services/people_service.dart';
 import 'package:movie_app/src/services/results_service.dart';
+import 'package:movie_app/src/services/search_service.dart';
 import 'package:movie_app/src/services/season_service.dart';
 import 'package:movie_app/src/services/trending_results_service.dart';
 
@@ -26,4 +27,5 @@ void setUp() {
   sl.registerLazySingleton<AccountService>(() => AccountService());
   sl.registerLazySingleton<ListService>(() => ListService());
   sl.registerLazySingleton<DownloadService>(() => DownloadService());
+  sl.registerLazySingleton<SearchService>(() => SearchService());
 }

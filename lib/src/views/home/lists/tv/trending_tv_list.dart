@@ -87,11 +87,21 @@ class HomeTrendingTvList extends StatelessWidget with AvatarBuilderMixin {
                           crossAxisSpacing: 12,
                           mainAxisExtent: 186,
                         ),
-                        itemBuilder: (context, index) => tvThumbnailCard(
-                          padding: const EdgeInsets.all(0),
-                          tv: _trendingResultsController.trendingTVs[index],
-                          imageUrl:
-                              '${_configurationController.posterUrl}${_trendingResultsController.trendingTVs[index].posterPath}',
+                        itemBuilder: (context, index) => AbsorbPointer(
+                          absorbing: _trendingResultsController
+                                          .trendingTVs[index].posterPath !=
+                                      null ||
+                                  _trendingResultsController
+                                          .trendingTVs[index].posterPath !=
+                                      ""
+                              ? false
+                              : true,
+                          child: tvThumbnailCard(
+                            padding: const EdgeInsets.all(0),
+                            tv: _trendingResultsController.trendingTVs[index],
+                            imageUrl:
+                                '${_configurationController.posterUrl}${_trendingResultsController.trendingTVs[index].posterPath}',
+                          ),
                         ),
                       ),
                       onErrorBuilder: const Center(

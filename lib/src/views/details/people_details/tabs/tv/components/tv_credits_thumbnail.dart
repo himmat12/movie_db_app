@@ -52,6 +52,16 @@ Widget tvCreditsThumbnailCard({
                           width: 94,
                           height: 140,
                           fit: BoxFit.fill,
+                          errorWidget: (context, url, error) => Container(
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(
+                              color: Colors.black12,
+                            ),
+                            child: const Icon(
+                              Icons.error,
+                              color: primaryWhite,
+                            ),
+                          ),
                           imageUrl: imageUrl,
                           placeholder: (context, url) => Container(
                             color: Colors.black12,

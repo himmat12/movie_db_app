@@ -21,7 +21,8 @@ class MovieCrewPage extends StatelessWidget with AvatarBuilderMixin {
     return Scaffold(
         appBar: AppBar(
           elevation: 0.5,
-          title: Text(_detailsController.tvDetail.value.name ?? "tv title"),
+          title:
+              Text(_detailsController.movieDetail.value.title ?? "movie title"),
         ),
         body: SafeArea(
           child: SingleChildScrollView(

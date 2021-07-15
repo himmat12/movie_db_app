@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -12,6 +11,8 @@ import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/models/details/movie_details_model.dart';
+import 'package:movie_app/src/views/details/components/backdrop_card.dart';
+import 'package:movie_app/src/views/details/components/poster_card.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 Widget movieFlexibleSpacebarComponent({
@@ -100,22 +101,9 @@ Widget movieFlexibleSpacebarComponent({
                           controller: PageController(),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return CachedNetworkImage(
-                              fit: BoxFit.cover,
-                              imageUrl:
-                                  '${_configController.backDropUrl}${_detailsController.images.value.backdrops![index].filePath}',
-                              errorWidget: (context, url, error) => Container(
-                                alignment: Alignment.center,
-                                // width: 94,
-                                // height: 140,
-                                color: Colors.black12,
-                                child: const Icon(
-                                  Icons.error_outline,
-                                  color: primaryWhite,
-                                  size: 34,
-                                ),
-                              ),
-                            );
+                            return BackdropCard(
+                                imageUrl:
+                                    '${_configController.backDropUrl}${_detailsController.images.value.backdrops![index].filePath}');
                           },
                         ),
                       ),
@@ -123,6 +111,8 @@ Widget movieFlexibleSpacebarComponent({
                   ),
                 ),
                 // ),
+
+                // img slider indicator
                 _detailsController.images.value.backdrops == null ||
                         _detailsController.images.value.backdrops!.isEmpty
                     ? const SizedBox.shrink()
@@ -159,30 +149,22 @@ Widget movieFlexibleSpacebarComponent({
                 children: [
                   // poster
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: movie.posterPath == null
-                        ? Container(
-                            alignment: Alignment.center,
-                            width: 94,
-                            height: 140,
-                            color: Colors.black12,
-                            child: const Icon(
-                              Icons.error_outline,
-                              color: primaryWhite,
-                              size: 34,
-                            ),
-                          )
-                        : CachedNetworkImage(
-                            width: 94,
-                            height: 140,
-                            fit: BoxFit.fill,
-                            imageUrl:
-                                '${_configController.posterUrl}${movie.posterPath}',
-                            placeholder: (context, url) => Container(
+                      borderRadius: BorderRadius.circular(4),
+                      child: movie.posterPath == null
+                          ? Container(
+                              alignment: Alignment.center,
+                              width: 94,
+                              height: 140,
                               color: Colors.black12,
-                            ),
-                          ),
-                  ),
+                              child: const Icon(
+                                Icons.error_outline,
+                                color: primaryWhite,
+                                size: 34,
+                              ),
+                            )
+                          : posterCard(
+                              imageUrl:
+                                  '${_configController.posterUrl}${movie.posterPath}')),
                   const SizedBox(width: 16),
                   //  titles
                   Expanded(

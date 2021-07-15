@@ -9,10 +9,12 @@ Widget tvThumbnailCard({
   required TvResultsModel tv,
   required String imageUrl,
   EdgeInsetsGeometry? padding,
+  void Function()? onLongPress,
 }) {
   final _resultController = Get.find<ResultsController>();
 
   return GestureDetector(
+    onLongPress: onLongPress,
     onTap: () {
       // _resultController.setTv(tv);
 
@@ -48,6 +50,16 @@ Widget tvThumbnailCard({
                           width: 94,
                           height: 140,
                           fit: BoxFit.fill,
+                          errorWidget: (context, url, error) => Container(
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(
+                              color: Colors.black12,
+                            ),
+                            child: const Icon(
+                              Icons.error,
+                              color: primaryWhite,
+                            ),
+                          ),
                           imageUrl: imageUrl,
                           placeholder: (context, url) => Container(
                             color: Colors.black12,
@@ -76,9 +88,9 @@ Widget tvThumbnailCard({
             ),
           ),
 
-          // movie title and option
+          // tv title and option
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -95,17 +107,17 @@ Widget tvThumbnailCard({
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    // ignore: avoid_print
-                    print('options bottom sheet ...');
-                  },
-                  child: const Icon(
-                    Icons.more_vert,
-                    color: primaryDarkBlue,
-                    size: 18,
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     // ignore: avoid_print
+                //     print('options bottom sheet ...');
+                //   },
+                //   child: const Icon(
+                //     Icons.more_vert,
+                //     color: primaryDarkBlue,
+                //     size: 18,
+                //   ),
+                // ),
               ],
             ),
           ),
