@@ -83,9 +83,11 @@ class ListComponent extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            _listController.createMovieList(name: _listTitle.text);
-            _listTitle.clear();
-            Get.back();
+            if (_listTitle.text.trim().isNotEmpty) {
+              _listController.createMovieList(name: _listTitle.text);
+              _listTitle.clear();
+              Get.back();
+            }
           },
           child: const Text('Create'),
         ),

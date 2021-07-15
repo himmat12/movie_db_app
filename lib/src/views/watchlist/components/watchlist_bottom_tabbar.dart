@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/account_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 
 Widget watchlistTabbarComponent({required List<String> tabMenuItems}) {
@@ -39,21 +38,9 @@ Widget tabbarItem({
   required ScrollController controller,
 }) {
   final _utilityController = Get.find<UtilityController>();
-  final _accountController = Get.find<AccountController>();
 
   return GestureDetector(
     onTap: () {
-      // switch (index) {
-      //   case 0:
-      //     _accountController.getWatchlist(mediaType: moviesString);
-      //     break;
-      //   case 1:
-      //     _accountController.getWatchlist(mediaType: tvString);
-      //     break;
-      //   default:
-      //     break;
-      // }
-
       _utilityController.setWatchlistTabbarIndex(index);
     },
     child: Container(
@@ -61,10 +48,7 @@ Widget tabbarItem({
       color: Colors.transparent,
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      child:
-          //
-          //Obx(() =>
-          GetBuilder(
+      child: GetBuilder(
         id: 'watchlistTabBar',
         init: _utilityController,
         builder: (controller) => Text(
@@ -78,8 +62,6 @@ Widget tabbarItem({
           ),
         ),
       ),
-
-      // ),
     ),
   );
 }

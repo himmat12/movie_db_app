@@ -51,6 +51,8 @@ class AccountController extends BaseController {
       if (value['success'] == true) {
         if (_detailsController.accountState.value.watchlist != true) {
           _detailsController.accountState.value.watchlist = true;
+          watchlistState.value = ViewState.retrived;
+          update(['tv_watchlist', 'movie_watchlist']);
           Get.showSnackbar(
             GetBar(
               message: 'Added to watchlist.',
@@ -69,6 +71,8 @@ class AccountController extends BaseController {
           );
         } else {
           _detailsController.accountState.value.watchlist = false;
+          watchlistState.value = ViewState.retrived;
+          update(['tv_watchlist', 'movie_watchlist']);
           Get.showSnackbar(
             GetBar(
               message: 'Removed from watchlist.',
@@ -82,8 +86,6 @@ class AccountController extends BaseController {
         }
       }
     });
-    watchlistState.value = ViewState.retrived;
-    update(['tv_watchlist', 'movie_watchlist']);
   }
 
   // get movie/tv watchlist
