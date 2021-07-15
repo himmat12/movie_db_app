@@ -11,7 +11,6 @@ import 'package:movie_app/src/models/details/tv_details_model.dart';
 import 'package:movie_app/src/views/details/components/crew_component.dart';
 import 'package:movie_app/src/views/details/components/genre_component.dart';
 import 'package:movie_app/src/views/details/components/header_text.dart';
-import 'package:movie_app/src/views/details/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/details/components/media_component.dart';
 import 'package:movie_app/src/views/details/components/storyline_text.dart';
 import 'package:movie_app/src/views/details/components/trailer_component.dart';
@@ -50,15 +49,9 @@ class TvAboutTab extends StatelessWidget {
           const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                storylineTextBuilder(
-                    text: _detailsController.tvDetail.value.overview ??
-                        "storyline"),
-                toggleHideShowBtn(),
-              ],
-            ),
+            child: storylineTextBuilder(
+                text: _detailsController.tvDetail.value.overview ??
+                    "no storyline at the moment"),
           ),
           const SizedBox(height: 12),
 

@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +8,8 @@ import 'package:movie_app/src/controllers/details_controller.dart';
 import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/models/details/season_details_model.dart';
+import 'package:movie_app/src/views/details/components/backdrop_card.dart';
+import 'package:movie_app/src/views/details/components/poster_card.dart';
 
 Widget seasonFlexibleSpacebarComponent({
   required SeasonModel season,
@@ -61,22 +62,9 @@ Widget seasonFlexibleSpacebarComponent({
                   child: _detailsController.images.value.backdrops == null ||
                           _detailsController.images.value.backdrops!.isEmpty
                       ? const SizedBox.shrink()
-                      : CachedNetworkImage(
-                          fit: BoxFit.cover,
+                      : BackdropCard(
                           imageUrl:
-                              '${_configController.backDropUrl}${_detailsController.images.value.backdrops![0].filePath}',
-                          errorWidget: (context, url, error) => Container(
-                            alignment: Alignment.center,
-                            // width: 94,
-                            // height: 140,
-                            color: Colors.black12,
-                            child: const Icon(
-                              Icons.error_outline,
-                              color: primaryWhite,
-                              size: 34,
-                            ),
-                          ),
-                        ),
+                              '${_configController.backDropUrl}${_detailsController.images.value.backdrops![0].filePath}'),
                 ),
               ),
             ),
@@ -93,40 +81,23 @@ Widget seasonFlexibleSpacebarComponent({
                 children: [
                   // poster
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(4),
-                    child: season.posterPath == null
-                        ? Container(
-                            alignment: Alignment.center,
-                            width: 94,
-                            height: 140,
-                            color: Colors.black12,
-                            child: const Icon(
-                              Icons.error_outline,
-                              color: primaryWhite,
-                              size: 34,
-                            ),
-                          )
-                        : CachedNetworkImage(
-                            width: 94,
-                            height: 140,
-                            fit: BoxFit.fill,
-                            errorWidget: (context, url, error) => Container(
+                      borderRadius: BorderRadius.circular(4),
+                      child: season.posterPath == null
+                          ? Container(
                               alignment: Alignment.center,
-                              decoration: const BoxDecoration(
-                                color: Colors.black12,
-                              ),
-                              child: const Icon(
-                                Icons.error,
-                                color: primaryWhite,
-                              ),
-                            ),
-                            imageUrl:
-                                '${_configController.posterUrl}${season.posterPath}',
-                            placeholder: (context, url) => Container(
+                              width: 94,
+                              height: 140,
                               color: Colors.black12,
-                            ),
-                          ),
-                  ),
+                              child: const Icon(
+                                Icons.error_outline,
+                                color: primaryWhite,
+                                size: 34,
+                              ),
+                            )
+                          : posterCard(
+                              imageUrl:
+                                  '${_configController.posterUrl}${season.posterPath}')),
+
                   const SizedBox(width: 16),
                   //  titles
                   Expanded(

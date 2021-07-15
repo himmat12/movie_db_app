@@ -31,22 +31,15 @@ class MovieList extends StatelessWidget with AvatarBuilderMixin {
             crossAxisSpacing: 12,
             mainAxisExtent: 186,
           ),
-          itemBuilder: (context, index) => movies.isNotEmpty == true
-              ? movieThumbnailCard(
-                  padding: const EdgeInsets.all(0),
-                  movie: movies[index],
-                  imageUrl:
-                      '${_configurationController.posterUrl}${movies[index].posterPath}',
-                )
-              : AbsorbPointer(
-                  absorbing: true,
-                  child: movieThumbnailCard(
-                    padding: const EdgeInsets.all(0),
-                    movie: movies[index],
-                    imageUrl:
-                        '${_configurationController.posterUrl}${movies[index].posterPath}',
-                  ),
-                ),
+          itemBuilder: (context, index) => AbsorbPointer(
+            absorbing: movies[index].posterPath == null ? true : false,
+            child: movieThumbnailCard(
+              padding: const EdgeInsets.all(0),
+              movie: movies[index],
+              imageUrl:
+                  '${_configurationController.posterUrl}${movies[index].posterPath}',
+            ),
+          ),
         ),
       ],
     );

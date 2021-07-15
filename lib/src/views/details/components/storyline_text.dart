@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/utility_controller.dart';
 import 'package:movie_app/src/views/details/components/header_text.dart';
+import 'package:movie_app/src/views/details/components/hide_show_btn.dart';
 
 Widget storylineTextBuilder(
     {required String text, int? maxLines, String? headerText}) {
@@ -30,6 +31,7 @@ Widget storylineTextBuilder(
                     fontSize: n - 2,
                   ),
                 ),
+          toggleHideShowBtn(),
         ],
       ));
 }

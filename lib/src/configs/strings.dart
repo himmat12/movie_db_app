@@ -3,6 +3,7 @@ const String moviesString = "movies";
 const String tvString = "tv";
 const String allString = "all";
 const String peopleString = "people";
+const String personString = "person";
 const String dayString = "day";
 const String weekString = "week";
 const String popularString = "popular";
