@@ -45,7 +45,9 @@ class AppBarBuilder extends StatelessWidget with AvatarBuilderMixin {
                   ),
                 )
               : GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed('/user_profile');
+                  },
                   child: Container(
                     height: 46,
                     width: 46,

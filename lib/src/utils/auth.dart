@@ -11,6 +11,7 @@ class Auth {
       box.write('guestSessionId', sessionId);
 
   void setUsername({String? usename}) => box.write('username', usename);
+  void setFullname({String? fullname}) => box.write('fullname', fullname);
   void setUserAvatar({String? url}) => box.write('user_avatar', url);
   void setUserGrvatar({String? url}) => box.write('user_gravatar', url);
 
@@ -20,6 +21,7 @@ class Auth {
   String get guestSessionId => box.read('guestSessionId');
 
   String? get username => box.read('username');
+  String? get fullname => box.read('fullname');
   String? get userAvatar => box.read('user_avatar');
   String? get userGravatar => box.read('user_gravatar');
 

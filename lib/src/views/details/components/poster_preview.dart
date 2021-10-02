@@ -108,7 +108,8 @@ class _PosterPreviewState extends State<PosterPreview> {
                     IconButton(
                       onPressed: () {
                         _utilityController.shareIt(
-                            'https://image.tmdb.org/t/p/original/${_downloadController.filePath}');
+                          'https://image.tmdb.org/t/p/original/${_downloadController.filePath}',
+                        );
                       },
                       icon: const Icon(
                         Icons.share,

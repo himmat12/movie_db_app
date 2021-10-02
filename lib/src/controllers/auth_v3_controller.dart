@@ -58,6 +58,7 @@ class AuthV3Controller extends BaseController {
             // get user details
             await _service.getAccountDetails().then((value) {
               Auth().setUsername(usename: value['username']);
+              Auth().setFullname(fullname: value['name']);
               Auth().setUserAvatar(url: value['avatar']['tmdb']['avatar_path']);
               Auth().setUserGrvatar(url: value['avatar']['gravatar']['hash']);
             });

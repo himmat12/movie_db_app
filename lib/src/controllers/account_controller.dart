@@ -30,6 +30,7 @@ class AccountController extends BaseController {
   void getAccountDetails() async {
     await _service.getAccountDetails().then((value) {
       Auth().setUsername(usename: value['username']);
+      Auth().setFullname(fullname: value['name']);
       Auth().setUserAvatar(url: value['avatar']['tmdb']['avatar_path']);
       Auth().setUserAvatar(url: value['avatar']['gravatar']['hash']);
     });

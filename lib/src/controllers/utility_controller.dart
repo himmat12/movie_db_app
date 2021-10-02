@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 class UtilityController extends BaseController {
   @override
   void onInit() {
+    resetBottomNavState();
     resetHideShowState();
     resetImgSliderIndex();
     resetTabbarState();
@@ -31,7 +32,7 @@ class UtilityController extends BaseController {
     Share.share(text ?? 'Hello world');
   }
 
-// bottom navigation state
+// DASHBOARD bottom navigation state
   final _navCurrentIndex = 0.obs;
 
   int get navCurrentIndex => _navCurrentIndex.value;
@@ -39,6 +40,8 @@ class UtilityController extends BaseController {
   void setBottomNavIndex(int newIndex) {
     _navCurrentIndex.value = newIndex;
   }
+
+  void resetBottomNavState() => _navCurrentIndex.value = 0;
 
   // launch url
   void loadUrl({required String url}) async {
