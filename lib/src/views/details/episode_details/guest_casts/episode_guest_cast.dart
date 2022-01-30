@@ -25,7 +25,10 @@ class GuestCasts extends StatelessWidget {
             headerBuilder(headerText: "Guest Stars"),
             IconButton(
                 onPressed: () {
-                  Get.toNamed('/guest_stars');
+                  Get.toNamed('/guest_stars', parameters: {
+                    'season_number':
+                        '${_seasonController.episodeModel.value.seasonNumber}'
+                  });
                 },
                 icon: Icon(
                   Icons.arrow_forward,
@@ -34,83 +37,93 @@ class GuestCasts extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 12),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: List.from(
-              _seasonController.episodeModel.value.guestStars!.map(
-                (e) => GestureDetector(
-                  onTap: () {
-                    _peopleController.setPersonId(e.id!);
-                    Get.toNamed('/people_details');
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 94,
-                        height: 190,
-                        padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-                        child: Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(4),
-                              child: e.profilePath == null
-                                  ? Container(
-                                      alignment: Alignment.center,
-                                      width: 94,
-                                      height: 130,
-                                      color: Colors.black12,
-                                      child: const Icon(
-                                        Icons.error_outline,
-                                        color: primaryWhite,
-                                        size: 34,
-                                      ),
-                                    )
-                                  : CachedNetworkImage(
-                                      width: 94,
-                                      height: 130,
-                                      fit: BoxFit.fill,
-                                      errorWidget: (context, url, error) =>
-                                          Container(
-                                        alignment: Alignment.center,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.black12,
+        Obx(
+          () => _seasonController.episodeModel.value.guestStars!.isEmpty
+              ? Text(
+                  'No Guest Stars to show at the Moment',
+                  style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
+                )
+              : SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.from(
+                      _seasonController.episodeModel.value.guestStars!.map(
+                        (e) => GestureDetector(
+                          onTap: () {
+                            _peopleController.setPersonId(e.id!);
+                            Get.toNamed('/people_details');
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 94,
+                                height: 190,
+                                padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                child: Column(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(4),
+                                      child: e.profilePath == null
+                                          ? Container(
+                                              alignment: Alignment.center,
+                                              width: 94,
+                                              height: 130,
+                                              color: Colors.black12,
+                                              child: const Icon(
+                                                Icons.error_outline,
+                                                color: primaryWhite,
+                                                size: 34,
+                                              ),
+                                            )
+                                          : CachedNetworkImage(
+                                              width: 94,
+                                              height: 130,
+                                              fit: BoxFit.fill,
+                                              errorWidget:
+                                                  (context, url, error) =>
+                                                      Container(
+                                                alignment: Alignment.center,
+                                                decoration: const BoxDecoration(
+                                                  color: Colors.black12,
+                                                ),
+                                                child: const Icon(
+                                                  Icons.error,
+                                                  color: primaryWhite,
+                                                ),
+                                              ),
+                                              imageUrl:
+                                                  '${_configurationController.posterUrl}${e.profilePath}',
+                                              placeholder: (context, url) =>
+                                                  Container(
+                                                color: Colors.black12,
+                                              ),
+                                            ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        e.name ?? 'name',
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: n - 2,
+                                          color:
+                                              primaryDarkBlue.withOpacity(0.8),
                                         ),
-                                        child: const Icon(
-                                          Icons.error,
-                                          color: primaryWhite,
-                                        ),
-                                      ),
-                                      imageUrl:
-                                          '${_configurationController.posterUrl}${e.profilePath}',
-                                      placeholder: (context, url) => Container(
-                                        color: Colors.black12,
                                       ),
                                     ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                e.name ?? 'name',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: n - 2,
-                                  color: primaryDarkBlue.withOpacity(0.8),
+                                  ],
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
         ),
       ],
     );

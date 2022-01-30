@@ -33,7 +33,7 @@ class DashboardPage extends StatelessWidget {
 
   final List<Widget> userPages = [
     HomePage(),
-    const DiscoverPage(),
+    // const DiscoverPage(),
     WatchlistPage(),
     ProfilePage(),
   ];
@@ -231,14 +231,14 @@ class DashboardPage extends StatelessWidget {
 }
 
 var userMenus = <String>[
-  "Home",
   "Discover",
+  // "Discover",
   "Watchlist",
   "Profile",
 ];
 
 var guestMenus = <String>[
-  "Home",
   "Discover",
+  // "Discover",
   "Profile",
 ];

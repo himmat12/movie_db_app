@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_classes_with_only_static_members
+
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/splash_screen.dart';
@@ -45,10 +47,16 @@ class Routes {
       GetPage(name: RoutesPath.seasonDetailsRoute, page: () => SeasonDetails()),
       GetPage(
           name: RoutesPath.episodeDetailsRoute, page: () => EpisodeDetails()),
-      GetPage(name: RoutesPath.episodeCrewRoute, page: () => EpisodeCrewPage()),
+      GetPage(
+          name: RoutesPath.episodeCrewRoute,
+          page: () => EpisodeCrewPage(
+              seasonNumber: Get.parameters['season_number'] ?? "0")),
       GetPage(name: RoutesPath.tvCrewRoute, page: () => TvCrewPage()),
       GetPage(name: RoutesPath.movieCrewRoute, page: () => MovieCrewPage()),
-      GetPage(name: RoutesPath.guestStarsRoute, page: () => GuestStarsList()),
+      GetPage(
+          name: RoutesPath.guestStarsRoute,
+          page: () => GuestStarsList(
+              seasonNumber: Get.parameters['season_number'] ?? "0")),
       GetPage(
           name: RoutesPath.trendingMoviesListRoute,
           page: () => HomeTrendingMovieList(

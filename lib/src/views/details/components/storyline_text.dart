@@ -9,12 +9,17 @@ Widget storylineTextBuilder(
     {required String text, int? maxLines, String? headerText}) {
   final _utilityController = Get.find<UtilityController>();
 
-  return Obx(() => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          headerBuilder(headerText: headerText ?? "Story Line"),
-          const SizedBox(height: 8),
-          _utilityController.showText != true
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      headerBuilder(headerText: headerText ?? "Story Line"),
+      const SizedBox(height: 8),
+      text == ""
+          ? Text(
+              'No data at the Moment',
+              style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
+            )
+          : _utilityController.showText != true
               ? Text(
                   text,
                   maxLines: maxLines ?? 4,
@@ -31,7 +36,7 @@ Widget storylineTextBuilder(
                     fontSize: n - 2,
                   ),
                 ),
-          toggleHideShowBtn(),
-        ],
-      ));
+      text == "" ? const SizedBox.shrink() : toggleHideShowBtn(),
+    ],
+  );
 }

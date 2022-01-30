@@ -85,10 +85,10 @@ class UtilityController extends BaseController {
     update(['watchlistTabBar', 'watchlistTabs']);
   }
 
-  void setDiscoverTabbarIndex(int newIndex) {
-    _discoverTabbarCurrentIndex.value = newIndex;
-    update(['discoverTabBar', 'discoverTabs']);
-  }
+  // void setDiscoverTabbarIndex(int newIndex) {
+  //   _discoverTabbarCurrentIndex.value = newIndex;
+  //   update(['discoverTabBar', 'discoverTabs']);
+  // }
 
   void setSearchTabbarIndex(int newIndex) {
     _searchTabbarCurrentIndex.value = newIndex;
