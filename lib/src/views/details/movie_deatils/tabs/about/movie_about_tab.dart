@@ -48,7 +48,7 @@ class MovieAboutTab extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: storylineTextBuilder(
                   text: _detailsController.movieDetail.value.overview ??
-                      "no storyline at the moment"),
+                      "No data at the moment"),
             ),
             const SizedBox(height: 12),
 

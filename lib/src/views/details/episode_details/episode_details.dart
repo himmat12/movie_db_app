@@ -67,6 +67,7 @@ class EpisodeDetails extends StatelessWidget {
                       pinned: true,
                       elevation: 0.5,
                       forceElevated: true,
+                      backgroundColor: primaryWhite,
                       leading: const SABTN(
                           // onBack: () {
                           // Get.offAllNamed('/');

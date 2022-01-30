@@ -97,6 +97,7 @@ class MoviesDetails extends StatelessWidget {
                       pinned: true,
                       elevation: 0.5,
                       forceElevated: true,
+                      backgroundColor: primaryWhite,
                       leading: SABTN(
                         onBack: () {
                           // initializing trending MOVIES services

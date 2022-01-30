@@ -45,7 +45,9 @@ class AppBarBuilder extends StatelessWidget with AvatarBuilderMixin {
                   ),
                 )
               : GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed('/user_profile');
+                  },
                   child: Container(
                     height: 46,
                     width: 46,
@@ -91,7 +93,7 @@ class AppBarBuilder extends StatelessWidget with AvatarBuilderMixin {
                 ),
           const Expanded(
             child: Text(
-              'Movie Info',
+              'TMDB Client',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: l,

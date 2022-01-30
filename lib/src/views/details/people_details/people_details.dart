@@ -70,6 +70,7 @@ class _MoviesDetailsState extends State<PeopleDetails> {
                       pinned: true,
                       elevation: 0.5,
                       forceElevated: true,
+                      backgroundColor: primaryWhite,
                       leading: SABTN(
                         onBack: () {
                           Get.back();

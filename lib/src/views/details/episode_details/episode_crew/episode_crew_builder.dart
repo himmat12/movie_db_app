@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/src/configs/configs.dart';
 import 'package:movie_app/src/controllers/people_controller.dart';
+import 'package:movie_app/src/controllers/season_controller.dart';
 import 'package:movie_app/src/models/details/season_details_model.dart';
 import 'package:movie_app/src/views/details/components/header_text.dart';
 
 Widget episodeCrewBuilder({required List<SeasonCrew> crews}) {
   final _peopleController = Get.find<PeopleController>();
+  final _seasonController = Get.find<SeasonController>();
 
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,7 +19,10 @@ Widget episodeCrewBuilder({required List<SeasonCrew> crews}) {
           headerBuilder(headerText: "Featured Crew"),
           IconButton(
               onPressed: () {
-                Get.toNamed('/episode_crew');
+                Get.toNamed('/episode_crew', parameters: {
+                  'season_number':
+                      '${_seasonController.episodeModel.value.seasonNumber}'
+                });
               },
               icon: Icon(
                 Icons.arrow_forward,
@@ -27,11 +32,9 @@ Widget episodeCrewBuilder({required List<SeasonCrew> crews}) {
       ),
       const SizedBox(height: 12),
       crews.isEmpty
-          ? Center(
-              child: Text(
-                'No Crews To Feature at the Moment',
-                style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
-              ),
+          ? Text(
+              'No Crews to feature at the Moment',
+              style: TextStyle(color: primaryDarkBlue.withOpacity(0.6)),
             )
           : GridView.builder(
               itemCount: crews.length >= 4 ? 4 : crews.length,

@@ -11,13 +11,18 @@ import 'package:movie_app/src/mixins/avatar.dart';
 import 'package:movie_app/src/models/details/season_details_model.dart';
 
 class EpisodeCrewPage extends StatelessWidget with AvatarBuilderMixin {
+  EpisodeCrewPage({
+    required this.seasonNumber,
+    Key? key,
+  }) : super(key: key);
+
   final _detailsController = Get.find<DetailsController>();
   final _configurationController = Get.find<ConfigurationController>();
 
   final _peopleController = Get.find<PeopleController>();
   final _seasonController = Get.find<SeasonController>();
 
-  EpisodeCrewPage({Key? key}) : super(key: key);
+  final String seasonNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class EpisodeCrewPage extends StatelessWidget with AvatarBuilderMixin {
               Text(
                   'Featured Crew - ${_seasonController.episodeModel.value.name}'),
               Text(
-                '${_detailsController.tvDetail.value.name} [S${_seasonController.seasonModel.value.seasonNumber.toString().padLeft(2, '0')} | E${_seasonController.episodeModel.value.episodeNumber.toString().padLeft(2, '0')}]',
+                '${_detailsController.tvDetail.value.name} [S${seasonNumber.padLeft(2, '0')} | E${_seasonController.episodeModel.value.episodeNumber.toString().padLeft(2, '0')}]',
                 style: TextStyle(
                   fontSize: n,
                   color: primaryDarkBlue.withOpacity(0.8),

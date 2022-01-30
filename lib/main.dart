@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:movie_app/init_bindings.dart';
-import 'package:movie_app/routes.dart';
 import 'package:movie_app/service_locator.dart';
 import 'package:movie_app/splash_screen.dart';
+import 'package:movie_app/src/bindings/init_bindings.dart';
 import 'package:movie_app/src/configs/configs.dart';
+import 'package:movie_app/src/routes/route_const_str.dart';
+import 'package:movie_app/src/routes/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: '/',
+      initialRoute: RoutesPath.splashScreenRoute,
       getPages: Routes.getRoutes(),
       initialBinding: InitBindings(),
       title: 'Movie DB',

@@ -25,12 +25,9 @@ Widget episodeFlexibleSpacebarComponent({
   final String? firstAirDate =
       DateFormat.yMMMMd().format(episode.airDate ?? DateTime(0000));
 
-  String seasonNo = _seasonController.seasonModel.value.seasonNumber
-      .toString()
-      .padLeft(2, '0');
-  String episodeNo = _seasonController.episodeModel.value.episodeNumber
-      .toString()
-      .padLeft(2, '0');
+  String seasonNo = "${episode.seasonNumber}".padLeft(2, '0');
+
+  String episodeNo = "${episode.episodeNumber}".padLeft(2, '0');
 
   return GetBuilder(
     id: 'season_details',

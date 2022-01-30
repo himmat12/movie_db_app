@@ -10,12 +10,17 @@ import 'package:movie_app/src/mixins/avatar.dart';
 import 'package:movie_app/src/models/details/season_details_model.dart';
 
 class GuestStarsList extends StatelessWidget with AvatarBuilderMixin {
-  GuestStarsList({Key? key}) : super(key: key);
+  GuestStarsList({
+    required this.seasonNumber,
+    Key? key,
+  }) : super(key: key);
 
   final _configurationController = Get.find<ConfigurationController>();
   final _detailsController = Get.find<DetailsController>();
   final _seasonController = Get.find<SeasonController>();
   final _peopleController = Get.find<PeopleController>();
+
+  final String seasonNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class GuestStarsList extends StatelessWidget with AvatarBuilderMixin {
           children: [
             Text('Guest Stars - ${_seasonController.episodeModel.value.name}'),
             Text(
-              '${_detailsController.tvDetail.value.name} [S${_seasonController.seasonModel.value.seasonNumber.toString().padLeft(2, '0')} | E${_seasonController.episodeModel.value.episodeNumber.toString().padLeft(2, '0')}]',
+              '${_detailsController.tvDetail.value.name} [S${seasonNumber.padLeft(2, '0')} | E${_seasonController.episodeModel.value.episodeNumber.toString().padLeft(2, '0')}]',
               style: TextStyle(
                 fontSize: n,
                 color: primaryDarkBlue.withOpacity(0.8),

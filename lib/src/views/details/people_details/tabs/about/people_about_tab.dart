@@ -6,7 +6,6 @@ import 'package:movie_app/src/controllers/people_controller.dart';
 import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:movie_app/src/helpers/widget_builder_helper.dart';
 import 'package:movie_app/src/views/details/components/header_text.dart';
-import 'package:movie_app/src/views/details/components/hide_show_btn.dart';
 import 'package:movie_app/src/views/details/components/poster_card.dart';
 import 'package:movie_app/src/views/details/components/storyline_text.dart';
 import 'package:movie_app/src/views/details/people_details/tabs/about/components/about_info.dart';
@@ -33,7 +32,6 @@ class PeopleAboutTab extends StatelessWidget {
                       _peopleController.people.value.biography == null
                   ? 'No Biography at the moment'
                   : _peopleController.people.value.biography ?? "biography"),
-          toggleHideShowBtn(),
           const SizedBox(height: 12),
           chipsBuilder(chips: _peopleController.people.value.alsoKnownAs ?? []),
           const SizedBox(height: 18),

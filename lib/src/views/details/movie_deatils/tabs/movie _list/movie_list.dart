@@ -7,11 +7,13 @@ import 'package:movie_app/src/models/results/movie_result_model.dart';
 
 class MovieList extends StatelessWidget with AvatarBuilderMixin {
   final List<MovieResultModel> movies;
+  // final void Function()? onLongPress;
 
   final _configurationController = Get.find<ConfigurationController>();
 
   MovieList({
     required this.movies,
+    // this.onLongPress,
     Key? key,
   }) : super(key: key);
 
@@ -34,6 +36,7 @@ class MovieList extends StatelessWidget with AvatarBuilderMixin {
           itemBuilder: (context, index) => AbsorbPointer(
             absorbing: movies[index].posterPath == null ? true : false,
             child: movieThumbnailCard(
+              // onLongPress: onLongPress,
               padding: const EdgeInsets.all(0),
               movie: movies[index],
               imageUrl:
