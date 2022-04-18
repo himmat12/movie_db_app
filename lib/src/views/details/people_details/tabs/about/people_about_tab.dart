@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/details/components/header_text.dart';
-import 'package:movie_app/src/views/details/components/poster_card.dart';
-import 'package:movie_app/src/views/details/components/storyline_text.dart';
-import 'package:movie_app/src/views/details/people_details/tabs/about/components/about_info.dart';
-import 'package:movie_app/src/views/details/people_details/tabs/about/components/chips_builder.dart';
+
+import '../../../../../configs/configs.dart';
+import '../../../../../configs/strings.dart';
+import '../../../../../controllers/people_controller.dart';
+import '../../../../../global/loading_spinner.dart';
+import '../../../../../helpers/widget_builder_helper.dart';
+import '../../../components/header_text.dart';
+import '../../../components/poster_card.dart';
+import '../../../components/storyline_text.dart';
+import 'components/about_info.dart';
+import 'components/chips_builder.dart';
 
 class PeopleAboutTab extends StatelessWidget {
   final _peopleController = Get.find<PeopleController>();
@@ -26,7 +27,7 @@ class PeopleAboutTab extends StatelessWidget {
           const SizedBox(height: 18),
           aboutInfo(people: _peopleController.people.value),
           const SizedBox(height: 12),
-          storylineTextBuilder(
+          StoryLineTextBuilder(
               headerText: 'Biography',
               text: _peopleController.people.value.biography == "" ||
                       _peopleController.people.value.biography == null

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/splash_screen.dart';
-import 'package:movie_app/src/bindings/init_bindings.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/routes/route_const_str.dart';
-import 'package:movie_app/src/routes/routes.dart';
+
+import 'service_locator.dart';
+import 'splash_screen.dart';
+import 'src/bindings/init_bindings.dart';
+import 'src/configs/configs.dart';
+import 'src/routes/route_const_str.dart';
+import 'src/routes/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +44,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         fontFamily: 'Poppins',
         canvasColor: primaryWhite,
-        primaryColor: primaryWhite,
+        // primaryColor: primaryWhite,
       ),
       // home: DashboardPage(),
       // home: const AuthPage(),

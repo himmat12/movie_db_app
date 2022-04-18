@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/models/lists/list_model.dart';
-import 'package:movie_app/src/models/lists/movie_list_details.dart';
-import 'package:movie_app/src/services/lists_services.dart';
+
+import '../../service_locator.dart';
+import '../configs/color_config.dart';
+import '../models/lists/list_model.dart';
+import '../models/lists/movie_list_details.dart';
+import '../services/lists_services.dart';
+import 'base_controller.dart';
 
 class ListController extends BaseController {
   final _service = sl<ListService>();

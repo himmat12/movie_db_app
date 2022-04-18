@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
-import 'package:movie_app/src/models/results/tv_result_model.dart';
-import 'package:movie_app/src/services/account_service.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import '../../service_locator.dart';
+import '../configs/configs.dart';
+import '../configs/strings.dart';
+import '../models/results/movie_result_model.dart';
+import '../models/results/tv_result_model.dart';
+import '../services/account_service.dart';
+import '../utils/auth.dart';
+import 'base_controller.dart';
+import 'details_controller.dart';
 
 class AccountController extends BaseController {
   final _service = sl<AccountService>();

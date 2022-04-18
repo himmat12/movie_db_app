@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/utils/preferences.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../utils/preferences.dart';
+import 'base_controller.dart';
 
 class UtilityController extends BaseController {
   @override
@@ -53,15 +54,15 @@ class UtilityController extends BaseController {
   }
 
 // hide/show (tv/movie) details btn state
-  final _showText = false.obs;
+  final showText = false.obs;
 
-  bool get showText => _showText.value;
+  // bool get showText => _showText.value;
 
   void toggleHideShowBtn() {
-    _showText.value = !_showText.value;
+    showText.value = !showText.value;
   }
 
-  void resetHideShowState() => _showText.value = false;
+  void resetHideShowState() => showText.value = false;
 
 // details tabbar navigation state
   final _tabbarCurrentIndex = 0.obs;

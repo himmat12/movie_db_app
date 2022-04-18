@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
+
+import '../configs/configs.dart';
+import '../controllers/results_controller.dart';
+import '../models/results/movie_result_model.dart';
 
 Widget movieThumbnailCard({
   required MovieResultModel movie,

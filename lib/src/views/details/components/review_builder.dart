@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
+
+import '../../../configs/configs.dart';
+import '../../../controllers/utility_controller.dart';
+import '../../../models/details/common_details_models.dart';
 
 class ReviewBuilder extends StatefulWidget {
   final ReviewsResult review;

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/season_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/details/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/details/components/sliver_appbar_title.dart';
-import 'package:movie_app/src/views/details/season_details/components/season_bottom_tabbar.dart';
-import 'package:movie_app/src/views/details/season_details/components/season_flexible_spacebar.dart';
-import 'package:movie_app/src/views/details/season_details/tabs/about/season_about_tab.dart';
-import 'package:movie_app/src/views/details/season_details/tabs/cast/season_cast.dart';
-import 'package:movie_app/src/views/details/season_details/tabs/episodes/episodes_tab.dart';
+
+import '../../../configs/configs.dart';
+import '../../../controllers/details_controller.dart';
+import '../../../controllers/season_controller.dart';
+import '../../../controllers/utility_controller.dart';
+import '../../../global/loading_spinner.dart';
+import '../../../helpers/widget_builder_helper.dart';
+import '../components/sliver_appbar_back_btn.dart';
+import '../components/sliver_appbar_title.dart';
+import 'components/season_bottom_tabbar.dart';
+import 'components/season_flexible_spacebar.dart';
+import 'tabs/about/season_about_tab.dart';
+import 'tabs/cast/season_cast.dart';
+import 'tabs/episodes/episodes_tab.dart';
 
 class SeasonDetails extends StatelessWidget {
   // final TvResultsModel tv;

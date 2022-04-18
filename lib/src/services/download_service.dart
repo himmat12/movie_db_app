@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/services/base_service.dart';
+import '../exceptions/app_exceptions.dart';
+import 'base_service.dart';
 
 // 'https://img.youtube.com/vi/gmRKv7n2If8/hqdefault.jpg'  //default test img url
 class DownloadService extends BaseService {

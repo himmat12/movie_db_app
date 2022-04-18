@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/trending_results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/details/components/bottom_tabbar.dart';
-import 'package:movie_app/src/views/details/components/sliver_appbar_back_btn.dart';
-import 'package:movie_app/src/views/details/components/sliver_appbar_title.dart';
-import 'package:movie_app/src/views/details/movie_deatils/components/movie_flexible_spacebar.dart';
-import 'package:movie_app/src/views/details/movie_deatils/components/movie_flexible_spacebar_options.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/about/movie_about_tab.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/casts/casts_tab.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/movie%20_list/recommended_list.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/movie%20_list/similar_list.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/reviews/reviews_tab.dart';
+
+import '../../../configs/color_config.dart';
+import '../../../configs/configs.dart';
+import '../../../configs/strings.dart';
+import '../../../controllers/details_controller.dart';
+import '../../../controllers/results_controller.dart';
+import '../../../controllers/trending_results_controller.dart';
+import '../../../controllers/utility_controller.dart';
+import '../../../global/loading_spinner.dart';
+import '../../../helpers/widget_builder_helper.dart';
+import '../components/bottom_tabbar.dart';
+import '../components/sliver_appbar_back_btn.dart';
+import '../components/sliver_appbar_title.dart';
+import 'components/movie_flexible_spacebar.dart';
+import 'components/movie_flexible_spacebar_options.dart';
+import 'tabs/about/movie_about_tab.dart';
+import 'tabs/casts/casts_tab.dart';
+import 'tabs/movie%20_list/recommended_list.dart';
+import 'tabs/movie%20_list/similar_list.dart';
+import 'tabs/reviews/reviews_tab.dart';
 
 class MoviesDetails extends StatelessWidget {
   final String movieId;

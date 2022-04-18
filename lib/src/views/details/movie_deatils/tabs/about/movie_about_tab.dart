@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/details/components/crew_component.dart';
-import 'package:movie_app/src/views/details/components/genre_component.dart';
-import 'package:movie_app/src/views/details/components/media_component.dart';
-import 'package:movie_app/src/views/details/components/storyline_text.dart';
-import 'package:movie_app/src/views/details/components/trailer_component.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/about/components/belongs_to_collection.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/about/components/movie_info.dart';
+
+import '../../../../../configs/strings.dart';
+import '../../../../../controllers/configuration_controller.dart';
+import '../../../../../controllers/details_controller.dart';
+import '../../../../../controllers/results_controller.dart';
+import '../../../../../global/loading_spinner.dart';
+import '../../../../../helpers/widget_builder_helper.dart';
+import '../../../components/crew_component.dart';
+import '../../../components/genre_component.dart';
+import '../../../components/media_component.dart';
+import '../../../components/storyline_text.dart';
+import '../../../components/trailer_component.dart';
+import 'components/belongs_to_collection.dart';
+import 'components/movie_info.dart';
 
 class MovieAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();
@@ -46,7 +47,7 @@ class MovieAboutTab extends StatelessWidget {
             ///story line
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: storylineTextBuilder(
+              child: StoryLineTextBuilder(
                   text: _detailsController.movieDetail.value.overview ??
                       "No data at the moment"),
             ),

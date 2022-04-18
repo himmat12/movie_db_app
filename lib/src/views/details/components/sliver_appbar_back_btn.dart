@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
+
+import '../../../configs/color_config.dart';
 
 // title widget
 class SABTN extends StatefulWidget {

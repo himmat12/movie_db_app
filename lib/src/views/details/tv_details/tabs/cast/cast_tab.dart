@@ -1,17 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
+
+import '../../../../../configs/configs.dart';
+import '../../../../../configs/strings.dart';
+import '../../../../../controllers/configuration_controller.dart';
+import '../../../../../controllers/details_controller.dart';
+import '../../../../../controllers/people_controller.dart';
+import '../../../../../controllers/results_controller.dart';
+import '../../../../../global/loading_spinner.dart';
+import '../../../../../helpers/widget_builder_helper.dart';
+import '../../../../../mixins/avatar.dart';
+import '../../../../../models/details/common_details_models.dart';
 
 class TvCastsTab extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();

@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/models/configurations/api_configuration_model.dart';
-import 'package:movie_app/src/services/configuration_service.dart';
+
+import '../../service_locator.dart';
+import '../models/configurations/api_configuration_model.dart';
+import '../services/configuration_service.dart';
+import 'base_controller.dart';
 
 class ConfigurationController extends BaseController {
   @override

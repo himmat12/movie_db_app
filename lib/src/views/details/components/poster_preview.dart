@@ -2,12 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/download_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
+
+import '../../../configs/configs.dart';
+import '../../../controllers/base_controller.dart';
+import '../../../controllers/details_controller.dart';
+import '../../../controllers/download_controller.dart';
+import '../../../controllers/utility_controller.dart';
+import '../../../global/loading_spinner.dart';
 
 class PosterPreview extends StatefulWidget {
   const PosterPreview({required this.filePath, Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _PosterPreviewState extends State<PosterPreview> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     _downloadController.setFileUrl(widget.filePath);
     _downloadController.resetDownloadState();
 
@@ -36,7 +37,8 @@ class _PosterPreviewState extends State<PosterPreview> {
   @override
   void dispose() {
     super.dispose();
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
   }
 
   @override

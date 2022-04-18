@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/views/details/people_details/tabs/tv/components/tv_credits_thumbnail.dart';
+
+import '../../../../../configs/color_config.dart';
+import '../../../../../configs/configs.dart';
+import '../../../../../configs/strings.dart';
+import '../../../../../controllers/configuration_controller.dart';
+import '../../../../../controllers/people_controller.dart';
+import '../../../../../global/loading_spinner.dart';
+import '../../../../../helpers/widget_builder_helper.dart';
+import '../../../../../mixins/avatar.dart';
+import 'components/tv_credits_thumbnail.dart';
 
 class PeopleTvTab extends StatelessWidget with AvatarBuilderMixin {
   // final List<MovieResultModel> movies;

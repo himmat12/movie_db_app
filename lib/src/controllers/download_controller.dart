@@ -3,12 +3,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/services/download_service.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../service_locator.dart';
+import '../configs/configs.dart';
+import '../services/download_service.dart';
+import 'base_controller.dart';
 
 class DownloadController extends BaseController {
   final _service = sl<DownloadService>();

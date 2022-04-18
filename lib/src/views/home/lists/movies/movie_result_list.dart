@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/global/movie_thumbnail_card.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/mixins/loading_spinner_mixin.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
+
+import '../../../../configs/strings.dart';
+import '../../../../controllers/base_controller.dart';
+import '../../../../controllers/configuration_controller.dart';
+import '../../../../controllers/results_controller.dart';
+import '../../../../global/loading_spinner.dart';
+import '../../../../global/movie_thumbnail_card.dart';
+import '../../../../helpers/widget_builder_helper.dart';
+import '../../../../mixins/loading_spinner_mixin.dart';
+import '../../../../models/results/movie_result_model.dart';
 
 class HomeMovieresultsList extends StatelessWidget with LoadingSpinnerMixin {
   final String? title;
@@ -39,6 +40,7 @@ class HomeMovieresultsList extends StatelessWidget with LoadingSpinnerMixin {
       default:
         break;
     }
+    return null;
   }
 
   @override

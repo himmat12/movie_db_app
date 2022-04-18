@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../../../configs/configs.dart';
+import '../../../../configs/strings.dart';
+import '../../../../controllers/base_controller.dart';
+import '../../../../controllers/details_controller.dart';
+import '../../../../global/loading_spinner.dart';
 
 class MovieRatingComponent extends StatelessWidget {
   MovieRatingComponent({

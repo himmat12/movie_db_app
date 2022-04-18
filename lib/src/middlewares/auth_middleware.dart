@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/route_middleware.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import '../utils/auth.dart';
 
 class AuthMiddleware extends GetMiddleware {
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/configs/configs.dart';
+
+import '../configs/configs.dart';
 
 mixin AvatarBuilderMixin {
   Widget avatarBuilder({double? height, double? width}) => Container(

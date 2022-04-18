@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/services/base_service.dart';
+import '../exceptions/app_exceptions.dart';
+import 'base_service.dart';
 
 class ListService extends BaseService {
   /// create list [createList] method creates a new list of collection in a session

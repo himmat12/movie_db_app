@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
-import 'package:movie_app/src/views/details/components/header_text.dart';
+
+import '../../../configs/configs.dart';
+import '../../../configs/strings.dart';
+import '../../../controllers/people_controller.dart';
+import '../../../models/details/common_details_models.dart';
+import 'header_text.dart';
 
 Widget crewBuilder({required List<Crew> crews, required String resultType}) {
   final _peopleController = Get.find<PeopleController>();

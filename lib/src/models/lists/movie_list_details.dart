@@ -1,4 +1,4 @@
-import 'package:movie_app/src/models/results/movie_result_model.dart';
+import '../results/movie_result_model.dart';
 
 class MovieListDetails {
   MovieListDetails({

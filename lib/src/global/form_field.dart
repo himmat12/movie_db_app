@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:movie_app/src/configs/configs.dart';
+
+import '../configs/configs.dart';
 
 class FormFieldsWidget extends StatefulWidget {
   const FormFieldsWidget({
@@ -89,6 +90,7 @@ class _FormFieldsWidgetState extends State<FormFieldsWidget> {
           validator: widget.validator ??
               (data) {
                 FormBuilderValidators.required(context, errorText: data);
+                return null;
               },
           autovalidateMode: AutovalidateMode.onUserInteraction,
           inputFormatters: widget.inputFormatters,

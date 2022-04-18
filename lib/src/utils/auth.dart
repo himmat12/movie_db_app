@@ -6,16 +6,25 @@ class Auth {
   bool get isLoggedIn => box.hasData('sessionId');
   bool get isGuestLoggedIn => box.hasData('guestSessionId');
 
-  void setSessionId(String sessionId) => box.write('sessionId', sessionId);
-  void setGuestSessionId(String sessionId) =>
-      box.write('guestSessionId', sessionId);
+  void setSessionId(String sessionId) async =>
+      await box.write('sessionId', sessionId);
+  void setGuestSessionId(String sessionId) async =>
+      await box.write('guestSessionId', sessionId);
 
-  void setUsername({String? usename}) => box.write('username', usename);
-  void setFullname({String? fullname}) => box.write('fullname', fullname);
-  void setUserAvatar({String? url}) => box.write('user_avatar', url);
-  void setUserGrvatar({String? url}) => box.write('user_gravatar', url);
+  void setUsername({String? usename}) async =>
+      await box.write('username', usename);
+  void setFullname({String? fullname}) async =>
+      await box.write('fullname', fullname);
+  void setUserAvatar({String? url}) async =>
+      await box.write('user_avatar', url);
+  void setUserGrvatar({String? url}) async =>
+      await box.write('user_gravatar', url);
 
-  void setSearchHistory(List<String> history) => box.write('history', history);
+  void setSearchHistoryMovie(List history) async =>
+      await box.write('history_movie', history);
+
+  void setSearchHistoryTv(List history) async =>
+      await box.write('history_tv', history);
 
   String get sessionId => box.read('sessionId');
   String get guestSessionId => box.read('guestSessionId');
@@ -25,7 +34,8 @@ class Auth {
   String? get userAvatar => box.read('user_avatar');
   String? get userGravatar => box.read('user_gravatar');
 
-  List<String> get searchHistory => box.read('history');
+  List get searchHistoryMovie => box.read('history_movie') ?? [];
+  List get searchHistoryTv => box.read('history_tv') ?? [];
 
   void logout() => box.erase();
 }

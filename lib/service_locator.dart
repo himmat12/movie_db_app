@@ -1,16 +1,17 @@
 import 'package:get_it/get_it.dart';
-import 'package:movie_app/src/services/account_service.dart';
-import 'package:movie_app/src/services/auth_v3_service.dart';
-import 'package:movie_app/src/services/auth_v4_service.dart';
-import 'package:movie_app/src/services/configuration_service.dart';
-import 'package:movie_app/src/services/details_service.dart';
-import 'package:movie_app/src/services/download_service.dart';
-import 'package:movie_app/src/services/lists_services.dart';
-import 'package:movie_app/src/services/people_service.dart';
-import 'package:movie_app/src/services/results_service.dart';
-import 'package:movie_app/src/services/search_service.dart';
-import 'package:movie_app/src/services/season_service.dart';
-import 'package:movie_app/src/services/trending_results_service.dart';
+
+import 'src/services/account_service.dart';
+import 'src/services/auth_v3_service.dart';
+import 'src/services/auth_v4_service.dart';
+import 'src/services/configuration_service.dart';
+import 'src/services/details_service.dart';
+import 'src/services/download_service.dart';
+import 'src/services/lists_services.dart';
+import 'src/services/people_service.dart';
+import 'src/services/results_service.dart';
+import 'src/services/search_service.dart';
+import 'src/services/season_service.dart';
+import 'src/services/trending_results_service.dart';
 
 final sl = GetIt.instance;
 

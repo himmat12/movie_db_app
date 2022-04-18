@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
-import 'package:movie_app/src/models/results/tv_result_model.dart';
-import 'package:movie_app/src/services/results_service.dart';
+
+import '../../service_locator.dart';
+import '../configs/strings.dart';
+import '../models/results/movie_result_model.dart';
+import '../models/results/tv_result_model.dart';
+import '../services/results_service.dart';
+import 'base_controller.dart';
 
 class ResultsController extends BaseController {
   @override

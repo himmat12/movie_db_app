@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/account_controller.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/utils/auth.dart';
-import 'package:movie_app/src/views/details/movie_deatils/components/list_component.dart';
-import 'package:movie_app/src/views/details/movie_deatils/components/movie_rating_component.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../../../configs/configs.dart';
+import '../../../../configs/strings.dart';
+import '../../../../controllers/account_controller.dart';
+import '../../../../controllers/base_controller.dart';
+import '../../../../controllers/details_controller.dart';
+import '../../../../global/loading_spinner.dart';
+import '../../../../helpers/widget_builder_helper.dart';
+import '../../../../utils/auth.dart';
+import 'list_component.dart';
+import 'movie_rating_component.dart';
 
 Widget movieFlexibleSpacebarOptions() {
   final _detailsController = Get.find<DetailsController>();

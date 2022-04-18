@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
+
+import '../controllers/base_controller.dart';
 
 class WidgetBuilderHelper extends StatelessWidget {
   final ViewState state;

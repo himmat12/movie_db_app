@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import '../exceptions/app_exceptions.dart';
+import '../utils/auth.dart';
 
 enum Requests { get, post, put, delete, update }
 

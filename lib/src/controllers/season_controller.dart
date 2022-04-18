@@ -1,8 +1,9 @@
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/models/details/season_details_model.dart';
-import 'package:movie_app/src/services/season_service.dart';
+
+import '../../service_locator.dart';
+import '../models/details/season_details_model.dart';
+import '../services/season_service.dart';
+import 'base_controller.dart';
 
 class SeasonController extends BaseController {
   final service = sl<SeasonService>();
@@ -10,15 +11,15 @@ class SeasonController extends BaseController {
   var seasonModel = SeasonModel().obs;
   var episodeModel = Episode().obs;
 
-  var _seasonState = ViewState.idle.obs;
-  var _episodeState = ViewState.idle.obs;
+  final _seasonState = ViewState.idle.obs;
+  final _episodeState = ViewState.idle.obs;
 
   ViewState get seasonState => _seasonState.value;
   ViewState get episodeState => _episodeState.value;
 
-  var _tvId = 0.obs;
-  var _seasonNo = 1.obs;
-  var _episodeNo = 1.obs;
+  final _tvId = 0.obs;
+  final _seasonNo = 1.obs;
+  final _episodeNo = 1.obs;
 
   int get tvId => _tvId.value;
   int get seasonNo => _seasonNo.value;
