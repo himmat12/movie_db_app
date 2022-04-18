@@ -19,81 +19,75 @@ class SearchPage extends StatelessWidget {
   final _query = TextEditingController();
 
   final textFieldDebouncer =
-      Debouncer(delay: const Duration(milliseconds: 500));
-
+      Debouncer(delay: const Duration(milliseconds: 1000));
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0.6,
-        leading: IconButton(
-          onPressed: Get.back,
-          icon: const Icon(
-            Icons.clear,
-            color: primaryDarkBlue,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0.6,
+          leading: IconButton(
+            onPressed: Get.back,
+            icon: const Icon(
+              Icons.clear,
+              color: primaryDarkBlue,
+            ),
           ),
-        ),
-        backgroundColor: primaryWhite,
-        toolbarHeight: 60,
-        title: TextField(
-          controller: _query,
-
-          // onSubmitted: (value) {
-          //   if (value.trim().isNotEmpty ||
-          //       value.trim() != "" ||
-          //       value.trim().isBlank != true) {
-          //     _searchController.search(
-          //         query: value.trim(),
-          //         resultType: _searchController.resultType.value);
-          //   }
-          // },
-          onChanged: (value) {
-            if (value.trim().isNotEmpty ||
-                value.trim() != "" ||
-                value.trim().isBlank != true) {
-              _searchController.search(
-                  query: value.trim(),
-                  resultType: _searchController.resultType.value);
-            }
-          },
-          autofocus: true,
-          decoration: const InputDecoration(
-            hintText: 'Search',
-            border: InputBorder.none,
-          ),
-        ),
-        bottom: searchTabbarComponent(tabMenuItems: searchTabs),
-        actions: [
-          IconButton(
-              onPressed: () {
-                if (_query.text.trim().isNotEmpty ||
-                    _query.text.trim() != "" ||
-                    _query.text.trim().isBlank != true) {
+          backgroundColor: primaryWhite,
+          toolbarHeight: 60,
+          title: TextField(
+            controller: _query,
+            onChanged: (value) {
+              textFieldDebouncer.call(() {
+                if (value.trim().isNotEmpty ||
+                    value.trim() != "" ||
+                    value.trim().isBlank != true) {
                   _searchController.search(
-                      query: _query.text.trim(),
+                      query: value.trim(),
                       resultType: _searchController.resultType.value);
                   _searchController.setSearchHistory(_query.text);
                 }
-              },
-              icon: const Icon(
-                Icons.search,
-                size: 26,
-                color: primaryDarkBlue,
-              )),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // tabs
-            Obx(
-              () => _searchController.searchState.value == ViewState.idle
-                  ? _searchController.searchHistory.isEmpty
-                      ? emptySearch()
-                      : searchHistory()
-                  : tabs[_utilityController.searchTabbarCurrentIndex],
+              });
+            },
+            decoration: const InputDecoration(
+              hintText: 'Search',
+              border: InputBorder.none,
             ),
+          ),
+          bottom: searchTabbarComponent(tabMenuItems: searchTabs),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  if (_query.text.trim().isNotEmpty ||
+                      _query.text.trim() != "" ||
+                      _query.text.trim().isBlank != true) {
+                    _searchController.search(
+                        query: _query.text.trim(),
+                        resultType: _searchController.resultType.value);
+                    _searchController.setSearchHistory(_query.text);
+                  }
+                },
+                icon: const Icon(
+                  Icons.search,
+                  size: 26,
+                  color: primaryDarkBlue,
+                )),
           ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              // tabs
+              Obx(
+                () => _searchController.searchState.value == ViewState.idle
+                    ? _searchController.searchHistory.isEmpty
+                        ? emptySearch()
+                        : searchHistory()
+                    : tabs[_utilityController.searchTabbarCurrentIndex],
+              ),
+            ],
+          ),
         ),
       ),
     );

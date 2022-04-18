@@ -18,15 +18,27 @@ class SearchController extends BaseController {
   var tvSearchResults = <TvResultsModel>[].obs;
   var peopleSearchResults = <PeopleModel>[].obs;
 
-  var searchHistory = <String>[].obs;
+  var searchHistory = [].obs;
 
   var resultType = movieString.obs;
+
+  @override
+  void onInit() {
+    initSearchHistory();
+    super.onInit();
+  }
 
   // set result type
   void setResultType(String value) => resultType.value = value;
 
   // reset search satate
   void resetSearchState() => searchState.value = ViewState.idle;
+
+// init search history list
+  void initSearchHistory() {
+    searchHistory.value = Auth().searchHistory;
+    print(Auth().searchHistory);
+  }
 
 // search history
   void setSearchHistory(String query) {
