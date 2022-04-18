@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/models/peoples/people_model.dart';
+
+import '../../../../../../configs/configs.dart';
+import '../../../../../../models/peoples/people_model.dart';
 
 Widget aboutInfo({required PeopleModel people}) {
   /// age calculation

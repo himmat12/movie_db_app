@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/configs/configs.dart';
+
+import '../../../configs/configs.dart';
 
 Widget headerBuilder({String? headerText}) => Text(
       headerText ?? 'headerText',

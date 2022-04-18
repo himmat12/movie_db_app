@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/models/peoples/people_model.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
-import 'package:movie_app/src/models/results/tv_result_model.dart';
-import 'package:movie_app/src/services/search_service.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import '../../service_locator.dart';
+import '../configs/strings.dart';
+import '../models/peoples/people_model.dart';
+import '../models/results/movie_result_model.dart';
+import '../models/results/tv_result_model.dart';
+import '../services/search_service.dart';
+import '../utils/auth.dart';
+import 'base_controller.dart';
 
 class SearchController extends BaseController {
   final _service = sl<SearchService>();

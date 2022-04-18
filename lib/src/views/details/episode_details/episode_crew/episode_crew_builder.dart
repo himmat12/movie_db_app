@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/controllers/season_controller.dart';
-import 'package:movie_app/src/models/details/season_details_model.dart';
-import 'package:movie_app/src/views/details/components/header_text.dart';
+
+import '../../../../configs/configs.dart';
+import '../../../../controllers/people_controller.dart';
+import '../../../../controllers/season_controller.dart';
+import '../../../../models/details/season_details_model.dart';
+import '../../components/header_text.dart';
 
 Widget episodeCrewBuilder({required List<SeasonCrew> crews}) {
   final _peopleController = Get.find<PeopleController>();

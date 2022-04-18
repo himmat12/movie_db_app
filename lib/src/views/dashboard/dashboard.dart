@@ -2,21 +2,22 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/auth_v3_controller.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/search_controller.dart';
-import 'package:movie_app/src/controllers/trending_results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/skeletons/bottom_nav_skeleton.dart';
-import 'package:movie_app/src/skeletons/page_skeleton.dart';
-import 'package:movie_app/src/utils/auth.dart';
-import 'package:movie_app/src/views/discover/discover_page.dart';
-import 'package:movie_app/src/views/home/home_page.dart';
-import 'package:movie_app/src/views/profile/profile_page.dart';
-import 'package:movie_app/src/views/watchlist/watchlist_page.dart';
+
+import '../../configs/strings.dart';
+import '../../controllers/auth_v3_controller.dart';
+import '../../controllers/configuration_controller.dart';
+import '../../controllers/results_controller.dart';
+import '../../controllers/search_controller.dart';
+import '../../controllers/trending_results_controller.dart';
+import '../../controllers/utility_controller.dart';
+import '../../helpers/widget_builder_helper.dart';
+import '../../skeletons/bottom_nav_skeleton.dart';
+import '../../skeletons/page_skeleton.dart';
+import '../../utils/auth.dart';
+import '../discover/discover_page.dart';
+import '../home/home_page.dart';
+import '../profile/profile_page.dart';
+import '../watchlist/watchlist_page.dart';
 
 class DashboardPage extends StatelessWidget {
   final _configurationController = Get.find<ConfigurationController>();

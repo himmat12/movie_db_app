@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/models/peoples/people_movie_credits.dart';
+
+import '../../../../../../configs/configs.dart';
+import '../../../../../../controllers/results_controller.dart';
+import '../../../../../../models/peoples/people_movie_credits.dart';
 
 Widget movieCreditsThumbnailCard({
   required MovieCast movie,

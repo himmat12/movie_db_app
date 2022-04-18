@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/account_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/models/results/movie_result_model.dart';
+
+import '../../../configs/configs.dart';
+import '../../../configs/strings.dart';
+import '../../../controllers/account_controller.dart';
+import '../../../controllers/results_controller.dart';
+import '../../../models/results/movie_result_model.dart';
 
 class BottomScrollableSheet extends StatelessWidget {
   BottomScrollableSheet({required this.movie, Key? key}) : super(key: key);

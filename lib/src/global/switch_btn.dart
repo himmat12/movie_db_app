@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/trending_results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
+
+import '../configs/configs.dart';
+import '../configs/strings.dart';
+import '../controllers/base_controller.dart';
+import '../controllers/trending_results_controller.dart';
+import '../controllers/utility_controller.dart';
+import 'loading_spinner.dart';
 
 // trending movie switch
 

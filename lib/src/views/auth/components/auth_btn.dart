@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/configs/configs.dart';
+
+import '../../../configs/configs.dart';
 
 class AuthBtn extends StatelessWidget {
   const AuthBtn({

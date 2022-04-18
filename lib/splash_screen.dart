@@ -1,18 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/auth_v3_controller.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/controllers/season_controller.dart';
-import 'package:movie_app/src/controllers/trending_results_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import 'src/configs/configs.dart';
+import 'src/controllers/auth_v3_controller.dart';
+import 'src/controllers/configuration_controller.dart';
+import 'src/controllers/details_controller.dart';
+import 'src/controllers/people_controller.dart';
+import 'src/controllers/results_controller.dart';
+import 'src/controllers/season_controller.dart';
+import 'src/controllers/trending_results_controller.dart';
+import 'src/controllers/utility_controller.dart';
+import 'src/utils/auth.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

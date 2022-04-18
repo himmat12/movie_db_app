@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/services/base_service.dart';
+import '../exceptions/app_exceptions.dart';
+import 'base_service.dart';
 
 class AccountService extends BaseService {
   // get account details

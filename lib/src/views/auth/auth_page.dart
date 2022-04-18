@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/auth_v3_controller.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global/form_field.dart';
-import 'package:movie_app/src/global/form_wrapper.dart';
-import 'package:movie_app/src/services/auth_v3_service.dart';
-import 'package:movie_app/src/services/auth_v4_service.dart';
-import 'package:movie_app/src/views/auth/components/auth_btn.dart';
+
+import '../../../service_locator.dart';
+import '../../configs/color_config.dart';
+import '../../configs/configs.dart';
+import '../../controllers/auth_v3_controller.dart';
+import '../../controllers/base_controller.dart';
+import '../../controllers/utility_controller.dart';
+import '../../global/form_field.dart';
+import '../../global/form_wrapper.dart';
+import '../../services/auth_v3_service.dart';
+import '../../services/auth_v4_service.dart';
+import 'components/auth_btn.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -82,6 +83,7 @@ class _AuthPageState extends State<AuthPage> {
                                   if (data == "" || data == null) {
                                     return "you must provide your username ...";
                                   }
+                                  return null;
                                 }
                               ]),
                               border: const UnderlineInputBorder(),
@@ -112,6 +114,7 @@ class _AuthPageState extends State<AuthPage> {
                                   if (data == "" || data == null) {
                                     return "you must provide your password ...";
                                   }
+                                  return null;
                                 }
                               ]),
                               border: const UnderlineInputBorder(),

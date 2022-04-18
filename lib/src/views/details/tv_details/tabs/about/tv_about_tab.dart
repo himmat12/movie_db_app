@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/results_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/models/details/tv_details_model.dart';
-import 'package:movie_app/src/views/details/components/crew_component.dart';
-import 'package:movie_app/src/views/details/components/genre_component.dart';
-import 'package:movie_app/src/views/details/components/header_text.dart';
-import 'package:movie_app/src/views/details/components/media_component.dart';
-import 'package:movie_app/src/views/details/components/storyline_text.dart';
-import 'package:movie_app/src/views/details/components/trailer_component.dart';
-import 'package:movie_app/src/views/details/tv_details/components/episode_tile.dart';
-import 'package:movie_app/src/views/details/tv_details/tabs/about/components/networks.dart';
-import 'package:movie_app/src/views/details/tv_details/tabs/about/components/tv_info.dart';
+
+import '../../../../../configs/strings.dart';
+import '../../../../../controllers/configuration_controller.dart';
+import '../../../../../controllers/details_controller.dart';
+import '../../../../../controllers/results_controller.dart';
+import '../../../../../global/loading_spinner.dart';
+import '../../../../../helpers/widget_builder_helper.dart';
+import '../../../../../models/details/tv_details_model.dart';
+import '../../../components/crew_component.dart';
+import '../../../components/genre_component.dart';
+import '../../../components/header_text.dart';
+import '../../../components/media_component.dart';
+import '../../../components/storyline_text.dart';
+import '../../../components/trailer_component.dart';
+import '../../components/episode_tile.dart';
+import 'components/networks.dart';
+import 'components/tv_info.dart';
 
 class TvAboutTab extends StatelessWidget {
   final _detailsController = Get.find<DetailsController>();

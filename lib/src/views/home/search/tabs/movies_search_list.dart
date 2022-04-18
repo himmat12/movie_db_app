@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/search_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/views/details/movie_deatils/tabs/movie%20_list/movie_list.dart';
+
+import '../../../../configs/strings.dart';
+import '../../../../controllers/search_controller.dart';
+import '../../../../global/loading_spinner.dart';
+import '../../../../helpers/widget_builder_helper.dart';
+import '../../../details/movie_deatils/tabs/movie%20_list/movie_list.dart';
 
 class MovieSearchList extends StatelessWidget {
   MovieSearchList({Key? key}) : super(key: key);

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/global/tv_thumbnail_card.dart';
-import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/models/results/tv_result_model.dart';
+
+import '../../../../../controllers/configuration_controller.dart';
+import '../../../../../global/tv_thumbnail_card.dart';
+import '../../../../../mixins/avatar.dart';
+import '../../../../../models/results/tv_result_model.dart';
 
 class TvList extends StatelessWidget with AvatarBuilderMixin {
   final List<TvResultsModel> tv;

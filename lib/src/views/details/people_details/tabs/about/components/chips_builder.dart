@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/views/details/components/header_text.dart';
+
+import '../../../../../../configs/configs.dart';
+import '../../../../components/header_text.dart';
 
 Widget chipsBuilder({required List<String?> chips}) {
   return Column(

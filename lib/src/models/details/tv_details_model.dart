@@ -1,5 +1,5 @@
-import 'package:movie_app/src/models/details/common_details_models.dart';
-import 'package:movie_app/src/models/results/tv_result_model.dart';
+import '../results/tv_result_model.dart';
+import 'common_details_models.dart';
 
 // part 'test.g.dart';
 

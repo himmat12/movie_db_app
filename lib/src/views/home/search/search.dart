@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/search_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/views/home/search/components/search_bottom_tabbar.dart';
-import 'package:movie_app/src/views/home/search/tabs/movies_search_list.dart';
-import 'package:movie_app/src/views/home/search/tabs/tv_search_list.dart';
+import 'package:get/get_rx/src/rx_workers/utils/debouncer.dart';
+
+import '../../../configs/configs.dart';
+import '../../../controllers/base_controller.dart';
+import '../../../controllers/search_controller.dart';
+import '../../../controllers/utility_controller.dart';
+import 'components/search_bottom_tabbar.dart';
+import 'tabs/movies_search_list.dart';
+import 'tabs/tv_search_list.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({Key? key}) : super(key: key);
@@ -16,12 +18,23 @@ class SearchPage extends StatelessWidget {
 
   final _query = TextEditingController();
 
+  final textFieldDebouncer =
+      Debouncer(delay: const Duration(milliseconds: 500));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.6,
-        toolbarHeight: 110,
+        leading: IconButton(
+          onPressed: Get.back,
+          icon: const Icon(
+            Icons.clear,
+            color: primaryDarkBlue,
+          ),
+        ),
+        backgroundColor: primaryWhite,
+        toolbarHeight: 60,
         title: TextField(
           controller: _query,
 
@@ -43,6 +56,7 @@ class SearchPage extends StatelessWidget {
                   resultType: _searchController.resultType.value);
             }
           },
+          autofocus: true,
           decoration: const InputDecoration(
             hintText: 'Search',
             border: InputBorder.none,

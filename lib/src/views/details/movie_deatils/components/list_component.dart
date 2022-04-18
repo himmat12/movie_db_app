@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/list_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
+
+import '../../../../configs/configs.dart';
+import '../../../../controllers/base_controller.dart';
+import '../../../../controllers/details_controller.dart';
+import '../../../../controllers/list_controller.dart';
+import '../../../../global/loading_spinner.dart';
 
 class ListComponent extends StatelessWidget {
   ListComponent({Key? key}) : super(key: key);

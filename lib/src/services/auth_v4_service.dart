@@ -2,9 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:get/get.dart';
-import 'package:movie_app/src/exceptions/app_exceptions.dart';
-import 'package:movie_app/src/services/base_service.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import '../exceptions/app_exceptions.dart';
+import '../utils/auth.dart';
+import 'base_service.dart';
 
 class AuthV4Service extends BaseService {
 // create request token [1]

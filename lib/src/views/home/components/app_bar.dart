@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/search_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import '../../../configs/configs.dart';
+import '../../../controllers/configuration_controller.dart';
+import '../../../controllers/search_controller.dart';
+import '../../../controllers/utility_controller.dart';
+import '../../../mixins/avatar.dart';
+import '../../../utils/auth.dart';
 
 class AppBarBuilder extends StatelessWidget with AvatarBuilderMixin {
   AppBarBuilder({this.height, this.padding, Key? key}) : super(key: key);

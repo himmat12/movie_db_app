@@ -1,4 +1,4 @@
-import 'package:movie_app/src/utils/auth.dart';
+import '../utils/auth.dart';
 
 mixin QueryParameterMixin {
   String api = "1a5ebef58b08ad825f24591860b26990";

@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/models/details/tv_details_model.dart';
-import 'package:movie_app/src/views/details/components/header_text.dart';
+
+import '../../../../../../configs/color_config.dart';
+import '../../../../../../configs/configs.dart';
+import '../../../../../../controllers/configuration_controller.dart';
+import '../../../../../../models/details/tv_details_model.dart';
+import '../../../../components/header_text.dart';
 
 Widget networkBuilder({required List<Network> networks}) {
   final _configurationController = Get.find<ConfigurationController>();

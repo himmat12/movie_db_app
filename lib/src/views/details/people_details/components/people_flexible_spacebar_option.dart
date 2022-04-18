@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/models/peoples/people_model.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../../../configs/configs.dart';
+import '../../../../models/peoples/people_model.dart';
 
 Widget peopleFlexibleSpacebarOptions({required PeopleModel people}) {
   return Padding(

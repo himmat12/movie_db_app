@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/people_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/global/external_id_btn.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
-import 'package:movie_app/src/models/peoples/people_model.dart';
+
+import '../../../../configs/configs.dart';
+import '../../../../configs/strings.dart';
+import '../../../../controllers/configuration_controller.dart';
+import '../../../../controllers/people_controller.dart';
+import '../../../../controllers/utility_controller.dart';
+import '../../../../global/external_id_btn.dart';
+import '../../../../global/loading_spinner.dart';
+import '../../../../helpers/widget_builder_helper.dart';
+import '../../../../models/peoples/people_model.dart';
 
 Widget peopleFlexibleSpacebarComponent({
   required PeopleModel people,

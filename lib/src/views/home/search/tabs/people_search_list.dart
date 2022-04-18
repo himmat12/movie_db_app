@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/search_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
+
+import '../../../../configs/strings.dart';
+import '../../../../controllers/search_controller.dart';
+import '../../../../global/loading_spinner.dart';
+import '../../../../helpers/widget_builder_helper.dart';
 
 class PeopleSearchList extends StatelessWidget {
   PeopleSearchList({Key? key}) : super(key: key);

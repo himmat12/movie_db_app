@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
-import 'package:movie_app/src/views/watchlist/components/watchlist_bottom_tabbar.dart';
-import 'package:movie_app/src/views/watchlist/tabs/movie_watchlist.dart';
-import 'package:movie_app/src/views/watchlist/tabs/tv_watchlist.dart';
+
+import '../../configs/configs.dart';
+import '../../controllers/utility_controller.dart';
+import 'components/watchlist_bottom_tabbar.dart';
+import 'tabs/movie_watchlist.dart';
+import 'tabs/tv_watchlist.dart';
 
 class WatchlistPage extends StatelessWidget {
   WatchlistPage({Key? key}) : super(key: key);

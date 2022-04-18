@@ -2,13 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/controllers/details_controller.dart';
-import 'package:movie_app/src/controllers/season_controller.dart';
-import 'package:movie_app/src/mixins/avatar.dart';
-import 'package:movie_app/src/models/details/season_details_model.dart';
+
+import '../../../../../configs/configs.dart';
+import '../../../../../controllers/configuration_controller.dart';
+import '../../../../../controllers/details_controller.dart';
+import '../../../../../controllers/season_controller.dart';
+import '../../../../../mixins/avatar.dart';
+import '../../../../../models/details/season_details_model.dart';
 
 class EpisodesTab extends StatelessWidget with AvatarBuilderMixin {
   final _detailsController = Get.find<DetailsController>();

@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
+
+import '../../../configs/configs.dart';
 
 class BackdropCard extends StatelessWidget {
   const BackdropCard({required this.imageUrl, Key? key}) : super(key: key);

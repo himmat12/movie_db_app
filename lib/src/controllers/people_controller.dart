@@ -1,18 +1,19 @@
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/models/details/common_details_models.dart';
-import 'package:movie_app/src/models/peoples/people_external_ids.dart';
-import 'package:movie_app/src/models/peoples/people_model.dart';
-import 'package:movie_app/src/models/peoples/people_movie_credits.dart';
-import 'package:movie_app/src/models/peoples/people_tv_credits.dart';
-import 'package:movie_app/src/services/people_service.dart';
+
+import '../../service_locator.dart';
+import '../configs/strings.dart';
+import '../models/details/common_details_models.dart';
+import '../models/peoples/people_external_ids.dart';
+import '../models/peoples/people_model.dart';
+import '../models/peoples/people_movie_credits.dart';
+import '../models/peoples/people_tv_credits.dart';
+import '../services/people_service.dart';
+import 'base_controller.dart';
 
 class PeopleController extends BaseController {
   final _service = sl<PeopleService>();
 
-  var _personId = 0.obs;
+  final _personId = 0.obs;
 
   int get personId => _personId.value;
 

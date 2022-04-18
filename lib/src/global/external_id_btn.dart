@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
+
+import '../configs/configs.dart';
+import '../controllers/utility_controller.dart';
 
 Widget externalIdBtn({
   required String targetUrl,

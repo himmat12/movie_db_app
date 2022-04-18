@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/service_locator.dart';
-import 'package:movie_app/src/configs/color_config.dart';
-import 'package:movie_app/src/controllers/base_controller.dart';
-import 'package:movie_app/src/services/account_service.dart';
-import 'package:movie_app/src/services/auth_v3_service.dart';
-import 'package:movie_app/src/utils/auth.dart';
+
+import '../../service_locator.dart';
+import '../configs/color_config.dart';
+import '../services/account_service.dart';
+import '../services/auth_v3_service.dart';
+import '../utils/auth.dart';
+import 'base_controller.dart';
 
 class AuthV3Controller extends BaseController {
   final v3Service = sl<AuthV3Service>();
   final _service = sl<AccountService>();
 
-  var _sessionState = ViewState.idle.obs;
+  final _sessionState = ViewState.idle.obs;
 
   ViewState get sessionState => _sessionState.value;
 

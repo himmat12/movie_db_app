@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/configs.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/search_controller.dart';
-import 'package:movie_app/src/controllers/utility_controller.dart';
+
+import '../../../../configs/configs.dart';
+import '../../../../configs/strings.dart';
+import '../../../../controllers/search_controller.dart';
+import '../../../../controllers/utility_controller.dart';
 
 PreferredSizeWidget? searchTabbarComponent(
     {required List<String> tabMenuItems}) {

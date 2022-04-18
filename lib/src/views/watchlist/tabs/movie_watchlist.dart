@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/src/configs/strings.dart';
-import 'package:movie_app/src/controllers/account_controller.dart';
-import 'package:movie_app/src/controllers/configuration_controller.dart';
-import 'package:movie_app/src/global/loading_spinner.dart';
-import 'package:movie_app/src/global/movie_thumbnail_card.dart';
-import 'package:movie_app/src/helpers/widget_builder_helper.dart';
+
+import '../../../configs/strings.dart';
+import '../../../controllers/account_controller.dart';
+import '../../../controllers/configuration_controller.dart';
+import '../../../global/loading_spinner.dart';
+import '../../../global/movie_thumbnail_card.dart';
+import '../../../helpers/widget_builder_helper.dart';
 
 class MovieWatchlist extends StatelessWidget {
   MovieWatchlist({Key? key}) : super(key: key);
