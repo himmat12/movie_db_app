@@ -26,7 +26,7 @@ class PeopleAboutTab extends StatelessWidget {
           const SizedBox(height: 18),
           aboutInfo(people: _peopleController.people.value),
           const SizedBox(height: 12),
-          storylineTextBuilder(
+          StoryLineTextBuilder(
               headerText: 'Biography',
               text: _peopleController.people.value.biography == "" ||
                       _peopleController.people.value.biography == null

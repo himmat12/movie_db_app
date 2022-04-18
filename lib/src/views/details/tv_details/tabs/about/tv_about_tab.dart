@@ -49,7 +49,7 @@ class TvAboutTab extends StatelessWidget {
           const SizedBox(height: 18),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: storylineTextBuilder(
+            child: StoryLineTextBuilder(
                 text: _detailsController.tvDetail.value.overview ??
                     "no storyline at the moment"),
           ),

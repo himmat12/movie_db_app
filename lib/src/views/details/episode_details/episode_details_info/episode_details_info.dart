@@ -16,7 +16,7 @@ class EpisodeDetailsInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 18),
-        storylineTextBuilder(
+        StoryLineTextBuilder(
             text: _seasonController.episodeModel.value.overview ?? "overview"),
         const SizedBox(height: 18),
         GuestCasts(),

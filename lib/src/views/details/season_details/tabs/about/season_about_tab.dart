@@ -21,7 +21,7 @@ class SeasonAboutTab extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 18),
-          storylineTextBuilder(
+          StoryLineTextBuilder(
               text:
                   _seasonController.seasonModel.value.overview ?? "storyline"),
           const SizedBox(height: 12),

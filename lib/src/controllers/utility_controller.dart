@@ -53,15 +53,15 @@ class UtilityController extends BaseController {
   }
 
 // hide/show (tv/movie) details btn state
-  final _showText = false.obs;
+  final showText = false.obs;
 
-  bool get showText => _showText.value;
+  // bool get showText => _showText.value;
 
   void toggleHideShowBtn() {
-    _showText.value = !_showText.value;
+    showText.value = !showText.value;
   }
 
-  void resetHideShowState() => _showText.value = false;
+  void resetHideShowState() => showText.value = false;
 
 // details tabbar navigation state
   final _tabbarCurrentIndex = 0.obs;
