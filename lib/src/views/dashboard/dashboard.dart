@@ -55,7 +55,8 @@ class DashboardPage extends StatelessWidget {
             TextButton(
               onPressed: () {
                 _authV3Controller.logoutV3();
-                _searchController.clearSearchHistory();
+                // _searchController.clearSearchHistoryMovie();
+                // _searchController.clearSearchHistoryTv();
               },
               child: const Text('Signout'),
             ),

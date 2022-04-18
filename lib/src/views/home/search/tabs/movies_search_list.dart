@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../configs/strings.dart';
 import '../../../../controllers/search_controller.dart';
 import '../../../../global/loading_spinner.dart';
 import '../../../../helpers/widget_builder_helper.dart';
@@ -17,10 +16,6 @@ class MovieSearchList extends StatelessWidget {
     return GetBuilder(
       id: 'movie_search_result',
       init: _searchController,
-      initState: (_) {
-        _searchController.setResultType(movieString);
-        print('initialized');
-      },
       builder: (controller) => Obx(
         () => WidgetBuilderHelper(
           state: _searchController.searchState.value,

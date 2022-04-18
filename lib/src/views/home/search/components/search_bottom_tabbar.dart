@@ -52,12 +52,12 @@ Widget tabbarItem({
         case 0:
           _searchController.setResultType(movieString);
           // _searchController.movieSearchResults.clear();
-          _searchController.resetSearchState();
+          // _searchController.resetSearchState();
           break;
         case 1:
           _searchController.setResultType(tvString);
           // _searchController.tvSearchResults.clear();
-          _searchController.resetSearchState();
+          // _searchController.resetSearchState();
           break;
         case 2:
           _searchController.setResultType(personString);

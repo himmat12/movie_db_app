@@ -20,8 +20,11 @@ class Auth {
   void setUserGrvatar({String? url}) async =>
       await box.write('user_gravatar', url);
 
-  void setSearchHistory(List history) async =>
-      await box.write('history', history);
+  void setSearchHistoryMovie(List history) async =>
+      await box.write('history_movie', history);
+
+  void setSearchHistoryTv(List history) async =>
+      await box.write('history_tv', history);
 
   String get sessionId => box.read('sessionId');
   String get guestSessionId => box.read('guestSessionId');
@@ -31,7 +34,8 @@ class Auth {
   String? get userAvatar => box.read('user_avatar');
   String? get userGravatar => box.read('user_gravatar');
 
-  List get searchHistory => box.read('history');
+  List get searchHistoryMovie => box.read('history_movie') ?? [];
+  List get searchHistoryTv => box.read('history_tv') ?? [];
 
   void logout() => box.erase();
 }

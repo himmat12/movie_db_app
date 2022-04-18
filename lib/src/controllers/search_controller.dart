@@ -18,7 +18,8 @@ class SearchController extends BaseController {
   var tvSearchResults = <TvResultsModel>[].obs;
   var peopleSearchResults = <PeopleModel>[].obs;
 
-  var searchHistory = [].obs;
+  var searchHistoryMovie = [].obs;
+  var searchHistoryTv = [].obs;
 
   var resultType = movieString.obs;
 
@@ -36,23 +37,35 @@ class SearchController extends BaseController {
 
 // init search history list
   void initSearchHistory() {
-    searchHistory.value = Auth().searchHistory;
-    print(Auth().searchHistory);
+    searchHistoryMovie.value = Auth().searchHistoryMovie;
+    searchHistoryTv.value = Auth().searchHistoryTv;
   }
 
 // search history
-  void setSearchHistory(String query) {
-    if (searchHistory.contains(query) != true) {
-      searchHistory.add(query);
-
-      Auth().setSearchHistory(searchHistory);
+  /// set movie search history
+  void setSearchHistoryMovie(String query) {
+    if (searchHistoryMovie.contains(query) != true) {
+      searchHistoryMovie.add(query);
+      Auth().setSearchHistoryMovie(searchHistoryMovie);
     }
   }
 
-  void clearSearchHistory() {
-    searchHistory.clear();
+  /// set tv search history
+  void setSearchHistoryTv(String query) {
+    if (searchHistoryTv.contains(query) != true) {
+      searchHistoryTv.add(query);
+      Auth().setSearchHistoryMovie(searchHistoryTv);
+    }
+  }
 
-    Auth().setSearchHistory(searchHistory);
+  void clearSearchHistoryMovie() {
+    searchHistoryMovie.clear();
+    Auth().setSearchHistoryMovie(searchHistoryMovie);
+  }
+
+  void clearSearchHistoryTv() {
+    searchHistoryTv.clear();
+    Auth().setSearchHistoryTv(searchHistoryTv);
   }
 
   // search query
