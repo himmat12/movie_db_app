@@ -35,12 +35,12 @@ class TrendingMoviesBuilder extends StatelessWidget {
               }
               Get.toNamed('/trending_movie_list', arguments: {
                 "title": "Trending Movies",
-                "toggleOption": trendingMovieSwitchBtnBuilder()
+                "toggleOption": TrendingMovieSwitchBtnBuilder()
               });
             },
             title: "Trending",
             subtitle: "Movies",
-            toggleOption: trendingMovieSwitchBtnBuilder(),
+            toggleOption: TrendingMovieSwitchBtnBuilder(),
           ),
 
           const SizedBox(height: 12),
@@ -89,7 +89,7 @@ class TrendingMoviesBuilder extends StatelessWidget {
                                           .trendingMovies[index],
                                       imageUrl:
                                           '$posterUrl${_trendingResultsController.trendingMovies[index].posterPath}')),
-                      addMorePaginationBtn(
+                      AddMorePaginationBtn(
                           onTap: () {
                             _trendingResultsController
                                 .loadMoreTrendingMoviesResults(

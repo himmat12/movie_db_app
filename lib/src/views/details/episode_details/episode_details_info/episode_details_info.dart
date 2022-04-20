@@ -22,7 +22,7 @@ class EpisodeDetailsInfo extends StatelessWidget {
         const SizedBox(height: 18),
         GuestCasts(),
         const SizedBox(height: 18),
-        episodeCrewBuilder(
+        EpisodeCrewBuilder(
             crews: _seasonController.episodeModel.value.crew ?? []),
         const SizedBox(height: 18),
       ],

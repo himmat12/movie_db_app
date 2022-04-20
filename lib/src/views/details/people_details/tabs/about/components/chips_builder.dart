@@ -7,7 +7,7 @@ Widget chipsBuilder({required List<String?> chips}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      headerBuilder(headerText: "Also known as"),
+      const HeaderBuilder(headerText: "Also known as"),
       const SizedBox(height: 8),
       chips.isEmpty
           ? Text(

@@ -23,7 +23,7 @@ class GuestCasts extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            headerBuilder(headerText: "Guest Stars"),
+            const HeaderBuilder(headerText: "Guest Stars"),
             IconButton(
                 onPressed: () {
                   Get.toNamed('/guest_stars', parameters: {

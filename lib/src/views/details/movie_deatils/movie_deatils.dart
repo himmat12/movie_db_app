@@ -138,7 +138,7 @@ class MoviesDetails extends StatelessWidget {
                         background: Column(
                           children: [
                             // slider img/poster/title
-                            movieFlexibleSpacebarComponent(
+                            MovieFlexibleSpacebarComponent(
                               movie: _detailsController.movieDetail.value,
                               height: 200,
                             ),
@@ -146,7 +146,7 @@ class MoviesDetails extends StatelessWidget {
                             const SizedBox(height: 18),
 
                             // ratings / lists / bookmark options
-                            movieFlexibleSpacebarOptions(),
+                            MovieFlexibleSpacebarOptions(),
                           ],
                         ),
                       ),

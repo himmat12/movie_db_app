@@ -94,7 +94,7 @@ Widget seasonFlexibleSpacebarComponent({
                                 size: 34,
                               ),
                             )
-                          : posterCard(
+                          : PosterCard(
                               imageUrl:
                                   '${_configController.posterUrl}${season.posterPath}')),
 

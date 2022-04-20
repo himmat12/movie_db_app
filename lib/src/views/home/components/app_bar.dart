@@ -93,7 +93,7 @@ class AppBarBuilder extends StatelessWidget with AvatarBuilderMixin {
                 ),
           const Expanded(
             child: Text(
-              'TMDB Client',
+              'Discover Movies',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: l,

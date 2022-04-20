@@ -23,7 +23,7 @@ class StoryLineTextBuilder extends GetView<UtilityController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        headerBuilder(headerText: headerText ?? "Story Line"),
+        HeaderBuilder(headerText: headerText ?? "Story Line"),
         const SizedBox(height: 8),
         text == ""
             ? Text(
@@ -49,7 +49,7 @@ class StoryLineTextBuilder extends GetView<UtilityController> {
                         ),
                       ),
               ),
-        text == "" ? const SizedBox.shrink() : toggleHideShowBtn(),
+        text == "" ? const SizedBox.shrink() : const ToggleHideShowBtn(),
       ],
     );
   }

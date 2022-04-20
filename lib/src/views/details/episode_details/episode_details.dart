@@ -100,7 +100,7 @@ class EpisodeDetails extends StatelessWidget {
                         background: Column(
                           children: [
                             // slider img/poster/title
-                            episodeFlexibleSpacebarComponent(
+                            EpisodeFlexibleSpacebarComponent(
                               episode: _seasonController.episodeModel.value,
                               height: 200,
                             ),

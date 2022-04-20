@@ -114,7 +114,7 @@ class MovieRatingComponent extends StatelessWidget {
                           const SizedBox(height: 16),
 
                           // rating quotes
-                          ratingQuotes(_detailsController.rateQuote.value),
+                          RatingQuotes(_detailsController.rateQuote.value),
 
                           const SizedBox(height: 18),
 
@@ -217,37 +217,6 @@ class MovieRatingComponent extends StatelessWidget {
     );
   }
 
-  Widget ratingQuotes(String quote) {
-    switch (quote) {
-      case terribleString:
-        return textBuilder(terribleString);
-      case poorString:
-        return textBuilder(poorString);
-      case notBadString:
-        return textBuilder(notBadString);
-      case okayString:
-        return textBuilder(okayString);
-      case goodString:
-        return textBuilder(goodString);
-      case greatString:
-        return textBuilder(greatString);
-      case wonderfulString:
-        return textBuilder(wonderfulString);
-      default:
-        break;
-    }
-    return textBuilder(rateQuestionString);
-  }
-
-  Widget textBuilder(text) => Text(
-        text,
-        style: const TextStyle(
-          fontSize: l,
-          fontWeight: FontWeight.w500,
-          color: primaryDarkBlue05,
-        ),
-      );
-
   void evaluateRateQuote(value) {
     if (value > 0.5 && value <= 1.5) {
       _detailsController.setRateQuote(terribleString);
@@ -266,5 +235,52 @@ class MovieRatingComponent extends StatelessWidget {
     } else {
       _detailsController.setRateQuote(rateQuestionString);
     }
+  }
+}
+
+// ratings quotes helper widget
+class RatingQuotes extends StatelessWidget {
+  const RatingQuotes(this.quote, {Key? key}) : super(key: key);
+  final String quote;
+
+  @override
+  Widget build(BuildContext context) {
+    switch (quote) {
+      case terribleString:
+        return const _TextBuilder(terribleString);
+      case poorString:
+        return const _TextBuilder(poorString);
+      case notBadString:
+        return const _TextBuilder(notBadString);
+      case okayString:
+        return const _TextBuilder(okayString);
+      case goodString:
+        return const _TextBuilder(goodString);
+      case greatString:
+        return const _TextBuilder(greatString);
+      case wonderfulString:
+        return const _TextBuilder(wonderfulString);
+      default:
+        break;
+    }
+    return const _TextBuilder(rateQuestionString);
+  }
+}
+
+// private text builder helper widget
+class _TextBuilder extends StatelessWidget {
+  const _TextBuilder(this.text, {Key? key}) : super(key: key);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: l,
+        fontWeight: FontWeight.w500,
+        color: primaryDarkBlue05,
+      ),
+    );
   }
 }

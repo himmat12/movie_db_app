@@ -26,7 +26,7 @@ class SeasonAboutTab extends StatelessWidget {
               text:
                   _seasonController.seasonModel.value.overview ?? "storyline"),
           const SizedBox(height: 12),
-          genreBuilder(genres: _detailsController.tvDetail.value.genres ?? []),
+          GenreBuilder(genres: _detailsController.tvDetail.value.genres ?? []),
           const SizedBox(height: 18),
           networkBuilder(
               networks: _detailsController.tvDetail.value.networks ?? []),

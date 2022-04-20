@@ -100,7 +100,7 @@ Widget tvResultBuilder({
                                 tv: getItem(resultType)![index],
                                 imageUrl:
                                     '$posterUrl${getItem(resultType)![index].posterPath}')),
-                    addMorePaginationBtn(
+                    AddMorePaginationBtn(
                         onTap: () {
                           _resultsController.loadMoreTvResults(
                               resultType: resultType);

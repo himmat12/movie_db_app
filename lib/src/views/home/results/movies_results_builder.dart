@@ -103,7 +103,7 @@ Widget movieResultBuilder({
                                 movie: getItem(resultType)![index],
                                 imageUrl:
                                     '$posterUrl${getItem(resultType)![index].posterPath}')),
-                    addMorePaginationBtn(
+                    AddMorePaginationBtn(
                         onTap: () {
                           _resultsController.loadMoreMoviesResults(
                               resultType: resultType);

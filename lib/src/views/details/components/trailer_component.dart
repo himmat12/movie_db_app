@@ -22,9 +22,9 @@ class TrailerComponent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: headerBuilder(headerText: "Teasers & Trailers"),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: HeaderBuilder(headerText: "Teasers & Trailers"),
         ),
         const SizedBox(height: 12),
         SizedBox(

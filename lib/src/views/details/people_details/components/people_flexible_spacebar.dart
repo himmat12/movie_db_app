@@ -172,7 +172,7 @@ Widget peopleFlexibleSpacebarComponent({
                                                   .facebookId ==
                                               ""
                                       ? const SizedBox.shrink()
-                                      : externalIdBtn(
+                                      : ExternalIdBtn(
                                           targetUrl:
                                               '$facebookString/${_peopleController.externalIds.value.facebookId}',
                                           asset: 'facebook.svg',
@@ -192,7 +192,7 @@ Widget peopleFlexibleSpacebarComponent({
                                                   .twitterId ==
                                               ""
                                       ? const SizedBox.shrink()
-                                      : externalIdBtn(
+                                      : ExternalIdBtn(
                                           targetUrl:
                                               '$twitterString/${_peopleController.externalIds.value.twitterId}',
                                           asset: 'twitter.svg',
@@ -212,7 +212,7 @@ Widget peopleFlexibleSpacebarComponent({
                                                   .instagramId ==
                                               ""
                                       ? const SizedBox.shrink()
-                                      : externalIdBtn(
+                                      : ExternalIdBtn(
                                           targetUrl:
                                               '$instagramString/${_peopleController.externalIds.value.instagramId}',
                                           asset: 'instagram.svg',

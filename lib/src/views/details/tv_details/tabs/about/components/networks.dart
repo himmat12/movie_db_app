@@ -14,7 +14,7 @@ Widget networkBuilder({required List<Network> networks}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      headerBuilder(headerText: "Networks"),
+      const HeaderBuilder(headerText: "Networks"),
       const SizedBox(height: 8),
       Wrap(
         spacing: 4,
