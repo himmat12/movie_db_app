@@ -22,7 +22,7 @@ Widget tvInfoBuilder({required TvDetailsModel tvDetails}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      headerBuilder(headerText: "TV Show Info"),
+      const HeaderBuilder(headerText: "TV Show Info"),
       const SizedBox(height: 12),
       rowBuilder(title: "English Title", text: tvDetails.name ?? "-"),
       rowBuilder(title: "Original Title", text: tvDetails.originalName ?? "-"),

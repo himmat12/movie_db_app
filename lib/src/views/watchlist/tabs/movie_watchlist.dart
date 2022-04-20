@@ -51,7 +51,7 @@ class MovieWatchlist extends StatelessWidget {
                                 null
                             ? true
                             : false,
-                    child: movieThumbnailCard(
+                    child: MovieThumbnailCard(
                       // onLongPress: () {
                       //   _resultController.setMovieId(
                       //       '${_accountController.movieWatchlist[index].id}');

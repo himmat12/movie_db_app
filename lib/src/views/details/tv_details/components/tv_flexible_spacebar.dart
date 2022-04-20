@@ -161,7 +161,7 @@ Widget tvFlexibleSpacebarComponent({
                                 size: 34,
                               ),
                             )
-                          : posterCard(
+                          : PosterCard(
                               imageUrl:
                                   '${_configController.posterUrl}${tv.posterPath}')),
                   const SizedBox(width: 16),

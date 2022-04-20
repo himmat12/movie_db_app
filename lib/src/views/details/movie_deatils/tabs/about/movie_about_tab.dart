@@ -56,7 +56,7 @@ class MovieAboutTab extends StatelessWidget {
             /// genre
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: genreBuilder(
+              child: GenreBuilder(
                   genres: _detailsController.movieDetail.value.genres ?? []),
             ),
             const SizedBox(height: 28),
@@ -76,7 +76,7 @@ class MovieAboutTab extends StatelessWidget {
                 onLoadingBuilder: LoadingSpinner().horizontalLoading,
                 onSuccessBuilder: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: crewBuilder(
+                  child: CrewBuilder(
                     resultType: movieString,
                     crews: _detailsController.credits.value.crew ?? [],
                   ),
@@ -92,7 +92,7 @@ class MovieAboutTab extends StatelessWidget {
             ///movie info
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: movieInfoBuilder(
+              child: MovieInfoBuilder(
                   movieDetails: _detailsController.movieDetail.value),
             ),
             const SizedBox(height: 24),

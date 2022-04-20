@@ -93,7 +93,7 @@ Widget tvCreditsThumbnailCard({
 
           // tv title and option
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -110,17 +110,17 @@ Widget tvCreditsThumbnailCard({
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    // ignore: avoid_print
-                    print('options bottom sheet ...');
-                  },
-                  child: const Icon(
-                    Icons.more_vert,
-                    color: primaryDarkBlue,
-                    size: 18,
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     // ignore: avoid_print
+                //     print('options bottom sheet ...');
+                //   },
+                //   child: const Icon(
+                //     Icons.more_vert,
+                //     color: primaryDarkBlue,
+                //     size: 18,
+                //   ),
+                // ),
               ],
             ),
           ),

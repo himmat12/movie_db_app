@@ -94,16 +94,16 @@ Widget movieResultBuilder({
                                 getItem(resultType)![index].posterPath == ""
                             ? AbsorbPointer(
                                 absorbing: true,
-                                child: movieThumbnailCard(
+                                child: MovieThumbnailCard(
                                     movie: getItem(resultType)![index],
                                     imageUrl:
                                         '$posterUrl${getItem(resultType)![index].posterPath}'),
                               )
-                            : movieThumbnailCard(
+                            : MovieThumbnailCard(
                                 movie: getItem(resultType)![index],
                                 imageUrl:
                                     '$posterUrl${getItem(resultType)![index].posterPath}')),
-                    addMorePaginationBtn(
+                    AddMorePaginationBtn(
                         onTap: () {
                           _resultsController.loadMoreMoviesResults(
                               resultType: resultType);

@@ -105,7 +105,7 @@ class HomeMovieresultsList extends StatelessWidget with LoadingSpinnerMixin {
                                   getItem(resultType)![index].posterPath != ""
                               ? false
                               : true,
-                          child: movieThumbnailCard(
+                          child: MovieThumbnailCard(
                             padding: const EdgeInsets.all(0),
                             movie: getItem(resultType)![index],
                             imageUrl:

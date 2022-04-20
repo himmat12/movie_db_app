@@ -50,7 +50,7 @@ class PeopleAboutTab extends StatelessWidget {
               onSuccessBuilder: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  headerBuilder(headerText: 'Images'),
+                  const HeaderBuilder(headerText: 'Images'),
                   const SizedBox(height: 12),
                   _peopleController.images.isEmpty
                       ? Text(
@@ -65,7 +65,7 @@ class PeopleAboutTab extends StatelessWidget {
                           child: Row(
                             children: List.from(
                               _peopleController.images.map(
-                                (e) => posterCard(imageUrl: e.filePath ?? "#"),
+                                (e) => PosterCard(imageUrl: e.filePath ?? "#"),
                               ),
                             ),
                           ),

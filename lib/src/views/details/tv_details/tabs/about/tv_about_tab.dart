@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../../configs/strings.dart';
 import '../../../../../controllers/configuration_controller.dart';
@@ -28,9 +27,9 @@ class TvAboutTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EpisodeToAir? episode = _detailsController.tvDetail.value.lastEpisodeToAir;
-    final String? airDate =
-        DateFormat.yMMMMd().format(episode!.airDate ?? DateTime(0000));
+    // EpisodeToAir? episode = _detailsController.tvDetail.value.lastEpisodeToAir;
+    // final String? airDate =
+    //     DateFormat.yMMMMd().format(episode!.airDate ?? DateTime(0000));
 
     return
         //  Obx(
@@ -59,7 +58,7 @@ class TvAboutTab extends StatelessWidget {
           // genres
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: genreBuilder(
+            child: GenreBuilder(
                 genres: _detailsController.tvDetail.value.genres ?? []),
           ),
           const SizedBox(height: 18),
@@ -75,9 +74,9 @@ class TvAboutTab extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: headerBuilder(headerText: "Episodes"),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: HeaderBuilder(headerText: "Episodes"),
               ),
               const SizedBox(height: 14),
               _detailsController.tvDetail.value.lastEpisodeToAir == null
@@ -114,7 +113,7 @@ class TvAboutTab extends StatelessWidget {
               onLoadingBuilder: LoadingSpinner().horizontalLoading,
               onSuccessBuilder: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: crewBuilder(
+                child: CrewBuilder(
                   resultType: tvString,
                   crews: _detailsController.credits.value.crew ?? [],
                 ),

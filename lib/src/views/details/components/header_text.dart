@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../configs/configs.dart';
 
-Widget headerBuilder({String? headerText}) => Text(
+class HeaderBuilder extends StatelessWidget {
+  const HeaderBuilder({Key? key, this.headerText}) : super(key: key);
+  final String? headerText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
       headerText ?? 'headerText',
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
@@ -12,3 +18,5 @@ Widget headerBuilder({String? headerText}) => Text(
         fontWeight: FontWeight.w700,
       ),
     );
+  }
+}
