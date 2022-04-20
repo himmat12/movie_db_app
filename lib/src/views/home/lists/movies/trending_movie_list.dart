@@ -98,7 +98,7 @@ class HomeTrendingMovieList extends StatelessWidget with LoadingSpinnerMixin {
                                       ""
                               ? false
                               : true,
-                          child: movieThumbnailCard(
+                          child: MovieThumbnailCard(
                             padding: const EdgeInsets.all(0),
                             movie: _trendingResultsController
                                 .trendingMovies[index],

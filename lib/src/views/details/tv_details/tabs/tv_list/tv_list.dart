@@ -34,7 +34,7 @@ class TvList extends StatelessWidget with AvatarBuilderMixin {
           ),
           itemBuilder: (context, index) => AbsorbPointer(
             absorbing: tv[index].posterPath == null ? true : false,
-            child: tvThumbnailCard(
+            child: TvThumbnailCard(
               onLongPress: onLongPress,
               padding: const EdgeInsets.all(0),
               tv: tv[index],

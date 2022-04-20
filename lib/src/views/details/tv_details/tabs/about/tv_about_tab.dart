@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../../configs/strings.dart';
 import '../../../../../controllers/configuration_controller.dart';
@@ -28,9 +27,9 @@ class TvAboutTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EpisodeToAir? episode = _detailsController.tvDetail.value.lastEpisodeToAir;
-    final String? airDate =
-        DateFormat.yMMMMd().format(episode!.airDate ?? DateTime(0000));
+    // EpisodeToAir? episode = _detailsController.tvDetail.value.lastEpisodeToAir;
+    // final String? airDate =
+    //     DateFormat.yMMMMd().format(episode!.airDate ?? DateTime(0000));
 
     return
         //  Obx(

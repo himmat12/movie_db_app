@@ -101,7 +101,7 @@ class HomeTvResultList extends StatelessWidget with LoadingSpinnerMixin {
                                   getItem(resultType)![index].posterPath != ""
                               ? false
                               : true,
-                          child: tvThumbnailCard(
+                          child: TvThumbnailCard(
                             padding: const EdgeInsets.all(0),
                             tv: getItem(resultType)![index],
                             imageUrl:

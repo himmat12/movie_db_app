@@ -7,7 +7,6 @@ import '../../configs/strings.dart';
 import '../../controllers/auth_v3_controller.dart';
 import '../../controllers/configuration_controller.dart';
 import '../../controllers/results_controller.dart';
-import '../../controllers/search_controller.dart';
 import '../../controllers/trending_results_controller.dart';
 import '../../controllers/utility_controller.dart';
 import '../../helpers/widget_builder_helper.dart';
@@ -28,7 +27,7 @@ class DashboardPage extends StatelessWidget {
   // final _seasonController = Get.find<SeasonController>();
   // final _detailsController = Get.find<DetailsController>();
   final _authV3Controller = Get.find<AuthV3Controller>();
-  final _searchController = Get.find<SearchController>();
+  // final _searchController = Get.find<SearchController>();
 
   DashboardPage({Key? key}) : super(key: key);
 

@@ -97,7 +97,7 @@ class HomeTrendingTvList extends StatelessWidget with AvatarBuilderMixin {
                                       ""
                               ? false
                               : true,
-                          child: tvThumbnailCard(
+                          child: TvThumbnailCard(
                             padding: const EdgeInsets.all(0),
                             tv: _trendingResultsController.trendingTVs[index],
                             imageUrl:

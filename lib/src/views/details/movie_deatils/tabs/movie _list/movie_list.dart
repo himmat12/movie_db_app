@@ -36,7 +36,7 @@ class MovieList extends StatelessWidget with AvatarBuilderMixin {
           ),
           itemBuilder: (context, index) => AbsorbPointer(
             absorbing: movies[index].posterPath == null ? true : false,
-            child: movieThumbnailCard(
+            child: MovieThumbnailCard(
               // onLongPress: onLongPress,
               padding: const EdgeInsets.all(0),
               movie: movies[index],

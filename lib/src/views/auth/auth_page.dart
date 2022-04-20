@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../service_locator.dart';
-import '../../configs/color_config.dart';
 import '../../configs/configs.dart';
 import '../../controllers/auth_v3_controller.dart';
 import '../../controllers/base_controller.dart';

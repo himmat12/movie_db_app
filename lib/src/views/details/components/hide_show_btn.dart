@@ -18,7 +18,7 @@ Widget toggleHideShowBtn() {
           padding: const EdgeInsets.fromLTRB(4, 2, 4, 2),
           color: Colors.transparent,
           child: Obx(() => Text(
-                _utilityController.showText != true ? 'More' : 'Less',
+                _utilityController.showText.value != true ? 'More' : 'Less',
                 style: const TextStyle(
                   color: primaryblue,
                   fontSize: n - 2,

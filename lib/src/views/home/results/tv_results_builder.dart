@@ -91,12 +91,12 @@ Widget tvResultBuilder({
                                 getItem(resultType)![index].posterPath == ""
                             ? AbsorbPointer(
                                 absorbing: true,
-                                child: tvThumbnailCard(
+                                child: TvThumbnailCard(
                                     tv: getItem(resultType)![index],
                                     imageUrl:
                                         '$posterUrl${getItem(resultType)![index].posterPath}'),
                               )
-                            : tvThumbnailCard(
+                            : TvThumbnailCard(
                                 tv: getItem(resultType)![index],
                                 imageUrl:
                                     '$posterUrl${getItem(resultType)![index].posterPath}')),

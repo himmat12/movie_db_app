@@ -152,7 +152,7 @@ class EpisodeTile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      episode == null
+                      episode.isBlank!
                           ? const SizedBox.shrink()
                           : Text(
                               episode.name == ""

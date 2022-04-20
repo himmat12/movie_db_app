@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../configs/color_config.dart';
 import '../../../configs/configs.dart';
 import '../../../controllers/base_controller.dart';
 import '../../../controllers/details_controller.dart';
