@@ -65,7 +65,7 @@ class TvAboutTab extends StatelessWidget {
           // networks
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: networkBuilder(
+            child: NetworkBuilder(
                 networks: _detailsController.tvDetail.value.networks ?? []),
           ),
           const SizedBox(height: 18),
@@ -128,7 +128,7 @@ class TvAboutTab extends StatelessWidget {
           // tv info
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: tvInfoBuilder(tvDetails: _detailsController.tvDetail.value),
+            child: TvInfoBuilder(tvDetails: _detailsController.tvDetail.value),
           ),
           const SizedBox(height: 28),
 

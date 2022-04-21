@@ -25,7 +25,7 @@ class PeopleAboutTab extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 18),
-          aboutInfo(people: _peopleController.people.value),
+          AboutInfo(people: _peopleController.people.value),
           const SizedBox(height: 12),
           StoryLineTextBuilder(
               headerText: 'Biography',
@@ -34,7 +34,7 @@ class PeopleAboutTab extends StatelessWidget {
                   ? 'No Biography at the moment'
                   : _peopleController.people.value.biography ?? "biography"),
           const SizedBox(height: 12),
-          chipsBuilder(chips: _peopleController.people.value.alsoKnownAs ?? []),
+          ChipsBuilder(chips: _peopleController.people.value.alsoKnownAs ?? []),
           const SizedBox(height: 18),
           GetBuilder(
             id: 'people_images',

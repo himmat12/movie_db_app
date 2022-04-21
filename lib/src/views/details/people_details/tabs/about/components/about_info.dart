@@ -1,39 +1,61 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../../configs/configs.dart';
 import '../../../../../../models/peoples/people_model.dart';
 
-Widget aboutInfo({required PeopleModel people}) {
+// ignore: must_be_immutable
+class AboutInfo extends StatelessWidget {
+  AboutInfo({required this.people, Key? key}) : super(key: key);
+  final PeopleModel people;
+
   /// age calculation
-  final String? birthDate = people.birthday;
-  final String? currentDate = DateFormat.y().format(DateTime.now());
-  final String? dateNow = currentDate!.substring(0, 4);
-  final String? dateOfBirth =
-      people.birthday == null ? '-' : birthDate!.substring(0, 4);
-  final String? age = people.birthday == null
-      ? '-'
-      : '${int.parse(dateNow!) - int.parse(dateOfBirth!)}';
+  String? birthDate;
+  String? currentDate;
+  String? dateNow;
+  String? dateOfBirth;
+  String? age;
 
-  final String? birthday = people.birthday == null
-      ? '-'
-      : DateFormat.yMMMMd().format(DateTime.parse(people.birthday!));
-
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8),
-    child: Column(
-      children: [
-        rowBuilder(prefixText: 'Age', suffixText: age),
-        rowBuilder(prefixText: 'Born on', suffixText: birthday),
-        rowBuilder(prefixText: 'From', suffixText: people.placeOfBirth ?? "-"),
-      ],
-    ),
-  );
+  String? birthday;
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder(initState: (_) {
+      birthDate = people.birthday;
+      currentDate = DateFormat.y().format(DateTime.now());
+      dateNow = currentDate!.substring(0, 4);
+      dateOfBirth = people.birthday == null ? '-' : birthDate!.substring(0, 4);
+      age = people.birthday == null
+          ? '-'
+          : '${int.parse(dateNow!) - int.parse(dateOfBirth!)}';
+      birthday = people.birthday == null
+          ? '-'
+          : DateFormat.yMMMMd().format(DateTime.parse(people.birthday!));
+    }, builder: (_) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Column(
+          children: [
+            _RowBuilder(prefixText: 'Age', suffixText: age),
+            _RowBuilder(prefixText: 'Born on', suffixText: birthday),
+            _RowBuilder(
+                prefixText: 'From', suffixText: people.placeOfBirth ?? "-"),
+          ],
+        ),
+      );
+    });
+  }
 }
 
 // helper
-
-Widget rowBuilder({String? prefixText, String? suffixText}) => Padding(
+class _RowBuilder extends StatelessWidget {
+  const _RowBuilder({this.prefixText, this.suffixText, Key? key})
+      : super(key: key);
+  final String? prefixText;
+  final String? suffixText;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,3 +84,5 @@ Widget rowBuilder({String? prefixText, String? suffixText}) => Padding(
         ],
       ),
     );
+  }
+}

@@ -65,7 +65,7 @@ class PeopleTvTab extends StatelessWidget with AvatarBuilderMixin {
                         crossAxisSpacing: 12,
                         mainAxisExtent: 186,
                       ),
-                      itemBuilder: (context, index) => tvCreditsThumbnailCard(
+                      itemBuilder: (context, index) => TvCreditsThumbnailCard(
                         padding: const EdgeInsets.all(0),
                         tv: _peopleController.tvCredits.value.cast![index],
                         imageUrl:

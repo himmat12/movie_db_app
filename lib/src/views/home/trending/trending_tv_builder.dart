@@ -24,7 +24,7 @@ class TrendingTvBuilder extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // title & more option
-          headerTile(
+          HeaderTile(
             onMoreTap: () {
               // initializing trending TV services
               if (_utilityController.isTvToday == true) {

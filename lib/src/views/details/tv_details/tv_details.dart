@@ -126,7 +126,7 @@ class TvDetails extends StatelessWidget {
                         background: Column(
                           children: [
                             // slider img/poster/title
-                            tvFlexibleSpacebarComponent(
+                            TvFlexibleSpacebarComponent(
                               tv: _detailsController.tvDetail.value,
                               height: 200,
                             ),
@@ -135,7 +135,7 @@ class TvDetails extends StatelessWidget {
                             const SizedBox(height: 18),
 
                             // ratings / lists / bookmark options
-                            tvFlexibleSpacebarOptions(
+                            TvFlexibleSpacebarOptions(
                                 controller: _detailsController),
                           ],
                         ),

@@ -23,7 +23,7 @@ class TrendingMoviesBuilder extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // title & more option
-          headerTile(
+          HeaderTile(
             onMoreTap: () {
               // initializing trending MOVIES services
               if (_utilityController.isMovieToday == true) {

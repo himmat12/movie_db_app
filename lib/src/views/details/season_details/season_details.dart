@@ -98,7 +98,7 @@ class SeasonDetails extends StatelessWidget {
                         background: Column(
                           children: [
                             // slider img/poster/title
-                            seasonFlexibleSpacebarComponent(
+                            SeasonFlexibleSpacebarComponent(
                               season: _seasonController.seasonModel.value,
                               height: 200,
                             ),

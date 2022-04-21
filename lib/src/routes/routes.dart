@@ -106,7 +106,7 @@ class Routes {
         fullscreenDialog: true,
         curve: Curves.ease,
       ),
-      GetPage(name: RoutesPath.profileRoute, page: () => ProfilePage()),
+      GetPage(name: RoutesPath.profileRoute, page: () => const ProfilePage()),
       GetPage(name: RoutesPath.userProfileRoute, page: () => UserProfile()),
     ];
   }
