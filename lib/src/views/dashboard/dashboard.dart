@@ -32,13 +32,13 @@ class DashboardPage extends StatelessWidget {
     HomePage(),
     // const DiscoverPage(),
     WatchlistPage(),
-    ProfilePage(),
+    const ProfilePage(),
   ];
 
   final List<Widget> guestPages = [
     HomePage(),
     // const DiscoverPage(),
-    ProfilePage(),
+    const ProfilePage(),
   ];
 
   @override

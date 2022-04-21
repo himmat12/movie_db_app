@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // upcoming movies *
-        movieResultBuilder(
+        MovieResultBuilder(
           onMoreTap: () {},
           resultType: upcomingString,
           state: _resultsController.upcommingMoviesState,
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // on the air tv shows
-        tvResultBuilder(
+        TvResultBuilder(
           onMoreTap: () {},
           resultType: onTheAirString,
           state: _resultsController.onTheAirTvState,
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // popular movies *
-        movieResultBuilder(
+        MovieResultBuilder(
           onMoreTap: () {},
           resultType: popularString,
           state: _resultsController.popularMoviesState,
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // popular tv shows
-        tvResultBuilder(
+        TvResultBuilder(
           onMoreTap: () {},
           resultType: popularString,
           state: _resultsController.popularTvState,
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // top rated movies *
-        movieResultBuilder(
+        MovieResultBuilder(
           onMoreTap: () {},
           resultType: topRatedString,
           state: _resultsController.topRatedMoviesState,
@@ -89,7 +89,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // top rated tv shows
-        tvResultBuilder(
+        TvResultBuilder(
           onMoreTap: () {},
           resultType: topRatedString,
           state: _resultsController.topRatedTvState,
@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // now playing movies *
-        movieResultBuilder(
+        MovieResultBuilder(
           onMoreTap: () {},
           resultType: nowPlayingString,
           state: _resultsController.nowPlayingMoviesState,
@@ -111,7 +111,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 22),
 
         // airing today tv shows
-        tvResultBuilder(
+        TvResultBuilder(
           onMoreTap: () {},
           resultType: airingTodayString,
           state: _resultsController.airingTodayTvState,

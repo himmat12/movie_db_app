@@ -35,7 +35,7 @@ class WatchlistPage extends StatelessWidget {
           ),
 
           // tabbar
-          watchlistTabbarComponent(tabMenuItems: tabItems),
+          WatchlistTabbarComponent(tabMenuItems: tabItems),
 
           // tabs
           Obx(

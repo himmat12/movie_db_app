@@ -89,7 +89,7 @@ class _MoviesDetailsState extends State<PeopleDetails> {
                         collapseMode: CollapseMode.pin,
                         background: Column(
                           children: [
-                            peopleFlexibleSpacebarComponent(
+                            PeopleFlexibleSpacebarComponent(
                               people: _peopleController.people.value,
                               height: 180,
                             ),

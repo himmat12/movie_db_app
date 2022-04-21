@@ -62,7 +62,7 @@ class BottomScrollableSheet extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 22),
-                        expandedBtn(
+                        ExpandedBtn(
                           onTap: () {
                             _accountController.postToWatchlist(
                               mediaType: movieString,
@@ -113,41 +113,47 @@ class BottomScrollableSheet extends StatelessWidget {
       ),
     );
   }
+}
 
-  // helper expanded btn
-  Widget expandedBtn({
-    required IconData icon,
-    void Function()? onTap,
-    String title = "title",
-  }) =>
-      GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          decoration: BoxDecoration(
-            color: primaryDarkBlue.withOpacity(0.8),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                color: primaryWhite,
-                size: 28,
-              ),
-              const SizedBox(width: 18),
-              Expanded(
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: m - 2,
-                    color: primaryWhite,
-                  ),
+class ExpandedBtn extends StatelessWidget {
+  const ExpandedBtn(
+      {required this.icon, this.onTap, this.title = "title", Key? key})
+      : super(key: key);
+  final IconData icon;
+  final void Function()? onTap;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: primaryDarkBlue.withOpacity(0.8),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              color: primaryWhite,
+              size: 28,
+            ),
+            const SizedBox(width: 18),
+            Expanded(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: m - 2,
+                  color: primaryWhite,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }

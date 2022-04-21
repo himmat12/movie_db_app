@@ -8,6 +8,7 @@ import '../../../../configs/strings.dart';
 import '../../../../controllers/base_controller.dart';
 import '../../../../controllers/details_controller.dart';
 import '../../../../global/loading_spinner.dart';
+import '../../movie_deatils/components/movie_rating_component.dart';
 
 class TvRatingComponent extends StatelessWidget {
   TvRatingComponent({
@@ -114,7 +115,7 @@ class TvRatingComponent extends StatelessWidget {
                           const SizedBox(height: 16),
 
                           // rating quotes
-                          ratingQuotes(_detailsController.rateQuote.value),
+                          RatingQuotes(_detailsController.rateQuote.value),
 
                           const SizedBox(height: 18),
 
@@ -217,36 +218,36 @@ class TvRatingComponent extends StatelessWidget {
     );
   }
 
-  Widget ratingQuotes(String quote) {
-    switch (quote) {
-      case terribleString:
-        return textBuilder(terribleString);
-      case poorString:
-        return textBuilder(poorString);
-      case notBadString:
-        return textBuilder(notBadString);
-      case okayString:
-        return textBuilder(okayString);
-      case goodString:
-        return textBuilder(goodString);
-      case greatString:
-        return textBuilder(greatString);
-      case wonderfulString:
-        return textBuilder(wonderfulString);
-      default:
-        break;
-    }
-    return textBuilder(rateQuestionString);
-  }
+//   Widget ratingQuotes(String quote) {
+//     switch (quote) {
+//       case terribleString:
+//         return textBuilder(terribleString);
+//       case poorString:
+//         return textBuilder(poorString);
+//       case notBadString:
+//         return textBuilder(notBadString);
+//       case okayString:
+//         return textBuilder(okayString);
+//       case goodString:
+//         return textBuilder(goodString);
+//       case greatString:
+//         return textBuilder(greatString);
+//       case wonderfulString:
+//         return textBuilder(wonderfulString);
+//       default:
+//         break;
+//     }
+//     return textBuilder(rateQuestionString);
+//   }
 
-  Widget textBuilder(text) => Text(
-        text,
-        style: const TextStyle(
-          fontSize: l,
-          fontWeight: FontWeight.w500,
-          color: primaryDarkBlue05,
-        ),
-      );
+//   Widget textBuilder(text) => Text(
+//         text,
+//         style: const TextStyle(
+//           fontSize: l,
+//           fontWeight: FontWeight.w500,
+//           color: primaryDarkBlue05,
+//         ),
+//       );
 
   void evaluateRateQuote(value) {
     if (value > 0.5 && value <= 1.5) {
