@@ -136,11 +136,11 @@ class DetailsController extends BaseController {
         Get.back();
         value['status_code'] == 1
             ? Get.showSnackbar(
-                GetBar(
+                GetSnackBar(
                   message: 'Rated with $rateValue⭐',
                   isDismissible: true,
                   duration: const Duration(milliseconds: 1600),
-                  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                  dismissDirection: DismissDirection.horizontal,
                   snackStyle: SnackStyle.GROUNDED,
                   backgroundColor: primaryDarkBlue,
                   mainButton: TextButton(
@@ -152,11 +152,11 @@ class DetailsController extends BaseController {
                 ),
               )
             : Get.showSnackbar(
-                GetBar(
+                GetSnackBar(
                   message: 'Rating updated with $rateValue⭐',
                   isDismissible: true,
                   duration: const Duration(milliseconds: 1600),
-                  dismissDirection: SnackDismissDirection.HORIZONTAL,
+                  dismissDirection: DismissDirection.horizontal,
                   snackStyle: SnackStyle.GROUNDED,
                   backgroundColor: primaryDarkBlue,
                   mainButton: TextButton(
@@ -169,11 +169,11 @@ class DetailsController extends BaseController {
               );
       } else {
         Get.showSnackbar(
-          GetBar(
+          GetSnackBar(
             message: value['status_message'],
             isDismissible: true,
             duration: const Duration(milliseconds: 1600),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            dismissDirection: DismissDirection.horizontal,
             snackStyle: SnackStyle.GROUNDED,
             backgroundColor: primaryDarkBlue,
           ),
@@ -199,11 +199,11 @@ class DetailsController extends BaseController {
         accountState.refresh();
         Get.back();
         Get.showSnackbar(
-          GetBar(
+          GetSnackBar(
             message: 'Rating removed successfully.',
             isDismissible: true,
             duration: const Duration(milliseconds: 1600),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            dismissDirection: DismissDirection.horizontal,
             snackStyle: SnackStyle.GROUNDED,
             backgroundColor: primaryDarkBlue,
             mainButton: TextButton(

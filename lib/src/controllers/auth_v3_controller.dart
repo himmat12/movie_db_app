@@ -75,7 +75,7 @@ class AuthV3Controller extends BaseController {
               value['status_message'],
               // duration: const Duration(milliseconds: 1600),
               backgroundColor: primaryWhite,
-              dismissDirection: SnackDismissDirection.HORIZONTAL,
+              dismissDirection: DismissDirection.horizontal,
               barBlur: 0,
               colorText: secondaryDarkBlue,
             );
@@ -88,7 +88,7 @@ class AuthV3Controller extends BaseController {
           value['status_message'],
           // duration: const Duration(milliseconds: 1600),
           backgroundColor: primaryWhite,
-          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          dismissDirection: DismissDirection.horizontal,
           barBlur: 0,
           colorText: secondaryDarkBlue,
         );
@@ -127,7 +127,7 @@ class AuthV3Controller extends BaseController {
           value['status_message'],
           // duration: const Duration(milliseconds: 1600),
           backgroundColor: primaryWhite,
-          dismissDirection: SnackDismissDirection.HORIZONTAL,
+          dismissDirection: DismissDirection.horizontal,
           barBlur: 0,
           colorText: secondaryDarkBlue,
         );

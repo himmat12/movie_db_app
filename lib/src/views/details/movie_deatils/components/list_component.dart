@@ -215,11 +215,10 @@ class ListComponent extends StatelessWidget {
                                 );
                               },
                               onLongPress: () {
-                                Get.showSnackbar(GetBar(
+                                Get.showSnackbar(GetSnackBar(
                                   message:
                                       'Do you want to delete ${_listController.lists[index].name} list?',
-                                  dismissDirection:
-                                      SnackDismissDirection.HORIZONTAL,
+                                  dismissDirection: DismissDirection.horizontal,
                                   mainButton: Row(
                                     children: [
                                       TextButton(

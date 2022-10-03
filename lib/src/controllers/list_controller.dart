@@ -22,11 +22,11 @@ class ListController extends BaseController {
     await _service.createList(name: name, description: description ?? '');
     getMovieLists();
     Get.showSnackbar(
-      GetBar(
+      GetSnackBar(
         title: 'Collections',
         message: '$name collections list successfuly created ...',
         duration: const Duration(milliseconds: 1600),
-        dismissDirection: SnackDismissDirection.HORIZONTAL,
+        dismissDirection: DismissDirection.horizontal,
         snackStyle: SnackStyle.GROUNDED,
         backgroundColor: primaryDarkBlue,
       ),
@@ -77,11 +77,11 @@ class ListController extends BaseController {
           });
 
           Get.showSnackbar(
-            GetBar(
+            GetSnackBar(
               message: 'Successfuly added to $listTitle',
               isDismissible: true,
               duration: const Duration(milliseconds: 1600),
-              dismissDirection: SnackDismissDirection.HORIZONTAL,
+              dismissDirection: DismissDirection.horizontal,
               snackStyle: SnackStyle.GROUNDED,
               backgroundColor: primaryDarkBlue,
               mainButton: TextButton(
@@ -94,11 +94,11 @@ class ListController extends BaseController {
           );
         } else if (value['success'] == false) {
           Get.showSnackbar(
-            GetBar(
+            GetSnackBar(
               message: '${value['status_message']}',
               isDismissible: true,
               duration: const Duration(milliseconds: 1600),
-              dismissDirection: SnackDismissDirection.HORIZONTAL,
+              dismissDirection: DismissDirection.horizontal,
               snackStyle: SnackStyle.GROUNDED,
               backgroundColor: primaryDarkBlue,
             ),
@@ -121,11 +121,11 @@ class ListController extends BaseController {
         .then((value) {
       if (value['success'] == true) {
         Get.showSnackbar(
-          GetBar(
+          GetSnackBar(
             message: 'Successfuly added to $listTitle',
             isDismissible: true,
             duration: const Duration(milliseconds: 1600),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            dismissDirection: DismissDirection.horizontal,
             snackStyle: SnackStyle.GROUNDED,
             backgroundColor: primaryDarkBlue,
             mainButton: TextButton(
@@ -148,11 +148,11 @@ class ListController extends BaseController {
     await _service.clearList(listId: listId).then((value) {
       if (value['success'] == true) {
         Get.showSnackbar(
-          GetBar(
+          GetSnackBar(
             message: 'Collections list cleared successfuly ...',
             isDismissible: true,
             duration: const Duration(milliseconds: 1600),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            dismissDirection: DismissDirection.horizontal,
             snackStyle: SnackStyle.GROUNDED,
             backgroundColor: primaryDarkBlue,
           ),
@@ -170,22 +170,22 @@ class ListController extends BaseController {
     await _service.deleteList(listId: listId).then((value) {
       if (value['success'] == true) {
         Get.showSnackbar(
-          GetBar(
+          GetSnackBar(
             message: 'Collections list deleted successfuly ...',
             isDismissible: true,
             animationDuration: const Duration(milliseconds: 1200),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            dismissDirection: DismissDirection.horizontal,
             snackStyle: SnackStyle.GROUNDED,
             backgroundColor: primaryDarkBlue,
           ),
         );
       } else {
         Get.showSnackbar(
-          GetBar(
+          GetSnackBar(
             message: '${value['status_message']}',
             isDismissible: true,
             animationDuration: const Duration(milliseconds: 1200),
-            dismissDirection: SnackDismissDirection.HORIZONTAL,
+            dismissDirection: DismissDirection.horizontal,
             snackStyle: SnackStyle.GROUNDED,
             backgroundColor: primaryDarkBlue,
           ),

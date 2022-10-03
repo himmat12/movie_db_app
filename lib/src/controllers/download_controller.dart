@@ -34,7 +34,7 @@ class DownloadController extends BaseController {
     }
     await _service.downloadFile(
         url: url, downloadPath: '${dir!.path}/${Random().hashCode}.jpg');
-    Get.showSnackbar(GetBar(
+    Get.showSnackbar(GetSnackBar(
       icon: const Icon(
         Icons.file_download_done,
         size: 26,
@@ -49,7 +49,7 @@ class DownloadController extends BaseController {
           color: primaryWhite,
         ),
       ),
-      dismissDirection: SnackDismissDirection.HORIZONTAL,
+      dismissDirection: DismissDirection.horizontal,
       duration: const Duration(milliseconds: 1800),
     ));
 

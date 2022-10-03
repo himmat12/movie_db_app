@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     delay().whenComplete(() {
-      SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+      SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
         if (Auth().isLoggedIn == true || Auth().isGuestLoggedIn == true) {
           Get.offAllNamed('/dashboard');
         }
